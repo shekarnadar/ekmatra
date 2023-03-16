@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Vender;
+namespace App\Http\Controllers\Vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VenderController extends Controller
+class VendorController extends Controller
 {
     //
     public function dashboard(){
-        return view('vender.dashboard');
+        return view('vendor.dashboard');
     }
 }

@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
 		
 		Validator::extend('vendor_email_valid', function ($attribute, $value, $parameters, $validator){
-			$role_id = getRole('vender');
+			$role_id = getRole('Vendor');
 			$users = \DB::table('users')->where(['email' => $value, 'role_id' => $role_id])
 					//->where('status', '!=', 'deleted')
 					->first(['id']);

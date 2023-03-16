@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\vender\Auth;
+namespace App\Http\Controllers\Customer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VendorLoginRequest;
@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
 	 */
 	public function create(): View
 	{
-		return view('auth.vender.login');
+		return view('auth.customer.login');
 	}
 
 	/**
@@ -26,11 +26,10 @@ class AuthenticatedSessionController extends Controller
 	public function store(VendorLoginRequest $request): RedirectResponse
 	{
 
-		 if(Auth::guard('vender')->attempt($request->only('email','password'),$request->filled('remember'))){
+		 if(Auth::guard('customer')->attempt($request->only('email','password'),$request->filled('remember'))){
     	  //$request->authenticate();
     	  $request->session()->regenerate();
-        return redirect()
-            ->intended(route('vender.dashboard'))
+        return redirect('dashboard')
             ->with('status','You are Logged in as Admin!');
     }else{
     	 return redirect()
@@ -52,6 +51,6 @@ class AuthenticatedSessionController extends Controller
 
 		$request->session()->regenerateToken();
 
-		return redirect('/vender');
+		return redirect('/login');
 	}
 }

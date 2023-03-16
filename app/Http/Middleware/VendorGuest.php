@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class VenderAuth
+class VendorGuest
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class VenderAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('vender')->check()) {
-            return $next($request);
+        if (Auth::guard('vendor')->check()) {
+            return redirect('vendor/dashboard');
         } else {
-            return redirect('vender/login');
+            return $next($request);
         }
     }
 }

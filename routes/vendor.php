@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Vendor\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Vendor\VendorController;
+
+
+Route::group(['prefix' => 'vendor'], function(){
+
+	Route::group(['middleware' => 'vendor-guest'], function () {
+		Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('Vendor.login');
+		Route::post('login', [AuthenticatedSessionController::class, 'store']);
+	});
+	
+	Route::group(['middleware' => 'vendor-auth'], function () {
+		 Route::get('dashboard',[VendorController::class,'dashboard'])->name('Vendor.dashboard');
+	
+		Route::get('/', function () {
+			return redirect('vendor/dashboard');
+		})->name('Vendor.dashboard');
+
+		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+				->name('vendor.logout');
+		});
+	
+  });
+
+?>

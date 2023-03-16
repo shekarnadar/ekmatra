@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
+use Auth;
 class Customer
 {
 		/**
@@ -16,11 +16,11 @@ class Customer
 		 */
 		public function handle(Request $request, Closure $next)
 		{
-				 if (!Auth::check()) {
-						return redirect()->route('login');
-				}else{
-						return $next($request);    
-				}
+				if (Auth::guard('web')->check()) {
+            return $next($request);
+        } else {
+            return redirect('login');
+        }
 				
 		}
 }
