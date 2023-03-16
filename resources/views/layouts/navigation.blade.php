@@ -39,10 +39,10 @@
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route(getAuthGaurd().'.logout') }}">
+                        <form method="POST" action="{{route('logout')}}">
                             @csrf
 
-                            <x-dropdown-link :href="route(getAuthGaurd().'.logout')"
+                            <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
