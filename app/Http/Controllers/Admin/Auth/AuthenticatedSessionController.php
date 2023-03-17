@@ -46,12 +46,13 @@ class AuthenticatedSessionController extends Controller
 		 */
 		public function destroy(Request $request): RedirectResponse
 		{
+				$url = getAuthGaurd();
+				
 				Auth::guard('web')->logout();
 
 				$request->session()->invalidate();
 
 				$request->session()->regenerateToken();
-				$url = getAuthGaurd();
-				return redirect('/');
+				return redirect($url == 'web' ? '/' : $url);
 		}
 }
