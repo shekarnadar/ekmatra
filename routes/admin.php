@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin'], function(){
 			return redirect('admin/dashboard');
 		})->name('dashboard');
 
-		Route::get('vendor/create',[VendorController::class,'create'])->name('vendor.create');
+		Route::get('vendor/add',[VendorController::class,'create'])->name('vendor.create');
 		Route::post('vendor/store',[VendorController::class,'store'])->name('vendor.store');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])

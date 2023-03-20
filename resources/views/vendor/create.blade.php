@@ -1,62 +1,57 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('vendor Create') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('breadcumb','Vendor')
+@section('pageTitle','vendor-create')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form method="POST" action="{{ route('vendor.store') }}">
-        @csrf
+@section('content')
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="main-content-label mg-b-5">
+                                    Vendor Creation
+                                </div>
+                              
+                                <form action="{{ route('vendor.store') }}" data-parsley-validate="" name="vendorCreate" >
+                                    <div class="row row-sm">
+                                        <div class="col-6">
+                                            <div class="form-group mg-b-0">
+                                                <label class="form-label">Firstname: <span class="tx-danger">*</span></label>
+                                                <input class="form-control" name="firstname" placeholder="Enter firstname" required="Firstname is Required" id="firstname" type="text" parsley-type-firstname-message="You must enter a 10 characters alphanumeric value">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Company Name: <span class="tx-danger">*</span></label>
+                                                <input class="form-control" name="lastname" placeholder="Enter lastname" required="Firstname is Required" type="text">
+                                            </div>
+                                        </div>
+                                         <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Email: <span class="tx-danger">*</span></label>
+                                                <input class="form-control" name="email" placeholder="Enter Email" required="Firstname is Required" type="text">
+                                            </div>
+                                        </div>
+                                         <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Phone: <span class="tx-danger">*</span></label>
+                                                <input class="form-control" name="phone" placeholder="Enter Phone" required="Firstname is Required" type="text">
+                                            </div>
+                                        </div>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+                                         <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Address: <span class="tx-danger">*</span></label>
+                                                <textarea class="form-control" name="address" placeholder="Enter Address" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12"><button class="btn btn-main-primary pd-x-20 mg-t-10" type="submit">Validate Form</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-        </div>
-    </div>
-</x-app-layout>
+@endsection
