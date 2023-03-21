@@ -162,9 +162,8 @@
 				<script src="{{url('backend/plugins/ionicons/ionicons.js')}}"></script>
 
 				<!--- Chart bundle min js -->
-				<script src="{{url('backend/js/index.js')}}"></script>
-						<script src="{{url('backend/plugins/moment/moment.js')}}"></script>
-<script src="{{url('backend/plugins/parsleyjs/parsley.min.js')}}"></script>
+				<script src="{{url('backend/plugins/moment/moment.js')}}"></script>
+				<script src="{{url('backend/plugins/parsleyjs/parsley.min.js')}}"></script>
 
 
 				<!--- Moment js -->
