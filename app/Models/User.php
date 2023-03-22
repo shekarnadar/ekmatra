@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -21,7 +23,10 @@ class User extends Authenticatable
 		'name',
 		'email',
 		'password',
-		'role_id'
+		'role_id',
+		'phone',
+		'address',
+		'company_name'
 	];
 
 	/**
@@ -61,4 +66,24 @@ class User extends Authenticatable
     {
         return $this->getAttribute('role') === $role;
     }
+
+    //save vendor
+    public static function saveVendor($request){
+       
+        $role_id = getRole('vendor');
+
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'password' => Hash::make(123456),
+            'address' => $request['address'],
+            'company_name' => $request['company_name'],
+            'role_id' => $role_id
+        ]);
+        event(new Registered($user));   
+        return $user;        
+
+    }
+
 }

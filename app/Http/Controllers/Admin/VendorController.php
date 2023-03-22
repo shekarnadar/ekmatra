@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
+use App\Http\Requests\admin\CreateVendorRequest;
+
 
 
 class VendorController extends Controller
@@ -39,25 +38,21 @@ class VendorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateVendorRequest $request)
     {
         //
-         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        try {
+            
+            User::saveVendor($request->input());
+            return response()->json(['success' => true,
+                'message' => 'Vendor has been added successfully.'
+            ], 200);
 
-        ]);
-        $role_id = getRole('vendor');
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $role_id
-        ]);
-
-        event(new Registered($user));
-        return redirect('admin/dashboard');
+        } catch(\Exception $e){
+            return response()->json(['success' => false,
+                'message' => 'something went wrong'], 200);
+        }  
+        
     }
 
     /**
