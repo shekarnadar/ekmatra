@@ -12,7 +12,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-20">
-									Category Creation
+									Category {{@$category['id'] ? 'Edit' : 'Create'}}
 								</div>
 							  
 								<form  data-parsley-validate="" name="categoryCreate" method="POST" id="categoryCreate" enctype="multipart/form-data">

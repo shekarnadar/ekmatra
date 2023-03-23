@@ -7,14 +7,14 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-20">
-									Feature Creation
+									Feature {{@$feature['id'] ? 'Edit' : 'Create'}}
 								</div>
 							  
 								<form  data-parsley-validate="" name="featureCreate" method="POST" id="featureCreate">
 									@csrf
 									@if(@$feature)
-                            			<input name="id" type="text" value="{{@$feature->id}}">
-                        			@endif
+                  	<input name="id" type="hidden" value="{{@$feature->id}}">
+                  @endif
 									<div class="row row-sm">
 										<div class="col-6">
 											<div class="form-group mg-b-0">
