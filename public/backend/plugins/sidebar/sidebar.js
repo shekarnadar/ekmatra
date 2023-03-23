@@ -100,7 +100,7 @@
     return this
   }
 
-  $(document).on('click.bs.sidebar.data-api', '[data-toggle="sidebar-right"]', function (e) {
+ /* $(document).on('click.bs.sidebar.data-api', '[data-toggle="sidebar-right"]', function (e) {
     var $this = $(this), href
     var target = $this.attr('data-target')
         || e.preventDefault()
@@ -110,7 +110,7 @@
     var option = data ? 'toggle' : $this.data()
 
     $target.sidebar(option)
-  })
+  })*/
 
   $('html').on('click.bs.sidebar.autohide', function(event){
     var $this = $(event.target);
@@ -135,8 +135,8 @@
 	
 	
 	// ______________ PerfectScrollbar	
-	const ps1 = new PerfectScrollbar('.sidebar-right', {
-		useBothWheelAxes:true,
-		suppressScrollX:true,
-	});
+	// const ps1 = new PerfectScrollbar('.sidebar-right', {
+	// 	useBothWheelAxes:true,
+	// 	suppressScrollX:true,
+	// });
 }(jQuery);

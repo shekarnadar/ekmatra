@@ -56,7 +56,7 @@ $(function() {
 			targetFormElementSelector: '.rating-value'
 		}
 	};
-	$(".rating-stars").ratingStars(ratingOptions);
+	//$(".rating-stars").ratingStars(ratingOptions);
 	
 	
 	// ______________Cover Image

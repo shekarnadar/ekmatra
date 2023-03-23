@@ -24,7 +24,7 @@
                 @include('layouts.breadcrumb')
                 <div class="main-content-body">
 
-            	@yield('content')
+            	{{ $slot }}
                 
             </div>
             </div>
