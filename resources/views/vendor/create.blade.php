@@ -12,11 +12,14 @@
 							  
 								<form  data-parsley-validate="" name="vendorCreate" method="POST" id="vendorCreate">
 									@csrf
+									@if(@$vendor)
+										<input type="hidden" name="id" value="{{@$vendor['id']}}">
+									@endif
 									<div class="row row-sm">
 										<div class="col-6">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Name: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name">
+												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{@$vendor['name']}}">
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
@@ -24,7 +27,7 @@
 										<div class="col-6">
 											<div class="form-group">
 												<label class="form-label">Company Name: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="company_name" placeholder="Enter company name" required="" type="text" data-parsley-required-message="Please enter company name">
+												<input class="form-control" name="company_name" placeholder="Enter company name" required="" type="text" data-parsley-required-message="Please enter company name" value="{{@$vendor['company_name']}}">
 												<span class="text-danger" id="company_name_error"></span>
 											</div>
 										</div>
@@ -32,7 +35,7 @@
 										 <div class="col-6">
 											<div class="form-group">
 												<label class="form-label">Email: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="email" placeholder="Enter Email" required="" type="email" data-parsley-required-message="Please enter your email" >
+												<input class="form-control" name="email" placeholder="Enter Email" required="" type="email" data-parsley-required-message="Please enter your email" value="{{@$vendor['email']}}">
 												<span class="text-danger" id="email_error"></span>
 											</div>
 										</div>
@@ -40,7 +43,7 @@
 										 <div class="col-6">
 											<div class="form-group">
 												<label class="form-label">Phone: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="phone" placeholder="Enter phone number" required="Firstname is Required" type="text" data-parsley-required-message="Please enter your phone number" >
+												<input class="form-control" name="phone" placeholder="Enter phone number" required="Firstname is Required" type="text" data-parsley-required-message="Please enter your phone number" value="{{@$vendor['phone']}}">
 												<span class="text-danger" id="phone_error"></span>
 											</div>
 										</div>
@@ -48,7 +51,7 @@
 										 <div class="col-12">
 											<div class="form-group">
 												<label class="form-label">Address</label>
-												<textarea class="form-control" name="address" placeholder="Enter Address" rows="4"></textarea>
+												<textarea class="form-control" name="address" placeholder="Enter Address" rows="4">{{@$vendor['address']}}</textarea>
 											</div>
 										</div>
 										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10">Submit</button></div>

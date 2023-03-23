@@ -72,7 +72,18 @@ class User extends Authenticatable
        
         $role_id = getRole('vendor');
 
-        $user = User::create([
+        if(@$request['id']){
+        	$user = User::where('id',$request['id'])->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+            'company_name' => $request['company_name'],
+        	]);
+
+        }else{
+
+        	$user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'phone' => $request['phone'],
@@ -80,8 +91,10 @@ class User extends Authenticatable
             'address' => $request['address'],
             'company_name' => $request['company_name'],
             'role_id' => $role_id
-        ]);
-        event(new Registered($user));   
+        	]);
+        	event(new Registered($user));   
+        }
+        
         return $user;        
 
     }

@@ -23,11 +23,15 @@ class CreateVendorRequest extends FormRequest
 	 */
 	public function rules()
 	{
+		        $user_id = request()->id;
+
 	   return [
-			'email' => 'required|email|string|unique:users|max:255',
-			'name' => 'required|string|max:255',
-			'phone' => 'required|digits:10|numeric|unique:users,phone',
-			'company_name' => 'required|string|unique:users,company_name|max:255',
+
+			'email' => "required|email|string|max:255|unique:users,email,$user_id",
+			'name' => "required|string|max:255",
+			'phone' => "required|digits:10|numeric|unique:users,phone,$user_id",
+			'company_name' => "required|string|max:255|unique:users,company_name,$user_id",
 		];
+
 	}
 }

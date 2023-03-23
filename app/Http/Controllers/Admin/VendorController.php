@@ -21,7 +21,8 @@ class VendorController extends Controller
 					$data = User::getVendors($request);
 					return Datatables::of($data)
 					 	->addColumn('action', function($row){
-   						$btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+					 	$url = url('admin/vendor/edit')."/".$row['id'];
+   						$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>';
 							return $btn;
 					 })
 					->skipTotalRecords()
@@ -60,6 +61,8 @@ class VendorController extends Controller
 			], 200);
 
 		} catch(\Exception $e){
+			echo $e->getMessage();
+			exit();
 			return response()->json(['success' => false,
 				'message' => 'something went wrong'], 200);
 		}  
@@ -85,7 +88,8 @@ class VendorController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$vendor = User::find($id);
+		return view('vendor.create',compact('vendor'));
 	}
 
 	/**

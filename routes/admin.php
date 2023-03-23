@@ -28,7 +28,9 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('vendors',[VendorController::class,'index'])->name('vendor.index');
 
 		Route::get('vendor/add',[VendorController::class,'create'])->name('vendor.create');
+
 		Route::post('vendor/store',[VendorController::class,'store'])->name('vendor.store');
+		Route::get('vendor/edit/{id}',[VendorController::class,'edit'])->name('vendor.edit');
 
 		//feature
 		Route::get('features',[FeatureController::class,'index'])->name('feature.index');
