@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
 class AppServiceProvider extends ServiceProvider
 {
 	/**
@@ -28,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
 		/* @description validation for check valid vendor email
 		 * @return type boolean
 		 */
+		  
+
+
 
 		Validator::extend('email_valid', function ($attribute, $value, $parameters, $validator){
 			$role_id = getRole('customer');

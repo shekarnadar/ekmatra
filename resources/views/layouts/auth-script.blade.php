@@ -16,18 +16,13 @@
 
 	<link href="{{url('backend/css/icons.css')}}" rel="stylesheet">
 
-		<!--- Select2 css-->
-		<link href="{{url('backend/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
-
-		<!--- Right-sidemenu css -->
-		<link href="{{url('backend/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
+		
 
 		<!--- Custom Scroll bar -->
 		<link href="{{url('backend/plugins/mscrollbar/jquery.mCustomScrollbar.css')}}" rel="stylesheet"/>
 
 		<!--- Style css -->
 		<link href="{{url('backend/css/style.css')}}" rel="stylesheet">
-		<link href="{{url('backend/css/skin-modes.css')}}" rel="stylesheet">
 
 		<!--- Sidemenu css -->
 		<link href="{{url('backend/css/sidemenu.css')}}" rel="stylesheet">
@@ -36,9 +31,7 @@
 		<link href="{{url('backend/css/animate.css')}}" rel="stylesheet">
 		
 		<!--- Switcher css -->
-		<link href="{{url('backend/switcher/css/switcher.css')}}" rel="stylesheet">
-		<link href="{{url('backend/switcher/demo.css')}}" rel="stylesheet">
-
+	
 		<link href="{{url('backend//plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 
 		

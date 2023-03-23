@@ -12,11 +12,14 @@
 							  
 								<form  data-parsley-validate="" name="featureCreate" method="POST" id="featureCreate">
 									@csrf
+									@if(@$feature)
+                            			<input name="id" type="hidden" value="{{@$feature->id}}">
+                        			@endif
 									<div class="row row-sm">
 										<div class="col-6">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Name: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name">
+												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{@$feature->name}}">
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
@@ -54,7 +57,7 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
-                        window.location.href ='{{ url("admin/dashboard") }}';
+                        window.location.href ='{{ url("admin/features") }}';
                     },2000);
                 } else {
                     notifyMsg(response.message,'error');

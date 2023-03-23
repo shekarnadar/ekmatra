@@ -39,9 +39,6 @@
 <!--- Sidebar js -->
 <script src="{{url('backend/plugins/side-menu/sidemenu.js')}}"></script>
 
-<!--- Right-sidebar js -->
-<script src="{{url('backend/plugins/sidebar/sidebar.js')}}"></script>
-<script src="{{url('backend/plugins/sidebar/sidebar-custom.js')}}"></script>
 				
 <!--- Eva-icons js -->
 <script src="{{url('backend/js/eva-icons.min.js')}}"></script>
@@ -52,8 +49,6 @@
 <!--- Custom js -->
 <script src="{{url('backend/js/custom.js')}}"></script>
 				
-<!--- Switcher js -->
-<script src="{{url('backend/switcher/js/switcher.js')}}"></script>
 
 <script src="{{url('backend/plugins/notify/js/notifIt.js')}}"></script>
 <script type="text/javascript">

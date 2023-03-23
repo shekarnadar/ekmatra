@@ -86,4 +86,11 @@ class User extends Authenticatable
 
     }
 
+    //get vendors
+    public static function getVendors($request){
+
+    	$role_id = getRole('vendor');
+    	$vendor = User::where('role_id',$role_id);
+    	return $vendor;
+    }
 }

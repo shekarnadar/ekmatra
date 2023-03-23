@@ -15,10 +15,23 @@ class Feature extends Model
     //save feature
     public static function saveFeature($request) {
         
-        $feature = Feature::create([
-            'name' => $request['name']
-        ]);
-
+        if(isset($request['id'])){
+            $id = $request['id'];
+        }else{
+            $id = 0;
+        }
+        $matchThese = ['id'=>$id];
+        $feature = Feature::updateOrCreate($matchThese,
+            ['name' => $request['name']]
+        );
+        
         return $feature;
+    }
+
+    //get features
+    public static function getFeatures() {
+
+         $feature = Feature::orderBy('created_at','desc')->get();
+         return $feature;
     }
 }

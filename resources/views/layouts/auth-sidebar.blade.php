@@ -43,13 +43,13 @@ $url = getAuthGaurd();
 					</li>
 					@if($url == 'admin')
 					<li class="slide">
-						<a class="side-menu__item" href='{{url("$url/vendor/add")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">vendor</span></a>
+						<a class="side-menu__item" href='{{url("$url/vendors")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">vendors</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href='{{url("$url/feature/add")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Feature</span></a>
+						<a class="side-menu__item" href='{{url("$url/features")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Features</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" href='{{url("$url/category/add")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Category</span></a>
+						<a class="side-menu__item" href='{{url("$url/categories")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Category</span></a>
 					</li>
 					@endif
 					

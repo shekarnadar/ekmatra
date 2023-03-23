@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Feature;
 use Illuminate\Http\Request;
 use App\Http\Requests\admin\CreateFeatureRequest;
-
+use DataTables;
 
 class FeatureController extends Controller
 {
@@ -15,9 +15,22 @@ class FeatureController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		//
+			if ($request->ajax()) {
+					$data = Feature::getFeatures();
+					return Datatables::of($data)
+						->addColumn('action', function($row){
+							$url = url('admin/feature/edit/'.$row->id);
+							$btn = '<a href="'.$url.'" class="edit btn btn-danger btn-sm text-white">Edit</a>&nbsp;&nbsp;';
+							$btn.= '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm text-white" data-id="'.$row->id.'">Delete</a>';
+
+							return $btn;
+					 })
+					->rawColumns(['action'])
+					->make(true);
+			}
+				return view('admin.feature.index');
 	}
 
 	/**
@@ -69,8 +82,10 @@ class FeatureController extends Controller
 	 * @param  \App\Models\Feature  $feature
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Feature $feature)
+	public function edit($id)
 	{
+			$feature = Feature::find($id);
+		 	return view('admin.feature.create',compact('feature'));
 		//
 	}
 
@@ -92,8 +107,20 @@ class FeatureController extends Controller
 	 * @param  \App\Models\Feature  $feature
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy(Feature $feature)
+	public function destroy($id)
 	{
-		//
+			 try {
+
+            $feature  = Feature::find($id);
+            $feature->delete();
+
+            return response()->json(['success' => true,
+                     'message' => 'deleted sucessfully'
+            ], 200);
+
+        } catch(\Exception $e){
+            return response()->json(['success' => false,
+                'message' => 'something went wrong'], 200);
+        }  
 	}
 }

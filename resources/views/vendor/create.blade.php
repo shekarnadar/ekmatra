@@ -80,7 +80,7 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
-                        window.location.href ='{{ url("admin/dashboard") }}';
+                        window.location.href ='{{ url("admin/vendors") }}';
                     },2000);
                 } else {
                     notifyMsg(response.message,'error');
