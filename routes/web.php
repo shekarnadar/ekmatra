@@ -21,6 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Shop page
+
+Route::get('shop',[CustomerController::class, 'shop'])->name('shop');
+
+//Product page
+
+Route::get('product',[CustomerController::class, 'product'])->name('product');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

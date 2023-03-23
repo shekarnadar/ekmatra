@@ -11,4 +11,12 @@ class CustomerController extends Controller
     public function dashboard(){
          return view('customer.dashboard');
     }
+    public function shop()
+    {
+        return view ('shop');
+    }
+    public function product()
+    {
+        return view ('product');
+    }
 }
