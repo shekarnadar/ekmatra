@@ -1,5 +1,10 @@
 @section('breadcumb','Category')
 @section('pageTitle','Category-create')
+@php
+	if(!isset($category['image'])){
+		$required="required='required'";
+	}
+@endphp
 
 <x-app-layout>
 				<div class="row">
@@ -7,16 +12,20 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-20">
-									Category Creation
+									Category {{@$category['id'] ? 'Edit' : 'Create'}}
 								</div>
 							  
 								<form  data-parsley-validate="" name="categoryCreate" method="POST" id="categoryCreate" enctype="multipart/form-data">
 									@csrf
+									@if(@$category)
+										<input type="hidden" name="id" value="{{@$category['id']}}}">
+										<input type="hidden" name="old_image" value="{{@$category['image']}}">
+									@endif
 									<div class="row row-sm">
 										<div class="col-6">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Name: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name">
+												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{@$category['name']}}">
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
@@ -25,7 +34,8 @@
 											<div class="form-group mg-b-0">
 												<label class="form-label">Image: <span class="tx-danger">*</span></label>
 												<div class="custom-file">
-													<input class="custom-file-input" id="customFile" type="file" name="image" required="required" data-parsley-required-message="Please choose file" data-parsley-fileextension='jpg,png,jpeg'  data-parsley-mime-type-message="Image should be in png,jpeg,jpg formet"><label class="custom-file-label" for="customFile">Choose file</label>
+
+													<input class="custom-file-input" id="customFile" type="file" name="image" {{@$required}} data-parsley-required-message="Please choose file" data-parsley-fileextension='jpg,png,jpeg'  data-parsley-mime-type-message="Image should be in png,jpeg,jpg formet"><label class="custom-file-label" for="customFile">Choose file</label>
 												</div>
 												<span class="text-danger" id="name_error"></span>
 											</div>
@@ -69,7 +79,7 @@
 			if ( $(this).parsley().isValid() ) {
 				 $.ajax({
             type: "post",
-            url: '{{ url("admin/categories") }}',
+            url: '{{ url("admin/category/store") }}',
             data: formValue,
             cache: false,
             contentType: false,
@@ -79,7 +89,7 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
-                        window.location.href ='{{ url("admin/dashboard") }}';
+                        window.location.href ='{{ url("admin/categories") }}';
                     },2000);
                 } else {
                     notifyMsg(response.message,'error');

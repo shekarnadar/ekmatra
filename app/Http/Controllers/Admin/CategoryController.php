@@ -55,10 +55,19 @@ class CategoryController extends Controller
 	public function store(Request $request)
 	{
 		try {
-		  $image = uploadImage('category',$request->image);
-		  $request['image'] = $image;
-		  
-		  Category::saveCategory($request->input());
+			
+			if($request->file('image')){
+				if($request['id']){
+					$image_path = public_path("category/".$request['old_image']);  // Value is not URL but directory file path
+					if(\File::exists($image_path)) {
+    					\File::delete($image_path);
+					}
+				}
+			 	$image = uploadImage('category',$request->image);
+		    $request['image'] = $image;
+			}
+		 	
+		 	Category::saveCategory($request->input());
 			 return response()->json(['success' => true,
 				'message' => 'Category has been added successfully.'
 		  ], 200);
@@ -90,7 +99,8 @@ class CategoryController extends Controller
 	{
 		//
 		$category = Category::find($id);
-		echo $id;
+		return view('admin.category.create',compact('category'));
+
 	}
 
 	/**

@@ -7,14 +7,14 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-20">
-									Feature Creation
+									Feature {{@$feature['id'] ? 'Edit' : 'Create'}}
 								</div>
 							  
 								<form  data-parsley-validate="" name="featureCreate" method="POST" id="featureCreate">
 									@csrf
 									@if(@$feature)
-                            			<input name="id" type="hidden" value="{{@$feature->id}}">
-                        			@endif
+                  	<input name="id" type="hidden" value="{{@$feature->id}}">
+                  @endif
 									<div class="row row-sm">
 										<div class="col-6">
 											<div class="form-group mg-b-0">
@@ -57,7 +57,7 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
-                        window.location.href ='{{ url("admin/features") }}';
+                        window.location.href ='{{ url("admin/dashboard") }}';
                     },2000);
                 } else {
                     notifyMsg(response.message,'error');

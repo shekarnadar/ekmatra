@@ -15,14 +15,13 @@ class Category extends Model
 
    //save category
     public static function saveCategory($request){
-        if(!empty($request['id'])){
-            $Category = Category::where('id', $request['id'])->first();
-        } else {
-            $Category = new Category();
+         if(isset($request['id'])){
+            $id = $request['id'];
+        }else{
+            $id = 0;
         }
-        $Category->name = $request['name'];
-        $Category->image = $request['image'];
-        $Category->save();
+        $matchThese = ['id'=>$id];
+        $Category = Category::updateOrCreate($matchThese,$request);
         return $Category;
     }
 
