@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
         //
         $data = [
             ['name'=>'admin'],
-            ['name'=>'vender'],
+            ['name'=>'vendor'],
             ['name'=>'customer'],
         ];
         \App\Models\Role::insert($data);     

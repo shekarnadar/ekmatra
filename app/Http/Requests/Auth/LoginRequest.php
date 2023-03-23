@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email','email_valid'],
             'password' => ['required', 'string'],
         ];
     }
@@ -81,5 +81,11 @@ class LoginRequest extends FormRequest
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
+    }
+    public function messages() {
+
+        return [
+             'email.email_valid' => 'The email is not valid for this account.',
+        ];
     }
 }
