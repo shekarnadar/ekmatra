@@ -54,7 +54,8 @@
 												<textarea class="form-control" name="address" placeholder="Enter Address" rows="4">{{@$vendor['address']}}</textarea>
 											</div>
 										</div>
-										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10">Submit</button></div>
+										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addvendor"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
+										</div>
 									</div>
 								</form>
 							</div>
@@ -71,6 +72,8 @@
 			e.preventDefault()
 			let formValue = new FormData(this);
 			if ( $(this).parsley().isValid() ) {
+				 $(".loading").show();
+				 $(".addvendor").prop('disabled',true);
 				 $.ajax({
             type: "post",
             url: '{{ url("admin/vendor/store") }}',
@@ -83,6 +86,7 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
+                    	 $(".addvendor").prop('disabled',false);
                         window.location.href ='{{ url("admin/vendors") }}';
                     },2000);
                 } else {
@@ -90,6 +94,9 @@
                 }
             },
             error: function(response) {
+            	 $('.loading').hide();
+            	  $('.submit').show();
+            	  $(".addvendor").prop('disabled',false);
                 let error = response.responseJSON;
                 if(!error){
                     error = JSON.parse(response.responseText);

@@ -55,9 +55,10 @@ class FeatureController extends Controller
 		try {
 			
 			Feature::saveFeature($request->input());
+			
 			return response()->json(['success' => true,
-				'message' => 'Feature has been added successfully.'
-			], 200);
+				'message' => 'Feature has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
+		  ], 200);
 
 		} catch(\Exception $e){
 			return response()->json(['success' => false,

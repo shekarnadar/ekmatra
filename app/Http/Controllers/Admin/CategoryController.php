@@ -58,6 +58,7 @@ class CategoryController extends Controller
 			
 			if($request->file('image')){
 				if($request['id']){
+
 					$image_path = public_path("category/".$request['old_image']);  // Value is not URL but directory file path
 					if(\File::exists($image_path)) {
     					\File::delete($image_path);
@@ -68,8 +69,8 @@ class CategoryController extends Controller
 			}
 		 	
 		 	Category::saveCategory($request->input());
-			 return response()->json(['success' => true,
-				'message' => 'Category has been added successfully.'
+			return response()->json(['success' => true,
+				'message' => 'Category has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
 		  ], 200);
 
 		} catch(\Exception $e){

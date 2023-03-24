@@ -40,7 +40,8 @@
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
-										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10">Submit</button></div>
+										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addcategory"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
+										</div>
 									</div>
 								</form>
 							</div>
@@ -77,6 +78,8 @@
 			e.preventDefault()
 			let formValue = new FormData(this);
 			if ( $(this).parsley().isValid() ) {
+				 $(".loading").show();
+				 $(".addcategory").prop('disabled',true);
 				 $.ajax({
             type: "post",
             url: '{{ url("admin/category/store") }}',
@@ -89,6 +92,7 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
+                    		$(".addcategory").prop('disabled',false);
                         window.location.href ='{{ url("admin/categories") }}';
                     },2000);
                 } else {
@@ -96,6 +100,9 @@
                 }
             },
             error: function(response) {
+            	  $('.loading').hide();
+            	  $('.submit').show();
+            	  $(".addcategory").prop('disabled',false);
                 let error = response.responseJSON;
                 if(!error){
                     error = JSON.parse(response.responseText);
