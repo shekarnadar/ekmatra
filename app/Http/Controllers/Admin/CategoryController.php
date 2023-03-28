@@ -25,7 +25,9 @@ class CategoryController extends Controller
 					 })
 						->addColumn('action', function($row){
 								$url = url('admin/category/edit')."/".$row->id;
+								$sub_cat = url('admin/category').'/'.$row->id.'/sub-cat';
 								$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>&nbsp;&nbsp;';
+								$btn.='<a href="'.$sub_cat.'" class="btn btn-primary btn-sm">Sub Category</a>';
 								return $btn;
 					 })
 					->rawColumns(['action', 'image'])

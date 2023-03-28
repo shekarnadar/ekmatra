@@ -2,161 +2,23 @@
        
             <div class="container pb-2">
                 <div class="category-wrapper row cols-12 pt-4">
+                		@foreach($category as $cat)
                     <div class="category category-ellipse ">
                         <figure class="category-media">
                             <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-1-1.jpg')}}" alt="Categroy" width="190"
+                                <img src="{{url('category/'.$cat['image'])}}" alt="Categroy" width="190"
                                     height="190" />
                             </a>
                         </figure>
                         <div class="category-content">
                             <h4 class="category-name">
-                                <a href="demo12-shop.html">T-Shirt</a>
+                                <a href="demo12-shop.html">{{$cat['name']}}</a>
                             </h4>
                         </div>
                     </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-2-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Shoes</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-3-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Camera</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-4-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Valise</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-5-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Jewelry</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-6-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Earphone</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-7-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Gifts</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-8-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Kids</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-9-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Sports</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-10-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Beauty</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <figure class="category-media">
-                            <a href="demo12-shop.html">
-                                <img src="{{url('front/images/demos/demo12/category/cat-11-1.jpg')}}" alt="Categroy" width="190"
-                                    height="190" />
-                            </a>
-                        </figure>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Accessories</a>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="category category-ellipse ">
-                        <div class="icon-box icon-colored-circle">
-                            <span class="icon-box-icon mb-0 text-white">
-                                <i class="w-icon-hamburger"></i>
-                            </span>
-                        </div>
-                        <div class="category-content">
-                            <h4 class="category-name">
-                                <a href="demo12-shop.html">Categories</a>
-                            </h4>
-                        </div>
-                    </div>
+                    @endforeach
+                   
+                    
                 </div>
                 <!-- End Of Category Wrapper -->
 

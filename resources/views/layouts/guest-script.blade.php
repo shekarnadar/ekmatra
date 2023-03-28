@@ -2,7 +2,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-	<title>Wolmart - Bootstrap eCommerce Template</title>
+	<title>Ekmatra</title>
 
 	<meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
 	<meta name="description" content="Wolmart is powerful marketplace &amp; ecommerce responsive Html5 Template.">
@@ -42,5 +42,4 @@
 
 	<!-- Default CSS -->
 	<link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}">
-	 <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">
 </head>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
+
 
 
 
@@ -47,6 +49,14 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('category/store',[CategoryController::class,'store'])->name('category.store');
 		Route::delete('category/{id}', [CategoryController::class,'destroy'])->name('category.delete');
 		Route::get('category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
+
+		//sub category
+		Route::get('category/{id}/sub-cat',[SubCategoryController::class,'index'])->name('subcategory.index');
+		Route::get('category/{id}/sub-cat/add',[SubCategoryController::class,'create'])->name('subcategory.add');
+		Route::post('category/sub-cat/store',[SubCategoryController::class,'store'])->name('subcategory.store');
+		Route::get('category/sub-cat/show/{id}',[SubCategoryController::class,'show'])->name('subcategory.show');
+		Route::get('category/sub-cat/edit/{id}',[SubCategoryController::class,'edit'])->name('subcategory.edit');
+
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');
