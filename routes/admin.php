@@ -56,6 +56,8 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('category/sub-cat/store',[SubCategoryController::class,'store'])->name('subcategory.store');
 		Route::get('category/sub-cat/show/{id}',[SubCategoryController::class,'show'])->name('subcategory.show');
 		Route::get('category/sub-cat/edit/{id}',[SubCategoryController::class,'edit'])->name('subcategory.edit');
+		Route::post('category/sub-cat/update/{id}',[SubCategoryController::class,'update'])->name('subcategory.update');
+
 
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])

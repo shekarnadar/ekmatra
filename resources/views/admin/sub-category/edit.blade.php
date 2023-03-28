@@ -1,36 +1,36 @@
 @section('breadcumb','Sub-Category')
 @section('pageTitle','sub-category-create')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
-    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+	<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <style>
-    .tagify {
-    background-color: #f5f5f5;
-    border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 16px;
-    width: 100%;
+	.tagify {
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 4px;
+	padding: 4px 8px;
+	font-size: 16px;
+	width: 100%;
 }
 
 .tagify__input {
-    height: 2em;
-    line-height: 2em;
+	height: 2em;
+	line-height: 2em;
 }
 
 .tagify__tag {
-    background-color: #d9edf7;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin-right: 4px;
-    margin-bottom: 4px;
-    display: inline-block;
+	background-color: #d9edf7;
+	border-radius: 4px;
+	padding: 4px 8px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	display: inline-block;
 }
 
 .tagify__tag__removeBtn {
-    color: #31708f;
-    font-size: 16px;
-    margin-left: 4px;
-    cursor: pointer;
+	color: #31708f;
+	font-size: 16px;
+	margin-left: 4px;
+	cursor: pointer;
 }
 
 </style>
@@ -61,17 +61,28 @@
 									<div class="row">
 										@foreach($subCat as $val)
 											<div class="col-12 mt-2">
-												<div class="form-group mg-b-0">
-												<label class="form-label">{{$val['featureName']['name']}}: <span class="tx-danger">*</span></label>
-												<input type="text" id="{{$val['featureName']['name']}}" placeholder="Enter tags" value="{{$val['names']}}" name="faetures[{{$val['featureName']['id']}}]">
+												<div class="form-group mg-b-0 featurediv">
+													<label class="form-label">{{$val['featureName']['name']}}: <span class="tx-danger">*</span></label>
+													<?php
+															$feature = explode(',',$val['names']);
+																foreach($feature as $feature_val){
+																		$feature_explode = explode('|',$feature_val);
+																		$fetureValue[]=[
+																			'value' => $feature_explode[0],
+																			'id'=> $feature_explode[1],
 
-												<span class="text-danger" id="name_error"></span>
+																];}
+															
+													?>
+
+													<input type="text" id="{{$val['featureName']['name']}}" placeholder="Enter tags"  name="faetures[{{$val['featureName']['id']}}]" data-id ="{{$val['names']}}" value='{{json_encode($fetureValue)}}'>
+													<span class="text-danger" id="name_error"></span>
 											</div>
 											</div>
 										@endforeach
 
 									</div>
-										
+										<input type="hidden" name="removeIds" value="" id="removeIds">
 									<div class="col-12">
 											<button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addsubcategory"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
 									</div>
@@ -87,15 +98,13 @@
 
 </x-app-layout>
 <script>
-    // get the input element
-var input = document.getElementById('Brand');
-var input2 = document.getElementById('MOQ');
-var input3 = document.getElementById('Warranty');
+	var input = document.getElementById('Brand');
+	var removeIds = [];
 
-// initialize Tagify
+
 var tagify = new Tagify(input, {
     maxTags: 5, // maximum number of tags
-   // whitelist: ['apple', 'banana', 'orange'], // auto-suggest whitelist
+    mapValueToProp: "id",
     dropdown: {
         maxItems: 5, // maximum number of items in the dropdown
         classname: 'tags-look', // CSS class for the dropdown
@@ -103,81 +112,59 @@ var tagify = new Tagify(input, {
     },
     callbacks: {
         add: console.log, // callback when a tag is added
-        remove: console.log, // callback when a tag is removed
+        remove: onRemove, // callback when a tag is removed
     },
 });
+function onRemove(elm){
+			removeIds.push(elm.detail.data.id);
+			implodedArray = removeIds.join(',');
+			$("#removeIds").val(implodedArray);
+}
 
-var tagify2 = new Tagify(input2, {
-    maxTags: 5, // maximum number of tags
-   // whitelist: ['apple', 'banana', 'orange'], // auto-suggest whitelist
-    dropdown: {
-        maxItems: 5, // maximum number of items in the dropdown
-        classname: 'tags-look', // CSS class for the dropdown
-        enabled: 0, // disable the dropdown
-    },
-    callbacks: {
-        add: console.log, // callback when a tag is added
-        remove: console.log, // callback when a tag is removed
-    },
-});
-
-var tagify3= new Tagify(input3, {
-    maxTags: 5, // maximum number of tags
-   // whitelist: ['apple', 'banana', 'orange'], // auto-suggest whitelist
-    dropdown: {
-        maxItems: 5, // maximum number of items in the dropdown
-        classname: 'tags-look', // CSS class for the dropdown
-        enabled: 0, // disable the dropdown
-    },
-    callbacks: {
-        add: console.log, // callback when a tag is added
-        remove: console.log, // callback when a tag is removed
-    },
-});
-
+	
 $(document).ready(function() {
-    
+	
 
 		$('#subCategoryCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);
+			var cat_id ="{{$subCat[0]['subCategory']['category_id']}}";
 			if ( $(this).parsley().isValid() ) {
 				 $(".loading").show();
 				 $(".addsubcategory").prop('disabled',true);
 				 $.ajax({
-            type: "post",
-            url: '{{ url("admin/category/sub-cat/store") }}',
-            data: formValue,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                if (response.success) {
-                		notifyMsg(response.message,'success');
-                    
-                    setTimeout(function(){
-                    		$(".addsubcategory").prop('disabled',false);
-                        window.location.href ='{{ url("admin/category/1/sub-cat") }}';
-                    },2000);
-                } else {
-                    notifyMsg(response.message,'error');
-                }
-            },
-            error: function(response) {
-            	  $('.loading').hide();
-            	  $('.submit').show();
-            	  $(".addsubcategory").prop('disabled',false);
-                let error = response.responseJSON;
-                if(!error){
-                    error = JSON.parse(response.responseText);
-                }
-                $.each( error.errors, function( key, value ) {
-  								$("#"+key+"_error").text(value);
-								});
-
-            },
-        });
-	    }
+			type: "post",
+			url: '{{ url("admin/category/sub-cat/update") }}'+'/' + {{$subCat[0]['subCategory']['category_id']}},
+			data: formValue,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(response) {
+				if (response.success) {
+						notifyMsg(response.message,'success');
+					
+					setTimeout(function(){
+							$(".addsubcategory").prop('disabled',false);
+						window.location.href ='{{ url("admin/category") }}/'+cat_id+'/sub-cat';
+					},2000);
+				} else {
+					notifyMsg(response.message,'error');
+				}
+			},
+			error: function(response) {
+				  $('.loading').hide();
+				  $('.submit').show();
+				  $(".addsubcategory").prop('disabled',false);
+				let error = response.responseJSON;
+				if(!error){
+					error = JSON.parse(response.responseText);
+				}
+				$.each( error.errors, function( key, value ) {
+						$("#"+key+"_error").text(value);
+						});
+				},
+		});
+		}
 	});
 	});
 </script>
