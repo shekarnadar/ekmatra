@@ -1,51 +1,63 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-<div class="page-header">
-                <div class="container">
-                    <h1 class="page-title mb-0">My Account</h1>
-                </div>
-            </div>
-    <form method="POST" action="{{ url('login') }}">
-        @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+<div class="login-popup">
+		<div class="tab tab-nav-boxed tab-nav-center tab-nav-underline">
+				<ul class="nav nav-tabs text-uppercase" role="tablist">
+						<li class="nav-item">
+								<a href="#sign-in" class="nav-link active">Sign In</a>
+						</li>
+						<li class="nav-item">
+								<a href="#sign-up" class="nav-link">Sign Up</a>
+						</li>
+				</ul>
+				<div class="tab-content">
+						<div class="tab-pane active" id="sign-in">
+								<form  name="loginForm" method="POST" id="loginForm">
+									@csrf
+									<div class="form-group">
+											<label>Username or email address *</label>
+											<input type="text" class="form-control" name="email" id="email" required>
+											<span class="error" id="email_error"></span>
+									</div>
+									<div class="form-group mb-0">
+											<label>Password *</label>
+											<input type="text" class="form-control" name="password" id="password" required>
+											<span class="error" id="password_error"></span>
+									</div>
+									<div class="form-checkbox d-flex align-items-center justify-content-between">
+											<input type="checkbox" class="custom-checkbox" id="remember" name="remember" required="">
+											<label for="remember">Remember me</label>
+											<a href="#">Last your password?</a>
+									</div>
+									<a href="#" class="btn btn-primary" onClick="signin()">Sign In</a>
+								</form>
+						</div>
+						<div class="tab-pane" id="sign-up">
+								<form  name="registerForm" method="POST" id="registerForm">
+									@csrf
+								<div class="form-group">
+										<label>Your Email address *</label>
+										<input type="text" class="form-control" name="email_1" id="email_1" required>
+								</div>
+								<div class="form-group mb-5">
+										<label>Password *</label>
+										<input type="text" class="form-control" name="password_1" id="password_1" required>
+								</div>
+								<p>Your personal data will be used to support your experience 
+										throughout this website, to manage access to your account, 
+										and for other purposes described in our <a href="#" class="text-primary">privacy policy</a>.</p>
+								<a href="#" class="d-block mb-5 text-primary">Signup as a vendor?</a>
+								<div class="form-checkbox d-flex align-items-center justify-content-between mb-5">
+										<input type="checkbox" class="custom-checkbox" id="agree" name="agree" required="">
+										<label for="agree" class="font-size-md">I agree to the <a  href="#" class="text-primary font-size-md">privacy policy</a></label>
+								</div>
+								<a href="#" class="btn btn-primary">Sign Up</a>
+						</div>
+				</div>
+				<p class="text-center">Sign in with social account</p>
+				<div class="social-icons social-icon-border-color d-flex justify-content-center">
+						<a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+						<a href="#" class="social-icon social-twitter w-icon-twitter"></a>
+						<a href="#" class="social-icon social-google fab fa-google"></a>
+				</div>
+		</div>
+</div>

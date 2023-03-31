@@ -106,4 +106,17 @@ class User extends Authenticatable
     	$vendor = User::where('role_id',$role_id);
     	return $vendor;
     }
+
+    public static function getLatestVendor(){
+    	$role_id = getRole('vendor');
+    	$vendor = User::with('getVendorTopProducts')->withCount('products')->where('role_id',$role_id)->latest()->take(4)->get();
+    	return $vendor;
+    }
+	public function products(){
+ 		return $this->hasMany('App\Models\Product','created_by','id');
+ 	}
+ 	public function getVendorTopProducts(){
+ 		return $this->hasMany('App\Models\Product','created_by','id')->latest();
+ 	}
+    
 }

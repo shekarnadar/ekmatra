@@ -766,7 +766,6 @@
 	</div>
 	<!-- End of Quick view -->
 	<!-- Plugin JS File -->
-	<script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
 	<script src="{{url('front/vendor/sticky/sticky.js')}}"></script>
 	<script src="{{url('front/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
 	<script src="{{url('front/vendor/swiper/swiper-bundle.min.js')}}"></script>
@@ -778,5 +777,7 @@
 
 	<!-- Main JS -->
 	<script src="{{url('front/js/main.min.js')}}"></script>
+	
 	</body>
+	
 </html>

@@ -22,6 +22,33 @@
 			wf.async = true;
 			s.parentNode.insertBefore(wf, s);
 		})(document);
+		function signin(){
+			 let formValue = new FormData(document.getElementById('loginForm'));
+			 $.ajax({
+       		type: "post",
+          url: '{{ url("login") }}',
+          data: formValue,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+          		 if (response.success) {
+          		 		setTimeout(function(){
+                        window.location.href ='{{ url("dashboard") }}';
+                  },2000);
+          		 }
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+            $.each( error.errors, function( key, value ) {
+  								$("#"+key+"_error").text(value);
+						});
+          },
+       });
+		}
 	</script>
 
 	 <link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
@@ -42,4 +69,7 @@
 
 	<!-- Default CSS -->
 	<link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}">
+		<script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
+
+	
 </head>

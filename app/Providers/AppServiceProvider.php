@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 		 */
 		  
 
-		$category = Category::get();
+		$category = Category::with('subCategory')->get();
 		\View::share('category', $category);
 
 		Validator::extend('email_valid', function ($attribute, $value, $parameters, $validator){

@@ -33,7 +33,7 @@ class CategoryController extends Controller
 					->rawColumns(['action', 'image'])
 					->make(true);
 			}
-				return view('admin.category.index');
+			return view('admin.category.index');
 	}
 
 	/**

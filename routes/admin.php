@@ -7,9 +7,8 @@ use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
-
-
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DealController;
 
 
 
@@ -58,7 +57,17 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('category/sub-cat/edit/{id}',[SubCategoryController::class,'edit'])->name('subcategory.edit');
 		Route::post('category/sub-cat/update/{id}',[SubCategoryController::class,'update'])->name('subcategory.update');
 
+		//Product
+		Route::get('products',[ProductController::class,'index'])->name('product.index');
+		Route::get('product/add',[ProductController::class,'create'])->name('product.create');
+		Route::post('product/store',[ProductController::class,'store'])->name('product.store');
+		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
+		Route::post('product/status-change',[ProductController::class,'statusChange'])->name('status.change');
 
+		Route::get('deals',[DealController::class,'index'])->name('deal.index');
+		Route::get('deal/add',[DealController::class,'create'])->name('deal.create');
+		Route::post('deal/store',[DealController::class,'store'])->name('deal.store');
+		Route::get('deal/edit/{id}',[DealController::class,'edit'])->name('deal.edit');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');

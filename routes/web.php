@@ -5,6 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\customer\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
+Use App\Models\User;
 
 
 /*
@@ -19,7 +22,9 @@ use App\Http\Controllers\ShopController;
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	$product = Product::getLatestProduct();
+	$vendor = User::getLatestVendor();
+	return view('welcome',compact('product','vendor'));
 });
 
 
@@ -42,6 +47,9 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });
+	Route::post('product/subcategory',[ProductController::class,'getSubCategoryById'])->name('product.subCategory');
+
+	Route::post('product/brand',[ProductController::class,'getBrand'])->name('product.brand');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

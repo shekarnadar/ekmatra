@@ -49,9 +49,15 @@ $url = getAuthGaurd();
 						<a class="side-menu__item  {{ request()->is($url.'/features',$url.'/feature/add',$url.'/feature/edit/*')? 'active' : '' }}" href='{{url("$url/features")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Features</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/categories',$url.'/category/add',$url.'/category/edit/*')? 'active' : '' }}" href='{{url("$url/categories")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Category</span></a>
+						<a class="side-menu__item {{ request()->is($url.'/categories',$url.'/category/add',$url.'/category/edit/*',$url.'/category/*')? 'active' : '' }}" href='{{url("$url/categories")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Category</span></a>
+					</li>
+					<li class="slide">
+						<a class="side-menu__item {{ request()->is($url.'/deals',$url.'/deals/add',$url.'/deals/edit/*')? 'active' : '' }}" href='{{url("$url/deals")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Deals</span></a>
 					</li>
 					@endif
+					<li class="slide">
+						<a class="side-menu__item {{ request()->is($url.'/products',$url.'/product/add',$url.'/product/edit/*')? 'active' : '' }}" href='{{url("$url/products")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Product</span></a>
+					</li>
 					
 				  
 				</ul>

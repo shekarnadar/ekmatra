@@ -48,6 +48,7 @@
 
 <!--- Custom js -->
 <script src="{{url('backend/js/custom.js')}}"></script>
+
 				
 
 <script src="{{url('backend/plugins/notify/js/notifIt.js')}}"></script>

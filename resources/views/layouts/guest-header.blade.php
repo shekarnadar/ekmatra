@@ -12,13 +12,13 @@
 							<span class="divider d-lg-show"></span>
 							<a href="{{url('vendor/login')}}" class="d-lg-show">Sell on Ekmatra</a>
 							@auth
-								<a href="my-account.html" class="d-lg-show">My Account</a>
+								<a href="{{url('dashboard')}}" class="d-lg-show">My Account</a>
 							
 							@else
-									<a href="{{url('login')}}" class="d-md-show login "><i
-											class="w-icon-account"></i>Sign In</a>
-									<span class="delimiter d-lg-show">/</span>
-									<a href="assets/ajax/login.html" class="ml-0 d-lg-show login register">Register</a>
+								<a href="{{url('login')}}" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Sign In</a>
+
+								<span class="delimiter d-lg-show">/</span>
+									<a href="{{url('login')}}" class="ml-0 d-lg-show login register">Register</a>
 							@endauth
 							
 							
@@ -36,10 +36,10 @@
 							<form method="get" action="#"
 									class="input-wrapper header-search hs-expanded hs-round d-none d-md-flex">
 									<div class="select-box bg-white">
-											<select id="category" name="category">
+											<select id="category" name="category" onchange="location = this.value;">
 													<option value="">All Categories</option>
-													@foreach($category as $value)
-														<option value="{{$value['id']}}">{{$value['name']}}</option>
+													 @foreach($category as $value)
+														<option value="{{url('shop/'.$value['name'])}}">{{$value['name']}}</option>
 													@endforeach
 											</select>
 									</div>
