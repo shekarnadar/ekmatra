@@ -30,8 +30,10 @@ class ShopController extends Controller
 
 	public function subCategoryList($category,$subcategory){
 		
+		$category_name = $category;
 		$sub_cat = SubCategory::with('features')->where('name',$subcategory)->first();
-		return view ('subCategoryshop',compact('sub_cat'));
+		$product = Product::where('sub_category_id',$sub_cat['id'])->where('status',1)->get(); 
+		return view ('subCategoryshop',compact('sub_cat','product','category_name','subcategory'));
 	
 	}
 }

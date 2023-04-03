@@ -6,6 +6,9 @@ use App\Models\Deal;
 use Illuminate\Http\Request;
 use App\Http\Requests\admin\CreateDealRequest;
 use DataTables;
+use App\Models\Product;
+use App\Models\ProductDeal;
+
 
 class DealController extends Controller
 {
@@ -22,7 +25,9 @@ class DealController extends Controller
 			return Datatables::of($data)
 				->addColumn('action', function($row){
 					$url = url('admin/deal/edit/'.$row->id);
+					$deal_url = url('admin/product/deal/'.$row->id);
 					$btn = '<a href="'.$url.'" class="edit btn btn-danger btn-sm text-white">Edit</a>&nbsp;&nbsp;';
+					$btn.= '<a href="'.$deal_url.'" class="edit btn btn-primary btn-sm text-white">Assign Deal</a>&nbsp;&nbsp;';
 					return $btn;
 				})
 				->rawColumns(['action'])
@@ -111,5 +116,45 @@ class DealController extends Controller
 	public function destroy(Deal $deal)
 	{
 		//
+	}
+	public function productDeals(Request $request,$id){
+		if ($request->ajax()) {
+					$data = Product::select('name','id','image')->where('status',1)->get();
+					$dealProduct = ProductDeal::where('deal_id',$id)->pluck('product_id')->toArray();
+
+					return Datatables::of($data)
+					
+					->editColumn('select_product', static function ($row)use($dealProduct) {
+						if(in_array($row->id,$dealProduct)){
+								return '<input type="checkbox" name="selectProducts[]" value="'.$row->id.'" class="selectProducts" checked/>';
+						}else{
+								return '<input type="checkbox" name="selectProducts[]" value="'.$row->id.'" class="selectProducts" />';
+						}
+            			
+        			})
+					->addColumn('image', function($row){
+						$imageval = url('product/' . $row->image);
+                    return '<img src="' . $imageval . '" class="h-50 w-50"/>';
+					 })
+						
+					->rawColumns(['action', 'image','select_product'])
+					->make(true);
+			}
+		return view('admin.deal.product-deal',compact('id'));
+	}
+
+	public function dealSave(Request $request){
+		if(isset($request['checkedVal'])){
+			foreach($request['checkedVal'] as $val){
+        		$matchTheseDeal = ['product_id'=>$val,'deal_id' => $request['id']];
+        		ProductDeal::updateOrCreate($matchTheseDeal,[
+        			'product_id' => $val,
+        			'deal_id' => $request['id']
+        		]);
+        	}
+		}
+		return response()->json(['success' => true,
+				'message' => 'Product has been assigned successfully.'
+		  ], 200);
 	}
 }

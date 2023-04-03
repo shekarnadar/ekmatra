@@ -65,6 +65,9 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('product/status-change',[ProductController::class,'statusChange'])->name('status.change');
 
 		Route::get('deals',[DealController::class,'index'])->name('deal.index');
+		Route::get('product/deal/{id}',[DealController::class,'productDeals'])->name('product.deal');
+		Route::post('product/deal-save',[DealController::class,'dealSave'])->name('product.deal.save');
+
 		Route::get('deal/add',[DealController::class,'create'])->name('deal.create');
 		Route::post('deal/store',[DealController::class,'store'])->name('deal.store');
 		Route::get('deal/edit/{id}',[DealController::class,'edit'])->name('deal.edit');

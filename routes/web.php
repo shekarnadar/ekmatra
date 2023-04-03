@@ -43,9 +43,13 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });
-	Route::post('product/subcategory',[ProductController::class,'getSubCategoryById'])->name('product.subCategory');
+Route::post('product/subcategory',[ProductController::class,'getSubCategoryById'])->name('product.subCategory');
 
-	Route::post('product/brand',[ProductController::class,'getBrand'])->name('product.brand');
+Route::post('product/brand',[ProductController::class,'getBrand'])->name('product.brand');
+
+Route::get('product-detail/{id}',[ProductController::class,'getProductDetail'])->name('product.detail');
+
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

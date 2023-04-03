@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\SendMail;
+use Mail;
 
 class User extends Authenticatable
 {
@@ -91,6 +93,14 @@ class User extends Authenticatable
             'image' => $request['image']
         	]);
         	event(new Registered($user));   
+
+        	$mailData = [
+            	'title' => 'Mail from ItSolutionStuff.com',
+            	'body' => 'This is for testing email using smtp.'
+        	];
+         
+      //  Mail::to('your_email@gmail.com')->send(new SendMail($mailData));
+         
         }
         
         return $user;        

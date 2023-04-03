@@ -7,8 +7,9 @@
                 <nav class="breadcrumb-nav">
                 <div class="container">
                     <ul class="breadcrumb bb-no">
-                        <li><a href="demo12.html">Home</a></li>
-                        <li>Shop</li>
+                        <li><a href="{{url('/')}}">Home</a></li>
+                        <li><a href="{{url('shop/'.$category_name)}}">{{$category_name}}</a></li>
+                        <li>{{$subcategory}}</li>
                     </ul>
                 </div>
             </nav>
@@ -130,35 +131,41 @@
                             </div>
                         </nav>
                         <div class="product-wrapper row cols-lg-4 cols-md-3 cols-2">
-                            <div class="product-wrap">
-                                <div class="product product-image-gap product-simple">
-                                    <figure class="product-media">
-                                        <a href="{{url('product')}}">
-                                            <img src="{{url('assets/images/demos/demo12/products/1-1-1.jpg')}}" alt="Product" width="295" height="335" />
-                                            <img src="{{url('assets/images/demos/demo12/products/1-1-2.jpg')}}" alt="Product" width="295" height="335" />
-                                        </a>
-                                       
-                                        <div class="product-action">
-                                            <a href="{{url('product')}}" class="btn-product btn-quickview" title="Quick View">Quick View</a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        
-                                        <h4 class="product-name">
-                                            <a href="{{url('product')}}">Gold Watch</a>
-                                        </h4>
-                                       
-                                        <div class="product-pa-wrapper">
-                                            <div class="product-price">
-                                                <ins class="new-price">$20.83</ins><del class="old-price">$27.07</del>
-                                            </div>
+                            @foreach($product as $prod_val)
+                                <div class="product-wrap">
+                                    <div class="product product-image-gap product-simple">
+                                        <figure class="product-media">
+                                            <a href="{{url('product')}}">
+                                                <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
+                                                 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
+                                            </a>
+                                           
                                             <div class="product-action">
-                                                <a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To Wishlist</a>
+                                                <a href="{{url('product-detail/'.$prod_val['id'])}}" class="btn-product" title="Quick View">Quick View</a>
+                                            </div>
+                                        </figure>
+                                        <div class="product-details">
+                                            
+                                            <h4 class="product-name">
+                                                <a href="{{url('product-detail/'.$prod_val['id'])}}">{{$prod_val['name']}}</a>
+                                            </h4>
+                                           
+                                            <div class="product-pa-wrapper">
+                                                <div class="product-price">
+                                                    <ins class="new-price">Price : {{$prod_val['price']}}</ins>
+                                                </div>
+                                                <div class="product-price">
+                                                    <ins class="new-price">MAQ : {{$prod_val['maq']}}</ins>
+                                                </div>
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To Wishlist</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
+
                            
                         </div>
 

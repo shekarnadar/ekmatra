@@ -30,4 +30,8 @@ class Deal extends Model
     public static function getDeals(){
         return Deal::get();
     }
+
+    public function productDeals(){
+        return $this->hasMany('App\Models\ProductDeal');
+    }
 }

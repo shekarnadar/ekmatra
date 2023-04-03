@@ -12,4 +12,8 @@ class ProductDeal extends Model
         'product_id',
         'deal_id'
     ];
+
+     public function getProduct(){
+         return $this->belongsTo('App\Models\Product', 'product_id','id');
+    }
 }

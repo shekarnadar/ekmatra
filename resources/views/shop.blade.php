@@ -7,8 +7,8 @@
 				<nav class="breadcrumb-nav">
 				<div class="container">
 					<ul class="breadcrumb bb-no">
-						<li><a href="demo12.html">Home</a></li>
-						<li>Shop</li>
+						<li><a href="{{url('/')}}">Home</a></li>
+						<li>{{$cat_name}}</li>
 					</ul>
 				</div>
 			</nav>
@@ -137,13 +137,13 @@
 											</a>
 										   
 											<div class="product-action">
-												<a href="{{url('product')}}" class="btn-product btn-quickview" title="Quick View">Quick View</a>
+												<a href="{{url('product-detail/'.$prod_val['id'])}}" class="btn-product" title="Quick View">Quick View</a>
 											</div>
 										</figure>
 										<div class="product-details">
 											
 											<h4 class="product-name">
-												<a href="{{url('product')}}">{{$prod_val['name']}}}</a>
+												<a href="{{url('product-detail/'.$prod_val['id'])}}">{{$prod_val['name']}}</a>
 											</h4>
 										   
 											<div class="product-pa-wrapper">

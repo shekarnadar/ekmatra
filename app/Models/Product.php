@@ -82,4 +82,9 @@ class Product extends Model
    	return $product;
    }
 
+   //get Brand
+   public  function getBrands(){
+   		return $this->belongsTo('App\Models\SubCategoryFeature', 'sub_category_feature_id','id');
+	}
+
 }
