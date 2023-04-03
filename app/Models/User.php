@@ -26,7 +26,8 @@ class User extends Authenticatable
 		'role_id',
 		'phone',
 		'address',
-		'company_name'
+		'company_name',
+		'image'
 	];
 
 	/**
@@ -73,13 +74,9 @@ class User extends Authenticatable
         $role_id = getRole('vendor');
 
         if(@$request['id']){
-        	$user = User::where('id',$request['id'])->update([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'phone' => $request['phone'],
-            'address' => $request['address'],
-            'company_name' => $request['company_name'],
-        	]);
+
+			$matchThese = ['id' => $request['id']];
+			$user = User::updateOrCreate($matchThese,$request);
 
         }else{
 
@@ -90,7 +87,8 @@ class User extends Authenticatable
             'password' => Hash::make(123456),
             'address' => $request['address'],
             'company_name' => $request['company_name'],
-            'role_id' => $role_id
+            'role_id' => $role_id,
+            'image' => $request['image']
         	]);
         	event(new Registered($user));   
         }

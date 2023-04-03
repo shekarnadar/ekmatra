@@ -6,8 +6,7 @@ use App\Http\Controllers\customer\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductController;
-use App\Models\Product;
-Use App\Models\User;
+use App\Http\Controllers\WelcomeController;
 
 
 /*
@@ -21,11 +20,8 @@ Use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-	$product = Product::getLatestProduct();
-	$vendor = User::getLatestVendor();
-	return view('welcome',compact('product','vendor'));
-});
+Route::get('/',[WelcomeController::class, 'index'])->name('index');
+
 
 
 //Shop page

@@ -229,7 +229,7 @@
 														<div class="product-details">
 																<a href="#" class="btn-wishlist w-icon-heart" title="Add to wishlist"></a>
 																<h4 class="product-name">
-																		<a href="product-default.html">{{$product_value['name']}}}</a>
+																		<a href="product-default.html">{{$product_value['name']}}</a>
 																</h4>
 															
 																<div class="product-pa-wrapper">
@@ -288,7 +288,7 @@
 																<div class="vendor-details">
 																		<figure class="vendor-logo">
 																				<a href="vendor-dokan-store.html">
-																						<img src="{{url('front/images/demos/demo12/vendor-logo/1.jpg')}}" alt="Vendor Logo"
+																						<img src="{{url('vendor/'.$value['image'])}}" alt="Vendor Logo"
 																								width="70" height="70" />
 																				</a>
 																		</figure>
@@ -312,7 +312,7 @@
 																		<div class="vendor-product">
 																				<figure class="product-media">
 																						<a href="product-default.html">
-																								<img src="{{url('front/images/demos/demo12/products/1-1-1.jpg')}}"
+																								<img src="{{url('product/'.$vendor_product['image'])}}"
 																										alt="Vendor Product" width="100" height="113" />
 																						</a>
 																				</figure>
