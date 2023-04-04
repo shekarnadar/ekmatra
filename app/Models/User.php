@@ -99,7 +99,7 @@ class User extends Authenticatable
             	'body' => 'This is for testing email using smtp.'
         	];
          
-      //  Mail::to('your_email@gmail.com')->send(new SendMail($mailData));
+        //Mail::to('your_email@gmail.com')->send(new SendMail($mailData));
          
         }
         

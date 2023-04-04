@@ -560,7 +560,7 @@
 																<div class="swiper-slide">
 																		<div class="product product-image-gap product-simple">
 																				<figure class="product-media">
-																						<a href="product-default.html">
+																						<a href="">
 																								<img src="{{url('product/'.$product_deals['getProduct']['image'])}}" alt="Product"
 																										width="295" height="335" />
 																								<img src="{{url('product/'.$product_deals['getProduct']['image'])}}" alt="Product"
@@ -568,7 +568,7 @@
 																						</a>
 																						
 																						<div class="product-action">
-																								<a href="#" class="btn-product btn-quickview" title="Quick View">Quick
+																								<a href="{{url('product-detail/'.$product_deals['getProduct']['id'])}}" class="btn-product" title="Quick View">Quick
 																										View</a>
 																						</div>
 																						
@@ -576,22 +576,21 @@
 																				<div class="product-details">
 																						<a href="#" class="btn-wishlist w-icon-heart" title="Add to wishlist"></a>
 																						<h4 class="product-name">
-																								<a href="product-default.html">{{$product_deals['getProduct']['name']}}</a>
+																								<a href="{{url('product-detail/'.$product_deals['getProduct']['id'])}}">{{$product_deals['getProduct']['name']}}</a>
 																						</h4>
-																						<div class="ratings-container">
-																								<div class="ratings-full">
-																										<span class="ratings" style="width: 80%;"></span>
-																										<span class="tooltiptext tooltip-top"></span>
-																								</div>
-																								<a href="product-default.html" class="rating-reviews">(1 reviews)</a>
-																						</div>
-																						<div class="product-pa-wrapper">
-																								<div class="product-price">
-																										<ins class="new-price">$25.68</ins><del
-																												class="old-price">$30.45</del>
-																								</div>
-																								
-																						</div>
+																						
+																					<div class="ratings-container">
+                                    					<a href="product-default.html">From : {{$product_value['price']}}</a>
+                                					</div>
+                                					<div class="product-pa-wrapper">
+					                                    <div class="product-price">
+					                                        Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
+					                                    </div>
+					                                    <div class="product-action">
+					                                        <a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To
+					                                            Cart</a>
+					                                    </div>
+                                					</div>
 																				</div>
 																		</div>
 																		

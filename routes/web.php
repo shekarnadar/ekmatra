@@ -20,13 +20,24 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
+
+
+
+require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
+require __DIR__.'/vendor.php';
+Route::middleware('customer')->group(function () {
+		Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('profile.update');
+});
+
+
 Route::get('/',[WelcomeController::class, 'index'])->name('index');
 
 
 
 //Shop page
 
-Route::get('shop/{category}',[ShopController::class, 'index'])->name('index');
+Route::get('shop/{category}',[ShopController::class, 'index'])->name('shopindex');
 Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryList'])->name('subcategory.list');
 
 //Product page
@@ -48,14 +59,3 @@ Route::post('product/subcategory',[ProductController::class,'getSubCategoryById'
 Route::post('product/brand',[ProductController::class,'getBrand'])->name('product.brand');
 
 Route::get('product-detail/{id}',[ProductController::class,'getProductDetail'])->name('product.detail');
-
-
-
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
-require __DIR__.'/vendor.php';
-Route::middleware('customer')->group(function () {
-		Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('profile.update');
-});
-
-

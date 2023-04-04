@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ProductDeal;
 class Product extends Model
 {
 	use HasFactory;
@@ -35,22 +34,8 @@ class Product extends Model
         $post['created_by'] = \Auth::guard(getAuthGaurd())->user()->id; 
         $matchThese = ['id'=>$id];
         $product = Product::updateOrCreate($matchThese,$post);
-        if(@$post['unchecked_deal_id']){
-        	$explode_deal = explode(',',$post['unchecked_deal_id']);
-        	foreach($explode_deal as $deal_val){
-        		$matchTheseDeal = ['product_id'=>$product->id,'deal_id' => $deal_val];
-        		ProductDeal::where($matchTheseDeal)->delete();
-        	}
-        }
-        if($post['deal_id']){
-        	foreach($post['deal_id'] as $val){
-        		$matchTheseDeal = ['product_id'=>$product->id,'deal_id' => $val];
-        		ProductDeal::updateOrCreate($matchTheseDeal,[
-        			'product_id' => $product->id,
-        			'deal_id' => $val
-        		]);
-        	}
-        }
+       
+       
 
         return $product;
 	}
@@ -68,7 +53,7 @@ class Product extends Model
    	if(getAuthGaurd() != 'admin'){
    		$query->where('created_by',\Auth::guard(getAuthGaurd())->user()->id);
    	}
-   	$query = $query->get();
+   	$query = $query->orderBy('created_at','desc')->get();
    	return $query;
    }
 

@@ -153,6 +153,12 @@ class DealController extends Controller
         		]);
         	}
 		}
+		if(isset($request['uncheckedVal'])){
+			foreach($request['uncheckedVal'] as $val){
+				$matchTheseDeal = ['product_id'=>$val,'deal_id' => $request['id']];
+				ProductDeal::where($matchTheseDeal)->delete();
+			}
+		}
 		return response()->json(['success' => true,
 				'message' => 'Product has been assigned successfully.'
 		  ], 200);

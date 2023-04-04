@@ -30,6 +30,7 @@ $url = getAuthGaurd();
 
 <script type="text/javascript">
 	var table;
+	var uncheckedVal = [];
 	table = $('#product-deal-list').DataTable({
 		lengthChange: false,
 		processing: true,
@@ -52,12 +53,19 @@ $url = getAuthGaurd();
             {data: 'image', name: 'image','title' : 'Image'},	
      	]
 	});
+	$("input:checkbox").change(function() {
+     	 var ischecked= $(this).is(':checked');
+    		if(!ischecked){
+    			  uncheckedVal.push( $(this).val());
+    		}
+    
+     	});
 	$(".assignDeal").click(function(){
 		var checkedVal = [];
-		var uncheckedVal = [];
  		$('.selectProducts:checkbox:checked').each(function(){
 			checkedVal.push($(this).val());
   		});
+  	
   		
   		$.ajax({
 				
@@ -66,17 +74,17 @@ $url = getAuthGaurd();
         data: {
             "id": "{{$id}}",
             "checkedVal" : checkedVal,
+            "uncheckedVal" : uncheckedVal,
             "_token": "{{ csrf_token() }}",
         },
 
         success: function(response) {
-        	console.log(response);
-	        // if (response.success) {
-	        // 	notifyMsg(response.message,'success');
-	        //    table.ajax.reload(null, false);
-	        // } else {
-	        // 	notifyMsg(response.message,'error');
-	        // }
+	        if (response.success) {
+	        	notifyMsg(response.message,'success');
+	           table.ajax.reload(null, false);
+	        } else {
+	        	notifyMsg(response.message,'error');
+	        }
         }
       });
 	})

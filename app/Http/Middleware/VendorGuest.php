@@ -20,6 +20,7 @@ class VendorGuest
         if (Auth::guard('vendor')->check()) {
             return redirect('vendor/dashboard');
         } else {
+          
             return $next($request);
         }
     }

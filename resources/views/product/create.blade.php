@@ -72,9 +72,9 @@
 
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
-												<label class="form-label">Warrenty: <span class="tx-danger">*</span></label>
+												<label class="form-label">Warranty: <span class="tx-danger">*</span></label>
 												<select class="form-control" name="warrenty" id="warrenty">
-													<option>Select Warrenty</option>
+													<option>Select Warranty</option>
 													<option value="1">1 Years</option>
 													<option value="2">2 Years</option>
 													<option value="3">3 Years</option>
@@ -132,35 +132,7 @@
 											</div>
 										</div>
 
-										<div class="col-12 mt-2">
-											<div class="form-group mg-b-0 row">
-												<label class="form-label">Deal: <span class="tx-danger">*</span></label>
-												 @if(@$product_deals)
-												 <input type="hidden" name="unchecked_deal_id" id="unchecked_deal_id">
-												 @endif
-
-														@foreach($deals as $deal)
-														 @if(@$product_deals)
-														 	@if(in_array($deal['id'],@$product_deals))
-														 	<?php $checked='checked';?>
-														 	@else
-														 			<?php $checked='';?>
-														 	@endif
-														 	@else
-														 			<?php $checked='';?>
-														 @endif
-
-														 <div class="col-lg-2 mg-t-10 mg-lg-t-0">
-																<label class="ckbox"><input  type="checkbox" name="deal_id[]" id="deal_id" value="{{$deal['id']}}" {{$checked}}><span>{{$deal['name']}}</span></label>
-															</div>
-
-														@endforeach
-												
-												<span class="text-danger" id="sub_category_feature_id_error"></span>
-											</div>
-										</div>
-
-
+										
 										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addproduct"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
 										</div>
 									</div>
@@ -175,7 +147,6 @@
 
 </x-app-layout>
 <script type="text/javascript">
-	var deal_id = [];
 	$(document).ready(function() {
      window.ParsleyValidator
         .addValidator('fileextension', function (value, requirement) {
@@ -196,15 +167,7 @@
         .addMessage('en', 'fileextension', 'Please choose jpeg,png,jpg file formate');
         $("#productCreate").parsley();
      
-     $("input:checkbox").change(function() {
-     	 var ischecked= $(this).is(':checked');
-    		if(!ischecked){
-    			  deal_id.push( $(this).val());
-    			  implodedArray = deal_id.join(',');
-    			  $("#unchecked_deal_id").val(implodedArray);
-    		}
     
-     	});
      var cat_id = '{{@$product["category_id"]}}';
 		 if(cat_id){
 		 		 $('#category_id').val(cat_id);

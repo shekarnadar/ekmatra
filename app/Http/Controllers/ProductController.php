@@ -78,8 +78,7 @@ class ProductController extends Controller
 	{
 		//
 		$category =  Category::get();
-		$deals = Deal::get();
-		return view('product.create',compact('category','deals'));
+		return view('product.create',compact('category'));
 	}
 
 	/**

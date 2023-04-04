@@ -155,7 +155,7 @@
                                                     <ins class="new-price">Price : {{$prod_val['price']}}</ins>
                                                 </div>
                                                 <div class="product-price">
-                                                    <ins class="new-price">MAQ : {{$prod_val['maq']}}</ins>
+                                                    <ins class="new-price"> Min Qty : {{$prod_val['maq']}}</ins>
                                                 </div>
                                                 <div class="product-action">
                                                     <a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To Wishlist</a>

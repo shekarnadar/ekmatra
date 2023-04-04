@@ -14,11 +14,11 @@ Route::group(['prefix' => 'vendor'], function(){
 	});
 	
 	Route::group(['middleware' => 'vendor-auth'], function () {
-		 Route::get('dashboard',[VendorController::class,'dashboard'])->name('Vendor.dashboard');
+		 Route::get('dashboard',[VendorController::class,'dashboard'])->name('VendorDashboard');
 	
-		Route::get('/', function () {
-			return redirect('vendor/dashboard');
-		})->name('Vendor.dashboard');
+		// Route::get('/', function () {
+		// 	return redirect('vendor/dashboard');
+		// })->name('VendorDashboard');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('vendor.logout');

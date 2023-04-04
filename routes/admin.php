@@ -13,7 +13,6 @@ use App\Http\Controllers\DealController;
 
 
 Route::group(['prefix' => 'admin'], function(){
-
 	Route::group(['middleware' => 'admin-guest'], function () {
 		Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
 		Route::post('login', [AuthenticatedSessionController::class, 'store']);
@@ -24,7 +23,7 @@ Route::group(['prefix' => 'admin'], function(){
 	
 		Route::get('/', function () {
 			return redirect('admin/dashboard');
-		})->name('dashboard');
+		})->name('admindashboard');
 
 		Route::get('vendors',[VendorController::class,'index'])->name('vendor.index');
 
@@ -58,11 +57,11 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('category/sub-cat/update/{id}',[SubCategoryController::class,'update'])->name('subcategory.update');
 
 		//Product
-		Route::get('products',[ProductController::class,'index'])->name('product.index');
-		Route::get('product/add',[ProductController::class,'create'])->name('product.create');
-		Route::post('product/store',[ProductController::class,'store'])->name('product.store');
-		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
-		Route::post('product/status-change',[ProductController::class,'statusChange'])->name('status.change');
+		Route::get('products',[ProductController::class,'index'])->name('product-index');
+		Route::get('product/add',[ProductController::class,'create'])->name('product-create');
+		Route::post('product/store',[ProductController::class,'store'])->name('product-store');
+		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product-edit');
+		Route::post('product/status-change',[ProductController::class,'statusChange'])->name('status-change');
 
 		Route::get('deals',[DealController::class,'index'])->name('deal.index');
 		Route::get('product/deal/{id}',[DealController::class,'productDeals'])->name('product.deal');
