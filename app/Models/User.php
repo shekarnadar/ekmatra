@@ -126,5 +126,9 @@ class User extends Authenticatable
  	public function getVendorTopProducts(){
  		return $this->hasMany('App\Models\Product','created_by','id')->latest();
  	}
+
+ 	public function getProductWishList(){
+ 		return $this->hasMany('App\Models\ProductWishList','client_id','id')->latest();
+ 	}
     
 }

@@ -198,6 +198,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
 Barryvdh\Debugbar\ServiceProvider::class,
 
+    Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -216,6 +217,7 @@ Barryvdh\Debugbar\ServiceProvider::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ])->toArray(),
 

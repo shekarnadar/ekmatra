@@ -241,8 +241,11 @@
                                         Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
                                     </div>
                                     <div class="product-action">
-                                        <a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To
-                                            Cart</a>
+                                       @auth
+																									<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist" data-id="{{$product_value['id']}}" >Add To Wishlist</a>
+																									@else
+													 												<a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
+																									@endauth
                                     </div>
                                 </div>
                             </div>
@@ -587,8 +590,11 @@
 					                                        Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
 					                                    </div>
 					                                    <div class="product-action">
-					                                        <a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To
-					                                            Cart</a>
+					                                        @auth
+																									<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist" data-id="{{$product_value['id']}}" >Add To Wishlist</a>
+																									@else
+													 												<a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
+																									@endauth
 					                                    </div>
                                 					</div>
 																				</div>

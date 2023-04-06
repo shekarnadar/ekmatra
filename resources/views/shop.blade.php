@@ -154,7 +154,13 @@
 													<ins class="new-price">Min Qty : {{$prod_val['maq']}}</ins>
 												</div>
 												<div class="product-action">
-													<a href="#" class="btn-cart btn-product btn btn-link btn-underline">Add To Wishlist</a>
+													@auth
+													<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist
+													" data-id="{{$prod_val['id']}}" >Add To Wishlist</a>
+													@else
+													 <a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
+													@endauth
+
 												</div>
 											</div>
 										</div>

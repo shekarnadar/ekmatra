@@ -81,8 +81,8 @@
 				</div>
 
 				<div class="cart-action">
-					<a href="cart.html" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
-					<a href="checkout.html" class="btn btn-primary  btn-rounded">Checkout</a>
+					<a href="cart.html" class="btn btn-dark btn-outline btn-rounded">View Cart333</a>
+					<a href="checkout.html" class="btn btn-primary  btn-rounded">Checkout100</a>
 				</div>
 			</div>
 			<!-- End of Dropdown Box -->
@@ -576,21 +576,35 @@
 	<!-- End of Mobile Menu -->
 
 	<!-- Start of Newsletter popup -->
-	<div class="newsletter-popup mfp-hide">
+	<div class="newsletter-popup mfp-hide" style="
+    width: 400px;
+    box-shadow: 0 0 30px rgba(0,0,0,.15);
+    background: #fff;">
 		<div class="newsletter-content">
-			<h4 class="text-uppercase font-weight-normal ls-25">Get Up to<span class="text-primary">25% Off</span></h4>
-			<h2 class="ls-25">Sign up to Wolmart</h2>
-			<p class="text-light ls-10">Subscribe to the Wolmart market newsletter to
-				receive updates on special offers.</p>
-			<form action="#" method="get" class="input-wrapper input-wrapper-inline input-wrapper-round">
-				<input type="email" class="form-control email font-size-md" name="email" id="email2"
-					placeholder="Your email address" required="">
-				<button class="btn btn-dark" type="submit">SUBMIT</button>
-			</form>
+			<h6 class="text-uppercase font-weight-normal ls-25">Save to</h6>
+			<div class="d-flex addDiv mt-2">
+
+				<span data-v-80b17294="" class="cg-wishlist__cta__toggle quantity-plus w-icon-plus addlist"></span>
+
+				<span data-v-80b17294="" class="cg-wishlist__cta__title ml-2" style=""> Add new list </span>
+			</div>
+			<div class="d-flex pl-3 addListDiv" style="display:none !important;">
+				<input data-v-80b17294="" type="text" class="form-control" id="name">
+				<button data-v-80b17294="" type="button" class="btn btn-dark btn-rounded saveWishlist"> ADD LIST </button>
+			</div>
+			
+			
+
+			<input type="hidden" name="product_id" id="product_id">
+			<p class="text-light ls-10"></p>
+			
 			<div class="form-checkbox d-flex align-items-center">
 				<input type="checkbox" class="custom-checkbox" id="hide-newsletter-popup" name="hide-newsletter-popup"
 					required="">
-				<label for="hide-newsletter-popup" class="font-size-sm text-light">Don't show this popup again.</label>
+					<ul class="widget-body filter-items search-ul">
+						
+					</ul>
+				
 			</div>
 		</div>
 	</div>
@@ -739,7 +753,7 @@
 						</div>
 						<button class="btn btn-primary btn-cart">
 							<i class="w-icon-cart"></i>
-							<span>Add to Cart</span>
+							<span>Add to Cart5</span>
 						</button>
 					</div>
 
@@ -764,6 +778,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- End of Quick view -->
 	<!-- Plugin JS File -->
 	<script src="{{url('front/vendor/sticky/sticky.js')}}"></script>
@@ -775,9 +790,117 @@
 	<script src="{{url('front/vendor/zoom/jquery.zoom.js')}}"></script>
 	<script src="{{url('front/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
 
+
 	<!-- Main JS -->
 	<script src="{{url('front/js/main.min.js')}}"></script>
 	
 	</body>
-	
+	<script type="text/javascript">
+			$(document).on('click', "a.wishlist", function() {
+    		var id = $(this).attr('data-id');
+    		$("#product_id").val(id);
+    		$.ajax({
+       		type: "get",
+          url: '{{ url("userWishlist/") }}'+'/'+id,
+          
+          success: function(response) {
+          		 console.log(response);
+          		 $(".form-checkbox ul").html(response);
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+          
+          },
+       });
+				Wolmart.popup({
+					items:{
+						src:'.newsletter-popup'
+						},
+						type:'inline',
+						mainClass:'mfp-newsletter mfp-fadein-popup',
+						callbacks:{
+							beforeClose:function(){
+								$(".form-checkbox").html();
+								("#hide-newsletter-popup")[0].checked
+							}
+						}
+					});
+  
+			});
+
+			$(document).on('click','span.addlist',function(){
+				$('.addListDiv').show();
+			})
+
+			$(document).on('click','.saveWishlist',function(){
+				var name  = $("#name").val();
+				var product_id = $("#product_id").val();
+				 $.ajax({
+       		type: "Post",
+          url: '{{ url("wishlist/store") }}',
+          data: {
+            "name": name,
+            "product_id" : product_id,
+            "_token": "{{ csrf_token() }}",
+        	},
+          success: function(response) {
+          	$("#name").val('');
+          	$('.cart-count').text(response.count);
+          	$(".form-checkbox ul").append(response.html);
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+            $.each( error.errors, function( key, value ) {
+  								$("#"+key+"_error").text(value);
+						});
+          },
+       });
+			})
+
+		$(document).on('change','#wishlist',function(){
+			$.ajax({
+       		type: "post",
+          url: '{{ url("wishlist-assignProduct") }}',
+          data: {
+            "wishlist_id": $(this).val(),
+            "product_id" : $("#product_id").val(),
+            "_token": "{{ csrf_token() }}",
+        	},
+          success: function(response) {
+          	$('.cart-count').text(response);
+          },
+          
+       });
+		});
+    function signin(){
+			 let formValue = new FormData(document.getElementById('loginForm'));
+			 $.ajax({
+       		type: "post",
+          url: '{{ url("login") }}',
+          data: formValue,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+          		 if (response.success) {
+          		 		setTimeout(function(){
+                        window.location.href ='{{ url("/") }}';
+                  },2000);
+          		 }
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+            $.each( error.errors, function( key, value ) {
+  								$("#"+key+"_error").text(value);
+						});
+          },
+       });
+		}
+	</script>
 </html>

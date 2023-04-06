@@ -54,7 +54,7 @@
 
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
-												<label class="form-label">Maq: <span class="tx-danger">*</span></label>
+												<label class="form-label">MOQ: <span class="tx-danger">*</span></label>
 												<input class="form-control" name="maq" placeholder="Enter Maq" required="required" id="price" type="text" data-parsley-required-message="Please enter your maq" value="{{@$product['maq']}}">
 												<span class="text-danger" id="maq_error"></span>
 											</div>

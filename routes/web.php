@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\WishlistController;
 
 
 /*
@@ -27,7 +28,10 @@ require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/vendor.php';
 Route::middleware('customer')->group(function () {
-		Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('profile.update');
+	Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('profile.update');
+	Route::get('wishlist',[WishlistController::class,'wishlist'])->name('wishlist');
+	Route::get('wishlist/view/{id}',[WishlistController::class,'wishlistView'])->name('wishlistView');
+
 });
 
 
@@ -46,7 +50,7 @@ Route::get('product',[CustomerController::class, 'product'])->name('product');
 
 Route::get('/dashboard', function () {
 	return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('customer.dashboard');
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -54,8 +58,21 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });
+Route::post('wishlist/store',[WishlistController::class,'store'])->name('wishlist.store');
+
 Route::post('product/subcategory',[ProductController::class,'getSubCategoryById'])->name('product.subCategory');
 
 Route::post('product/brand',[ProductController::class,'getBrand'])->name('product.brand');
 
 Route::get('product-detail/{id}',[ProductController::class,'getProductDetail'])->name('product.detail');
+
+Route::get('userWishlist/{product_id}',[WishlistController::class,'getUserWishList'])->name('userwishlist');
+
+Route::post('wishlist-assignProduct',[WishlistController::class,'assignProduct'])->name('userassignProduct');
+
+Route::get('wishlist-download/{id}',[WishlistController::class,'wishlistDownload'])->name('wishlist.download');
+
+Route::post('removeProductWishlist',[WishlistController::class,'removeProductWishlist'])->name('removeProductWishlist');
+
+Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('savewishlist');
+Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
