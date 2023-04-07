@@ -15,6 +15,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function create(): View
         {
+            \Session::put('isLogin',0);
                 return view('auth.login');
         }
     /**

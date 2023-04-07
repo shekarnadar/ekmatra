@@ -106,29 +106,36 @@
 													</div>
 												</div>
 												<button class="btn btn-primary btn-cart">
-													<i class="w-icon-cart"></i>
-													<span>Add to Cart</span>
+													<span>Add to Wishlist</span>
 												</button>
 											</div>
 										</div>
 
 										<div class="social-links-wrapper">
-											<div class="social-links">
-												<div class="social-icons social-no-color border-thin">
-													<a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-													<a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-													
-													<a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
-													
-												</div>
-											</div>
-											<span class="divider d-xs-show"></span>
+											
 											<div class="product-link-wrapper d-flex">
-												<a href="#"
-													class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
+												@auth
+												<a href="javascript:void(0)"
+													class="btn btn-dark btn-rounded inquiry" data-id="{{$product['id']}}">Inquiry</a>
+												@else
+												<a href="{{url('login')}}"
+													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Inquiry</a>
+												@endauth
 												
 											</div>
+											
 										</div>
+										<div class="alert alert-success  mb-2" id="inquirymsg">   	
+												<a href="cart.html" class="btn btn-success btn-rounded">View Inquiry</a>
+												<p class="mb-0 ls-normal inquiry-show-msg"></p>
+												<a href="#" class="btn btn-link btn-close" aria-label="button"><i class="close-icon"></i></a>
+											</div>
+
+											<div class="alert alert-error  mb-2" id="inquiryerror" style="display:none">   	
+										
+												<p class="mb-0 ls-normal inquiry-show-msg"></p>
+												<a href="#" class="btn btn-link btn-close" aria-label="button"><i class="close-icon"></i></a>
+											</div>
 									</div>
 								</div>
 							</div>
@@ -848,3 +855,38 @@
 			</div>
 
 </x-guest-layout>
+<script type="text/javascript">
+	$('#inquirymsg').hide();
+	$(document).on('click', "a.inquiry", function() {
+	let product_id = $(this).attr('data-id');
+	let quantity = $('.quantity').val();
+	$.ajax({
+       		type: "Post",
+          url: '{{ url("customerInquiry") }}',
+          data: {
+            "quantity": quantity,
+            "product_id" : product_id,
+            "_token": "{{ csrf_token() }}",
+        	},
+          success: function(response) {
+          	if(response.success){
+          		$('#inquirymsg').show();
+          		$(".inquiry-show-msg").text(response.message);
+          	}else{
+          		$('#inquiryerror').show();
+          		$(".inquiry-show-msg").text(response.message);
+          	}
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+          	console.log(error);
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+            $.each( error.errors, function( key, value ) {
+  								$("#"+key+"_error").text(value);
+						});
+				}
+	});
+});
+</script>

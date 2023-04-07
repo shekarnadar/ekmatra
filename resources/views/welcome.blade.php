@@ -216,7 +216,7 @@
 												@foreach($product as $product_value)
 											   <div class="swiper-slide product product-image-gap product-simple">
                             <figure class="product-media">
-                                <a href="product-default.html">
+                                <a href="{{url('product-detail/'.$product_value['id'])}}">
                                     <img src="{{url('product/'.$product_value['image'])}}" alt="Product" width="295"
                                         height="335" />
                                     <img src="{{url('product/'.$product_value['image'])}}" alt="Product" width="295"
@@ -224,7 +224,7 @@
                                 </a>
                                
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-quickview" title="Quick View">QuickView</a>
+                                    <a href="{{url('product-detail/'.$product_value['id'])}}" class="btn-product btn-quickview" title="Quick View">QuickView</a>
                                 </div>
                             </figure>
                             <div class="product-details">
@@ -234,7 +234,7 @@
                                 </h4>
                                 <div class="ratings-container">
                                     
-                                    <a href="product-default.html">From : {{$product_value['price']}}</a>
+                                    <a href="{{url('product-detail/'.$product_value['id'])}}">From : {{$product_value['price']}}</a>
                                 </div>
                                 <div class="product-pa-wrapper">
                                     <div class="product-price">
@@ -314,7 +314,7 @@
 																	 @foreach($latest_product as $vendor_product)
 																		<div class="vendor-product">
 																				<figure class="product-media">
-																						<a href="product-default.html">
+																						<a href="{{url('product-detail/'.$vendor_product['id'])}}">
 																								<img src="{{url('product/'.$vendor_product['image'])}}"
 																										alt="Vendor Product" width="100" height="113" />
 																						</a>
@@ -841,3 +841,14 @@
 		<!-- Start of Sticky Footer -->
 </x-guest-layout>
 
+<script type="text/javascript">
+	let login = "{{\Session::get('isLogin')}}";
+	if(login == 1){
+		Wolmart.popup(
+		{
+			items:{
+				src:'login'
+			}
+		},"login");		
+	}
+</script>

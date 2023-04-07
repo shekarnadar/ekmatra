@@ -8,6 +8,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\InquiryController;
 
 
 /*
@@ -29,8 +30,6 @@ require __DIR__.'/admin.php';
 require __DIR__.'/vendor.php';
 Route::middleware('customer')->group(function () {
 	Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('profile.update');
-	Route::get('wishlist',[WishlistController::class,'wishlist'])->name('wishlist');
-	Route::get('wishlist/view/{id}',[WishlistController::class,'wishlistView'])->name('wishlistView');
 
 });
 
@@ -56,6 +55,8 @@ Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	Route::get('wishlist',[WishlistController::class,'wishlist'])->name('wishlist');
+	Route::get('wishlist/view/{id}',[WishlistController::class,'wishlistView'])->name('wishlistView');
 
 });
 Route::post('wishlist/store',[WishlistController::class,'store'])->name('wishlist.store');
@@ -76,3 +77,4 @@ Route::post('removeProductWishlist',[WishlistController::class,'removeProductWis
 
 Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('savewishlist');
 Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
+Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->name('customerInquiry');

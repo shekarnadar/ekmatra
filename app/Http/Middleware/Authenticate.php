@@ -17,9 +17,11 @@ class Authenticate extends Middleware
 	 * @return string|null
 	 */
 		public function handle($request, Closure $next, ...$guards) {
+
 			if (Auth::check()) {
 				return $next($request);
 			}
-			return redirect()->route('login');
+			\Session::put('isLogin',1);
+			return redirect()->route('index');
 		}
 }

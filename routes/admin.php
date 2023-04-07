@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DealController;
+use App\Http\Controllers\InquiryController;
 
 
 
@@ -70,6 +71,8 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('deal/add',[DealController::class,'create'])->name('deal.create');
 		Route::post('deal/store',[DealController::class,'store'])->name('deal.store');
 		Route::get('deal/edit/{id}',[DealController::class,'edit'])->name('deal.edit');
+
+		Route::get('inquiry',[DealController::class,'inquiry'])->name('inquiry');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');
