@@ -224,11 +224,11 @@
                                 </a>
                                
                                 <div class="product-action">
-                                    <a href="{{url('product-detail/'.$product_value['id'])}}" class="btn-product btn-quickview" title="Quick View">QuickView</a>
+                                    <a href="{{url('product-detail/'.$product_value['id'])}}" class="btn-product " title="Quick View">QuickView</a>
                                 </div>
                             </figure>
                             <div class="product-details">
-                                <a href="#" class="btn-wishlist w-icon-heart" title="Add to wishlist"></a>
+                              
                                 <h4 class="product-name">
                                     <a href="{{url('product-detail/'.$product_value['id'])}}">{{$product_value['name']}}</a>
                                 </h4>
@@ -297,7 +297,7 @@
 																		</figure>
 																		<div class="vendor-personal">
 																				<h4 class="vendor-name">
-																						<a href="vendor-dokan-store.html">{{$value['name']}}</a>
+																						<a href="#">{{$value['name']}}</a>
 																				</h4>
 																				<span class="vendor-product-count">({{$value['products_count']}} Products)</span>
 																				<div class="ratings-container">
@@ -433,10 +433,7 @@
 																						<i class="w-icon-cart"></i>
 																						<span>Select Options</span>
 																				</a>
-																				<a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-																						title="Add to wishlist"></a>
-																				<a href="#" class="btn-product-icon btn-compare w-icon-compare"
-																						title="Compare"></a>
+																				
 																		</div>
 																</div>
 														</div>
@@ -481,10 +478,7 @@
 																						<i class="w-icon-cart"></i>
 																						<span>Select Options</span>
 																				</a>
-																				<a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-																						title="Add to wishlist"></a>
-																				<a href="#" class="btn-product-icon btn-compare w-icon-compare"
-																						title="Compare"></a>
+																				
 																		</div>
 																</div>
 														</div>
@@ -577,7 +571,7 @@
 																						
 																				</figure>
 																				<div class="product-details">
-																						<a href="#" class="btn-wishlist w-icon-heart" title="Add to wishlist"></a>
+
 																						<h4 class="product-name">
 																								<a href="{{url('product-detail/'.$product_deals['getProduct']['id'])}}">{{$product_deals['getProduct']['name']}}</a>
 																						</h4>

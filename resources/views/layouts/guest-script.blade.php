@@ -10,7 +10,9 @@
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="{{url('front/images/icons/favicon.png')}}">
-		<script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
+	<link href="{{url('backend/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+
+	<script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
 
 	<!-- WebFont.js -->
 	<script>

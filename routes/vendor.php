@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Vendor\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\InquiryController;
 
 Route::group(['prefix' => 'vendor'], function(){
 
@@ -30,6 +30,7 @@ Route::group(['prefix' => 'vendor'], function(){
 		Route::post('product/store',[ProductController::class,'store'])->name('product.store');
 		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 	
+		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquiry.list');
   });
 
 ?>

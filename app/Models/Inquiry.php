@@ -14,4 +14,12 @@ class Inquiry extends Model
         'client_id',
         'vendor_id'
     ];
+
+   public function product(){
+     return $this->belongsTo('App\Models\Product', 'product_id','id');
+   }
+
+    public function customer(){
+     return $this->belongsTo('App\Models\User', 'client_id','id');
+   }
 }

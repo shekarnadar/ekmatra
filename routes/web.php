@@ -28,10 +28,6 @@ use App\Http\Controllers\InquiryController;
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/vendor.php';
-Route::middleware('customer')->group(function () {
-	Route::get('dashboard',[CustomerController::class, 'dashboard'])->name('profile.update');
-
-});
 
 
 Route::get('/',[WelcomeController::class, 'index'])->name('index');
@@ -47,9 +43,9 @@ Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryL
 
 Route::get('product',[CustomerController::class, 'product'])->name('product');
 
-Route::get('/dashboard', function () {
-	return view('dashboard');
-})->middleware(['auth', 'verified'])->name('customer.dashboard');
+Route::get('/myaccount', function () {
+	return view('customer.dashboard');
+})->middleware(['auth', 'verified'])->name('customer.myaccount');
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -57,6 +53,8 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 	Route::get('wishlist',[WishlistController::class,'wishlist'])->name('wishlist');
 	Route::get('wishlist/view/{id}',[WishlistController::class,'wishlistView'])->name('wishlistView');
+
+	Route::get('inquiry',[InquiryController::class,'inquiryView'])->name('inquiry.view');
 
 });
 Route::post('wishlist/store',[WishlistController::class,'store'])->name('wishlist.store');

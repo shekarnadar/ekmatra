@@ -789,6 +789,8 @@
 	<script src="{{url('front/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 	<script src="{{url('front/vendor/zoom/jquery.zoom.js')}}"></script>
 	<script src="{{url('front/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
+	<script src="{{url('backend/plugins/notify/js/notifIt.js')}}"></script>
+
 
 
 	<!-- Main JS -->
@@ -796,23 +798,28 @@
 	
 	</body>
 	<script type="text/javascript">
-			$(document).on('click', "a.wishlist", function() {
-    		var id = $(this).attr('data-id');
+			function notifyMsg(msg,type) {
+				notif({
+					msg: msg,
+					type: type
+				});
+			}
+				function wishList(id){
+    		var id = id;
     		$("#product_id").val(id);
     		$.ajax({
        		type: "get",
           url: '{{ url("userWishlist/") }}'+'/'+id,
           
           success: function(response) {
-          		 console.log(response);
           		 $(".form-checkbox ul").html(response);
           },
           error: function(response) {
           	let error = response.responseJSON;
           
-          },
-       });
-				Wolmart.popup({
+          }
+        });
+        Wolmart.popup({
 					items:{
 						src:'.newsletter-popup'
 						},
@@ -825,8 +832,20 @@
 							}
 						}
 					});
+       }
+			$(document).on('click', "a.addwishlist", function() {
+    		var id = $(this).attr('data-id');
+    		wishList(id);
+       });
+				
   
-			});
+			
+			$(document).on('click', "a.wishlist", function() {
+    		var id = $(this).attr('data-id');
+    		wishList(id);
+       });
+
+		
 
 			$(document).on('click','span.addlist',function(){
 				$('.addListDiv').show();
@@ -845,6 +864,7 @@
         	},
           success: function(response) {
           	$("#name").val('');
+          	notifyMsg('Prodct has been sent in wishlist','success');
           	$('.cart-count').text(response.count);
           	$(".form-checkbox ul").append(response.html);
           },
@@ -861,6 +881,15 @@
 			})
 
 		$(document).on('change','#wishlist',function(){
+			let msg = '';
+			let status = '';
+			 if ($(this).is(':checked')) {
+			 	 msg = "Prodct has been sent in wishlist";
+			 	 status = 'success';
+			 }else{
+			 	 msg = "Prodct has been removed from wishlist";
+			 	 status = 'error';
+			 }
 			$.ajax({
        		type: "post",
           url: '{{ url("wishlist-assignProduct") }}',
@@ -870,6 +899,7 @@
             "_token": "{{ csrf_token() }}",
         	},
           success: function(response) {
+          	notifyMsg(msg,status);
           	$('.cart-count').text(response);
           },
           
@@ -880,6 +910,34 @@
 			 $.ajax({
        		type: "post",
           url: '{{ url("login") }}',
+          data: formValue,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+          		 if (response.success) {
+          		 		setTimeout(function(){
+                        window.location.href ='{{ url("/") }}';
+                  },2000);
+          		 }
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+            $.each( error.errors, function( key, value ) {
+  								$("#"+key+"_error").text(value);
+						});
+          },
+       });
+		}
+
+		 function signup(){
+			 let formValue = new FormData(document.getElementById('registerForm'));
+			 $.ajax({
+       		type: "post",
+          url: '{{ url("register") }}',
           data: formValue,
           cache: false,
           contentType: false,

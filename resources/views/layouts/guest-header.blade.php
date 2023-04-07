@@ -12,7 +12,7 @@
 							<span class="divider d-lg-show"></span>
 							<a href="{{url('vendor/login')}}" class="d-lg-show">Sell on Ekmatra</a>
 							@auth
-								<a href="{{url('dashboard')}}" class="d-lg-show">My Account</a>
+								<a href="{{url('myaccount')}}" class="d-lg-show">My Account</a>
 							
 							@else
 								<a href="{{url('login')}}" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Sign In</a>
