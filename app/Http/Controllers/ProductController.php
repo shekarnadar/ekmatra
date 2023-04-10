@@ -105,7 +105,7 @@ class ProductController extends Controller
 		 	
 		 	Product::saveProduct($request->input());
 			return response()->json(['success' => true,
-				'message' => 'Product has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
+				'message' => 'Product has been '.($request['id'] ? 'updated' : 'added')  .' successfully.'
 		  ], 200);
 
 		} catch(\Exception $e){
