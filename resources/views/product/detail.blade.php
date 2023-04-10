@@ -69,7 +69,10 @@
 
 										<hr class="product-divider">
 
-										<div class="product-price"><ins class="new-price">₹ {{$product['price']}}</ins></div>
+										<div class="product-price">
+											<ins class="new-price">₹ {{$product['price']}}</ins>
+											<del class="old-price">{{$product['mrp']}}</del>
+										</div>
 
 										
 
@@ -83,17 +86,13 @@
 
 										<div class="fix-bottom product-sticky-content sticky-content">
 											<div class="product-form container">
-												<div class="product-qty-form">
-													<div class="input-group mt-3">
-														<input class="quantity form-control" type="number" min="1"
-															max="10000000" value="1">
-														<button class="quantity-plus w-icon-plus"></button>
-														<button class="quantity-minus w-icon-minus"></button>
-													</div>
-												</div>
+												@auth
 												<a href="javascript:void(0)"
 													class="addwishlist btn btn-dark btn-rounded" data-id="{{$product['id']}}">Add To Wishlist</a>
-												
+												@else
+														<a href="{{url('login')}}"
+													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Add To Wishlist</a>
+												@endauth
 											</div>
 										</div>
 
@@ -102,10 +101,10 @@
 											<div class="product-link-wrapper d-flex">
 												@auth
 												<a href="javascript:void(0)"
-													class="btn btn-dark btn-rounded inquiry" data-id="{{$product['id']}}">Inquiry</a>
+													class="btn btn-dark btn-rounded inquiry" data-id="{{$product['id']}}">Request a Quote </a>
 												@else
 												<a href="{{url('login')}}"
-													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Inquiry</a>
+													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Request a Quote </a>
 												@endauth
 												
 											</div>
@@ -217,7 +216,7 @@
 	$('#inquirymsg').hide();
 	$(document).on('click', "a.inquiry", function() {
 	let product_id = $(this).attr('data-id');
-	let quantity = $('.quantity').val();
+	let quantity = 1;
 	$.ajax({
        		type: "Post",
           url: '{{ url("customerInquiry") }}',

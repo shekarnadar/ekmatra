@@ -232,11 +232,12 @@
                                 <h4 class="product-name">
                                     <a href="{{url('product-detail/'.$product_value['id'])}}">{{$product_value['name']}}</a>
                                 </h4>
-                                <div class="ratings-container">
-                                    
-                                    <a href="{{url('product-detail/'.$product_value['id'])}}">From : {{$product_value['price']}}</a>
-                                </div>
+                                
                                 <div class="product-pa-wrapper">
+                                	<div class="product-price">
+                                        <ins class="new-price">{{$product_value['maq']}}</ins>
+                                        <del class="old-price">{{$product_value['mrp']}}</del>
+                                    </div>
                                     <div class="product-price">
                                         Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
                                     </div>
@@ -576,12 +577,16 @@
 																								<a href="{{url('product-detail/'.$product_deals['getProduct']['id'])}}">{{$product_deals['getProduct']['name']}}</a>
 																						</h4>
 																						
-																					<div class="ratings-container">
-                                    					<a href="product-default.html">From : {{$product_value['price']}}</a>
-                                					</div>
+																					
                                 					<div class="product-pa-wrapper">
+                                						<div class="product-price">
+                                							<ins class="new-price">{{$product_value['price']}}</ins>
+                                							
+                                    					<del class="old-price">{{$product_value['mrp']}}</del>
+                                						</div>
 					                                    <div class="product-price">
 					                                        Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
+
 					                                    </div>
 					                                    <div class="product-action">
 					                                        @auth

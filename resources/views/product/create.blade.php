@@ -54,8 +54,17 @@
 
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
+												<label class="form-label">MRP: <span class="tx-danger">*</span></label>
+												<input class="form-control" name="mrp" placeholder="Enter MEP" required="required" id="mrp" type="text" data-parsley-required-message="Please enter your mrp" value="{{@$product['mrp']}}">
+												<span class="text-danger" id="mrp_error"></span>
+											</div>
+										</div>
+
+
+										<div class="col-6 mt-2">
+											<div class="form-group mg-b-0">
 												<label class="form-label">MOQ: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="maq" placeholder="Enter Maq" required="required" id="price" type="text" data-parsley-required-message="Please enter your maq" value="{{@$product['maq']}}">
+												<input class="form-control" name="maq" placeholder="Enter Maq" required="required" id="maq" type="text" data-parsley-required-message="Please enter your maq" value="{{@$product['maq']}}">
 												<span class="text-danger" id="maq_error"></span>
 											</div>
 										</div>
