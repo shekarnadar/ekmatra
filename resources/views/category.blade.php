@@ -1,4 +1,5 @@
 <div class="category-wrapper row cols-12 pt-4">
+    @if(count($category) > 0)
 	@foreach($category as $cat)
     
   	<div class="category category-ellipse ">
@@ -10,4 +11,5 @@
       </div>
     </div>
   @endforeach
+  @endif
  </div>
