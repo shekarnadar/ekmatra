@@ -83,7 +83,11 @@
 													<div class="author-name-wrapper flex-wrap mb-2">
 														<h4 class="author-name font-weight-bold mb-2 pr-4 mr-auto">{{$value['prefered_category']}}</h4>
 												  </div>
-												  <p>{{$value['prefered_category']}}</p>
+												  <p>Prefered Category : {{$value['prefered_category']}}
+												  	<br/>
+												  	Prefered Brand : {{$value['prefered_brand']}}
+												  </p>
+												  <p>Enquiry : {{$value['enquiry']}}</p>
 											  </div>
 				 							</div>
 									
