@@ -2,7 +2,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-	<title>Wolmart - Bootstrap eCommerce Template</title>
+	<title>Ekmatra</title>
 
 	<meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
 	<meta name="description" content="Wolmart is powerful marketplace &amp; ecommerce responsive Html5 Template.">
@@ -10,6 +10,9 @@
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="{{url('front/images/icons/favicon.png')}}">
+	<link href="{{url('backend/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+
+	<script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
 
 	<!-- WebFont.js -->
 	<script>
@@ -22,6 +25,9 @@
 			wf.async = true;
 			s.parentNode.insertBefore(wf, s);
 		})(document);
+	
+			
+		
 	</script>
 
 	 <link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
@@ -41,6 +47,17 @@
 	<link rel="stylesheet" type="text/css" href="{{url('front/vendor/magnific-popup/magnific-popup.min.css')}}">
 
 	<!-- Default CSS -->
-	<link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}">
-	 <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">
+     @if(request()->is('/') || request()->is('shop/*'))
+     	<link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}">
+     @else
+     		    <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">
+
+     @endif
+
+	
 </head>
+<style type="text/css">
+	.error{
+		color:#a94442;
+	}
+</style>

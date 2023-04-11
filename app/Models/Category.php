@@ -30,4 +30,17 @@ class Category extends Model
          $category = Category::orderBy('created_at','desc')->get();
          return $category;
     }
+
+    //get subcategory
+    public  function subCategory() {
+        return $this->hasMany('App\Models\SubCategory');
+    }
+
+    public  function brands() {
+        return $this->hasMany('App\Models\SubCategoryFeature','category_id','id');
+    }
+
+    public function getDeals() {
+       return Deal::get();
+    }
 }

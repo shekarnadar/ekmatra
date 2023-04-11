@@ -28,7 +28,8 @@
 										
 
 										
-										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10">Submit</button></div>
+										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addfeature"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
+										</div>
 									</div>
 								</form>
 							</div>
@@ -45,6 +46,8 @@
 			e.preventDefault()
 			let formValue = new FormData(this);
 			if ( $(this).parsley().isValid() ) {
+				 $(".loading").show();
+				 $(".addfeature").prop('disabled',true);
 				 $.ajax({
             type: "post",
             url: '{{ url("admin/feature/store") }}',
@@ -57,13 +60,17 @@
                 		notifyMsg(response.message,'success');
                     
                     setTimeout(function(){
-                        window.location.href ='{{ url("admin/dashboard") }}';
+                    	  $(".addfeature").prop('disabled',false);
+                        window.location.href ='{{ url("admin/features") }}';
                     },2000);
                 } else {
                     notifyMsg(response.message,'error');
                 }
             },
             error: function(response) {
+            		$('.loading').hide();
+            	  $('.submit').show();
+            	  $(".addfeature").prop('disabled',false);
                 let error = response.responseJSON;
                 if(!error){
                     error = JSON.parse(response.responseText);

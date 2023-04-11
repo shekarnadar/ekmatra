@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
     	  //$request->authenticate();
     	  $request->session()->regenerate();
         return redirect()
-            ->intended(route('Vendor.dashboard'))
+            ->intended(route('VendorDashboard'))
             ->with('status','You are Logged in as Admin!');
     }else{
     	 return redirect()

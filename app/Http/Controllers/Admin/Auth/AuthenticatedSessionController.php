@@ -53,6 +53,6 @@ class AuthenticatedSessionController extends Controller
 				$request->session()->invalidate();
 
 				$request->session()->regenerateToken();
-				return redirect($url == 'web' ? '/' : $url);
+				return redirect($url == 'web' ? '/' : $url.'/login');
 		}
 }

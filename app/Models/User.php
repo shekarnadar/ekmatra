@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\SendMail;
+use Mail;
 
 class User extends Authenticatable
 {
@@ -26,7 +28,8 @@ class User extends Authenticatable
 		'role_id',
 		'phone',
 		'address',
-		'company_name'
+		'company_name',
+		'image'
 	];
 
 	/**
@@ -72,16 +75,34 @@ class User extends Authenticatable
        
         $role_id = getRole('vendor');
 
-        $user = User::create([
+        if(@$request['id']){
+
+			$matchThese = ['id' => $request['id']];
+			$user = User::updateOrCreate($matchThese,$request);
+
+        }else{
+
+        	$user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'phone' => $request['phone'],
             'password' => Hash::make(123456),
             'address' => $request['address'],
             'company_name' => $request['company_name'],
-            'role_id' => $role_id
-        ]);
-        event(new Registered($user));   
+            'role_id' => $role_id,
+            'image' => $request['image']
+        	]);
+        	event(new Registered($user));   
+
+        	$mailData = [
+            	'title' => 'Mail from ItSolutionStuff.com',
+            	'body' => 'This is for testing email using smtp.'
+        	];
+         
+        //Mail::to('your_email@gmail.com')->send(new SendMail($mailData));
+         
+        }
+        
         return $user;        
 
     }
@@ -93,4 +114,21 @@ class User extends Authenticatable
     	$vendor = User::where('role_id',$role_id);
     	return $vendor;
     }
+
+    public static function getLatestVendor(){
+    	$role_id = getRole('vendor');
+    	$vendor = User::with('getVendorTopProducts')->withCount('products')->where('role_id',$role_id)->latest()->take(4)->get();
+    	return $vendor;
+    }
+	public function products(){
+ 		return $this->hasMany('App\Models\Product','created_by','id');
+ 	}
+ 	public function getVendorTopProducts(){
+ 		return $this->hasMany('App\Models\Product','created_by','id')->latest();
+ 	}
+
+ 	public function getProductWishList(){
+ 		return $this->hasMany('App\Models\ProductWishList','client_id','id')->latest();
+ 	}
+    
 }

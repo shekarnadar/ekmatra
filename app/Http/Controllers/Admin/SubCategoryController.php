@@ -1,0 +1,163 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Feature;
+use App\Models\SubCategory;
+use App\Models\SubCategoryFeature;
+use DataTables;
+
+class SubCategoryController extends Controller
+{
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index(Request $request,$id)
+	{
+		//
+		$cat_id = $id;
+		if ($request->ajax()) {
+			$data = SubCategory::with('category')->where('category_id',$cat_id)->get();
+
+					return Datatables::of($data)
+					->addColumn('category', function($row){
+							
+						return $row['category']['name'];
+					 })
+						->addColumn('action', function($row){
+								$url = url('admin/category/edit')."/".$row->id;
+								$sub_cat = url('admin/category/sub-cat/show').'/'.$row->id;
+								$sub_cat_edit = url('admin/category/sub-cat/edit/').'/'.$row->id;
+								$btn = '<a href="'.$sub_cat_edit.'" class="edit btn btn-primary btn-sm">Edit</a>&nbsp;&nbsp;';
+								$btn.='<a href="'.$sub_cat.'" class="btn btn-primary btn-sm">View</a>';
+								return $btn;
+					 })
+					->rawColumns(['action', 'image'])
+					->make(true);
+		}
+		return view('admin.sub-category.index',compact('cat_id'));
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create($id)
+	{
+		//
+		$feature = Feature::get();
+		$cat_id = $id;
+		return view('admin.sub-category.create',compact('cat_id','feature'));
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		try {
+			
+			SubCategory::saveSubcategory($request->input());
+			return response()->json(['success' => true,
+				'message' => 'Subcategory has been added successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
+
+		
+	   
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{
+		//
+		$subCat = SubCategoryFeature::select('*', \DB::raw("(GROUP_CONCAT(sub_category_features.name )) as `names`"))->with(['featureName','subCategory'])->where('sub_category_id',$id)->groupBy('sub_category_features.feature_id')->get();
+		return view('admin.sub-category.show',compact('subCat'));
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		//
+
+		$subCat = SubCategoryFeature::select('*', \DB::raw("(GROUP_CONCAT(sub_category_features.name,'|',sub_category_features.id )) as `names`"))->with(['featureName','subCategory'])->where('sub_category_id',$id)->groupBy('sub_category_features.feature_id')->get();
+		return view('admin.sub-category.edit',compact('subCat'));
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, $id)
+	{
+				$post = $request->input();
+				SubCategory::where('id',$post['id'])->update(['name' => $post['name']]);
+				foreach($post['faetures'] as $key=>$value){
+						
+						$decode = json_decode($value,true);
+						$array = (array)$decode;
+						foreach($array as $val){
+							if(isset($val['id'])){
+								$id = $val['id'];
+							}else{
+								$id = 0;
+							}
+							$matchThese = ['id'=>$id];
+							SubCategoryFeature::updateOrCreate($matchThese,[
+								'name' =>$val['value'] ,
+								'category_id' => $post['category_id'],
+								'sub_category_id' => $post['id'],
+								'feature_id' => $key
+							]);
+							
+						}
+				}
+				if(isset($post['removeIds'])){
+					$explode_ids = explode(',',$post['removeIds']);
+					foreach($explode_ids as $ids){
+							SubCategoryFeature::where('id',$ids)->delete();
+					}
+				}
+				return response()->json(['success' => true,
+					'message' => 'Subcategory has been updated successfully.'
+		  	], 200);
+
+  }
+	
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+}

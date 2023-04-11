@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Vendor\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Vendor\VendorController;
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\InquiryController;
 
 Route::group(['prefix' => 'vendor'], function(){
 
@@ -13,16 +14,23 @@ Route::group(['prefix' => 'vendor'], function(){
 	});
 	
 	Route::group(['middleware' => 'vendor-auth'], function () {
-		 Route::get('dashboard',[VendorController::class,'dashboard'])->name('Vendor.dashboard');
+		 Route::get('dashboard',[VendorController::class,'dashboard'])->name('VendorDashboard');
 	
-		Route::get('/', function () {
-			return redirect('vendor/dashboard');
-		})->name('Vendor.dashboard');
+		// Route::get('/', function () {
+		// 	return redirect('vendor/dashboard');
+		// })->name('VendorDashboard');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('vendor.logout');
 		});
+
+		Route::get('products',[ProductController::class,'index'])->name('product.index');
+
+		Route::get('product/add',[ProductController::class,'create'])->name('product.create');
+		Route::post('product/store',[ProductController::class,'store'])->name('product.store');
+		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 	
+		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquiry.list');
   });
 
 ?>

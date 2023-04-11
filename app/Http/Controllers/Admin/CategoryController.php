@@ -25,13 +25,15 @@ class CategoryController extends Controller
 					 })
 						->addColumn('action', function($row){
 								$url = url('admin/category/edit')."/".$row->id;
+								$sub_cat = url('admin/category').'/'.$row->id.'/sub-cat';
 								$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>&nbsp;&nbsp;';
+								$btn.='<a href="'.$sub_cat.'" class="btn btn-primary btn-sm">Sub Category</a>';
 								return $btn;
 					 })
 					->rawColumns(['action', 'image'])
 					->make(true);
 			}
-				return view('admin.category.index');
+			return view('admin.category.index');
 	}
 
 	/**
@@ -58,6 +60,7 @@ class CategoryController extends Controller
 			
 			if($request->file('image')){
 				if($request['id']){
+
 					$image_path = public_path("category/".$request['old_image']);  // Value is not URL but directory file path
 					if(\File::exists($image_path)) {
     					\File::delete($image_path);
@@ -68,8 +71,8 @@ class CategoryController extends Controller
 			}
 		 	
 		 	Category::saveCategory($request->input());
-			 return response()->json(['success' => true,
-				'message' => 'Category has been added successfully.'
+			return response()->json(['success' => true,
+				'message' => 'Category has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
 		  ], 200);
 
 		} catch(\Exception $e){

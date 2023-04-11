@@ -20,8 +20,9 @@ class VendorController extends Controller
 				if ($request->ajax()) {
 					$data = User::getVendors($request);
 					return Datatables::of($data)
-					 	->addColumn('action', function($row){
-   						$btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+						->addColumn('action', function($row){
+					 	$url = url('admin/vendor/edit')."/".$row['id'];
+   						$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>';
 							return $btn;
 					 })
 					->skipTotalRecords()
@@ -53,13 +54,26 @@ class VendorController extends Controller
 	{
 		//
 		try {
-			
+			if($request->file('image')){
+				if($request['id']){
+
+					$image_path = public_path("vendor/".$request['old_image']);  // Value is not URL but directory file path
+					if(\File::exists($image_path)) {
+    					\File::delete($image_path);
+					}
+				}
+			$image = uploadImage('vendor',$request->image);
+		    $request['image'] = $image;
+			}
 			User::saveVendor($request->input());
 			return response()->json(['success' => true,
-				'message' => 'Vendor has been added successfully.'
-			], 200);
+				'message' => 'Vendor has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
+		  ], 200);
+			
 
 		} catch(\Exception $e){
+			echo $e->getMessage();
+			exit();
 			return response()->json(['success' => false,
 				'message' => 'something went wrong'], 200);
 		}  
@@ -85,7 +99,8 @@ class VendorController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$vendor = User::find($id);
+		return view('vendor.create',compact('vendor'));
 	}
 
 	/**

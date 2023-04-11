@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use App\Models\Category;
+
 class AppServiceProvider extends ServiceProvider
 {
 	/**
@@ -30,7 +32,8 @@ class AppServiceProvider extends ServiceProvider
 		 */
 		  
 
-
+		$category = Category::with('subCategory')->get();
+		\View::share('category', $category);
 
 		Validator::extend('email_valid', function ($attribute, $value, $parameters, $validator){
 			$role_id = getRole('customer');
