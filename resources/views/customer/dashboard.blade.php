@@ -19,7 +19,7 @@
 								<a href="#account-orders" class="nav-link">Enquiry</a>
 							</li>
 							<li class="nav-item">
-								<a href="#account-downloads" class="nav-link">My RFQ</a>
+								<a href="#rfq" class="nav-link">My RFQ</a>
 							</li>
 							
 							<li class="nav-item">
@@ -70,6 +70,28 @@
 									
 									</div>
 										@endforeach
+							</div>
+
+							<div class="tab-pane  mb-4 " id="rfq">
+								@if(count($rfq) > 0)
+								@foreach($rfq as $value)
+									<div class="main-content post-single-content row col-lg-6 col-md-8">
+										
+						 					<div class="post-author-detail mb-4">
+												
+												<div class="author-details">
+													<div class="author-name-wrapper flex-wrap mb-2">
+														<h4 class="author-name font-weight-bold mb-2 pr-4 mr-auto">{{$value['prefered_category']}}</h4>
+												  </div>
+												  <p>{{$value['prefered_category']}}</p>
+											  </div>
+				 							</div>
+									
+									</div>
+										@endforeach
+								@else
+								<p>Data Not Found</p>
+								@endif
 							</div>
 					  </div>
 					</div>
