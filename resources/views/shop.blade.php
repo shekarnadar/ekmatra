@@ -131,7 +131,7 @@
 								<div class="product-wrap">
 									<div class="product product-image-gap product-simple">
 										<figure class="product-media">
-											<a href="{{url('product')}}">
+											<a href="{{url('product-detail/'.$prod_val['id'])}}">
 												<img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 												 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 											</a>

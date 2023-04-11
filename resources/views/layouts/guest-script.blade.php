@@ -56,3 +56,8 @@
 
 	
 </head>
+<style type="text/css">
+	.error{
+		color:#a94442;
+	}
+</style>

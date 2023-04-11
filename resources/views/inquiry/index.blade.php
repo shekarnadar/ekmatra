@@ -1,59 +1,34 @@
 <x-guest-layout>
 	 <nav class="breadcrumb-nav">
 	  <div class="container">
-	      <ul class="breadcrumb bb-no">
-	          <li><a href="{{url('/')}}">Home</a></li>
-	      </ul>
+		  <ul class="breadcrumb bb-no">
+			  <li><a href="{{url('/')}}">Home</a></li>
+			  <li><a href="#">Enquiry</a></li>
+		  </ul>
 	  </div>
    </nav>
-   <div class="page-content">
-                <div class="container">
-                    <!-- Start of Shop Content -->
-                    <div class="shop-content row gutter-lg mb-10">
-                        <!-- Start of Sidebar, Shop Sidebar -->
-                      
-                        <!-- End of Shop Sidebar -->
-
-                        <!-- Start of Shop Main Content -->
-                        <div class="main-content">
-                            
-                            <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
-                                @foreach($inquiry as $value)
-                                <div class="product-wrap">
-                                    <div class="product product-simple text-center">
-                                        <figure class="product-media">
-                                            <a href="{{url('product-detail/'.$value['product']['id'])}}">
-                                                <img src="{{url('product/'.$value['product']['image'])}}" alt="Product" width="300"
-                                                    height="338" />
-                                            </a>
-                                            
-                                            <div class="product-action">
-                                                <a href="{{url('product-detail/'.$value['product']['id'])}}" class="btn-product" title="Quick View">Quick
-                                                    View</a>
-                                            </div>
-                                        </figure>
-                                        <div class="product-details">
-                                            <h4 class="product-name"><a href="{{url('product-detail/'.$value['product']['id'])}}">{{$value['product']['name']}}</a>
-                                            </h4>
-                                            <div class="product-pa-wrapper">
-                                                <div class="product-price"> {{$value['product']['price']}}  Qty:{{$value['quantity']}}</div>
-                                                
-                                            </div>
-                                            <div class="sold-by">
-                                                Sold By:
-                                                <a href="#">{{$value['product']['createdBy']['name']}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                                
-                                
-                            </div>
-                        </div>
-                        <!-- End of Shop Main Content -->
-                    </div>
-                    <!-- End of Shop Content -->
-                </div>
-            </div>
+  
+<div class="page-content mb-10 pb-2">
+	<div class="container">
+		<div class="row gutter-lg">
+			 <div class="main-content post-single-content">
+				 	@foreach($inquiry as $value)
+				 	 <div class="post-author-detail mb-4">
+	            <figure class="author-media mr-4">
+	                <img src="{{url('product/'.$value['product']['image'])}}" alt="Author" width="105" height="105" />
+	            </figure>
+	            <div class="author-details">
+	            	<div class="author-name-wrapper flex-wrap mb-2">
+	               	<h4 class="author-name font-weight-bold mb-2 pr-4 mr-auto">{{$value['product']['name']}}</h4>
+	              </div>
+	              <p>
+	              	Price : {{$value['product']['price']}}<br/>Qty:{{$value['quantity']}}
+	              </p>
+	            </div>
+	         </div>
+	        @endforeach
+			 </div>
+		</div>
+	</div>
+</div>     
 </x-guest-layout>

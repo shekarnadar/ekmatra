@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('inquiries', function (Blueprint $table) {
             $table->id();
             
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('product_id')->null();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->decimal('quantity',8,2);
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->unsignedBigInteger('vendor_id');
+            $table->unsignedBigInteger('vendor_id')->null();
             $table->foreign('vendor_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

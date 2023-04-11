@@ -917,18 +917,19 @@
           success: function(response) {
           		 if (response.success) {
           		 		setTimeout(function(){
-                        window.location.href ='{{ url("/") }}';
+                        location.reload();
+
                   },2000);
           		 }
           },
           error: function(response) {
           	let error = response.responseJSON;
+          	$(".sign-in").addClass('active');
             if(!error){
             		error = JSON.parse(response.responseText);
             }
-            $.each( error.errors, function( key, value ) {
-  								$("#"+key+"_error").text(value);
-						});
+            $("#email1_error").text(error.errors.email);
+           
           },
        });
 		}
@@ -945,12 +946,14 @@
           success: function(response) {
           		 if (response.success) {
           		 		setTimeout(function(){
-                        window.location.href ='{{ url("/") }}';
+                       location.reload();
+
                   },2000);
           		 }
           },
           error: function(response) {
           	let error = response.responseJSON;
+          		$(".sign-up").addClass('active');
             if(!error){
             		error = JSON.parse(response.responseText);
             }

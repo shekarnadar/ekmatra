@@ -200,8 +200,10 @@ class ProductController extends Controller
 	}
 	public function getProductDetail($id){
 
+    $user = \Auth()->user();
+
 		$product = Product::with('category','subCategory','getBrands')->find($id);
-		return view('product.detail',compact('product'));
+		return view('product.detail',compact('product','user'));
 
 	}
 }

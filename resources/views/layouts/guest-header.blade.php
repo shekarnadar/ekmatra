@@ -51,6 +51,11 @@
 							</form>
 					</div>
 					<div class="header-right ml-4">
+							@auth
+							<a class="mr-2 btn btn-dark btn-outline" href="{{url('submitanenquiry')}}">Request for Quotations</a>
+							@else
+								<a class="mr-2 btn btn-dark btn-outline sign-in" href="{{url('login')}}">Request for Quotations</a>
+							@endauth
 							<div class="header-call d-xs-show d-lg-flex align-items-center">
 									<a href="tel:#" class="w-icon-call"></a>
 									<div class="call-info d-lg-show">
@@ -63,14 +68,16 @@
 									</div>
 							</div>
 							
-							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
+							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-1">
 									<div class="cart-overlay"></div>
 									@auth
 
 									<a href="{{url('wishlist')}}" class="label-down link">
+											@if(\Session::get('wishlistCount'))
 											<i class="w-icon-cart">
 												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
 											</i>
+											@endif
 											<span class="cart-label">Wishlist</span>
 									</a>
 									@else

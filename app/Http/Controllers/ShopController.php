@@ -33,7 +33,9 @@ class ShopController extends Controller
 		
 		$category_name = $category;
 		$sub_cat = SubCategory::with('features')->where('name',$subcategory)->first();
-		$product = Product::where('sub_category_id',$sub_cat['id'])->where('status',1)->get(); 
+		
+		$product = Product::where('sub_category_id',@$sub_cat['id'])->where('status',1)->get(); 
+		
 		return view ('subCategoryshop',compact('sub_cat','product','category_name','subcategory'));
 	
 	}

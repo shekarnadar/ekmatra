@@ -7651,7 +7651,7 @@ input:-internal-autofill-selected {
   font-family: Poppins, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #999;
+  color: #333;
   background-color: transparent;
   border-radius: 0;
   -webkit-box-shadow: none;
@@ -15391,10 +15391,11 @@ body .product-popup {
   margin-top: -1px;
   height: auto;
 }
-.dropdown > a {
+/*.dropdown > a {
   line-height: 1.1;
   padding: 11px 0;
 }
+*/
 .dropdown > a::after {
   display: inline-block;
   margin-left: 6px;
@@ -15432,9 +15433,10 @@ body .product-popup {
   line-height: 1.1;
 }
 
-.cart-dropdown .cart-toggle {
+/*.cart-dropdown .cart-toggle {
   padding: 0;
 }
+*/
 .cart-dropdown .cart-toggle::after {
   content: none;
 }

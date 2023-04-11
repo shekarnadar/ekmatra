@@ -3,10 +3,10 @@
 		<div class="tab tab-nav-boxed tab-nav-center tab-nav-underline">
 				<ul class="nav nav-tabs text-uppercase" role="tablist">
 						<li class="nav-item">
-								<a href="#sign-in" class="nav-link active">Sign In</a>
+								<a href="#sign-in" class="nav-link sign-in active">Sign In</a>
 						</li>
 						<li class="nav-item">
-								<a href="#sign-up" class="nav-link">Sign Up</a>
+								<a href="#sign-up" class="nav-link  sign-up">Sign Up</a>
 						</li>
 				</ul>
 				<div class="tab-content">
@@ -16,7 +16,7 @@
 									<div class="form-group">
 											<label>Username or email address *</label>
 											<input type="text" class="form-control" name="email" id="email" required>
-											<span class="error" id="email_error"></span>
+											<span class="error" id="email1_error"></span>
 									</div>
 									<div class="form-group mb-0">
 											<label>Password *</label>
@@ -47,7 +47,7 @@
 								<div class="form-group">
 										<label>Your Email address *</label>
 										<input type="text" class="form-control" name="email_1" id="email_1" required>
-										<span class="error" id="email_1_error"></span>
+										<span class="error" id="email_error"></span>
 								</div>
 								<div class="form-group mb-5">
 										<label>Password *</label>

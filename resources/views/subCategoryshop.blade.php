@@ -55,6 +55,7 @@
 
 
                                 <!-- Start of Collapsible Widget -->
+                                @if(@$sub_cat['features'])
                                 <div class="widget widget-collapsible">
                                     <h3 class="widget-title"><label>Brand</label></h3>
                                     <ul class="widget-body filter-items item-check mt-1">
@@ -63,6 +64,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
+                                @endif
                                 <!-- End of Collapsible Widget -->
                                 <div class="widget widget-collapsible">
                                     <h3 class="widget-title"><label>Minimum qty</label></h3>
@@ -135,7 +137,7 @@
                                 <div class="product-wrap">
                                     <div class="product product-image-gap product-simple">
                                         <figure class="product-media">
-                                            <a href="{{url('product')}}">
+                                            <a href="{{url('product-detail/'.$prod_val['id'])}}">
                                                 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
                                                  <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
                                             </a>

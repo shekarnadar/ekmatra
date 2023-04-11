@@ -43,9 +43,7 @@ Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryL
 
 Route::get('product',[CustomerController::class, 'product'])->name('product');
 
-Route::get('/myaccount', function () {
-	return view('customer.dashboard');
-})->middleware(['auth', 'verified'])->name('customer.myaccount');
+Route::get('/myaccount', [CustomerController::class,'dashboard'])->middleware(['auth', 'verified'])->name('customer.myaccount');
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -76,3 +74,7 @@ Route::post('removeProductWishlist',[WishlistController::class,'removeProductWis
 Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('savewishlist');
 Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
 Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->name('customerInquiry');
+
+Route::get('submitanenquiry',[InquiryController::class,'submitanenquiry'])->name('submitanenquiry');
+
+Route::post('savesubmitanenquiry',[InquiryController::class,'savesubmitanenquiry'])->name('savesubmitanenquiry');

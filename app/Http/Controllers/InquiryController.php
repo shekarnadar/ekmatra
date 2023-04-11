@@ -7,28 +7,31 @@ use App\Models\Product;
 use App\Models\Inquiry;
 use Carbon\Carbon;
 use DataTables;
-
+use App\Http\Requests\CreateEnquiryRequest;
+use App\Http\Requests\CreateRfqRequest;
 
 class InquiryController extends Controller
 {
 	//
-	public function customerInquiry(Request $requst){
-		$product = Product::find($requst['product_id']);
+	public function customerInquiry(CreateEnquiryRequest $request){
+		$product = Product::find($request['product_id']);
 		$client_id = \Auth::user()->id;
 
 		$check = Inquiry::whereDate('created_at',Carbon::today())->where([
-			'product_id' => $requst['product_id'],
-			'quantity' => $requst['quantity'],
+			'product_id' => $request['product_id'],
+			'quantity' => $request['quantity'],
 			'client_id' => $client_id,
 		])->first();
 
 		if(!$check){
 		 
 		 $inquiry = Inquiry::create([
-			'product_id' => $requst['product_id'],
-			'quantity' => $requst['quantity'],
+			'product_id' => $request['product_id'],
+			'quantity' => ($request['quantity'])? $request['quantity'] : 1,
 			'client_id' => $client_id,
-			'vendor_id' => $product['created_by']
+			'vendor_id' => $product['created_by'],
+			'enquiry' => $request['enquiry'],
+			'type' => 'enquiry'
 		 ]);
 
 			return response()->json(['success' => true,
@@ -43,8 +46,10 @@ class InquiryController extends Controller
 
 	public function inquiryView(){
 		$client_id = \Auth::user()->id;
-		$inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->get();
-		return view('inquiry.index',compact('inquiry'));
+		$inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','enquiry')->get();
+
+		$rfq = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','rfq')->get();
+		return view('inquiry.index',compact('inquiry','rfq'));
 	}
 
 	public function inquirylist(Request $request) {
@@ -81,5 +86,29 @@ class InquiryController extends Controller
 					->make(true);
 			}
 			return view('inquiry.admin-inquiry-list');
+	}
+	public function submitanenquiry(){
+		$user = \Auth()->user();
+		return view('submit-enquiry',compact('user'));
+	}
+
+	public function savesubmitanenquiry(CreateRfqRequest $request){
+		$post = $request->input();
+		$client_id = \Auth::user()->id;
+
+		$inquiry = Inquiry::create([
+			'quantity' => ($request['quantity'])? $request['quantity'] : 1,
+			'client_id' => $client_id,
+			
+			'prefered_category' => $request['prefered_category'],
+			'prefered_brand' => $request['prefered_brand'],
+			'min' => $request['min'],
+			'max' => $request['max'],
+			'delivery_date' => $request['delivery_date'],
+			'type' => 'rfq'
+		 ]);
+		return response()->json(['success' => true,
+				'message' => 'Inquiry has been send sucessfully',
+			], 200);
 	}
 }

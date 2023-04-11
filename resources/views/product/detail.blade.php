@@ -100,13 +100,66 @@
 											
 											<div class="product-link-wrapper d-flex">
 												@auth
-												<a href="javascript:void(0)"
-													class="btn btn-dark btn-rounded inquiry" data-id="{{$product['id']}}">Request a Quote </a>
+												 <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
+                            <div class="cart-overlay"></div>
+                            <button class="cart-toggle link btn btn-dark">Request a Quote</button>
+                            <div class="dropdown-box">
+                                <div class="cart-header">
+                                    <span>&nbsp;</span>
+                                    <a href="#" class="btn-close">Close<i class="w-icon-long-arrow-right"></i></a>
+                                </div>
+
+                                <div class="">
+                                    
+                                   <form class="form inquiry-form">
+                                   	@csrf
+                                   	<div class="form-group">
+                                        <input type="text" id="username" name="username" class="form-control" value="{{$user['name']}}" readonly>
+                                        <span class="error" id="username_error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="phone" name="phone" class="form-control" value="{{$user['phone']}}" readonly>
+                                        <span class="error" id="phone_error"></span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="email" name="email" class="form-control" value="{{$user['email']}}" readonly>
+                                        <span class="error" id="email_error mb-2"></span>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="product_name" name="product_name" class="form-control" value="{{$product['name']}}" readonly>
+                                        <span class="error" id="product_name_error"></span>
+
+                                         <input type="hidden" id="product_id" name="product_id" class="form-control" value="{{$product['id']}}">
+                                        
+                                    </div>
+
+                                     <div class="form-group">
+                                        <input type="text" id="quantity" name="quantity" class="form-control" placeholder="Product Quantity">
+                                         <span class="alert alert-icon alert-error alert-bg alert-inline show-code-action" id="quantity_error"  style="display:none"></span>
+                                        
+                                    </div>
+                                    <div class="form-group mt-4">
+                                        <textarea id="message" name="enquiry" cols="30" rows="2" class="form-control" placeholder="Enquiry"></textarea>
+                                        <span class="alert alert-icon alert-error alert-bg alert-inline show-code-action" id="enquiry_error" style="display:none"></span>
+                                    </div>
+                                    
+                                   	  <button type="submit" class="btn btn-dark btn-rounded inquiry mt-5">Save</button>
+                                   </form>
+                                </div>
+
+                                
+
+                            
+                            </div>
+                            <!-- End of Dropdown Box -->
+                        </div>
 												@else
 												<a href="{{url('login')}}"
 													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Request a Quote </a>
 												@endauth
-												
+													
 											</div>
 											
 										</div>
@@ -214,37 +267,41 @@
 </x-guest-layout>
 <script type="text/javascript">
 	$('#inquirymsg').hide();
-	$(document).on('click', "a.inquiry", function() {
-	let product_id = $(this).attr('data-id');
-	let quantity = 1;
-	$.ajax({
+	$('.btn-close').click(function(){
+		$('.alert-bg').text('');
+		$('.alert-bg').hide();
+	});
+	$('.inquiry-form').on('submit', function(e) {
+		e.preventDefault()
+		let formValue = new FormData(this);
+		$.ajax({
        		type: "Post",
           url: '{{ url("customerInquiry") }}',
-          data: {
-            "quantity": quantity,
-            "product_id" : product_id,
-            "_token": "{{ csrf_token() }}",
-        	},
+          data: formValue,
+          cache: false,
+          contentType: false,
+          processData: false,
           success: function(response) {
           	if(response.success){
-          		$('#inquirymsg').show();
+          		
           		notifyMsg(response.message,'success');
+          		$('.btn-close').trigger('click');
 
           	}else{
           		notifyMsg(response.message,'error');
-
+          		$('.btn-close').trigger('click');
           	}
           },
           error: function(response) {
           	let error = response.responseJSON;
-          	console.log(error);
             if(!error){
             		error = JSON.parse(response.responseText);
             }
             $.each( error.errors, function( key, value ) {
+            			$("#"+key+"_error").show();
   								$("#"+key+"_error").text(value);
 						});
 				}
 	});
-});
+	});
 </script>

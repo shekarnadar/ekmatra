@@ -12,7 +12,14 @@ class Inquiry extends Model
         'product_id',
         'quantity',
         'client_id',
-        'vendor_id'
+        'vendor_id',
+        'enquiry',
+        'min',
+        'max',
+        'delivery_date',
+        'prefered_brand',
+        'prefered_category',
+        'type'
     ];
 
    public function product(){
