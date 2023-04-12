@@ -52,7 +52,7 @@
 										<div class="col-6">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Name: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{$subCat[0]['subCategory']['name']}}">
+												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{@$subCat[0]['subCategory']['name']}}">
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
