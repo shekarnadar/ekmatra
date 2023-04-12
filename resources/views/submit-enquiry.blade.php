@@ -1,3 +1,8 @@
+<style type="text/css">
+  .form-group{
+    text-align:left;
+  }
+</style>
 <x-guest-layout>
 
 			<nav class="breadcrumb-nav mb-10 pb-1">
@@ -65,10 +70,14 @@
                           <span class="error max_error"></span>
                       </div>
                   </div>
-                  <div class="form-group">
+                 <!--  <div class="form-group">
                   	 <input type="text" id="delivery_date" name="delivery_date"
                           class="form-control" placeholder="
-                          Delivery Date">
+                          Delivery Date"/>
+                  </div> -->
+                   <div class="form-group">
+                      <input type="text" id="delivery_date" name="delivery_date"
+                          class="form-control" placeholder="Delivery Date">
                   </div>
                   <div class="form-group">
                       <textarea id="enquiry" name="enquiry" cols="30" rows="5"
@@ -97,11 +106,11 @@
           	if(response.success){
           		
           		notifyMsg(response.message,'success');
-          		$('.btn-close').trigger('click');
+          		location.reload(true);
+
 
           	}else{
           		notifyMsg(response.message,'error');
-          		$('.btn-close').trigger('click');
           	}
           },
           error: function(response) {

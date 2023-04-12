@@ -99,7 +99,7 @@ class InquiryController extends Controller
 		$inquiry = Inquiry::create([
 			'quantity' => ($request['quantity'])? $request['quantity'] : 1,
 			'client_id' => $client_id,
-			
+			'enquiry' => $request['enquiry'],
 			'prefered_category' => $request['prefered_category'],
 			'prefered_brand' => $request['prefered_brand'],
 			'min' => $request['min'],

@@ -83,11 +83,33 @@
 													<div class="author-name-wrapper flex-wrap mb-2">
 														<h4 class="author-name font-weight-bold mb-2 pr-4 mr-auto">{{$value['prefered_category']}}</h4>
 												  </div>
-												  <p>Prefered Category : {{$value['prefered_category']}}
+												  <p>
+												  	@if(@$value['prefered_category'])
+												  	Prefered Category : {{$value['prefered_category']}}
+												  	@endif
+												  	@if(@$value['prefered_brand'])
 												  	<br/>
 												  	Prefered Brand : {{$value['prefered_brand']}}
+												  	@endif
+												  	@if(@$value['min'])
+												  	<br/>
+												  	Min : {{$value['min']}}
+												  	@endif
+												  	@if(@$value['max'])
+												  	Max :{{$value['max']}}
+												  	@endif
+												  	@if(@$value['delivery_date'])
+												  	<br/>
+												  	Delivery Date :{{$value['delivery_date']}}
+												  	@endif
 												  </p>
-												  <p>Enquiry : {{$value['enquiry']}}</p>
+												  
+												  @if(@$value['quantity'])
+												  	<p>Quantity : {{$value['quantity']}}</p>
+												  @endif
+												   @if(@$value['enquiry'])
+												  	<p>Enquiry : {{$value['enquiry']}}</p>
+												  @endif
 											  </div>
 				 							</div>
 									
