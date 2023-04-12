@@ -576,12 +576,10 @@
 	<!-- End of Mobile Menu -->
 
 	<!-- Start of Newsletter popup -->
-	<div class="newsletter-popup mfp-hide" style="
-    width: 400px;
-    box-shadow: 0 0 30px rgba(0,0,0,.15);
-    background: #fff;">
+
+	<div class="newsletter-popup mfp-hide newsletterdiv">
 		<div class="newsletter-content">
-			<h6 class="text-uppercase font-weight-normal ls-25">Save to</h6>
+			<h6 class="text-uppercase font-weight-bold ls-25">Save to</h6>
 			<div class="d-flex addDiv mt-2">
 
 				<span data-v-80b17294="" class="cg-wishlist__cta__toggle quantity-plus w-icon-plus addlist"></span>
@@ -608,6 +606,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- End of Newsletter popup -->
 
 	<!-- Start of Quick View -->
