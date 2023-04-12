@@ -823,6 +823,7 @@
           processData: false,
           success: function(response) {
           		 if (response.success) {
+          		 		notifyMsg('Logged in successfully','success');
           		 		setTimeout(function(){
                         location.reload();
 
@@ -852,6 +853,7 @@
           processData: false,
           success: function(response) {
           		 if (response.success) {
+          		 	notifyMsg('Congrats! you have been registered successfully.','success');
           		 		setTimeout(function(){
                        location.reload();
 

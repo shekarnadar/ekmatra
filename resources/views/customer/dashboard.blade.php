@@ -34,7 +34,7 @@
 
 								<div class="row">
 									<div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-										<a href="#">
+										<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 											<div class="icon-box text-center">
 												<span class="icon-box-icon icon-logout">
 													<i class="w-icon-logout"></i>

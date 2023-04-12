@@ -18,7 +18,12 @@ class VendorAuth
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('vendor')->check()) {
-            return $next($request);
+            if(getAuthGaurd() == 'vendor'){
+                 return $next($request);
+             }else{
+               return redirect(getAuthGaurd().'/login');
+             }
+           
         } else {
             return redirect('vendor/login');
         }

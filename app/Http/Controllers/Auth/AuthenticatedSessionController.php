@@ -23,6 +23,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        Auth::guard('web')->logout();
+        $request->session()->regenerateToken();
         $request->authenticate();
 
         $request->session()->regenerate();

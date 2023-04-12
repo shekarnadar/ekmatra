@@ -72,7 +72,7 @@ class CategoryController extends Controller
 		 	
 		 	Category::saveCategory($request->input());
 			return response()->json(['success' => true,
-				'message' => 'Category has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
+				'message' => 'Category has been '.($request['id'] ? 'updated' : 'added')  .' successfully.'
 		  ], 200);
 
 		} catch(\Exception $e){

@@ -73,12 +73,10 @@
 									@auth
 
 									<a href="{{url('wishlist')}}" class="label-down link">
-											@if(\Session::get('wishlistCount'))
 											<i class="w-icon-cart">
 												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
 											</i>
-											@endif
-											<span class="cart-label">Wishlist</span>
+
 									</a>
 									@else
 									<a href="{{url('login')}}" class="label-down link login sign-in">

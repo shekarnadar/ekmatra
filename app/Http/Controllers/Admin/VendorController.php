@@ -67,7 +67,7 @@ class VendorController extends Controller
 			}
 			User::saveVendor($request->input());
 			return response()->json(['success' => true,
-				'message' => 'Vendor has been'.($request['id'] ? 'updated' : 'added')  .' successfully.'
+				'message' => 'Vendor has been '.($request['id'] ? 'updated' : 'added')  .' successfully.'
 		  ], 200);
 			
 

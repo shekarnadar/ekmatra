@@ -18,7 +18,11 @@ class AdminAuth
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('admin')->check()) {
-            return $next($request);
+            if(getAuthGaurd() == 'admin'){
+                 return $next($request);
+             }else{
+               return redirect(getAuthGaurd().'/login');
+             }
         } else {
             return redirect('admin/login');
         }

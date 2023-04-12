@@ -27,6 +27,8 @@ class AuthenticatedSessionController extends Controller
 	{
 
 		 if(Auth::guard('vendor')->attempt($request->only('email','password'),$request->filled('remember'))){
+		 	 Auth::guard('web')->logout();
+        $request->session()->regenerateToken();
     	  //$request->authenticate();
     	  $request->session()->regenerate();
         return redirect()
