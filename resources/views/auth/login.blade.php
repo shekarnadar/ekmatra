@@ -11,16 +11,16 @@
 				</ul>
 				<div class="tab-content">
 						<div class="tab-pane active" id="sign-in">
-								<form  name="loginForm" method="POST" id="loginForm">
+								<form  name="loginForm" method="POST" id="loginForm" autocomplete="off" action="">
 									@csrf
 									<div class="form-group">
 											<label>Username or email address *</label>
-											<input type="text" class="form-control" name="email" id="email" required>
+											<input type="text" class="form-control" name="email" id="email" required  autocomplete="none">
 											<span class="error" id="email1_error"></span>
 									</div>
 									<div class="form-group mb-0">
 											<label>Password *</label>
-											<input type="password" class="form-control" name="password" id="password" required>
+											<input type="password" class="form-control" name="password" id="password" required  autocomplete="false">
 											<span class="error" id="password_error"></span>
 									</div>
 									<div class="form-checkbox d-flex align-items-center justify-content-between">

@@ -2,7 +2,7 @@
 	<div class="header-top">
 			<div class="container">
 					<div class="header-left">
-							<p class="welcome-msg">Welcome to Wolmart Store message or remove it!</p>
+							<p class="welcome-msg">Welcome to Ekmatra Store message or remove it!</p>
 					</div>
 					<div class="header-right">
 							
@@ -52,7 +52,7 @@
 					</div>
 					<div class="header-right ml-4">
 							@auth
-							<a class="mr-2 btn btn-dark btn-outline" href="{{url('submitanenquiry')}}">Request for Quotations</a>
+							<a class="mr-2 btn btn-dark btn-outline d-xs-show d-lg-flex" href="{{url('submitanenquiry')}}">Request for Quotations</a>
 							@else
 								<a class="mr-2 btn btn-dark btn-outline sign-in" href="{{url('login')}}">Request for Quotations</a>
 							@endauth

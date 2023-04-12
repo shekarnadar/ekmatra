@@ -5,7 +5,7 @@
 	<title>Ekmatra</title>
 
 	<meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
-	<meta name="description" content="Wolmart is powerful marketplace &amp; ecommerce responsive Html5 Template.">
+	<meta name="description" content="ekmatra">
 	<meta name="author" content="D-THEMES">
 
 	<!-- Favicon -->

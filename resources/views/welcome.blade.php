@@ -621,7 +621,7 @@
 										</div>
 										<div class="banner-content col-xl-5 col-lg-6 col-sm-8 mb-4">
 												<h2 class="banner-title text-white text-capitalize font-secondary font-weight-bolder">Download
-														Wolmart App Now!</h2>
+														Ekmatra App Now!</h2>
 												<p>
 														Shopping fastly and easily more with our app. Get a link to download the app on your phone.
 												</p>
