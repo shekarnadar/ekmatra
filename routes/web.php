@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Controllers\customer\CustomerController;
+use App\Http\Controllers\Customer\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductController;
