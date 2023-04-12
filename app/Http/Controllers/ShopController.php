@@ -14,7 +14,7 @@ use App\Models\SubCategoryFeature;
 class ShopController extends Controller
 {
 	//
-	public function index($category){
+	public function index($category,Request $request){
 		
 		$category = Category::with(['subCategory','brands'])->where('name',$category)->first();
 		
@@ -24,7 +24,10 @@ class ShopController extends Controller
 		$subCategory = $category['subCategory'];
 		$brand = $category['brands'];
 
-		$product = Product::where('category_id',$cat_id)->where('status',1)->get();
+		$product = Product::where('category_id',$cat_id)->where('status',1)->paginate(2);
+		if ($request->ajax()) {
+			return view('presult', compact('product'));
+		}
 		
 		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product'));
 	}

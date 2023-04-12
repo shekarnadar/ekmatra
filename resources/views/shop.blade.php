@@ -126,74 +126,10 @@
 								
 							</div>
 						</nav>
-						<div class="product-wrapper row cols-lg-4 cols-md-3 cols-2">
-							@foreach($product as $prod_val)
-								<div class="product-wrap">
-									<div class="product product-image-gap product-simple">
-										<figure class="product-media">
-											<a href="{{url('product-detail/'.$prod_val['id'])}}">
-												<img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
-												 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
-											</a>
-										   
-											<div class="product-action">
-												<a href="{{url('product-detail/'.$prod_val['id'])}}" class="btn-product" title="Quick View">Quick View</a>
-											</div>
-										</figure>
-										<div class="product-details">
-											
-											<h4 class="product-name">
-												<a href="{{url('product-detail/'.$prod_val['id'])}}">{{$prod_val['name']}}</a>
-											</h4>
-										   
-											<div class="product-pa-wrapper">
-												<div class="product-price">
-													<ins class="new-price">Price : {{$prod_val['price']}}</ins>
-													<del class="old-price">{{$prod_val['mrp']}}</del>
-												</div>
-												<div class="product-price">
-													<ins class="new-price">Min Qty : {{$prod_val['maq']}}</ins>
-												</div>
-												<div class="product-action">
-													@auth
-													<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist
-													" data-id="{{$prod_val['id']}}" >Add To Wishlist</a>
-													@else
-													 <a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
-													@endauth
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							@endforeach
-						   
+						<div id="tag_container">
+							@include('presult')
 						</div>
-
-						<div class="toolbox toolbox-pagination justify-content-between">
-							<p class="showing-info mb-2 mb-sm-0">
-								Showing<span>1-12 of 60</span>Products
-							</p>
-							<ul class="pagination">
-								<li class="prev disabled">
-									<a href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-										<i class="w-icon-long-arrow-left"></i>Prev
-									</a>
-								</li>
-								<li class="page-item active">
-									<a class="page-link" href="#">1</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">2</a>
-								</li>
-								<li class="next">
-									<a href="#" aria-label="Next">
-										Next<i class="w-icon-long-arrow-right"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -205,4 +141,36 @@
 	</div>
 
 </x-guest-layout>
-
+<script type="text/javascript">
+	$(window).on('hashchange', function() {
+		if (window.location.hash) {
+			var page = window.location.hash.replace('#', '');
+			if (page == Number.NaN || page <= 0) {
+				return false;
+			}else{
+				getData(page);
+			}
+		}
+		});
+	$(document).on('click', '.pagination a',function(event){
+			event.preventDefault();
+			$('li').removeClass('active');
+			$(this).parent('li').addClass('active');
+			var myurl = $(this).attr('href');
+			var page=$(this).attr('href').split('page=')[1];
+			getData(page);
+	});
+	function getData(page){
+		$.ajax(
+		{
+				url: '?page=' + page,
+				type: "get",
+				datatype: "html"
+		}).done(function(data){
+				$("#tag_container").empty().html(data);
+				location.hash = page;
+		}).fail(function(jqXHR, ajaxOptions, thrownError){
+				alert('No response from server');
+		});
+	}
+</script>

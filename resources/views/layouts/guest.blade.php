@@ -711,33 +711,34 @@
 				});
 			}
 				function wishList(id){
-    		var id = id;
-    		$("#product_id").val(id);
-    		$.ajax({
-       		type: "get",
-          url: '{{ url("userWishlist/") }}'+'/'+id,
-          
-          success: function(response) {
-          		 $(".form-checkbox ul").html(response);
-          },
-          error: function(response) {
-          	let error = response.responseJSON;
-          
-          }
-        });
-        Wolmart.popup({
-					items:{
-						src:'.newsletter-popup'
-						},
-						type:'inline',
-						mainClass:'mfp-newsletter mfp-fadein-popup',
-						callbacks:{
-							beforeClose:function(){
-								$(".form-checkbox").html();
-								("#hide-newsletter-popup")[0].checked
+    			var id = id;
+    		
+	    		$.ajax({
+	       		type: "get",
+	          url: '{{ url("userWishlist/") }}'+'/'+id,
+	          
+	          success: function(response) {
+	          		 $(".form-checkbox ul").html(response);
+	          		 $("#product_id").val(id);
+	          },
+	          error: function(response) {
+	          	let error = response.responseJSON;
+	          
+	          }
+	        });
+	        Wolmart.popup({
+						items:{
+							src:'.newsletter-popup'
+							},
+							type:'inline',
+							mainClass:'mfp-newsletter mfp-fadein-popup',
+							callbacks:{
+								beforeClose:function(){
+									$(".form-checkbox").html();
+									("#hide-newsletter-popup")[0].checked
+								}
 							}
-						}
-					});
+						});
        }
 			$(document).on('click', "a.addwishlist", function() {
     		var id = $(this).attr('data-id');
