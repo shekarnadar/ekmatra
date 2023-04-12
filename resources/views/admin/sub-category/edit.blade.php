@@ -128,13 +128,13 @@ $(document).ready(function() {
 		$('#subCategoryCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);
-			var cat_id ="{{$subCat[0]['subCategory']['category_id']}}";
+			var cat_id ="{{$cat_id}}";
 			if ( $(this).parsley().isValid() ) {
 				 $(".loading").show();
 				 $(".addsubcategory").prop('disabled',true);
 				 $.ajax({
 			type: "post",
-			url: '{{ url("admin/category/sub-cat/update") }}'+'/' + {{$subCat[0]['subCategory']['category_id']}},
+			url: '{{ url("admin/category/sub-cat/update") }}'+'/' + {{$cat_id}},
 			data: formValue,
 			cache: false,
 			contentType: false,

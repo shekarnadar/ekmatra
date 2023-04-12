@@ -101,9 +101,10 @@ class SubCategoryController extends Controller
 	public function edit($id)
 	{
 		//
-
+	   $catgory= SubCategory::find($id);
+	   $cat_id = $catgory['id'];
 		$subCat = SubCategoryFeature::select('*', \DB::raw("(GROUP_CONCAT(sub_category_features.name,'|',sub_category_features.id )) as `names`"))->with(['featureName','subCategory'])->where('sub_category_id',$id)->groupBy('sub_category_features.feature_id')->get();
-		return view('admin.sub-category.edit',compact('subCat'));
+		return view('admin.sub-category.edit',compact('subCat','cat_id'));
 	}
 
 	/**
