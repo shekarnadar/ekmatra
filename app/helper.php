@@ -26,6 +26,14 @@ function getRole($role) {
 	return $role['id']; 
 }
 
+function generateRandomStringToken($type, $length = 4)
+{
+	if ($type == 'otp') {
+		return substr(str_shuffle(str_repeat($x = '0123456789', ceil($length / strlen($x)))), 1, $length);
+	} else {
+		return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
+	}
+}
 //upload image
 function uploadImage($foldername,$image){
 	

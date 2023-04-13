@@ -81,12 +81,12 @@ class User extends Authenticatable
 			$user = User::updateOrCreate($matchThese,$request);
 
         }else{
-
+        	 $pass = generateRandomStringToken('password', 6);
         	$user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'phone' => $request['phone'],
-            'password' => Hash::make(123456),
+            'password' => bcrypt($pass),
             'address' => $request['address'],
             'company_name' => $request['company_name'],
             'role_id' => $role_id,
@@ -95,11 +95,14 @@ class User extends Authenticatable
         	event(new Registered($user));   
 
         	$mailData = [
-            	'title' => 'Mail from ItSolutionStuff.com',
-            	'body' => 'This is for testing email using smtp.'
+            	'title' => 'Mail from Ekmatra',
+            	'body' => 'This is vendor credential.',
+            	'password' => $pass,
+            	'name' => $request['name'],
+            	'email' => $request['email']
         	];
          
-        //Mail::to('your_email@gmail.com')->send(new SendMail($mailData));
+        	Mail::to($request['email'])->send(new SendMail($mailData));
          
         }
         
