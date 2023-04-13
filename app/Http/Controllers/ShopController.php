@@ -24,14 +24,42 @@ class ShopController extends Controller
 		$subCategory = $category['subCategory'];
 		$brand = $category['brands'];
 
-		$product = Product::where('category_id',$cat_id)->where('status',1)->paginate(2);
-		if ($request->ajax()) {
-			return view('presult', compact('product'));
-		}
+		$product = Product::where('category_id',$cat_id)->where('status',1)->paginate(10);
+		
 		
 		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product'));
 	}
+    
+    public function filterResult(Request $request){
 
+    	$product = Product::where('category_id',$request['cat_id']);
+    	if($request['brand_array']){
+    		$product->whereIn('sub_category_feature_id',$request['brand_array']);
+    	}
+    	if($request['warranty']){
+    		$product->where('warrenty',$request['warranty']);
+    	}
+    	if($request['min_price'] > 0 && $request['max_price']  > 0)
+        {
+            $product->whereBetween('price', [$request['min_price'] , $request['max_price'] ]);
+        }
+        if($request['min_qty'] > 0 && $request['max_qty']  > 0)
+        {
+            $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
+        }
+        if($request['max_qty'] == 150) {
+        	 $product->where('maq','>=',$request['max_qty']);
+        }
+        if($request['page_limit']){
+        	$page_limit = $request['page_limit'];
+        }else{
+        	$page_limit = 10;
+        }
+    	$product = $product->where('status',1)->paginate($page_limit);
+		if ($request->ajax()) {
+			return view('presult', compact('product'));
+		}
+    }
 	public function subCategoryList($category,$subcategory){
 		
 		$category_name = $category;

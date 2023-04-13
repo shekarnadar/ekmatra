@@ -178,6 +178,10 @@
      
     
      var cat_id = '{{@$product["category_id"]}}';
+     var warrenty = '{{@$product["warrenty"]}}';
+     if(warrenty){
+     	 $('#warrenty').val(warrenty);
+     }
 		 if(cat_id){
 		 		 $('#category_id').val(cat_id);
 		 		 var sub_category_id = '{{@$product["sub_category_id"]}}';

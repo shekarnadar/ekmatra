@@ -52,7 +52,7 @@
 							<ul class="pagination">
 								<li class="prev {{ ($product->currentPage() == 1) ? ' disabled' : '' }}">
 									@if($product->currentPage() != 1)
-									<a href="{{ $product->url($product->currentPage()-1) }}" aria-label="Previous" tabindex="-1" aria-disabled="true">
+									<a data-value="{{$product->currentPage()-1}}" href="javascript:void(0)" aria-label="Previous" tabindex="-1" aria-disabled="true">
 										<i class="w-icon-long-arrow-left"></i>Prev
 									</a>
 									@else
@@ -63,14 +63,14 @@
 								</li>
 								  @for ($i = 1; $i <= $product->lastPage(); $i++)
 								  	<li class="page-item {{ ($product->currentPage() == $i) ? ' active' : '' }} ">
-											<a class="page-link" href="{{ $product->url($i) }}">{{$i}}</a>
+											<a class="page-link" href="javascript:void(0)"  data-value="{{$i}}">{{$i}}</a>
 									</li>
 								  @endfor
 								
 							
 								<li class="next {{ ($product->currentPage() == $product->lastPage()) ? ' disabled' : '' }}">
 									@if ($product->currentPage() != $product->lastPage())
-									<a href="{{ $product->url($product->currentPage()+1) }}" aria-label="Next">
+									<a href="javascript:void" aria-label="Next" data-value="{{$product->currentPage()+1}}">
 										Next<i class="w-icon-long-arrow-right"></i>
 									</a>
 									@else

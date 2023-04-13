@@ -50,7 +50,7 @@
 												placeholder="$min"><span class="delimiter">-</span><input
 												type="number" name="max_price" class="max_price text-center"
 												placeholder="$max"><a href="#"
-												class="btn btn-primary btn-rounded">Go</a>
+												class="btn btn-primary btn-rounded priceFilter">Go</a>
 										</form>
 									</div>
 								</div>
@@ -60,31 +60,32 @@
 								<!-- Start of Collapsible Widget -->
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Brand</label></h3>
-									<ul class="widget-body filter-items item-check mt-1">
+									<ul class="widget-body filter-items item-check mt-1 brand-item">
 										@foreach($brand as $val)
-											<li><a href="#">{{$val['name']}}</a></li>
+											<li data-id="{{$val['id']}}"><a href="javascript:void(0)" >{{$val['name']}}</a></li>
 										@endforeach
 									</ul>
 								</div>
 								<!-- End of Collapsible Widget -->
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Minimum qty</label></h3>
-									<ul class="widget-body filter-items item-check">
-										<li><a href="#">No minimum qty</a></li>
-										<li><a href="#">Under 50</a></li>
-										<li><a href="#">50-100</a></li>
-										<li><a href="#">100-150</a></li>
-										<li><a href="#">150 & up</a></li>
+									<ul class="widget-body filter-items item-check qty-item">
+										<li data-minqty="1" data-maxqty="50"><a href="#">Under 50</a></li>
+										<li data-minqty="50" data-maxqty="100"><a href="#">50-100</a></li>
+										<li data-minqty="100" data-maxqty="150"><a href="#">100-150</a></li>
+										<li data-maxqty="150" data-minqty="0" data-maxqty="100"><a href="#">150 & up</a></li>
 									</ul>
 								</div>
 
 								<!-- Start of Collapsible Widget -->
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Warranty</label></h3>
-									<ul class="widget-body filter-items item-check">
-										<li><a href="#">1 year</a></li>
-										<li><a href="#">2 years</a></li>
-										<li><a href="#">3 years</a></li>
+									<ul class="widget-body filter-items item-check warranty-item">
+										<li data-value="1"><a href="#">1 year</a></li>
+										<li data-value="2"><a href="#">2 years</a></li>
+										<li data-value="3"><a href="#">3 years</a></li>
+										<li data-value="4"><a href="#">4 years</a></li>
+										<li data-value="5"><a href="#">5 years</a></li>
 									</ul>
 								</div>
 								<!-- End of Collapsible Widget -->
@@ -116,11 +117,10 @@
 							</div>
 							<div class="toolbox-right">
 								<div class="toolbox-item toolbox-show select-box mr-0">
-									<select name="count" class="form-control">
-										<option value="9">Show 9</option>
-										<option value="12" selected="selected">Show 12</option>
-										<option value="24">Show 24</option>
-										<option value="36">Show 36</option>
+									<select name="limit_product" id="limit_product" class="form-control">
+										<option value="10" selected="selected">Show 10</option>
+										<option value="20">Show 20</option>
+										<option value="30">Show 30</option>
 									</select>
 								</div>
 								
@@ -142,35 +142,127 @@
 
 </x-guest-layout>
 <script type="text/javascript">
-	$(window).on('hashchange', function() {
-		if (window.location.hash) {
-			var page = window.location.hash.replace('#', '');
-			if (page == Number.NaN || page <= 0) {
-				return false;
-			}else{
-				getData(page);
-			}
+	var brand_array = [];
+  var page_count = 1;
+  var warranty = '';
+  var max_price = '';
+  var min_price = '';
+  var min_qty = '';
+  var max_qty = '';
+  var page_limit = '';
+
+	$('.brand-item li').click(function(e){
+		event.preventDefault();
+      
+		var id = $(this).attr('data-id');
+		page_count = 1;
+	
+		var getClass = this.className;
+		if(getClass == 'active'){
+			removeBrand(id);
+		}else{
+				brand_array.push(id);		
 		}
-		});
+		getData(page_count);
+  });
+
+	$('#limit_product').change(function(e){
+			var id = $(this).val();
+			page_limit = id;
+			page_count = 1;
+			getData(page_count);
+	});
+  $('.priceFilter').click(function(e){
+  		page_count = 1;
+  		min_price = $('.min_price').val();
+  		max_price = $('.max_price').val();
+  		if(min_price == ''){
+  				notifyMsg('Plese Enter Max price','error');
+  				return false;
+			}
+			if(max_price == ''){
+  				notifyMsg('Plese Enter Max price','error');
+  				return false;
+			}
+			getData(page_count);
+  });
+
+  function removeBrand(id){
+  	brand_array.splice($.inArray(id, brand_array), 1);
+  	return brand_array;
+  }
+	
+	$('.filter-clean').click(function(){
+		brand_array = [];
+  	page_count = 1;
+   	warranty = '';
+  	max_price = '';
+  	min_price = '';
+  	min_qty = '';
+    max_qty = '';
+    page_limit = $('#page_limit').val();
+    getData(page_count);
+	});
+	$('.qty-item li').click(function(){
+		page_count = 1;
+
+		var id = $(this).attr('data-value');
+	
+		min_qty = $(this).attr('data-minqty');
+		max_qty = $(this).attr('data-maxqty');
+		
+		$('.qty-item li').removeClass('active');
+		$(this).parent('.qty-item li').addClass('active');
+			getData(page_count);
+	});
+
+	$('.warranty-item li').click(function(){
+		page_count = 1;
+
+		var id = $(this).attr('data-value');
+		$('.warranty-item li').removeClass('active');
+		$(this).parent('.warranty-item li').addClass('active');
+		warranty = id;
+		getData(page_count);
+
+	});
 	$(document).on('click', '.pagination a',function(event){
 			event.preventDefault();
-			$('li').removeClass('active');
-			$(this).parent('li').addClass('active');
-			var myurl = $(this).attr('href');
-			var page=$(this).attr('href').split('page=')[1];
-			getData(page);
+			$('.page-item li').removeClass('active');
+			$(this).parent('.page-item li').addClass('active');
+			var page = $(this).attr('data-value');
+			page_count = page;
+			getData(page_count);
+			event.preventDefault();
+		
+			
 	});
 	function getData(page){
 		$.ajax(
 		{
-				url: '?page=' + page,
-				type: "get",
+				url: '{{url("filter-result")}}',
+				type: "Post",
+				 async: false,
+				 cache: false,
+
+				data :{
+					'page' : page,
+					'cat_id' : "{{$cat_id}}" ,
+					"_token": "{{ csrf_token() }}",
+					"brand_array" : brand_array,
+					"warranty" : warranty,
+					"max_price" : max_price,
+					"min_price" : min_price,
+					"min_qty" : min_qty,
+					"max_qty" : max_qty,
+					"page_limit" : page_limit,
+				},
 				datatype: "html"
 		}).done(function(data){
-				$("#tag_container").empty().html(data);
-				location.hash = page;
+				$("#tag_container").html(data);
 		}).fail(function(jqXHR, ajaxOptions, thrownError){
 				alert('No response from server');
 		});
+		 return false;
 	}
 </script>

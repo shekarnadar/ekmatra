@@ -30,14 +30,18 @@ require __DIR__.'/admin.php';
 require __DIR__.'/vendor.php';
 
 
-Route::get('/',[WelcomeController::class, 'index'])->name('index');
+Route::get('/', function(){
 
+    return view('comingsoon');
+});
+Route::get('welcome',[WelcomeController::class, 'index'])->name('index');
 
 
 //Shop page
 
 Route::get('shop/{category}',[ShopController::class, 'index'])->name('shopindex');
 Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryList'])->name('subcategory.list');
+Route::post('filter-result',[ShopController::class, 'filterResult'])->name('filterResult');
 
 //Product page
 

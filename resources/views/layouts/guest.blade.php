@@ -506,7 +506,7 @@
 			<div class="form-checkbox d-flex align-items-center">
 				<input type="checkbox" class="custom-checkbox" id="hide-newsletter-popup" name="hide-newsletter-popup"
 					required="">
-					<ul class="widget-body filter-items search-ul">
+					<ul class="widget-body filter-items item-check mt-1">
 						
 					</ul>
 				
