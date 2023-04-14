@@ -62,7 +62,7 @@
 													SubCategory: <span>{{$product['subCategory']['name']}}</span>
 												</div>
 												<div class="product-sku mt-2">
-													Brand: <span>{{$product['getBrands']['name']}}</span>
+													Brand: <span>{{$product['feature_attributes']['name']}}</span>
 												</div>
 											</div>
 										</div>
