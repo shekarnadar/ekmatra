@@ -44,14 +44,12 @@
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Price</label></h3>
 									<div class="widget-body">
-									   
-										<form class="price-range">
-											<input type="number" name="min_price" class="min_price text-center"
-												placeholder="$min"><span class="delimiter">-</span><input
-												type="number" name="max_price" class="max_price text-center"
-												placeholder="$max"><a href="#"
-												class="btn btn-primary btn-rounded priceFilter">Go</a>
-										</form>
+									   <ul class="widget-body filter-items item-check price-item">
+										<li data-maxprice="1000" data-minprice="1"><a href="#">Under 1000</a></li>
+										<li data-maxprice="5000" data-minprice="10000"><a href="#">5000-10000</a></li>
+										<li data-maxprice="20000" data-minprice="10000"><a href="#">10000-20000</a></li>
+										<li data-maxprice="20000" minprice="0"><a href="#">20000 & up</a></li>
+									</ul>
 									</div>
 								</div>
 								<!-- End of Collapsible Widget -->
@@ -174,18 +172,12 @@
 			page_count = 1;
 			getData(page_count);
 	});
-  $('.priceFilter').click(function(e){
+  $('.price-item li').click(function(e){
   		page_count = 1;
-  		min_price = $('.min_price').val();
-  		max_price = $('.max_price').val();
-  		if(min_price == ''){
-  				notifyMsg('Plese Enter Max price','error');
-  				return false;
-			}
-			if(max_price == ''){
-  				notifyMsg('Plese Enter Max price','error');
-  				return false;
-			}
+  		min_price = $(this).attr('data-minprice');
+  		max_price = $(this).attr('data-maxprice');
+  		$('.price-item li').removeClass('active');
+			$(this).parent('.price-item li').addClass('active');
 			getData(page_count);
   });
 
@@ -205,6 +197,7 @@
     page_limit = $('#page_limit').val();
     getData(page_count);
 	});
+
 	$('.qty-item li').click(function(){
 		page_count = 1;
 
@@ -222,14 +215,20 @@
 		page_count = 1;
 
 		var id = $(this).attr('data-value');
+	
+		if(warranty == id){
+			 	$('.warranty-item li').removeClass('active');
+		$(this).parent('.warranty-item li').removeClass('active');
+		}else{
+			warranty = id;
 		$('.warranty-item li').removeClass('active');
-		$(this).parent('.warranty-item li').addClass('active');
-		warranty = id;
-		var getClass = this.className;
-		
+		$(this).parent('.warranty-item li').addClass('active');	
 		getData(page_count);
+		}
+		
 
 	});
+
 	$(document).on('click', '.pagination a',function(event){
 			event.preventDefault();
 			$('.page-item li').removeClass('active');
@@ -238,17 +237,15 @@
 			page_count = page;
 			getData(page_count);
 			event.preventDefault();
-		
-			
 	});
+
 	function getData(page){
 		$.ajax(
 		{
 				url: '{{url("filter-result")}}',
 				type: "Post",
-				 async: false,
-				 cache: false,
-
+				async: false,
+				cache: false,
 				data :{
 					'page' : page,
 					'cat_id' : "{{$cat_id}}" ,
@@ -264,6 +261,13 @@
 				datatype: "html"
 		}).done(function(data){
 				$("#tag_container").html(data);
+				 setTimeout(function () {
+                $('html, body').animate({
+                    scrollTop: $("#tag_container").offset().top - 500
+                }, 777);
+            }, 100);
+
+
 		}).fail(function(jqXHR, ajaxOptions, thrownError){
 				alert('No response from server');
 		});
