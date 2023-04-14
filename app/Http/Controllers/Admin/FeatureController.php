@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feature;
+use App\Models\FeatureAttribute;
 use Illuminate\Http\Request;
 use App\Http\Requests\admin\CreateFeatureRequest;
 use DataTables;
@@ -61,6 +62,7 @@ class FeatureController extends Controller
 		  ], 200);
 
 		} catch(\Exception $e){
+			echo $e->getMessage();
 			return response()->json(['success' => false,
 				'message' => 'something went wrong'], 200);
 		}  
@@ -86,7 +88,8 @@ class FeatureController extends Controller
 	public function edit($id)
 	{
 			$feature = Feature::find($id);
-		 	return view('admin.feature.create',compact('feature'));
+			$featureAttribute = FeatureAttribute::select( \DB::raw("(GROUP_CONCAT(name,'|',id )) as `names`"))->where('feature_id',$id)->groupBy('feature_id')->get();
+		 	return view('admin.feature.edit',compact('feature','featureAttribute'));
 		//
 	}
 
@@ -100,6 +103,36 @@ class FeatureController extends Controller
 	public function update(Request $request, Feature $feature)
 	{
 		//
+		$post = $request->input();
+				Feature::where('id',$post['id'])->update(['name' => $post['name']]);
+				foreach($post['feature_value'] as $key=>$value){
+						
+						$decode = json_decode($value,true);
+						$array = (array)$decode;
+						foreach($array as $val){
+							if(isset($val['id'])){
+								$id = $val['id'];
+							}else{
+								$id = 0;
+							}
+							$matchThese = ['id'=>$id];
+							FeatureAttribute::updateOrCreate($matchThese,[
+								'name' =>$val['value'] ,
+								'feature_id' => $post['id']
+							]);
+							
+						}
+				}
+				if(isset($post['removeIds'])){
+					$explode_ids = explode(',',$post['removeIds']);
+					foreach($explode_ids as $ids){
+							FeatureAttribute::where('id',$ids)->delete();
+					}
+				}
+				return response()->json(['success' => true,
+					'message' => 'Feature has been updated successfully.'
+		  	], 200);
+
 	}
 
 	/**

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\FeatureAttribute;
 class Feature extends Model
 {
     use HasFactory;
@@ -20,11 +20,22 @@ class Feature extends Model
         }else{
             $id = 0;
         }
-        $matchThese = ['id'=>$id];
-        $feature = Feature::updateOrCreate($matchThese,
-            ['name' => $request['name']]
-        );
-        
+        $feature = Feature::create([
+            'name' => $request['name']
+        ]);
+        if($request['feature_value']){
+            foreach($request['feature_value'] as $key=>$value){
+                $decode = json_decode($value,true);
+                $array = (array)$decode;
+                foreach($array as $array_value){
+                    FeatureAttribute::create([
+                        'name' => $array_value['value'],
+                        'feature_id' => $feature->id
+                    ]);
+                }
+                
+            }
+        }
         return $feature;
     }
 

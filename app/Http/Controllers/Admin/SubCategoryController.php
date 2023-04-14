@@ -33,7 +33,6 @@ class SubCategoryController extends Controller
 								$sub_cat = url('admin/category/sub-cat/show').'/'.$row->id;
 								$sub_cat_edit = url('admin/category/sub-cat/edit/').'/'.$row->id;
 								$btn = '<a href="'.$sub_cat_edit.'" class="edit btn btn-primary btn-sm">Edit</a>&nbsp;&nbsp;';
-								$btn.='<a href="'.$sub_cat.'" class="btn btn-primary btn-sm">View</a>';
 								return $btn;
 					 })
 					->rawColumns(['action', 'image'])
@@ -50,9 +49,9 @@ class SubCategoryController extends Controller
 	public function create($id)
 	{
 		//
-		$feature = Feature::get();
+	
 		$cat_id = $id;
-		return view('admin.sub-category.create',compact('cat_id','feature'));
+		return view('admin.sub-category.create',compact('cat_id'));
 	}
 
 	/**
@@ -88,8 +87,7 @@ class SubCategoryController extends Controller
 	public function show($id)
 	{
 		//
-		$subCat = SubCategoryFeature::select('*', \DB::raw("(GROUP_CONCAT(sub_category_features.name )) as `names`"))->with(['featureName','subCategory'])->where('sub_category_id',$id)->groupBy('sub_category_features.feature_id')->get();
-		return view('admin.sub-category.show',compact('subCat'));
+	
 	}
 
 	/**
@@ -101,9 +99,9 @@ class SubCategoryController extends Controller
 	public function edit($id)
 	{
 		//
-	   $catgory= SubCategory::find($id);
-	   $cat_id = $catgory['id'];
-		$subCat = SubCategoryFeature::select('*', \DB::raw("(GROUP_CONCAT(sub_category_features.name,'|',sub_category_features.id )) as `names`"))->with(['featureName','subCategory'])->where('sub_category_id',$id)->groupBy('sub_category_features.feature_id')->get();
+	   $subCat= SubCategory::find($id);
+	   $cat_id = $subCat['category_id'];
+	 
 		return view('admin.sub-category.edit',compact('subCat','cat_id'));
 	}
 
@@ -118,32 +116,7 @@ class SubCategoryController extends Controller
 	{
 				$post = $request->input();
 				SubCategory::where('id',$post['id'])->update(['name' => $post['name']]);
-				foreach($post['faetures'] as $key=>$value){
-						
-						$decode = json_decode($value,true);
-						$array = (array)$decode;
-						foreach($array as $val){
-							if(isset($val['id'])){
-								$id = $val['id'];
-							}else{
-								$id = 0;
-							}
-							$matchThese = ['id'=>$id];
-							SubCategoryFeature::updateOrCreate($matchThese,[
-								'name' =>$val['value'] ,
-								'category_id' => $post['category_id'],
-								'sub_category_id' => $post['id'],
-								'feature_id' => $key
-							]);
-							
-						}
-				}
-				if(isset($post['removeIds'])){
-					$explode_ids = explode(',',$post['removeIds']);
-					foreach($explode_ids as $ids){
-							SubCategoryFeature::where('id',$ids)->delete();
-					}
-				}
+			
 				return response()->json(['success' => true,
 					'message' => 'Subcategory has been updated successfully.'
 		  	], 200);

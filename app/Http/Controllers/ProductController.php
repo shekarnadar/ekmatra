@@ -9,6 +9,9 @@ use App\Models\SubCategoryFeature;
 use App\Models\Product;
 use App\Models\Deal;
 use App\Models\ProductDeal;
+use App\Models\FeatureAttribute;
+use App\Models\Feature;
+
 
 use DataTables;
 
@@ -78,7 +81,8 @@ class ProductController extends Controller
 	{
 		//
 		$category =  Category::get();
-		return view('product.create',compact('category'));
+		$feature_attribute = FeatureAttribute::get();
+		return view('product.create',compact('category','feature_attribute'));
 	}
 
 	/**
@@ -136,12 +140,11 @@ class ProductController extends Controller
 	{
 		//
 		$product = Product::find($id);
-		$product_deals = ProductDeal::where('product_id',$id)->pluck('deal_id')->toArray();
-		$deals = Deal::get();
+		$feature_attribute = FeatureAttribute::get();
 		$category =  Category::get();
 		$subCategory = SubCategory::where('category_id',$product['category_id'])->get();
 		$brand = SubCategoryFeature::where('sub_category_id',$product['sub_category_id'])->get();
-		return view('product.create',compact('category','product','subCategory','brand','deals','product_deals'));
+		return view('product.create',compact('category','product','subCategory','feature_attribute'));
 
 	}
 

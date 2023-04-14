@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('feature/store',[FeatureController::class,'store'])->name('feature.store');
 		Route::get('feature/edit/{id}',[FeatureController::class,'edit'])->name('feature.edit');
 		Route::delete('feature/{id}', [FeatureController::class,'destroy'])->name('feature.delete');
+		Route::post('feature/update',[FeatureController::class,'update'])->name('feature.update');
 
 
 		Route::get('categories',[CategoryController::class,'index'])->name('category.index');
@@ -53,7 +54,6 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('category/{id}/sub-cat',[SubCategoryController::class,'index'])->name('subcategory.index');
 		Route::get('category/{id}/sub-cat/add',[SubCategoryController::class,'create'])->name('subcategory.add');
 		Route::post('category/sub-cat/store',[SubCategoryController::class,'store'])->name('subcategory.store');
-		Route::get('category/sub-cat/show/{id}',[SubCategoryController::class,'show'])->name('subcategory.show');
 		Route::get('category/sub-cat/edit/{id}',[SubCategoryController::class,'edit'])->name('subcategory.edit');
 		Route::post('category/sub-cat/update/{id}',[SubCategoryController::class,'update'])->name('subcategory.update');
 

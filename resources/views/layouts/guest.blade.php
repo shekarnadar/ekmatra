@@ -704,6 +704,16 @@
 	
 	</body>
 	<script type="text/javascript">
+			var requestforquotation = '';
+			var redirectPage = '';
+		  $('.requestforquotation').click(function(){
+		  	window.requestforquotation = 1;
+		  	window.redirectPage = "{{url('submitanenquiry')}}"
+		  });
+		   $('.wishlistAuth').click(function(){
+		   	window.redirectPage = "{{url('wishlist')}}"
+		  	window.requestforquotation = 1;
+		  });
 			function notifyMsg(msg,type) {
 				notif({
 					msg: msg,
@@ -824,10 +834,7 @@
           success: function(response) {
           		 if (response.success) {
           		 		notifyMsg('Logged in successfully','success');
-          		 		setTimeout(function(){
-                        location.reload();
-
-                  },2000);
+          		 		redirectionPage();
           		 }
           },
           error: function(response) {
@@ -854,10 +861,7 @@
           success: function(response) {
           		 if (response.success) {
           		 	notifyMsg('Congrats! you have been registered successfully.','success');
-          		 		setTimeout(function(){
-                       location.reload();
-
-                  },2000);
+          		 	redirectionPage();
           		 }
           },
           error: function(response) {
@@ -871,6 +875,16 @@
 						});
           },
        });
+		}
+		function redirectionPage(){
+				setTimeout(function(){
+					if(window.requestforquotation == 1){
+						window.requestforquotation = 0;
+						window.location.href = window.redirectPage;
+					}else{
+						location.reload();
+					}
+        },2000);
 		}
 	</script>
 </html>

@@ -129,12 +129,11 @@
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Brand: <span class="tx-danger">*</span></label>
-												<select class="form-control" name="sub_category_feature_id" id="sub_category_feature_id">
-														@if(@$product['id'])
-														@foreach($brand as $brand_val)
+												<select class="form-control" name="feature_attribute_id" id="feature_attribute_id">
+													   <option>Select Brand</option>
+														@foreach($feature_attribute as $brand_val)
 															<option value="{{$brand_val['id']}}">{{$brand_val['name']}}</option>
 														@endforeach
-													@endif
 												</select>
 												
 												<span class="text-danger" id="sub_category_feature_id_error"></span>
@@ -186,8 +185,8 @@
 		 		 $('#category_id').val(cat_id);
 		 		 var sub_category_id = '{{@$product["sub_category_id"]}}';
 		 		 $('#sub_category_id').val(sub_category_id);
-		 		 var sub_category_feature_id = '{{@$product["sub_category_feature_id"]}}';
-		 		 $('#sub_category_feature_id').val(sub_category_feature_id);
+		 		 var feature_attribute_id = '{{@$product["feature_attribute_id"]}}';
+		 		 $('#feature_attribute_id').val(feature_attribute_id);
 
 		 }
 		$('#productCreate').on('submit', function(e) {
@@ -255,25 +254,7 @@
                 }
             });
 		}
-		$("#sub_category_id").on('change', function() {
-			$.ajax({
-                url: '{{ url("product/brand") }}',
-                type: "POST",
-                data: {
-                	 sub_category_id: this.value,
-                  _token: '{{ csrf_token() }}'
-                },
-                dataType: 'json',
-                success: function(result) {
-                	$('#sub_category_feature_id').html('<option value="">Select Brand</option>');
-                    $.each(result, function(key, value) {
-                        $("#sub_category_feature_id").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
-                    });
-                   
-                }
-            });
-		});
+		
 
 		
 	});

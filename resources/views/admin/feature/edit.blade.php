@@ -53,7 +53,7 @@
 										<div class="col-6">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Name: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{@$feature->name}}">
+												<input class="form-control" name="name" placeholder="Enter Name" required="required" id="name" type="text" data-parsley-required-message="Please enter your name" value="{{@$feature['name']}}">
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
@@ -61,7 +61,24 @@
 										<div class="col-12">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Attribute: <span class="tx-danger">*</span></label>
-												<input  name="feature_value[]" placeholder="Enter Name" required="required" id="feature_value" type="text" data-parsley-required-message="Please enter feature value" value="">
+													<?php
+															if(count($featureAttribute) > 0){
+															$featureAttributes = explode(',',$featureAttribute[0]['names']);
+																foreach($featureAttributes as $feature_val){
+																		$feature_explode = explode('|',$feature_val);
+																		$fetureValue[]=[
+																			'value' => $feature_explode[0],
+																			'id'=> $feature_explode[1],
+
+																];
+																}
+															}else{
+																$fetureValue = [];
+															}
+															
+													?>
+													<input  name="feature_value[]" placeholder="Enter Name" required="required" id="feature_value" type="text" data-parsley-required-message="Please enter feature value" value="{{json_encode($fetureValue)}}">
+												<span class="text-danger" id="feature_value">
 												<span class="text-danger" id="feature_value"></span>
 											</div>
 										</div>
@@ -69,7 +86,8 @@
 										
 										
 
-										
+										<input type="hidden" name="removeIds" value="" id="removeIds">
+
 										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addfeature"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
 										</div>
 									</div>
@@ -84,6 +102,8 @@
 
 </x-app-layout>
 <script type="text/javascript">
+	var removeIds = [];
+
 	var input = document.getElementById('feature_value');
 	
 	var tagify = new Tagify(input, {
@@ -93,8 +113,16 @@
         maxItems: 1000, // maximum number of items in the dropdown
         classname: 'tags-look', // CSS class for the dropdown
         enabled: 0, // disable the dropdown
-    }
+    },
+    callbacks: {
+        remove: onRemove, // callback when a tag is removed
+    },
 });
+	function onRemove(elm){
+			removeIds.push(elm.detail.data.id);
+			implodedArray = removeIds.join(',');
+			$("#removeIds").val(implodedArray);
+}
 	$('#featureCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);
@@ -103,7 +131,7 @@
 				 $(".addfeature").prop('disabled',true);
 				 $.ajax({
             type: "post",
-            url: '{{ url("admin/feature/store") }}',
+            url: '{{ url("admin/feature/update") }}',
             data: formValue,
             cache: false,
             contentType: false,

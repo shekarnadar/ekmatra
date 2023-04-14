@@ -18,7 +18,8 @@ class Product extends Model
 		'sub_category_feature_id',
 		'category_id',
 		'sub_category_id',
-		'created_by'
+		'created_by',
+		'feature_attribute_id'
 	];
 
 	public static function saveProduct($post){

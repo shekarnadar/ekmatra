@@ -54,7 +54,7 @@
 							@auth
 							<a class="mr-2 btn btn-dark btn-outline d-xs-show d-lg-flex" href="{{url('submitanenquiry')}}">Request for Quotations</a>
 							@else
-								<a class="mr-2 btn btn-dark btn-outline sign-in" href="{{url('login')}}">Request for Quotations</a>
+								<a class="mr-2 btn btn-dark btn-outline sign-in requestforquotation" href="{{url('login')}}">Request for Quotations</a>
 							@endauth
 							<div class="header-call d-xs-show d-lg-flex align-items-center">
 									<a href="tel:#" class="w-icon-call"></a>
@@ -79,7 +79,7 @@
 
 									</a>
 									@else
-									<a href="{{url('login')}}" class="label-down link login sign-in">
+									<a href="{{url('login')}}" class="label-down link login sign-in wishlistAuth">
 											<i class="w-icon-cart"></i>
 											<span class="cart-label">Wishlist</span>
 									</a>
