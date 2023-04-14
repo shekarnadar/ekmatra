@@ -10,20 +10,23 @@ use App\Models\Product;
 use App\Models\SubCategoryFeature;
 
 
-
 class ShopController extends Controller
 {
 	//
 	public function index($category,Request $request){
 		
-		$category = Category::with(['subCategory','brands'])->where('name',$category)->first();
+		$category = Category::with(['subCategory'])->where('name',$category)->first();
 		
 		$cat_id = $category['id'];
 		$cat_name = $category['name'];
 		
 		$subCategory = $category['subCategory'];
-		$brand = $category['brands'];
+		//$brand = $category['brands'];
+		
+		$brand = Product::with('feature_attributes')
+		->where('category_id',$cat_id)->where('status',1)->groupBy('feature_attribute_id')->get();
 
+    	
 		$product = Product::where('category_id',$cat_id)->where('status',1)->paginate(10);
 		
 		
@@ -34,7 +37,7 @@ class ShopController extends Controller
 
     	$product = Product::where('category_id',$request['cat_id']);
     	if($request['brand_array']){
-    		$product->whereIn('sub_category_feature_id',$request['brand_array']);
+    		$product->whereIn('feature_attribute_id',$request['brand_array']);
     	}
     	if($request['warranty']){
     		$product->where('warrenty',$request['warranty']);
