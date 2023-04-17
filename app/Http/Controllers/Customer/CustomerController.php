@@ -11,8 +11,9 @@ class CustomerController extends Controller
     //
     public function dashboard(){
         $client_id = \Auth::user()->id;
-        $inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','enquiry')->get();
-        $rfq = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','rfq')->get();
+        $inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','enquiry')->orderBy('created_at','DESC')->get();
+
+        $rfq = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','rfq')->orderBy('created_at','DESC')->get();
          return view('customer.dashboard',compact('inquiry','rfq'));
     }
     public function shop()

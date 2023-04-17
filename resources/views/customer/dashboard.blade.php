@@ -19,7 +19,7 @@
 								<a href="#account-orders" class="nav-link">Enquiry</a>
 							</li>
 							<li class="nav-item">
-								<a href="#rfq" class="nav-link">My RFQ</a>
+								<a href="#rfq" id="rfqlink" class="nav-link">My RFQ</a>
 							</li>
 							
 							<li class="nav-item">
@@ -125,3 +125,13 @@
 	 </div>
 
 </x-guest-layout>
+<script type="text/javascript">
+	hash = window.location.hash;
+	elements = $('a[href="' + hash + '"]');
+	$('.nav .nav-item a').removeClass('active');
+	$(".nav .nav-item a" + hash+'link').addClass('active');
+
+	$(".tab-pane").removeClass('active in');
+	$(hash).addClass('active in');
+	
+</script>

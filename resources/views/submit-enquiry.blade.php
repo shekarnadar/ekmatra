@@ -107,7 +107,7 @@
           		
           		notifyMsg(response.message,'success');
                setTimeout(function(){
-                        location.reload(true);
+                        window.location.href="{{url('myaccount')}}"+"#rfq";
               },2000);
           	
 
