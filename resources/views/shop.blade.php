@@ -173,11 +173,21 @@
 			getData(page_count);
 	});
   $('.price-item li').click(function(e){
+  		
   		page_count = 1;
   		min_price = $(this).attr('data-minprice');
   		max_price = $(this).attr('data-maxprice');
-  		$('.price-item li').removeClass('active');
-			$(this).parent('.price-item li').addClass('active');
+  		var getClass = this.className;
+  		if(getClass == 'active'){
+  			min_price = '';
+  			max_price = '';
+  			$('.price-item ul li').removeClass('active');
+  		}else{
+  			
+  			$('.price-item li').removeClass('active');
+				$(this).parent('.price-item li').addClass('active');
+  		}
+  		
 			getData(page_count);
   });
 
@@ -205,9 +215,18 @@
 	
 		min_qty = $(this).attr('data-minqty');
 		max_qty = $(this).attr('data-maxqty');
+		var getClass = this.className;
+
+		if(getClass == 'active'){
+			$('.qty-item li').removeClass('active');
+			$(this).parent('.qty-item li').removeClass('active');
+			min_qty = '';
+    	max_qty = '';
+		}else{
+			$('.qty-item li').removeClass('active');
+			$(this).parent('.qty-item li').addClass('active');
+		}
 		
-		$('.qty-item li').removeClass('active');
-		$(this).parent('.qty-item li').addClass('active');
 			getData(page_count);
 	});
 
@@ -215,16 +234,20 @@
 		page_count = 1;
 
 		var id = $(this).attr('data-value');
-	
-		if(warranty == id){
-			 	$('.warranty-item li').removeClass('active');
-		$(this).parent('.warranty-item li').removeClass('active');
+	  var getClass = this.className;
+
+		if(getClass == 'active'){
+			warranty = '';
+			$('.warranty-item ul li').removeClass('active');
+			$(this).parent('.warranty-item ul li').removeClass('active');
 		}else{
+			
 			warranty = id;
-		$('.warranty-item li').removeClass('active');
-		$(this).parent('.warranty-item li').addClass('active');	
-		getData(page_count);
+			$('.warranty-item li').removeClass('active');
+			$(this).parent('.warranty-item li').addClass('active');	
+			
 		}
+		getData(page_count);
 		
 
 	});
