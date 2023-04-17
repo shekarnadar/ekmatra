@@ -106,8 +106,10 @@
           	if(response.success){
           		
           		notifyMsg(response.message,'success');
-          		location.reload(true);
-
+               setTimeout(function(){
+                        location.reload(true);
+              },2000);
+          	
 
           	}else{
           		notifyMsg(response.message,'error');
