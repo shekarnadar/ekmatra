@@ -487,7 +487,7 @@
 	<div class="newsletter-popup mfp-hide newsletterdiv">
 		<div class="newsletter-content">
 			<h6 class="text-uppercase font-weight-bold ls-25">Save to</h6>
-			<div class="d-flex addDiv mt-2">
+			<div class="d-flex addDiv mt-2 mb-2">
 
 				<span data-v-80b17294="" class="cg-wishlist__cta__toggle quantity-plus w-icon-plus addlist"></span>
 
@@ -504,8 +504,6 @@
 			<p class="text-light ls-10"></p>
 			
 			<div class="form-checkbox d-flex align-items-center">
-				<input type="checkbox" class="custom-checkbox" id="hide-newsletter-popup" name="hide-newsletter-popup"
-					required="">
 					<ul class="widget-body filter-items item-check mt-1">
 						
 					</ul>

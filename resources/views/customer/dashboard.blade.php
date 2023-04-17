@@ -1,4 +1,10 @@
-
+<style type="text/css">
+	.author-details ,.author-name{
+	
+    overflow: hidden;
+    text-overflow: ellipsis;
+	}
+</style>
 <x-guest-layout>
 	<nav class="breadcrumb-nav">
 		<div class="container">
@@ -126,12 +132,19 @@
 
 </x-guest-layout>
 <script type="text/javascript">
-	hash = window.location.hash;
-	elements = $('a[href="' + hash + '"]');
-	$('.nav .nav-item a').removeClass('active');
-	$(".nav .nav-item a" + hash+'link').addClass('active');
 
-	$(".tab-pane").removeClass('active in');
-	$(hash).addClass('active in');
+	hash = window.location.hash;
+	if(hash == "#rfq"){
+		elements = $('a[href="' + hash + '"]');
+		$('.nav .nav-item a').removeClass('active');
+		$(".nav .nav-item a" + hash+'link').addClass('active');
+
+		$(".tab-pane").removeClass('active in');
+		$(hash).addClass('active in');
+	}
 	
+	
+	$('.wishlistLink').click(function(){
+		window.location.href = "{{url('wishlist')}}";
+	})
 </script>
