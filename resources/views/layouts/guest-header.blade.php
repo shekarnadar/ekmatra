@@ -2,7 +2,7 @@
 	<div class="header-top">
 			<div class="container">
 					<div class="header-left">
-							<p class="welcome-msg">Welcome to Ekmatra Store message or remove it!</p>
+							<p class="welcome-msg">Welcome to Ekmatra Store!</p>
 					</div>
 					<div class="header-right">
 							

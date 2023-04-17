@@ -55,12 +55,14 @@
 
 
                                 <!-- Start of Collapsible Widget -->
-                                @if(@$sub_cat['features'])
+                                @if(@$brand)
                                 <div class="widget widget-collapsible">
                                     <h3 class="widget-title"><label>Brand</label></h3>
                                     <ul class="widget-body filter-items item-check mt-1">
-                                        @foreach($sub_cat['features'] as $val)
-                                            <li><a href="#">{{$val['name']}}</a></li>
+                                        @foreach($brand as $val)
+                                        @if(@$val['feature_attributes'])
+                                                <li data-id="{{$val['feature_attributes']['id']}}"><a href="javascript:void(0)">{{$val['feature_attributes']['name']}}</a></li>
+                                        @endif
                                         @endforeach
                                     </ul>
                                 </div>
