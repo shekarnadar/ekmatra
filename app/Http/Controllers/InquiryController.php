@@ -53,39 +53,64 @@ class InquiryController extends Controller
 	}
 
 	public function inquirylist(Request $request) {
-	   
-		if ($request->ajax()) {
-					$data = Inquiry::with(['product.createdBy','customer']);
-					if(getAuthGaurd() == 'vendor'){
-						$client_id = \Auth::guard(getAuthGaurd())->user()->id;
-						$data->where('vendor_id',$client_id);
-					}
-					$data = $data->get();
-					return Datatables::of($data)
-					->addColumn('name', function($row){
-						return $row['product']['name'];
-					 })
-					->addColumn('price', function($row){
-						return $row['product']['price'];
-					 })
-					->addColumn('quantity', function($row){
-						return $row['quantity'];
-					 })
-					->addColumn('vendor',function($row){
-						return $row['product']['createdBy']['name'];
-					})
-					->addColumn('customer_detail',function($row){
-						return $row['customer']['name'];
-					})
-					->addColumn('image', function($row){
-						$imageval = url('product/' . $row['product']['image']);
-					return '<img src="' . $imageval . '" class="h-50 w-50"/>';
-					 })
-						
-					->rawColumns(['action','image'])
-					->make(true);
-			}
-			return view('inquiry.admin-inquiry-list');
+	  
+	  if ($request->ajax()) {
+				$data = Inquiry::with(['product.createdBy','customer']);
+				if(getAuthGaurd() == 'vendor'){
+					$client_id = \Auth::guard(getAuthGaurd())->user()->id;
+					$data->where('vendor_id',$client_id);
+				}
+				$data->where('type','enquiry');
+				$data = $data->get();
+				return Datatables::of($data)
+				->addColumn('name', function($row){
+					return $row['product']['name'];
+				 })
+				->addColumn('price', function($row){
+					return $row['product']['price'];
+				 })
+				->addColumn('quantity', function($row){
+					return $row['quantity'];
+				 })
+				->addColumn('vendor',function($row){
+					return $row['product']['createdBy']['name'];
+				})
+				->addColumn('customer_detail',function($row){
+					return $row['customer']['name'];
+				})
+				->addColumn('image', function($row){
+					$imageval = url('product/' . $row['product']['image']);
+				return '<img src="' . $imageval . '" class="h-50 w-50"/>';
+				 })
+					
+				->rawColumns(['action','image'])
+				->make(true);
+		}
+		return view('inquiry.admin-inquiry-list');
+	}
+
+	public function rfqlist(Request $request) {
+		 if ($request->ajax()) {
+				$data = Inquiry::with(['customer']);
+				if(getAuthGaurd() == 'vendor'){
+					$client_id = \Auth::guard(getAuthGaurd())->user()->id;
+					$data->where('vendor_id',$client_id);
+				}
+				$data->where('type','rfq');
+				$data = $data->get();
+				return Datatables::of($data)
+				
+				->addColumn('delivery_date',function($row){
+					return $row['delivery_date'];
+				})
+				->addColumn('customer_detail',function($row){
+					return $row['customer']['name'];
+				})
+					
+				->rawColumns(['action'])
+				->make(true);
+		}
+		return view('inquiry.admin-inquiry-rfq-list');
 	}
 	public function submitanenquiry(){
 		$user = \Auth()->user();
