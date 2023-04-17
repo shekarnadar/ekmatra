@@ -57,6 +57,9 @@ Route::middleware('auth')->group(function () {
 	Route::get('wishlist/view/{id}',[WishlistController::class,'wishlistView'])->name('wishlistView');
 
 	Route::get('inquiry',[InquiryController::class,'inquiryView'])->name('inquiry.view');
+	Route::get('submitanenquiry',[InquiryController::class,'submitanenquiry'])->name('submitanenquiry');
+
+Route::post('savesubmitanenquiry',[InquiryController::class,'savesubmitanenquiry'])->name('savesubmitanenquiry');
 
 });
 Route::post('wishlist/store',[WishlistController::class,'store'])->name('wishlist.store');
@@ -79,6 +82,3 @@ Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('sa
 Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
 Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->name('customerInquiry');
 
-Route::get('submitanenquiry',[InquiryController::class,'submitanenquiry'])->name('submitanenquiry');
-
-Route::post('savesubmitanenquiry',[InquiryController::class,'savesubmitanenquiry'])->name('savesubmitanenquiry');
