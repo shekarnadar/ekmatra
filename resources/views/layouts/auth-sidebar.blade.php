@@ -57,6 +57,9 @@ $url = getAuthGaurd();
 					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/inquiry')? 'active' : '' }}" href='{{url("$url/inquiry")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Inquiry</span></a>
 					</li>
+					<li class="slide">
+						<a class="side-menu__item {{ request()->is($url.'/rfq')? 'active' : '' }}" href='{{url("$url/rfq")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">RFQ</span></a>
+					</li>
 					@endif
 					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/products',$url.'/product/add',$url.'/product/edit/*')? 'active' : '' }}" href='{{url("$url/products")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Product</span></a>
