@@ -44,12 +44,12 @@
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Price</label></h3>
 									<div class="widget-body">
-									   <ul class="widget-body filter-items item-check price-item">
-										<li data-maxprice="1000" data-minprice="1"><a href="#">Under 1000</a></li>
-										<li data-maxprice="5000" data-minprice="10000"><a href="#">5000-10000</a></li>
-										<li data-maxprice="20000" data-minprice="10000"><a href="#">10000-20000</a></li>
-										<li data-maxprice="20000" minprice="0"><a href="#">20000 & up</a></li>
-									</ul>
+									  <ul class="widget-body filter-items item-check price-item">
+											<li data-maxprice="500" data-minprice="100"><a href="#">100 to 500</a></li>
+											<li data-maxprice="1000" data-minprice="500"><a href="#">500 to 1000</a></li>
+											<li data-maxprice="5000" data-minprice="1000"><a href="#">1000 to 5000</a></li>
+											<li data-maxprice="5000" data-minprice="0"><a href="#">5000 above</a></li>
+										</ul>
 									</div>
 								</div>
 								<!-- End of Collapsible Widget -->

@@ -53,6 +53,9 @@ class ShopController extends Controller
         if($request['max_qty'] == 150) {
         	 $product->where('maq','>=',$request['max_qty']);
         }
+        if($request['max_price'] == 5000){
+        	$product->where('price','>=',$request['max_price']);
+        }
         if($request['page_limit']){
         	$page_limit = $request['page_limit'];
         }else{
