@@ -218,8 +218,8 @@
 		var getClass = this.className;
 
 		if(getClass == 'active'){
-			$('.qty-item li').removeClass('active');
-			$(this).parent('.qty-item li').removeClass('active');
+			$('.qty-item ul li').removeClass('active');
+			$(this).parent('.qty-item ul li').removeClass('active');
 			min_qty = '';
     	max_qty = '';
 		}else{
