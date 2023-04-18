@@ -45,9 +45,10 @@
 									<h3 class="widget-title"><label>Price</label></h3>
 									<div class="widget-body">
 									  <ul class="widget-body filter-items item-check price-item">
-											<li data-maxprice="500" data-minprice="100"><a href="#">100 to 500</a></li>
-											<li data-maxprice="1000" data-minprice="500"><a href="#">500 to 1000</a></li>
-											<li data-maxprice="5000" data-minprice="1000"><a href="#">1000 to 5000</a></li>
+									  	<li data-maxprice="99" data-minprice="1"><a href="#">Below to 100</a>
+											<li data-maxprice="499" data-minprice="100"><a href="#">100 to 500</a></li>
+											<li data-maxprice="999" data-minprice="500"><a href="#">500 to 1000</a></li>
+											<li data-maxprice="4999" data-minprice="1000"><a href="#">1000 to 5000</a></li>
 											<li data-maxprice="5000" data-minprice="0"><a href="#">5000 above</a></li>
 										</ul>
 									</div>
@@ -105,13 +106,11 @@
 										class="w-icon-category"></i><span>Filters</span></a>
 								<div class="toolbox-item toolbox-sort select-box text-dark">
 									<label>Sort By :</label>
-									<select name="orderby" class="form-control">
-										<option value="default" selected="selected">Default sorting</option>
-										<option value="popularity">Sort by popularity</option>
-										<option value="rating">Sort by average rating</option>
-										<option value="date">Sort by latest</option>
-										<option value="price-low">Sort by pric: low to high</option>
-										<option value="price-high">Sort by price: high to low</option>
+									<select name="orderby" class="form-control" id="orderby">
+										
+										<option value="created_at" data-order="desc"  selected>Sort by latest</option>
+										<option value="price" data-order="asc">Sort by pric: low to high</option>
+										<option value="price" data-order="desc">Sort by price: high to low</option>
 									</select>
 								</div>
 							</div>
@@ -150,6 +149,8 @@
   var min_qty = '';
   var max_qty = '';
   var page_limit = '';
+  var sort_by = 'created_at';
+  var order_by = 'desc';
 
 	$('.brand-item li').click(function(e){
 		event.preventDefault();
@@ -181,9 +182,11 @@
   		if(getClass == 'active'){
   			min_price = '';
   			max_price = '';
+  			
   			$('.price-item ul li').removeClass('active');
   		}else{
-  			
+  			sort_by = "price"
+				order_by = "asc";
   			$('.price-item li').removeClass('active');
 				$(this).parent('.price-item li').addClass('active');
   		}
@@ -205,6 +208,8 @@
   	min_qty = '';
     max_qty = '';
     page_limit = $('#page_limit').val();
+    sort_by = 'created_at';
+    order_by = 'desc';
     getData(page_count);
 	});
 
@@ -280,6 +285,8 @@
 					"min_qty" : min_qty,
 					"max_qty" : max_qty,
 					"page_limit" : page_limit,
+					"sort_by" : sort_by,
+					"order_by" : order_by
 				},
 				datatype: "html"
 		}).done(function(data){
@@ -296,4 +303,11 @@
 		});
 		 return false;
 	}
+
+	$('#orderby').change(function(){
+		sort_by = $(this).val();
+		order_by = $(this).find(':selected').attr('data-order')
+		page_count = 1;
+		getData(page_count);
+	})
 </script>

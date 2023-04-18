@@ -27,7 +27,8 @@ class ShopController extends Controller
 		->where('category_id',$cat_id)->where('status',1)->groupBy('feature_attribute_id')->get();
 
     	
-		$product = Product::where('category_id',$cat_id)->where('status',1)->paginate(10);
+		$product = Product::where('category_id',$cat_id)->where('status',1);
+		$product=$product->orderBy('created_at','desc')->paginate(10);
 		
 		
 		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product'));
@@ -61,7 +62,18 @@ class ShopController extends Controller
         }else{
         	$page_limit = 10;
         }
-    	$product = $product->where('status',1)->paginate($page_limit);
+    	$product = $product->where('status',1);
+    	
+    	
+    	if($request['sort_by']){
+    		$product->orderBy($request['sort_by'],$request['order_by']);
+    	}else{
+    		 $product->orderBy('created_at','desc');
+		}
+
+    	$product= $product->paginate($page_limit);
+  
+
 		if ($request->ajax()) {
 			return view('presult', compact('product'));
 		}
