@@ -17,11 +17,17 @@
 									<h3 class="widget-title"><label>All Categories</label></h3>
 									<ul class="widget-body filter-items search-ul">
 										@foreach($subCategory as $val)
-										    @if($val['name'] == $subcategory_name)
-											<li class="active"><a href="{{url('shop/'.$cat_name.'/'.$val['name'])}}" class="active" style="color:#9a2948">{{$val['name']}}</a></li>
+											@if(@$subcategory_name)
+												 @if($val['name'] == $subcategory_name)
+												 <?php $color = "style = 'color:#9a2948'"?>
+												 @else
+												 <?php $color ="";?>
+												 @endif
 											@else
-											<li><a href="{{url('shop/'.$cat_name.'/'.$val['name'])}}">{{$val['name']}}</a></li>
-											@endif
+											<?php $color ="";?>
+										   	@endif
+											<li class="active"><a href="{{url('shop/'.$cat_name.'/'.$val['name'])}}" <?php echo $color;?>>{{$val['name']}}</a></li>
+											
 										@endforeach
 									</ul>
 								</div>
