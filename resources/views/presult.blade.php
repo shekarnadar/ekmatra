@@ -21,7 +21,7 @@
 						   
 							<div class="product-pa-wrapper">
 								<div class="product-price">
-									<ins class="new-price">Price : {{$prod_val['price']}}</ins>
+									<ins class="new-price">RS : {{$prod_val['price']}}</ins>
 									<del class="old-price">{{$prod_val['mrp']}}</del>
 								</div>
 								<div class="product-price">

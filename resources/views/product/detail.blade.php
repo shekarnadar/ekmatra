@@ -70,7 +70,7 @@
 										<hr class="product-divider">
 
 										<div class="product-price">
-											<ins class="new-price">₹ {{$product['price']}}</ins>
+												<ins class="new-price">RS : {{$product['price']}}</ins>
 											<del class="old-price">{{$product['mrp']}}</del>
 										</div>
 

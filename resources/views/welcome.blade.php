@@ -235,7 +235,7 @@
 								
 								<div class="product-pa-wrapper">
 									<div class="product-price">
-										<ins class="new-price">₹{{$product_value['price']}}</ins>
+										<ins class="new-price">RS : {{$product_value['price']}}</ins>
 										<del class="old-price">{{$product_value['mrp']}}</del>
 									</div>
 									<div class="product-price">
@@ -580,8 +580,8 @@
 																					
 													<div class="product-pa-wrapper">
 														<div class="product-price">
-															<ins class="new-price">₹{{$product_value['price']}}</ins>
-															
+														<ins class="new-price">RS : {{$product_value['price']}}</ins>
+
 														<del class="old-price">{{$product_value['mrp']}}</del>
 														</div>
 														<div class="product-price">
