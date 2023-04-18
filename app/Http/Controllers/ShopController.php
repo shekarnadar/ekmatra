@@ -37,6 +37,9 @@ class ShopController extends Controller
     public function filterResult(Request $request){
 
     	$product = Product::where('category_id',$request['cat_id']);
+    	if($request['sub_cat_id']){
+    		$product->where('sub_category_id',$request['sub_cat_id']);
+    	}
     	if($request['brand_array']){
     		$product->whereIn('feature_attribute_id',$request['brand_array']);
     	}
@@ -83,7 +86,11 @@ class ShopController extends Controller
 		$category_name = $category;
 		$sub_cat = SubCategory::where('name',$subcategory)->first();
 		
-		$product = Product::where('sub_category_id',@$sub_cat['id'])->where('status',1)->get(); 
+		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
+		
+		$product = $product->orderBy('created_at','desc')->paginate(10);
+		
+
 		$brand = Product::with('feature_attributes')
 		->where('category_id',$sub_cat['category_id'])->where('sub_category_id',$sub_cat['id'])->where('status',1)->groupBy('feature_attribute_id')->get();
 		
