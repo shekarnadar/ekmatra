@@ -17,7 +17,11 @@
 									<h3 class="widget-title"><label>All Categories</label></h3>
 									<ul class="widget-body filter-items search-ul">
 										@foreach($subCategory as $val)
+										    @if($val['name'] == $subcategory_name)
+											<li class="active"><a href="{{url('shop/'.$cat_name.'/'.$val['name'])}}" class="active" style="color:#9a2948">{{$val['name']}}</a></li>
+											@else
 											<li><a href="{{url('shop/'.$cat_name.'/'.$val['name'])}}">{{$val['name']}}</a></li>
+											@endif
 										@endforeach
 									</ul>
 								</div>
@@ -81,4 +85,3 @@
 						</div>
 						<!-- End of Sidebar Content -->
 					</aside>
-					

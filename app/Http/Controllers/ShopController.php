@@ -81,10 +81,14 @@ class ShopController extends Controller
 			return view('presult', compact('product'));
 		}
     }
-	public function subCategoryList($category,$subcategory){
+	public function subCategoryList($category_name,$subcategory_name){
 		
-		$category_name = $category;
-		$sub_cat = SubCategory::where('name',$subcategory)->first();
+		$cat_name = $category_name;
+		$subcategory_name = $subcategory_name;
+		$category = Category::with(['subCategory'])->where('name',$category_name)->first();
+		$subCategory = $category['subCategory'];
+
+		$sub_cat = SubCategory::where('name',$subcategory_name)->first();
 		
 		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
 		
@@ -95,7 +99,7 @@ class ShopController extends Controller
 		->where('category_id',$sub_cat['category_id'])->where('sub_category_id',$sub_cat['id'])->where('status',1)->groupBy('feature_attribute_id')->get();
 		
 
-		return view ('subCategoryshop',compact('sub_cat','product','category_name','subcategory','brand'));
+		return view ('subCategoryshop',compact('sub_cat','product','cat_name','subcategory_name','brand','subCategory'));
 	
 	}
 }
