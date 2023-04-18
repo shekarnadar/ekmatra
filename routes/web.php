@@ -43,6 +43,8 @@ Route::get('shop/{category}',[ShopController::class, 'index'])->name('shopindex'
 Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryList'])->name('subcategory.list');
 Route::post('filter-result',[ShopController::class, 'filterResult'])->name('filterResult');
 
+Route::get('search',[ShopController::class, 'searchProduct'])->name('searchProduct');
+
 //Product page
 
 Route::get('product',[CustomerController::class, 'product'])->name('product');

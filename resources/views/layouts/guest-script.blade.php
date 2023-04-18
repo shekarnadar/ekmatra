@@ -47,7 +47,7 @@
 	<link rel="stylesheet" type="text/css" href="{{url('front/vendor/magnific-popup/magnific-popup.min.css')}}">
 
 	<!-- Default CSS -->
-     @if(request()->is('welcome') || request()->is('shop/*'))
+     @if(request()->is('welcome') || request()->is('shop/*') || request()->is('search'))
      	<link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}">
      @else
      		    <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">

@@ -33,17 +33,17 @@
 							<a href="{{url('/')}}" class="logo">
 									<img src="{{url('front//images/demos/demo12/logo.png')}}" alt="logo" width="144" height="45">
 							</a>
-							<form method="get" action="#"
+							<form method="get" action="{{url('search')}}"
 									class="input-wrapper header-search hs-expanded hs-round d-none d-md-flex">
 									<div class="select-box bg-white">
-											<select id="category" name="category" onchange="location = this.value;">
+											<select id="category"  onchange="location = this.value;">
 													<option value="">All Categories</option>
 													 @foreach($category as $value)
 														<option value="{{url('shop/'.$value['name'])}}">{{$value['name']}}</option>
 													@endforeach
 											</select>
 									</div>
-									<input type="text" class="form-control bg-white pt-0 pb-0" name="search" id="search"
+									<input type="text" class="form-control bg-white pt-0 pb-0" name="q" id="search"
 											placeholder="Search in..." required />
 									<button class="btn btn-search" type="submit">
 											<i class="w-icon-search"></i>

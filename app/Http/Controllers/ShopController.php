@@ -36,7 +36,12 @@ class ShopController extends Controller
     
     public function filterResult(Request $request){
 
-    	$product = Product::where('category_id',$request['cat_id']);
+    	$product = Product::select('*');
+    	if($request['cat_id']){
+    		$product->where('category_id',$request['cat_id']);
+    	}
+    	
+    	
     	if($request['sub_cat_id']){
     		$product->where('sub_category_id',$request['sub_cat_id']);
     	}
@@ -66,7 +71,9 @@ class ShopController extends Controller
         	$page_limit = 10;
         }
     	$product = $product->where('status',1);
-    	
+    	if($request['search_txt']){
+    		$product->where('products.name', 'LIKE','%'. $request['search_txt'] .'%');
+    	}
     	
     	if($request['sort_by']){
     		$product->orderBy($request['sort_by'],$request['order_by']);
@@ -75,6 +82,7 @@ class ShopController extends Controller
 		}
 
     	$product= $product->paginate($page_limit);
+    
   
 
 		if ($request->ajax()) {
@@ -101,5 +109,22 @@ class ShopController extends Controller
 
 		return view ('subCategoryshop',compact('sub_cat','product','cat_name','subcategory_name','brand','subCategory'));
 	
+	}
+
+	public function searchProduct(Request $request){
+		 
+		$search_txt = $request->input('q');
+		 
+		$brand = Product::with('feature_attributes')->
+		where('products.name', 'LIKE','%'. $search_txt .'%')
+		->where('status',1)->groupBy('feature_attribute_id')->get();
+
+    	
+		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')->where('status',1);
+
+		$product=$product->orderBy('created_at','desc')->paginate(10);
+		return view ('search',compact('brand','product','search_txt'));
+
+		
 	}
 }
