@@ -44,7 +44,7 @@ Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryL
 Route::post('filter-result',[ShopController::class, 'filterResult'])->name('filterResult');
 
 Route::get('search',[ShopController::class, 'searchProduct'])->name('searchProduct');
-
+Route::post('searchProductResult',[ShopController::class,'searchProductResult'])->name('searchProductResult');
 //Product page
 
 Route::get('product',[CustomerController::class, 'product'])->name('product');
