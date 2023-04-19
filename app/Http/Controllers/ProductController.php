@@ -254,9 +254,9 @@ class ProductController extends Controller
   			"name" =>  $fileName,
   			"client_id" => \Auth::guard(getAuthGaurd())->user()->id
   		]);
-  		return json_encode(value:true);
+  		return json_encode(['success'=>true]);
     }else{
-    	return json_encode(value:false);
+    	return json_encode(['success'=>false]);
     }
 
 	}

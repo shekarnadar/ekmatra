@@ -102,6 +102,7 @@
  			_token : "{{ csrf_token() }}",
  		},
 		maxfilesize : 1000000,
+
 		startupload : function(SubmitUpload, e, data) {
 			
 					token = "{{ csrf_token() }}";
@@ -114,10 +115,11 @@
 
 			// Alternatively, just call data.abort() or return false here to terminate the upload but leave the UI elements alone.
 			if (token.expires < ts)  data.ff_info.RemoveFile();
-			table.ajax.reload(null, false);
 		},
 		uploadcompleted : function(e, data) {
 			data.ff_info.RemoveFile();
+			table.ajax.reload(null, false);
+
 		}
 	});
 });
