@@ -11,6 +11,7 @@ use App\Models\Deal;
 use App\Models\ProductDeal;
 use App\Models\FeatureAttribute;
 use App\Models\Feature;
+use App\Models\UploadImage;
 
 
 use DataTables;
@@ -207,6 +208,56 @@ class ProductController extends Controller
 
 		$product = Product::with('category','subCategory','getBrands')->find($id);
 		return view('product.detail',compact('product','user'));
+
+	}
+
+	public function productImage(Request $request){
+		
+		if ($request->ajax()) {
+			$client_id = \Auth::guard(getAuthGaurd())->user()->id;
+			$data = UploadImage::where('client_id',$client_id)->orderBy('created_at','desc')->get();
+
+				return Datatables::of($data)
+						->addColumn('image_url', function($row){
+							$url = url('product/'.$row['name']);
+							
+
+							return $url;
+					 })
+						->addColumn('action', function($row){
+							$url = url('product/'.$row['name']);
+							$btn = '<a data-url="'.$url.'" class="copyText btn btn-danger btn-sm text-white">copy</a>&nbsp;&nbsp;';
+							
+
+							return $btn;
+					 })
+					->rawColumns(['image_url','action'])
+					->make(true);
+		}
+		return view('product.image');
+	}
+
+	public function saveImage(Request $request){
+		 if ($request->hasfile('files')) {
+		 	$image = $request->file('files');
+     	$imageName = time() . rand(11111, 99999) . '.' . $image->getClientOriginalExtension();
+  		$destination = public_path() . '/'.'product';
+
+		  //check directory avilable
+		  if (!is_dir($destination)) {
+		            \File::makeDirectory($destination, $mode = 0777, true, true);
+		  }
+  		$fileName = str_replace(" ", "-", $imageName);
+  		$image->move($destination, $fileName);
+  		
+  		UploadImage::create([
+  			"name" =>  $fileName,
+  			"client_id" => \Auth::guard(getAuthGaurd())->user()->id
+  		]);
+  		return json_encode(value:true);
+    }else{
+    	return json_encode(value:false);
+    }
 
 	}
 }

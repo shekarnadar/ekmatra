@@ -64,6 +64,10 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product-edit');
 		Route::post('product/status-change',[ProductController::class,'statusChange'])->name('status-change');
 
+		Route::get('product/image',[ProductController::class,'productImage'])->name('productImage');
+
+		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
+
 		Route::get('deals',[DealController::class,'index'])->name('deal.index');
 		Route::get('product/deal/{id}',[DealController::class,'productDeals'])->name('product.deal');
 		Route::post('product/deal-save',[DealController::class,'dealSave'])->name('product.deal.save');

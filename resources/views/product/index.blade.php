@@ -11,8 +11,10 @@ $url = getAuthGaurd();
 							<div class="card-header pb-0">
 								<div class="d-flex justify-content-between">
 									<h4 class="card-title mg-b-0 mt-2 mb-2">Product</h4>
-									<i class="mdi mdi-dots-horizontal text-gray"></i>
+									<div style="float: right;">
 									<a href='{{url("$url/product/add")}}' class="btn btn-primary">Add Product</a>
+									<a href='{{url("$url/product/image")}}' class="btn btn-primary">Upload Image</a>
+								</div>
 								</div>
 								
 							</div>
