@@ -46,6 +46,7 @@
 								
 							</div>
 						</nav>
+						<p style="color:#9a2948">Showing Results for :  {{$search_txt}}</p>
 						<div id="tag_container">
 							@include('presult')
 						</div>
@@ -191,7 +192,7 @@
 	function getData(page){
 		$.ajax(
 		{
-				url:"{{route('filterResult')}}",
+				url:"{{route('searchProductResult')}}",
 				type: "Post",
 				async: false,
 				cache: false,
