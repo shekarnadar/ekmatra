@@ -120,7 +120,9 @@ class User extends Authenticatable
 
     public static function getLatestVendor(){
     	$role_id = getRole('vendor');
-    	$vendor = User::with('getVendorTopProducts')->withCount('products')->where('role_id',$role_id)->latest()->take(4)->get();
+    	$vendor = User::with(['getVendorTopProducts' => function($q){
+    		$q->where('status',1);
+    	}])->withCount('products')->where('role_id',$role_id)->latest()->take(4)->get();
     	return $vendor;
     }
 	public function products(){
