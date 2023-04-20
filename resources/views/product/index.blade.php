@@ -84,11 +84,6 @@ $('#product-list').on('click', '.changestaus', function(){
 		},
 		 columns: [
             {
-            	data: 'id', 
-            	name: 'id',
-            	title:'id'
-            },
-            {
             	data: 'name', 
             	name: 'name',
             	'title' : 'Name'},
