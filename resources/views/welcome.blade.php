@@ -301,12 +301,7 @@
 																						<a href="#">{{$value['name']}}</a>
 																				</h4>
 																				<span class="vendor-product-count">({{$value['products_count']}} Products)</span>
-																				<div class="ratings-container">
-																						<div class="ratings-full">
-																								<span class="ratings" style="width: 0%;"></span>
-																								<span class="tooltiptext tooltip-top"></span>
-																						</div>
-																				</div>
+																				
 																		</div>
 																</div>
 																<div class="vendor-products row cols-3 gutter-sm">
