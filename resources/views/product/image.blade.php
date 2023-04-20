@@ -124,15 +124,15 @@
 	});
 });
 $('#image-list').on('click', '.copyText', function(){
-	  var copyText = $(this).attr('data-url');
-
-  // Select the text field
-  //copyText.select();
- // copyText.setSelectionRange(0, 99999); // For mobile devices
-
-  // Copy the text inside the text field
-window.navigator.clipboard.writeText(copyText);
-
-});
+	var copyText = $(this).attr('data-url');
+	var temp=document.createElement('input');
+  var texttoCopy=copyText;
+  temp.type='input';
+  temp.setAttribute('value',texttoCopy);
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand("copy");
+  temp.remove();
+ });
 
 </script>
