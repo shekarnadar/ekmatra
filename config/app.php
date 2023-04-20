@@ -199,6 +199,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
 
 
     ],
@@ -219,6 +221,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
 
     ])->toArray(),

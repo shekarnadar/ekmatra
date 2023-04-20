@@ -6,10 +6,10 @@
 							<a class="close-toggle" href="#"><i class="header-icons" data-eva="close-outline"></i></a>
 						</div>
 						<div class="responsive-logo">
-							<a href="index.html"><img src="{{url('backend/img/brand/logo-white.png')}}" class="logo-1"></a>
-							<a href="index.html"><img src="{{url('backend/img/brand/logo.png')}}" class="logo-11"></a>
-							<a href="index.html"><img src="{{url('backend/img/brand/favicon-white.png')}}" class="logo-2"></a>
-							<a href="index.html"><img src="{{url('backend/img/brand/favicon.png')}}" class="logo-12"></a>
+							<a href="index.html"><img src="{{url('logo.png')}}" class="logo-1"></a>
+							<a href="index.html"><img src="{{url('logo.png')}}" class="logo-11"></a>
+							<a href="index.html"><img src="{{url('logo.png')}}" class="logo-2"></a>
+							<a href="index.html"><img src="{{url('logo.png')}}" class="logo-12"></a>
 						</div>
 						
 					</div>

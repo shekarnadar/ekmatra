@@ -19,7 +19,8 @@ class Product extends Model
 		'category_id',
 		'sub_category_id',
 		'created_by',
-		'feature_attribute_id'
+		'feature_attribute_id',
+		'status'
 	];
 
 	public static function saveProduct($post){
@@ -28,10 +29,10 @@ class Product extends Model
         }else{
             $id = 0;
         }
-        if(getAuthGaurd() !='admin'){
-        	$post['status'] = 0;
-        }else{
+        if(getAuthGaurd() == 'admin'){
         	$post['status'] = 1;
+        }else{
+        	$post['status'] = 0;
         }
         $post['created_by'] = \Auth::guard(getAuthGaurd())->user()->id; 
         $matchThese = ['id'=>$id];

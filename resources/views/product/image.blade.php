@@ -132,7 +132,9 @@ $('#image-list').on('click', '.copyText', function(){
   document.body.appendChild(temp);
   temp.select();
   document.execCommand("copy");
+
   temp.remove();
+  alert("sucessfully you image url copied");
  });
 
 </script>

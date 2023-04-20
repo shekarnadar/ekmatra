@@ -12,6 +12,9 @@ use App\Models\ProductDeal;
 use App\Models\FeatureAttribute;
 use App\Models\Feature;
 use App\Models\UploadImage;
+use Response;
+use App\Imports\ImportProducts;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 use DataTables;
@@ -259,5 +262,46 @@ class ProductController extends Controller
     	return json_encode(['success'=>false]);
     }
 
+	}
+	public function ProductSampleDownload(Request $request){
+		$filename = 'product_upload.xlsx';
+		$filepath = public_path('downloads/' . $filename);
+		return Response::download($filepath);
+	}
+
+	public function ProductImport(){
+		  return view('product.import');
+	}
+
+	public function import(Request $request){
+	//	Excel::import(new ImportProducts, request()->file('file'));
+     \DB::beginTransaction();
+		try{
+			$import = new ImportProducts;
+			$import->import($request->file);
+
+			if ($import->failures()->isNotEmpty()) {
+				\DB::rollBack();
+				return response()->json([
+				  'success' => false,
+				  'message' => $import->failures(),
+				  'type' => 'bulk_upload'
+				], 200);
+				
+			} else {
+				\DB::commit();
+				return response()->json([
+					'success' => true,
+					'message' => 'Product Imported Sucessfully',
+				], 200);
+			}
+		}catch(\Exception $e){
+			\DB::rollBack();
+			return response()->json([
+				'success' => false,
+				'message' => config('constants.SOMETHING_WENT_WRONG')
+			], 200);
+		}
+      // return back();
 	}
 }

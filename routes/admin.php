@@ -67,6 +67,12 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('product/image',[ProductController::class,'productImage'])->name('productImage');
 
 		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
+		Route::post('import',[ProductController::class,'import'])->name('import');
+
+
+		//exportdata
+		Route::get('product-sample-download',[ProductController::class,'ProductSampleDownload'])->name('ProductSampleDownload');
+		Route::get('product-import',[ProductController::class,'ProductImport'])->name('ProductImport"');
 
 		Route::get('deals',[DealController::class,'index'])->name('deal.index');
 		Route::get('product/deal/{id}',[DealController::class,'productDeals'])->name('product.deal');

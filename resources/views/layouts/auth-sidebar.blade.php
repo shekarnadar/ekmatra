@@ -3,7 +3,7 @@ $url = getAuthGaurd();
 @endphp
 <aside class="main-sidebar app-sidebar sidebar-scroll">
 			<div class="main-sidebar-header">
-				<a class="desktop-logo logo-light active" href="index.html" class="text-center mx-auto"><img src="{{url('backend/img/brand/logo.png')}}" class="main-logo"></a>
+				<a class="desktop-logo logo-light active" href="{{url('')}}" class="text-center mx-auto"><img src="{{url('logo.png')}}" class="main-logo"></a>
 				<a class="desktop-logo icon-logo active"href="index.html"><img src="{{url('backend/img/brand/favicon.png')}}" class="logo-icon"></a>
 				<a class="desktop-logo logo-dark active" href="index.html"><img src="{{url('backend/img/brand/logo-white.png')}}" class="main-logo dark-theme" alt="logo"></a>
 				<a class="logo-icon mobile-logo icon-dark active" href="index.html"><img src="{{url('backend/img/brand/favicon-white.png')}}" class="logo-icon dark-theme" alt="logo"></a>

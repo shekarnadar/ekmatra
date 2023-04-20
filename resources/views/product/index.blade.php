@@ -12,6 +12,8 @@ $url = getAuthGaurd();
 								<div class="d-flex justify-content-between">
 									<h4 class="card-title mg-b-0 mt-2 mb-2">Product</h4>
 									<div style="float: right;">
+									
+									<a href='{{url("$url/product-import")}}' class="btn btn-primary">Product Import</a>
 									<a href='{{url("$url/product/add")}}' class="btn btn-primary">Add Product</a>
 									<a href='{{url("$url/product/image")}}' class="btn btn-primary">Upload Image</a>
 								</div>
@@ -68,6 +70,7 @@ $('#product-list').on('click', '.changestaus', function(){
 		processing: true,
 		serverSide: true,
 		paging:true,
+		ordering: false,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
