@@ -63,6 +63,7 @@
 		processing: true,
 		serverSide: true,
 		paging:true,
+		ordering: false,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
@@ -84,6 +85,11 @@
             	data:'image_url' ,
             	name:'image_url',
             	'title' : 'Image Url'
+            },
+             {
+            	data:'image' ,
+            	name:'image',
+            	'title' : 'Image'
             },
             {
             	data: 'action', 

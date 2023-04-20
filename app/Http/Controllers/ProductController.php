@@ -227,6 +227,11 @@ class ProductController extends Controller
 
 							return $url;
 					 })
+						->addColumn('image', function($row){
+							$url = url('product/'.$row['name']);
+							return '<img src="' . $url . '" class="h-50 w-50"/>';
+
+					 })
 						->addColumn('action', function($row){
 							$url = url('product/'.$row['name']);
 							$btn = '<a data-url="'.$url.'" class="copyText btn btn-danger btn-sm text-white">copy</a>&nbsp;&nbsp;';
@@ -234,7 +239,7 @@ class ProductController extends Controller
 
 							return $btn;
 					 })
-					->rawColumns(['image_url','action'])
+					->rawColumns(['image_url','image','action'])
 					->make(true);
 		}
 		return view('product.image');
