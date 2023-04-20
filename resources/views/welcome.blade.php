@@ -191,10 +191,10 @@
 
 								<div class="title-link-wrapper title-select after-none appear-animate">
 										<h2 class="title font-secondary font-weight-bolder">Latest Products</h2>
-										<a href="shop-boxed-banner.html" class="font-weight-bold ls-25">
+										<!-- <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">
 												More Products
 												<i class="w-icon-long-arrow-right"></i>
-										</a>
+										</a> -->
 								</div>
 								<div class="swiper-container swiper-theme select-product-wrapper shadow-swiper appear-animate pb-2 mb-10"
 										data-swiper-options="{
