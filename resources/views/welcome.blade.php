@@ -673,12 +673,14 @@
 										}
 								}">
 										<div class="swiper-wrapper row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
+											  @foreach($vendor as $value)
 												<div class="swiper-slide">
 														<figure>
 																<img src="{{url('front/images/demos/demo12/brands/1.png')}}" alt="Brand" width="290"
 																		height="100" />
 														</figure>
 												</div>
+												@endforeach
 												<div class="swiper-slide">
 														<figure>
 																<img src="{{url('front/images/demos/demo12/brands/2.png')}}" alt="Brand" width="290"
@@ -725,107 +727,8 @@
 								</div>
 								<!-- End of Brands Wrapper -->
 
-								<div class="title-link-wrapper title-post after-none mb-4 appear-animate">
-										<h2 class="title font-secondary ls-normal mb-0">From Our Blog</h2>
-										<a href="blog-listing.html" class="font-weight-bold font-size-normal mb-0">
-												View All Articles
-												<i class="w-icon-long-arrow-right"></i>
-										</a>
-								</div>
-								<div class="swiper-container swiper-theme post-wrapper pb-2 pb-lg-0 mb-5 appear-animate"
-										data-swiper-options="{
-										'slidesPerView': 1,
-										'spaceBetween': 20,
-										'breakpoints': {
-												'576': {
-														'slidesPerView': 2
-												},
-												'768': {
-														'slidesPerView': 3
-												},
-												'992': {
-														'slidesPerView': 4,
-														'dots': false
-												}
-										}
-								}">
-										<div class="swiper-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1">
-
-												<div class="swiper-slide post text-center overlay-zoom">
-														<figure class="post-media br-sm">
-																<a href="post-single.html">
-																		<img src="{{url('front/images/demos/demo12/blog/blog-1-650x440.jpg')}}" alt="Post" width="325"
-																				height="214" style="background-color: #b8bfc4;" />
-																</a>
-														</figure>
-														<div class="post-details">
-																<div class="post-meta">
-																		by <a href="#" class="post-author">John Doe</a>
-																		- <a href="#" class="post-date mr-0">April 2, 2021</a>
-																</div>
-																<h4 class="post-title"><a href="post-single.html">Aliquam tincidunt maurisus</a></h4>
-																<a href="post-single.html" class="btn btn-link btn-dark btn-underline">
-																		Read More
-																		<i class="w-icon-long-arrow-right"></i>
-																</a>
-														</div>
-												</div>
-												<div class="swiper-slide post text-center overlay-zoom">
-														<figure class="post-media br-sm">
-																<a href="post-single.html">
-																		<img src="{{url('front/images/demos/demo12/blog/blog-2-650x440.jpg')}}" alt="Post" width="325"
-																				height="214" style="background-color: #596066;" />
-																</a>
-														</figure>
-														<div class="post-details">
-																<div class="post-meta">
-																		by <a href="#" class="post-author">John Doe</a>
-																		- <a href="#" class="post-date mr-0">April 2, 2021</a>
-																</div>
-																<h4 class="post-title"><a href="post-single.html">Vivamus Vestibulum Ntulla Nec Ante</a>
-																</h4>
-																<a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read More<i
-																				class="w-icon-long-arrow-right"></i></a>
-														</div>
-												</div>
-												<div class="swiper-slide post text-center overlay-zoom">
-														<figure class="post-media br-sm">
-																<a href="post-single.html">
-																		<img src="{{url('front//images/demos/demo12/blog/blog-3-650x440.jpg')}}" alt="Post" width="325"
-																				height="214" style="background-color: #eff3f4;" />
-																</a>
-														</figure>
-														<div class="post-details">
-																<div class="post-meta">
-																		by <a href="#" class="post-author">John Doe</a>
-																		- <a href="#" class="post-date mr-0">April 2, 2021</a>
-																</div>
-																<h4 class="post-title"><a href="post-single.html">Ligula sollicitudin Laoreet
-																				viverra</a></h4>
-																<a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read More<i
-																				class="w-icon-long-arrow-right"></i></a>
-														</div>
-												</div>
-												<div class="swiper-slide post text-center overlay-zoom">
-														<figure class="post-media br-sm">
-																<a href="post-single.html">
-																		<img src="{{url('front//images/demos/demo12/blog/blog-4-650x440.jpg')}}" alt="Post" width="325"
-																				height="214" style="background-color: #68605e;" />
-																</a>
-														</figure>
-														<div class="post-details">
-																<div class="post-meta">
-																		by <a href="#" class="post-author">John Doe</a>
-																		- <a href="#" class="post-date mr-0">April 2, 2021</a>
-																</div>
-																<h4 class="post-title"><a href="post-single.html">Cras Ornare Tristique Elit</a></h4>
-																<a href="post-single.html" class="btn btn-link btn-dark btn-underline">Read More<i
-																				class="w-icon-long-arrow-right"></i></a>
-														</div>
-												</div>
-										</div>
-										<div class="swiper-pagination mt-2"></div>
-								</div>
+								
+								
 						</div>
 						<!-- End of Container -->
 

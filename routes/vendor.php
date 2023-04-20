@@ -31,6 +31,17 @@ Route::group(['prefix' => 'vendor'], function(){
 		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 	
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquiry.list');
+
+		Route::get('product/image',[ProductController::class,'productImage'])->name('productImage');
+
+		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
+		Route::post('import',[ProductController::class,'import'])->name('import');
+
+
+		//exportdata
+		Route::get('product-sample-download',[ProductController::class,'ProductSampleDownload'])->name('ProductSampleDownload');
+		Route::get('product-import',[ProductController::class,'ProductImport'])->name('ProductImport"');
+
   });
 
 ?>
