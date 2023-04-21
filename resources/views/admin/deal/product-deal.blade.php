@@ -53,7 +53,8 @@ $url = getAuthGaurd();
             {data: 'image', name: 'image','title' : 'Image'},	
      	]
 	});
-	$("input:checkbox").change(function() {
+
+	 $("input:checkbox").change(function() {
      	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
     			alert("calll");
@@ -82,7 +83,7 @@ $url = getAuthGaurd();
         success: function(response) {
 	        if (response.success) {
 	        	notifyMsg(response.message,'success');
-	           table.ajax.reload(null, false);
+	           location.reload;
 	        } else {
 	        	notifyMsg(response.message,'error');
 	        }
