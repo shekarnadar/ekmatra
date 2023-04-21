@@ -252,7 +252,9 @@ class ProductController extends Controller
 					 })
 						->addColumn('action', function($row){
 							$url = url('product/'.$row['name']);
+							$id = $row['id'];
 							$btn = '<a data-url="'.$url.'" class="copyText btn btn-danger btn-sm text-white">copy</a>&nbsp;&nbsp;';
+							$btn.= '<a  href="javascript:void(0)" class="removeImage btn btn-danger btn-sm text-white" data-id="'.$id.'">Delete</a>&nbsp;&nbsp;';
 							
 
 							return $btn;
@@ -326,5 +328,19 @@ class ProductController extends Controller
 			], 200);
 		}
       // return back();
+	}
+
+	public function productImageRemove(Request $request){
+		$UploadImage = UploadImage::find($request->id);
+		if($UploadImage['name']){
+			$image_path = public_path("product/".$UploadImage['name']);  
+					if(\File::exists($image_path)) {
+    					\File::delete($image_path);
+					}
+			$UploadImage->delete();
+		}
+		return response()->json(['success' => true,
+				'message' => 'Image has been  deleted successfully'
+		  ], 200);
 	}
 }

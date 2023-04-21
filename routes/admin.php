@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('product/image',[ProductController::class,'productImage'])->name('productImage');
 
 		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
+		Route::post('product/image/remove',[ProductController::class,'productImageRemove'])->name('productImageRemove');
 		Route::post('import',[ProductController::class,'import'])->name('import');
 
 

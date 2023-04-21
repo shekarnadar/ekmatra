@@ -57,51 +57,7 @@
 	var token;
 	var table;
 	getTable();
-	function getTable() {
-		table = $('#image-list').DataTable({
-		lengthChange: false,
-		processing: true,
-		serverSide: true,
-		paging:true,
-		ordering: false,
-		language: {
-			searchPlaceholder: 'Search...',
-			sSearch: '',
-			infoFiltered:'',
-		},
 	
-		ajax: {
-				url: '{{ url("$url/product/image") }}', // need to change here url
-				type: "GET",
-				async:false,
-		},
-		 columns: [
-            
-            {
-            	data: 'name', 
-            	name: 'name',
-            	'title' : 'Name'},
-            {
-            	data:'image_url' ,
-            	name:'image_url',
-            	'title' : 'Image Url'
-            },
-             {
-            	data:'image' ,
-            	name:'image',
-            	'title' : 'Image'
-            },
-            {
-            	data: 'action', 
-            	name: 'action', 
-            	orderable: false, 
-            	searchable: false,
-            	title:'action'
-            },
-           
-     ]
-	});
-	}
 	$('#thefiles').FancyFileUpload({
 		url: '{{ url("$url/product/image") }}',
 		params : {
@@ -128,6 +84,79 @@
 
 		}
 	});
+});
+function getTable() {
+		table = $('#image-list').DataTable({
+		lengthChange: false,
+		processing: true,
+		serverSide: true,
+		paging:true,
+		ordering: false,
+		language: {
+			searchPlaceholder: 'Search...',
+			sSearch: '',
+			infoFiltered:'',
+		},
+	
+		ajax: {
+				url: '{{ url("$url/product/image") }}', // need to change here url
+				type: "GET",
+				async:false,
+		},
+		 columns: [
+              {
+        			"title": "Serial",
+        			render: function (data, type, row, meta) {
+        				return meta.row + meta.settings._iDisplayStart + 1;
+        			}
+        	},
+            {
+            	data: 'name', 
+            	name: 'name',
+            	'title' : 'Name'},
+            {
+            	data:'image_url' ,
+            	name:'image_url',
+            	'title' : 'Image Url'
+            },
+             {
+            	data:'image' ,
+            	name:'image',
+            	'title' : 'Image'
+            },
+            {
+            	data: 'action', 
+            	name: 'action', 
+            	orderable: false, 
+            	searchable: false,
+            	title:'action'
+            },
+           
+     ]
+	});
+	}
+$("#image-list").on('click','.removeImage',function(){
+	var id = $(this).attr('data-id');
+	 if (confirm("Are you sure?")) {
+		$.ajax({
+		 	url: '{{url("$url/product/image/remove")}}',
+	        type: "Post",
+	        data: {
+	            "id": id,
+	            "_token": "{{ csrf_token() }}",
+	        },
+
+	        success: function(response) {
+		        if (response.success) {
+		        	notifyMsg(response.message,'success');
+		           table.ajax.reload(null, false);
+		        } else {
+		        	notifyMsg(response.message,'error');
+		        }
+	        }
+	     });
+	}
+	 return false;
 });
 $('#image-list').on('click', '.copyText', function(){
 	var copyText = $(this).attr('data-url');
