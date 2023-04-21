@@ -134,7 +134,7 @@ class DealController extends Controller
         			})
 					->addColumn('image', function($row){
 						$imageval = url('product/' . $row->image);
-                    return '<img src="' . $imageval . '" class="h-50 w-50"/>';
+                    return '<img src="' . $imageval . '" height="30px" width="30px"/>';
 					 })
 						
 					->rawColumns(['action', 'image','select_product'])
