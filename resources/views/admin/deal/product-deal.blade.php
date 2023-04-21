@@ -54,13 +54,13 @@ $url = getAuthGaurd();
      	]
 	});
 
-	 $("input:checkbox").change(function() {
-     	 var ischecked= $(this).is(':checked');
+	$("#product-deal-list").on('change',"input[type='checkbox']",function(e){
+    	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
     			  uncheckedVal.push( $(this).val());
     		}
-    
-     	});
+	});
+	
 	$(".assignDeal").click(function(){
 		var checkedVal = [];
  		$('.selectProducts:checkbox:checked').each(function(){
@@ -82,7 +82,7 @@ $url = getAuthGaurd();
         success: function(response) {
 	        if (response.success) {
 	        	notifyMsg(response.message,'success');
-	           location.reload();
+	            table.ajax.reload(null, false);
 
 	        } else {
 	        	notifyMsg(response.message,'error');
