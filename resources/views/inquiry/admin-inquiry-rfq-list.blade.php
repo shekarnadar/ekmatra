@@ -85,7 +85,8 @@ $url = getAuthGaurd();
             	data: 'created_at', 
             	name: 'created_at' ,
             	'title' : 'Date'
-            }
+            },
+             {data: 'action', name: 'action', orderable: false, searchable: false,title:'action'}
            
            
      ]

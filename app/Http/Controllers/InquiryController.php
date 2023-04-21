@@ -44,15 +44,13 @@ class InquiryController extends Controller
 		
 	}
 
-	public function inquiryView(){
+	public function inquiryView($id){
+	
 		
-		$client_id = \Auth::user()->id;
-		
-		$inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','enquiry')->orderBy('created_at','desc')->get();
+		$inquiry = Inquiry::with('product.createdBy')->find($id);
 
-		$rfq = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','rfq')->orderBy('created_at','desc')->get();
+		return view('inquiry.detail',compact('inquiry'));
 		
-		return view('inquiry.index',compact('inquiry','rfq'));
 	}
 
 	public function inquirylist(Request $request) {
@@ -89,6 +87,11 @@ class InquiryController extends Controller
 					$date = date('d-m-Y',strtotime($row['created_at']));
 					return $date;
 				 })
+				->addColumn('action', function($row){
+					$url = url(getAuthGaurd().'/inquiry/view')."/".$row->id;
+					$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">View</a>&nbsp;&nbsp;';
+					return $btn;
+				 })
 					
 				->rawColumns(['action','image'])
 				->make(true);
@@ -116,6 +119,11 @@ class InquiryController extends Controller
 				->addColumn('created_at', function($row){
 					$date = date('d-m-Y',strtotime($row['created_at']));
 					return $date;
+				 })
+				->addColumn('action', function($row){
+					$url = url(getAuthGaurd().'/inquiry/view')."/".$row->id;
+					$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">View</a>&nbsp;&nbsp;';
+					return $btn;
 				 })
 				->rawColumns(['action'])
 				->make(true);
