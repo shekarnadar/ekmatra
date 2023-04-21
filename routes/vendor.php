@@ -35,12 +35,12 @@ Route::group(['prefix' => 'vendor'], function(){
 		Route::get('product/image',[ProductController::class,'productImage'])->name('productimagevendor');
 Route::post('product/image/remove',[ProductController::class,'productImageRemove'])->name('productimageremovevendor');
 		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveimagevendor');
-		Route::post('import',[ProductController::class,'import'])->name('import');
+		Route::post('import',[ProductController::class,'import'])->name('importvendor');
 
 
 		//exportdata
-		Route::get('product-sample-download',[ProductController::class,'ProductSampleDownload'])->name('Productsampledownload');
-		Route::get('product-import',[ProductController::class,'ProductImport'])->name('productimport"');
+		Route::get('product-sample-download',[ProductController::class,'ProductSampleDownload'])->name('productsampledownloadvendor');
+		Route::get('product-import',[ProductController::class,'ProductImport'])->name('productimportvendor"');
 
   });
 
