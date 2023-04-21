@@ -28,7 +28,7 @@ class Deal extends Model
     }
 
     public static function getDeals(){
-        return Deal::get();
+        return Deal::orderBy('created_at','desc')->get();
     }
 
     public function productDeals(){

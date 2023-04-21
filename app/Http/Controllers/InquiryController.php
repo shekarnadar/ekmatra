@@ -45,10 +45,13 @@ class InquiryController extends Controller
 	}
 
 	public function inquiryView(){
+		
 		$client_id = \Auth::user()->id;
-		$inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','enquiry')->get();
+		
+		$inquiry = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','enquiry')->orderBy('created_at','desc')->get();
 
-		$rfq = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','rfq')->get();
+		$rfq = Inquiry::with('product.createdBy')->where('client_id',$client_id)->where('type','rfq')->orderBy('created_at','desc')->get();
+		
 		return view('inquiry.index',compact('inquiry','rfq'));
 	}
 
@@ -82,6 +85,10 @@ class InquiryController extends Controller
 					$imageval = url('product/' . $row['product']['image']);
 				return '<img src="' . $imageval . '" class="h-50 w-50"/>';
 				 })
+				->addColumn('created_at', function($row){
+					$date = date('y-m-d',strtotime($row['created_at']));
+					return $date;
+				 })
 					
 				->rawColumns(['action','image'])
 				->make(true);
@@ -106,7 +113,10 @@ class InquiryController extends Controller
 				->addColumn('customer_detail',function($row){
 					return $row['customer']['name'];
 				})
-					
+				->addColumn('created_at', function($row){
+					$date = date('y-m-d',strtotime($row['created_at']));
+					return $date;
+				 })
 				->rawColumns(['action'])
 				->make(true);
 		}

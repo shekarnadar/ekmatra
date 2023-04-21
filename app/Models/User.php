@@ -114,7 +114,7 @@ class User extends Authenticatable
     public static function getVendors($request){
 
     	$role_id = getRole('vendor');
-    	$vendor = User::where('role_id',$role_id);
+    	$vendor = User::where('role_id',$role_id)->orderBy('created_at','desc');
     	return $vendor;
     }
 

@@ -42,7 +42,7 @@ class Feature extends Model
     //get features
     public static function getFeatures() {
 
-         $feature = Feature::orderBy('created_at','desc')->get();
+         $feature = Feature::orderBy('created_at','desc')->orderBy('created_at','desc')->get();
          return $feature;
     }
 }
