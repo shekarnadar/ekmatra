@@ -110,7 +110,25 @@ class ProductController extends Controller
 			 	$image = uploadImage('product',$request->image);
 		    $request['image'] = $image;
 			}
-		 	
+		 	if($request['id']){
+		 		if($request['image_url']){
+		 			$explode_image = explode('product/',$request['image_url']);
+        			if(isset($explode_image[1])){
+        				
+           				if (\File::exists(public_path('product/'.$explode_image[1]))) {
+           					$request['image'] = $explode_image[1];
+		 							}else{
+		 								
+		 								return response()->json(['success' => false,
+											'message' => 'Image Does not exist'], 200);
+		 							}
+		 					}else{
+		 						return response()->json(['success' => false,
+											'message' => 'Image Does not exist'], 200);
+		 							
+		 					}
+		 		}
+		 	}
 		 	Product::saveProduct($request->input());
 			return response()->json(['success' => true,
 				'message' => 'Product has been '.($request['id'] ? 'updated' : 'added')  .' successfully.'

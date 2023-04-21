@@ -43,7 +43,30 @@
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
+										
+										@if(isset($product['id']))
+										<div class="col-6 mt-2">
+											<div class="form-group mg-b-0">
+												<label class="form-label">Image Url: <span class="tx-danger">*</span></label>
+												<div class="custom-file">
+													<input type="text" name="image_url" id="image_url" class="form-control">
+												</div>
+												<span class="text-danger" id="image_url_error"></span>
+											</div>
+										</div>
+										@endif
+										@if(isset($product['image']))
+										<div class="col-6 mt-2">
+											<div class="form-group mg-b-0">
+												<label class="form-label">Preview: <span class="tx-danger">*</span></label>
+												<div class="custom-file">
 
+													<img src="{{url('product/'.$product['image'])}}"/ width="40" height="40px;">
+												</div>
+												<span class="text-danger" id="name_error"></span>
+											</div>
+										</div>
+										@endif
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Price: <span class="tx-danger">*</span></label>
@@ -55,7 +78,7 @@
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
 												<label class="form-label">MRP: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="mrp" placeholder="Enter MEP" required="required" id="mrp" type="text" data-parsley-required-message="Please enter your mrp" value="{{@$product['mrp']}}">
+												<input class="form-control" name="mrp" placeholder="Enter MRP" required="required" id="mrp" type="text" data-parsley-required-message="Please enter your mrp" value="{{@$product['mrp']}}">
 												<span class="text-danger" id="mrp_error"></span>
 											</div>
 										</div>
@@ -64,7 +87,7 @@
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
 												<label class="form-label">MOQ: <span class="tx-danger">*</span></label>
-												<input class="form-control" name="maq" placeholder="Enter Maq" required="required" id="maq" type="text" data-parsley-required-message="Please enter your maq" value="{{@$product['maq']}}">
+												<input class="form-control" name="maq" placeholder="Enter MOQ" required="required" id="maq" type="text" data-parsley-required-message="Please enter your maq" value="{{@$product['maq']}}">
 												<span class="text-danger" id="maq_error"></span>
 											</div>
 										</div>
@@ -189,7 +212,7 @@
 		 		 $('#feature_attribute_id').val(feature_attribute_id);
 
 		 }
-		$('#productCreate').on('submit', function(e) {
+		 $('#productCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);
 
@@ -213,6 +236,8 @@
                         window.location.href ='{{ url("$url/products") }}';
                     },2000);
                 } else {
+                	 $(".loading").hide();
+				 $(".addproduct").prop('disabled',false);
                     notifyMsg(response.message,'error');
                 }
             },
@@ -232,27 +257,27 @@
         });
 	    }
 	});
-		$("#category_id").on('change', function() {
+		 $("#category_id").on('change', function() {
 			getSubCategory(this.value);
-		});
+		 });
 		function getSubCategory(id){
 			$.ajax({
-                url: '{{ url("product/subcategory") }}',
-                type: "POST",
-                data: {
-                	 category_id: id,
-                  _token: '{{ csrf_token() }}'
-                },
-                dataType: 'json',
-                success: function(result) {
-                	$('#sub_category_id').html('<option value="">Select Subcategory</option>');
-                    $.each(result, function(key, value) {
-                        $("#sub_category_id").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
-                    });
-                    $('#brand').html('<option value="">Select Brands</option>');
-                }
+      	url: '{{ url("product/subcategory") }}',
+        type: "POST",
+        data: {
+        	category_id: id,
+          _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(result) {
+        	$('#sub_category_id').html('<option value="">Select Subcategory</option>');
+            $.each(result, function(key, value) {
+                $("#sub_category_id").append('<option value="' + value
+                    .id + '">' + value.name + '</option>');
             });
+            $('#brand').html('<option value="">Select Brands</option>');
+        }
+       });
 		}
 		
 

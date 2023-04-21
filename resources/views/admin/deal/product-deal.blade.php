@@ -56,6 +56,7 @@ $url = getAuthGaurd();
 	$("input:checkbox").change(function() {
      	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
+    			alert("calll");
     			  uncheckedVal.push( $(this).val());
     		}
     
