@@ -82,7 +82,8 @@ $url = getAuthGaurd();
         success: function(response) {
 	        if (response.success) {
 	        	notifyMsg(response.message,'success');
-	           location.reload;
+	           location.reload();
+
 	        } else {
 	        	notifyMsg(response.message,'error');
 	        }
