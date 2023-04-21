@@ -32,9 +32,9 @@ Route::group(['prefix' => 'vendor'], function(){
 	
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquiry.list');
 
-		Route::get('product/image',[ProductController::class,'productImage'])->name('productimage');
-Route::post('product/image/remove',[ProductController::class,'productImageRemove'])->name('productimageremove');
-		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
+		Route::get('product/image',[ProductController::class,'productImage'])->name('productimagevendor');
+Route::post('product/image/remove',[ProductController::class,'productImageRemove'])->name('productimageremovevendor');
+		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveimagevendor');
 		Route::post('import',[ProductController::class,'import'])->name('import');
 
 
