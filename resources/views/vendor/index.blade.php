@@ -46,10 +46,11 @@ $url = getAuthGaurd();
 				async:false,
 		},
 		 columns: [
-            {data: 'name', name: 'name','title' : 'Name'},
+
+		 	{data: 'image', name: 'image' ,'title' : 'Image'},
+			{data: 'name', name: 'name','title' : 'Name'},
             {data: 'email', name: 'email' ,'title' : 'Email'},
             {data: 'phone', name: 'phone' ,'title' : 'Phone'},
-            {data: 'image', name: 'image' ,'title' : 'Image'},
             {data: 'company_name', name: 'company_name',title:'company Name'},
             {data: 'action', name: 'action', orderable: false, searchable: false,title:'action'},
      ]

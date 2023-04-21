@@ -30,7 +30,7 @@
 																								Discount <span class="text-primary font-weight-bolder">50%
 																										OFF</span>This Week.
 																						</h4>
-																						<a href="demo12-shop.html"
+																						<a href="#"
 																								class="btn btn-outline btn-white btn-rounded btn-icon-right slide-animate"
 																								data-animation-options="{'name': 'fadeInUpShorter', 'duration': '.5s', 'delay': '.6s'}">
 																								Shop Now
@@ -55,7 +55,7 @@
 																								Up to
 																								<span class="text-primary font-weight-bolder">30% OFF</span>
 																						</h4>
-																						<a href="demo12-shop.html"
+																						<a href="#"
 																								class="btn btn-outline btn-dark btn-rounded btn-icon-right slide-animate"
 																								data-animation-options="{'name': 'fadeInUpShorter', 'duration': '.5s', 'delay': '.6s'}">
 																								Shop Now
@@ -103,7 +103,7 @@
 																		<h5 class="banner-subtitle text-uppercase text-lighter font-weight-bold">New In</h5>
 																		<h3 class="banner-title text-white font-secondary font-weight-bolder ls-25">
 																				Cosmetical</h3>
-																		<a href="demo12-shop.html"
+																		<a href="#"
 																				class="btn btn-white btn-link btn-slide-right btn-icon-right btn-infinite">
 																				Shop Now
 																				<i class="w-icon-long-arrow-right"></i>
@@ -121,7 +121,7 @@
 																		</h5>
 																		<h3 class="banner-title text-dark font-secondary font-weight-bolder ls-25">Kids
 																				Store</h3>
-																		<a href="demo12-shop.html"
+																		<a href="#"
 																				class="btn btn-dark btn-link btn-slide-right btn-icon-right btn-infinite">
 																				Shop Now
 																				<i class="w-icon-long-arrow-right"></i>
@@ -191,7 +191,7 @@
 
 								<div class="title-link-wrapper title-select after-none appear-animate">
 										<h2 class="title font-secondary font-weight-bolder">Latest Products</h2>
-										<!-- <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">
+										<!-- <a href="s#" class="font-weight-bold ls-25">
 												More Products
 												<i class="w-icon-long-arrow-right"></i>
 										</a> -->
@@ -291,7 +291,7 @@
 														<div class="vendor-widget-2">
 																<div class="vendor-details">
 																		<figure class="vendor-logo">
-																				<a href="vendor-dokan-store.html">
+																				<a href="#">
 																						<img src="{{url('vendor/'.$value['image'])}}" alt="Vendor Logo"
 																								width="70" height="70" />
 																				</a>
@@ -342,7 +342,7 @@
 														<h2 class="banner-title text-white font-secondary">Wireless HeadPhone</h2>
 														<h3 class="banner-subtitle text-lighter font-weight-normal">Only until the end of this Week
 														</h3>
-														<a href="demo12-shop.html"
+														<a href="#"
 																class="btn btn-sm btn-outline btn-white btn-rounded btn-icon-right slide-animate">
 																Shop Now
 																<i class="w-icon-long-arrow-right"></i>
@@ -362,7 +362,7 @@
 														<h2 class="banner-title text-dark font-secondary">Sport Outfits</h2>
 														<h3 class="banner-subtitle text-default font-weight-normal">Only until the end of this Week
 														</h3>
-														<a href="demo12-shop.html"
+														<a href="#"
 																class="btn btn-sm btn-outline btn-dark btn-rounded btn-icon-right slide-animate">
 																Shop Now
 																<i class="w-icon-long-arrow-right"></i>
@@ -374,7 +374,7 @@
 
 								<div class="title-link-wrapper title-deals after-none appear-animate">
 										<h2 class="title font-secondary mb-1">Deals Hot Of The Day</h2>
-										<a href="shop-boxed-banner.html" class="font-weight-bold ls-25">
+										<a href="#" class="font-weight-bold ls-25">
 												More Products
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
@@ -392,7 +392,7 @@
 												<div class="swiper-slide ">
 														<div class="product product-list br-sm mb-0">
 																<figure class="product-media">
-																		<a href="product-default.html">
+																		<a href="#">
 																				<img src="{{url('front/images/demos/demo12/products/1-1-1.jpg')}}" alt="Product"
 																						width="315" height="355">
 																				<img src="{{url('front/images/demos/demo12/products/1-1-2.jpg')}}" alt="Product"
@@ -411,7 +411,7 @@
 																</figure>
 																<div class="product-details">
 																		<h4 class="product-name">
-																				<a href="product-default.html">Automatic Watch</a>
+																				<a href="#">Automatic Watch</a>
 																		</h4>
 																		<div class="ratings-container mb-2">
 																				<div class="ratings-full">
@@ -424,7 +424,7 @@
 																		<p class="text-default">Aliquam id diam maecenas ultricies me. Volutpat ac tincidunt
 																				vitae sempe. Ultrices eros in cursus turpis massa tine.</p>
 																		<div class="product-action">
-																				<a href="product-default.html" class="btn-dark btn-product"
+																				<a href="#" class="btn-dark btn-product"
 																						title="Select Options">
 																						<i class="w-icon-cart"></i>
 																						<span>Select Options</span>
@@ -437,7 +437,7 @@
 												<div class="swiper-slide ">
 														<div class="product product-list br-sm mb-0">
 																<figure class="product-media">
-																		<a href="product-default.html">
+																		<a href="#">
 																				<img src="{{url('front/images/demos/demo12/products/1-4-1.jpg')}}" alt="Product"
 																						width="315" height="355">
 																				<img src="{{url('front/images/demos/demo12/products/1-4-2.jpg')}}" alt="Product"
@@ -456,7 +456,7 @@
 																</figure>
 																<div class="product-details">
 																		<h4 class="product-name">
-																				<a href="product-default.html">Mini Wireless Earphone</a>
+																				<a href="#">Mini Wireless Earphone</a>
 																		</h4>
 																		<div class="ratings-container mb-2">
 																				<div class="ratings-full">
@@ -469,7 +469,7 @@
 																		<p class="text-default">Aliquam id diam maecenas ultricies me. Volutpat ac tincidunt
 																				vitae sempe. Ultrices eros in cursus turpis massa tine.</p>
 																		<div class="product-action">
-																				<a href="product-default.html" class="btn-dark btn-product"
+																				<a href="#" class="btn-dark btn-product"
 																						title="Select Options">
 																						<i class="w-icon-cart"></i>
 																						<span>Select Options</span>
@@ -502,7 +502,7 @@
 												Free shipping on clearance orders of <span class="text-primary font-weight-bolder"> $120
 												</span>or more
 										</p>
-										<a href="shop-banner-sidebar.html"
+										<a href="#"
 												class="btn btn-lg btn-outline btn-white btn-rounded btn-icon-right slide-animate">
 												Purchase Now
 												<i class="w-icon-long-arrow-right"></i>

@@ -22,7 +22,7 @@ class VendorController extends Controller
 					return Datatables::of($data)
 						->addColumn('image', function($row){
 					 		$imageval = url('vendor/' . $row->image);
-                    return '<img src="' . $imageval . '" class="h-30 w-30"/>';
+                    return '<img src="' . $imageval . '" height="30px" width="30px"/>';
 					 })
 						->addColumn('action', function($row){
 					 	$url = url('admin/vendor/edit')."/".$row['id'];

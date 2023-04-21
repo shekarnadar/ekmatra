@@ -46,7 +46,11 @@ $url = getAuthGaurd();
 				async:false,
 		},
 		 columns: [
-          
+          	 {
+            	data:'customer_detail',
+            	name: 'customer_detail',
+            	title: 'Customer Detail'
+            },
             {
             	data:'quantity',
             	name:'quantity',
@@ -77,11 +81,7 @@ $url = getAuthGaurd();
             	name:'delivery_date',
             	title :'Delivery Date'
             },
-            {
-            	data:'customer_detail',
-            	name: 'customer_detail',
-            	title: 'Customer Detail'
-            },{
+           {
             	data: 'created_at', 
             	name: 'created_at' ,
             	'title' : 'Date'

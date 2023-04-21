@@ -64,7 +64,7 @@ class InquiryController extends Controller
 					$data->where('vendor_id',$client_id);
 				}
 				$data->where('type','enquiry');
-				$data = $data->get();
+				$data = $data->orderBy('created_at','desc')->get();
 				return Datatables::of($data)
 				->addColumn('name', function($row){
 					return $row['product']['name'];
@@ -83,10 +83,10 @@ class InquiryController extends Controller
 				})
 				->addColumn('image', function($row){
 					$imageval = url('product/' . $row['product']['image']);
-				return '<img src="' . $imageval . '" class="h-50 w-50"/>';
+					return '<img src="' . $imageval . '" height="30px" width="30px"/>';
 				 })
 				->addColumn('created_at', function($row){
-					$date = date('y-m-d',strtotime($row['created_at']));
+					$date = date('d-m-Y',strtotime($row['created_at']));
 					return $date;
 				 })
 					
@@ -104,7 +104,7 @@ class InquiryController extends Controller
 					$data->where('vendor_id',$client_id);
 				}
 				$data->where('type','rfq');
-				$data = $data->get();
+				$data = $data->orderBy('created_at','desc')->get();
 				return Datatables::of($data)
 				
 				->addColumn('delivery_date',function($row){
@@ -114,7 +114,7 @@ class InquiryController extends Controller
 					return $row['customer']['name'];
 				})
 				->addColumn('created_at', function($row){
-					$date = date('y-m-d',strtotime($row['created_at']));
+					$date = date('d-m-Y',strtotime($row['created_at']));
 					return $date;
 				 })
 				->rawColumns(['action'])

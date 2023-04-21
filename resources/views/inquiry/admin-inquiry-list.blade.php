@@ -54,7 +54,7 @@ $url = getAuthGaurd();
             {
             	data: 'name', 
             	name: 'name',
-            	'title' : 'Name'},
+            	'title' : 'Product Name'},
             {
             	data:'price' ,
             	name:'price',

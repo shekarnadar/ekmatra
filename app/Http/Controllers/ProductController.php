@@ -49,7 +49,7 @@ class ProductController extends Controller
 					})
 					->addColumn('image', function($row){
 						$imageval = url('product/' . $row->image);
-                    return '<img src="' . $imageval . '" class="h-50 w-50"/>';
+                    	return '<img src="' . $imageval . '" height="30px" width="30px"/>';
 					 })
 						->addColumn('action', function($row){
 								$url = url(getAuthGaurd().'/product/edit')."/".$row->id;
@@ -229,7 +229,7 @@ class ProductController extends Controller
 					 })
 						->addColumn('image', function($row){
 							$url = url('product/'.$row['name']);
-							return '<img src="' . $url . '" class="h-50 w-50"/>';
+							return '<img src="' . $url . '" height="30px" width="30px"/>';
 
 					 })
 						->addColumn('action', function($row){
