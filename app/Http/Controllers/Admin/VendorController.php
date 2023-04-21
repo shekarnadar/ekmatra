@@ -20,12 +20,17 @@ class VendorController extends Controller
 				if ($request->ajax()) {
 					$data = User::getVendors($request);
 					return Datatables::of($data)
+						->addColumn('image', function($row){
+					 		$imageval = url('vendor/' . $row->image);
+                    return '<img src="' . $imageval . '" class="h-30 w-30"/>';
+					 })
 						->addColumn('action', function($row){
 					 	$url = url('admin/vendor/edit')."/".$row['id'];
    						$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>';
 							return $btn;
 					 })
 					->skipTotalRecords()
+					->rawColumns(['action', 'image'])
 					->make(true);
 				}
 	  
