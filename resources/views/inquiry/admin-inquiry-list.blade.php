@@ -33,6 +33,7 @@ $url = getAuthGaurd();
 		processing: true,
 		serverSide: true,
 		paging:true,
+		ordering: false,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
@@ -45,7 +46,11 @@ $url = getAuthGaurd();
 				async:false,
 		},
 		 columns: [
-          
+          	{
+            	data:'customer_detail',
+            	name: 'customer_detail',
+            	title: 'Customer Detail'
+            },
             {
             	data: 'name', 
             	name: 'name',
@@ -65,15 +70,16 @@ $url = getAuthGaurd();
             	name: 'vendor',
             	title: 'Vendor'
             },
-            {
-            	data:'customer_detail',
-            	name: 'customer_detail',
-            	title: 'Customer Detail'
-            },
+            
             {
             	data: 'image', 
             	name: 'image' ,
             	'title' : 'image'
+            },
+            {
+            	data: 'created_at', 
+            	name: 'created_at' ,
+            	'title' : 'Date'
             }
            
      ]

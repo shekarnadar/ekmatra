@@ -35,6 +35,7 @@ $url = getAuthGaurd();
 		processing: true,
 		serverSide: true,
 		paging:true,
+		ordering: false,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',

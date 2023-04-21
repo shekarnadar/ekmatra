@@ -33,6 +33,7 @@ $url = getAuthGaurd();
 		processing: true,
 		serverSide: true,
 		paging:true,
+		ordering: false,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
@@ -80,6 +81,10 @@ $url = getAuthGaurd();
             	data:'customer_detail',
             	name: 'customer_detail',
             	title: 'Customer Detail'
+            },{
+            	data: 'created_at', 
+            	name: 'created_at' ,
+            	'title' : 'Date'
             }
            
            
