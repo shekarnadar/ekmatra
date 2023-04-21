@@ -38,6 +38,7 @@ Route::get('welcome',[WelcomeController::class, 'index'])->name('index');
 
 
 //Shop page
+Route::get('shop/product',[ShopController::class, 'productList'])->name('product');
 
 Route::get('shop/{category}',[ShopController::class, 'index'])->name('shopindex');
 Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryList'])->name('subcategory.list');

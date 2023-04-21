@@ -13,6 +13,15 @@ use App\Models\SubCategoryFeature;
 class ShopController extends Controller
 {
 	//
+	public function productList(Request $request){
+		$brand = Product::with('feature_attributes')->where('status',1)->groupBy('feature_attribute_id')->get();
+
+    	$allcategory = 1;
+		$product = Product::where('status',1);
+		$product=$product->orderBy('created_at','desc')->paginate(10);
+		return view ('allproduct',compact('brand','product','allcategory'));
+		
+	}
 	public function index($category,Request $request){
 		
 		$category = Category::with(['subCategory'])->where('name',$category)->first();

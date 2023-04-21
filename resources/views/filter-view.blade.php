@@ -12,6 +12,18 @@
 									<a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
 								</div>
 								<!-- Start of Collapsible widget -->
+								@if(isset($allcategory))
+								<div class="widget widget-collapsible">
+									<h3 class="widget-title"><label>All Categories</label></h3>
+									<ul class="widget-body filter-items search-ul">
+										@foreach($category as $val)
+											
+											<li><a href="{{url('shop/'.$val['name'])}}">{{$val['name']}}</a></li>
+											
+										@endforeach
+									</ul>
+								</div>
+								@endif
 								@if(@$subCategory)
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>All Categories</label></h3>
