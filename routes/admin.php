@@ -84,7 +84,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('deal/edit/{id}',[DealController::class,'edit'])->name('deal.edit');
 
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquirylist');
-		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquirylist');
+		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquiryview');
 		Route::get('rfq',[InquiryController::class,'rfqlist'])->name('rfqlist');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
