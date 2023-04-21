@@ -64,7 +64,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product-edit');
 		Route::post('product/status-change',[ProductController::class,'statusChange'])->name('status-change');
 
-		Route::get('product/image',[ProductController::class,'productImage'])->name('productImage');
+		Route::get('product/image',[ProductController::class,'productImage'])->name('productimage');
 
 		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
 		Route::post('product/image/remove',[ProductController::class,'productImageRemove'])->name('productImageRemove');
