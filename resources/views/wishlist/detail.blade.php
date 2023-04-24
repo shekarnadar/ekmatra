@@ -121,34 +121,42 @@
 
 	$(document).on('click', ".remove", function() {
 		var id = $(this).attr('data-id');
-		$.ajax({
-       		type: "post",
-          url: '{{ url("removeProductWishlist") }}',
-          data: {
-            "id": id,
-            "_token": "{{ csrf_token() }}",
-        	},
-          success: function(response) {
-          	$('.cart-count ').text(response.count);
-          	$("#product"+id).remove();
-          },
-          
-       });
+		if (confirm('Are you sure want to remove?')) {
+			$.ajax({
+	       		type: "post",
+	          url: '{{ url("removeProductWishlist") }}',
+	          data: {
+	            "id": id,
+	            "_token": "{{ csrf_token() }}",
+	        	},
+	          success: function(response) {
+	          	$('.cart-count ').text(response.count);
+	          	$("#product"+id).remove();
+	          },
+	          
+	       });
+		}else{
+			return false;
+		}
 	});
 	$(document).on('click', ".removewishlist", function() {
 		var id = "{{$wishlist['id']}}";
-		$.ajax({
-       		type: "post",
-          url: '{{ url("removewishlist") }}',
-          data: {
-            "id": id,
-            "_token": "{{ csrf_token() }}",
-        	},
-          success: function(response) {
-          	window.location.href ='{{ url("wishlist") }}';
-          },
-          
-       });
+		if (confirm('Are you sure want to remove?')) {
+			$.ajax({
+	       		type: "post",
+	          url: '{{ url("removewishlist") }}',
+	          data: {
+	            "id": id,
+	            "_token": "{{ csrf_token() }}",
+	        	},
+	          success: function(response) {
+	          	window.location.href ='{{ url("wishlist") }}';
+	          },
+	          
+	       });
+		}else{
+			return false;
+		}
 	});
 	
 </script>
