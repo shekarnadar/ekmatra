@@ -70,11 +70,21 @@
 							<div class="widget">
 								<h4 class="widget-title">My Account</h4>
 								<ul class="widget-body">
-									<li><a href="#">Track My Order</a></li>
-									<li><a href="cart.html">View Cart</a></li>
-									<li><a href="login.html">Sign In</a></li>
+									<li>
+										@auth
+											<a href="{{url('myaccount')}}" class="d-lg-show">My Account</a>
+										@else
+											<a href="{{url('login')}}" class="ml-0 d-lg-show login sign-in">Sign In</a>
+										@endauth
+									</li>
 									<li><a href="#">Help</a></li>
-									<li><a href="wishlist.html">My Wishlist</a></li>
+									@auth
+									<li>
+										
+											<a href="{{url('wishlist')}}">My Wishlist</a>
+										
+									</li>
+									@endauth
 									<li><a href="#">Privacy Policy</a></li>
 								</ul>
 							</div>

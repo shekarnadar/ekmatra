@@ -63,6 +63,8 @@ class ProductController extends Controller
 									$class = ($row['status']== 0) ? 'success' : 'danger';
 									$status_val = ($row['status']== 0) ? '1' : '0';
 									$btn.= '<button class="edit btn btn-'.$class.' btn-sm changestaus" data-id='.$row["id"].' data-status='.$status_val.' data-msg='.$status.'>'.$status.'</button>&nbsp;&nbsp;';
+
+									$btn.= '<button class="removeProduct btn-primary" data-id='.$row["id"].'>Remove</button>';
 								}
 										
 									
@@ -342,5 +344,21 @@ class ProductController extends Controller
 		return response()->json(['success' => true,
 				'message' => 'Image has been  deleted successfully'
 		  ], 200);
+	}
+
+	public function productRemove(Request $request){
+		try {
+			
+		  $product = Product::find($request->id);
+		  $product->delete();
+			return response()->json(['success' => true,
+				'message' => 'Product has been removed successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			echo $e->getMessage();
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
 	}
 }
