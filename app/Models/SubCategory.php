@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 
 class SubCategory extends Model
@@ -12,20 +13,32 @@ class SubCategory extends Model
 	protected $table = 'sub_categorys';
 	protected $fillable = [
 		'name',
-		'category_id'
+		'category_id',
+		'slug'
 	];
 
+	public function setNameAttribute($value){
+      $res = str_replace( array( '\'', '"',
+      ',' , ';', '<', '>','/'), '-', $value);
+      $this->attributes['name'] = $value;
+      $this->attributes['slug'] = Str::slug($res);
+    }
 	public static function saveSubcategory($request) {
 	   
-		$subcat = SubCategory::Create([
-			'category_id' => $request['id'],
-			'name' => $request['name']
-		]);
-		
-		
+		if(isset($request['id'])){
+            $id = $request['id'];
+            
+        }else{
+            $id = 0;
+            $request['catgeory_id'] = $request['category_id'];
+
+        }
+        $matchThese = ['id'=>$id];
+        $subcat = SubCategory::updateOrCreate($matchThese,$request);
 		return $subcat;  
 	}
-
+    
+    
 	
 
 	public function category(){

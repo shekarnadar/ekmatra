@@ -4,14 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
     use HasFactory;
      protected $fillable = [
         'name',
-        'image'
+        'image',
+        'slug'
     ];
+
+    public function setNameAttribute($value){
+      $res = str_replace( array( '\'', '"',
+      ',' , ';', '<', '>','/'), '-', $value);
+      $this->attributes['name'] = $value;
+      $this->attributes['slug'] = Str::slug($res);
+    }
 
    //save category
     public static function saveCategory($request){
