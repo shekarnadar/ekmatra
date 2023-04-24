@@ -18,7 +18,7 @@
 									<ul class="widget-body filter-items search-ul">
 										@foreach($category as $val)
 											
-											<li><a href="{{url('shop/'.$val['name'])}}">{{$val['name']}}</a></li>
+											<li><a href="{{url('shop/'.$val['slug'])}}">{{$val['name']}}</a></li>
 											
 										@endforeach
 									</ul>
@@ -38,7 +38,7 @@
 											@else
 											<?php $color ="";?>
 										   	@endif
-											<li class="active"><a href="{{url('shop/'.$cat_name.'/'.$val['name'])}}" <?php echo $color;?>>{{$val['name']}}</a></li>
+											<li class="active"><a href="{{url('shop/'.$cat_slug.'/'.$val['slug'])}}" <?php echo $color;?>>{{$val['name']}}</a></li>
 											
 										@endforeach
 									</ul>
