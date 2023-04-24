@@ -24,10 +24,12 @@ class ShopController extends Controller
 	}
 	public function index($category,Request $request){
 		
-		$category = Category::with(['subCategory'])->where('name',$category)->first();
+		$cat_slug = $category;
+		$category = Category::with(['subCategory'])->where('slug',$category)->first();
 		
 		$cat_id = $category['id'];
 		$cat_name = $category['name'];
+
 		
 		$subCategory = $category['subCategory'];
 		//$brand = $category['brands'];
@@ -40,7 +42,7 @@ class ShopController extends Controller
 		$product=$product->orderBy('created_at','desc')->paginate(10);
 		
 		
-		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product'));
+		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product','cat_slug'));
 	}
     
     public function filterResult(Request $request){
@@ -100,13 +102,14 @@ class ShopController extends Controller
     }
 	public function subCategoryList($category_name,$subcategory_name){
 		
-		$cat_name = $category_name;
-		$subcategory_name = $subcategory_name;
-		$category = Category::with(['subCategory'])->where('name',$category_name)->first();
-		$subCategory = $category['subCategory'];
-
-		$sub_cat = SubCategory::where('name',$subcategory_name)->first();
+		$cat_slug = $category_name;
 		
+		$category = Category::with(['subCategory'])->where('slug',$category_name)->first();
+		$subCategory = $category['subCategory'];
+		$cat_name = $category['name'];
+		$sub_cat = SubCategory::where('slug',$subcategory_name)->first();
+		$subcategory_name = $sub_cat['name'];
+
 		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
 		
 
@@ -117,7 +120,7 @@ class ShopController extends Controller
 		->where('category_id',$sub_cat['category_id'])->where('sub_category_id',$sub_cat['id'])->where('status',1)->groupBy('feature_attribute_id')->get();
 		
 
-		return view ('subCategoryshop',compact('sub_cat','product','cat_name','subcategory_name','brand','subCategory'));
+		return view ('subCategoryshop',compact('sub_cat','product','cat_name','subcategory_name','brand','subCategory','cat_slug'));
 	
 	}
 

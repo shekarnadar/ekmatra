@@ -39,7 +39,7 @@
 											<select id="category"  onchange="location = this.value;">
 													<option value="">All Categories</option>
 													 @foreach($category as $value)
-														<option value="{{url('shop/'.$value['name'])}}">{{$value['name']}}</option>
+														<option value="{{url('shop/'.$value['slug'])}}">{{$value['name']}}</option>
 													@endforeach
 											</select>
 									</div>
