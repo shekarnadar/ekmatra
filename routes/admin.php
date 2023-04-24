@@ -69,6 +69,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('product/image',[ProductController::class,'saveImage'])->name('saveImage');
 		Route::post('product/image/remove',[ProductController::class,'productimageremove'])->name('productImageRemove');
 		Route::post('import',[ProductController::class,'import'])->name('import');
+		Route::post('product/remove',[ProductController::class,'productRemove'])->name('productRemove');
 
 
 		//exportdata
