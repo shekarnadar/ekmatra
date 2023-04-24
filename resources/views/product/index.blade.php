@@ -12,7 +12,7 @@ $url = getAuthGaurd();
 								<div class="d-flex justify-content-between">
 									<h4 class="card-title mg-b-0 mt-2 mb-2">Product</h4>
 									<div style="float: right;">
-									
+
 									<a href='{{url("$url/product-import")}}' class="btn btn-primary">Product Import</a>
 									<a href='{{url("$url/product/add")}}' class="btn btn-primary">Add Product</a>
 									<a href='{{url("$url/product/image")}}' class="btn btn-primary">Upload Image</a>
@@ -21,6 +21,12 @@ $url = getAuthGaurd();
 								
 							</div>
 							<div class="card-body">
+								<select class="form-control col-4" name="category" id="category">
+										<option value=''>Select Category</option>
+										@foreach($category as $cat_val)
+											<option value="{{$cat_val['id']}}">{{$cat_val['name']}}</option>
+										@endforeach
+									</select>
 								<div class="table-responsive">
 									<table id="product-list" class="table key-buttons text-md-nowrap"></table>
 								</div>
@@ -86,6 +92,9 @@ $('#product-list').on('click', '.changestaus', function(){
 		}
 	
 	});
+   $('#category').on('change', function() {
+   		table.ajax.reload(null, false);
+   });
 	function getTable() {
 		table = $('#product-list').DataTable({
 		lengthChange: false,
@@ -103,6 +112,10 @@ $('#product-list').on('click', '.changestaus', function(){
 				url: '{{ url("$url/products") }}', // need to change here url
 				type: "GET",
 				async:false,
+				data: function(d) {
+                    d.category = $('#category').val();
+                },
+				
 		},
 		 columns: [
             {
