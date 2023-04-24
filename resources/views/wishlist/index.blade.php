@@ -54,9 +54,9 @@
 												</tbody>
 										</table>
 										@else
-												<p>Nothing is here</p>
+												<p class="show">Nothing is here</p>
 										@endif
-									 
+									 <p class="show" style="display:none">Nothing is here</p>
 								</div>
 						</div>
 </x-guest-layout>
@@ -65,10 +65,9 @@
 
 	$(".cart-table").on("click", ".removecart", function() {
    	var id = $(this).attr('data-id');
-   	 var whichtr = $(this).closest("tr");
-
-       
-   	if (confirm('Are you sure want to remove?')) {
+   	var whichtr = $(this).closest("tr");
+ 		var rowCount = $(".cart-table tbody tr").length;
+ 		if (confirm('Are you sure want to remove?')) {
 			$.ajax({
 	    		type: "post",
 	        url: '{{ url("removewishlist") }}',
@@ -77,7 +76,11 @@
 	            "_token": "{{ csrf_token() }}",
 	        },
 	        success: function(response) {
-    						whichtr.remove();  
+	        	   	whichtr.remove();
+	        	   	if(rowCount == 1){
+	        	   		$(".show").show();
+	        	   		$(".cart-table").hide();
+	        	   	}  
 	        },
 	    });
 	  }else{
