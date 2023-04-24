@@ -30,7 +30,7 @@ class ProductController extends Controller
 	{
 		//
 		if ($request->ajax()) {
-					$data = Product::getProducts();
+					$data = Product::getProducts($request);
 
 					return Datatables::of($data)
 					->addColumn('category_name', function($row){

@@ -51,10 +51,19 @@ class Product extends Model
 	  return $this->belongsTo('App\Models\SubCategory', 'sub_category_id','id');
    }
 
-   public static function getProducts(){
+   public static function getProducts($request){
    	$query = Product::with(['createdBy','category','subCategory'])->select(['id','name','image','price','category_id','sub_category_id','created_by','status']);
    	if(getAuthGaurd() != 'admin'){
    		$query->where('created_by',\Auth::guard(getAuthGaurd())->user()->id);
+   	}
+   	if($request['category']){
+   		$search_txt = $request['category'];
+   		$query = $query->where(function($q) use($search_txt) {
+			$q->whereHas('category', function ($query) use ($search_txt) {
+				 $query->where('id',$search_txt);
+			 });
+			
+		});
    	}
    	$query = $query->orderBy('created_at','desc')->get();
    	return $query;
