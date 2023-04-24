@@ -115,7 +115,7 @@ class SubCategoryController extends Controller
 	public function update(Request $request, $id)
 	{
 				$post = $request->input();
-				SubCategory::where('id',$post['id'])->update(['name' => $post['name']]);
+				SubCategory::saveSubcategory($post);
 			
 				return response()->json(['success' => true,
 					'message' => 'Subcategory has been updated successfully.'

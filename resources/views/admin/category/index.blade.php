@@ -49,6 +49,7 @@ $url = getAuthGaurd();
 		},
 		 columns: [
             {data: 'name', name: 'name','title' : 'Name'},
+            {data: 'slug', name: 'slug','title' : 'Slug'},
             {data: 'image', name: 'image' ,'title' : 'image'},
             {data: 'action', name: 'action', orderable: false, searchable: false,title:'action'},
      ]

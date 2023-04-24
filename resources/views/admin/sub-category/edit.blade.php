@@ -13,7 +13,7 @@
 								<form  data-parsley-validate="" name="subCategoryCreate" method="POST" id="subCategoryCreate" enctype="multipart/form-data">
 									@csrf
 									<input type="hidden" name="id" value="{{@$subCat['id']}}">
-									<input type="hidden" name="category_id" value="{{@$subCat[0]['subCategory']['category_id']}}">
+									<input type="hidden" name="category_id" value="{{@$subCat['category_id']}}">
 									<div class="row row-sm">
 										<div class="col-6">
 											<div class="form-group mg-b-0">
