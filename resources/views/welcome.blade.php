@@ -235,8 +235,7 @@
 								
 								<div class="product-pa-wrapper">
 									<div class="product-price">
-										<ins class="new-price">RS : {{$product_value['price']}}</ins>
-										<del class="old-price">{{$product_value['mrp']}}</del>
+										<ins class="new-price">MRP : {{$product_value['mrp']}}</ins>
 									</div>
 									<div class="product-price">
 										Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
@@ -575,9 +574,8 @@
 																					
 													<div class="product-pa-wrapper">
 														<div class="product-price">
-														<ins class="new-price">RS : {{$product_value['price']}}</ins>
+														<ins class="new-price">MRP : {{$product_value['mrp']}}</ins>
 
-														<del class="old-price">{{$product_value['mrp']}}</del>
 														</div>
 														<div class="product-price">
 															Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
