@@ -53,26 +53,31 @@ class ProductController extends Controller
 					 })
 						->addColumn('action', function($row){
 								$url = url(getAuthGaurd().'/product/edit')."/".$row->id;
-								$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>&nbsp;&nbsp;';
-								if(getAuthGaurd() != 'admin'){
-									$status = ($row['status']== 0) ? 'DeActive' : 'Active';
-									$class = ($row['status']== 0) ? 'danger' : 'success';
-									$btn.= '<span  class="edit btn btn-'.$class.' btn-sm">'.$status.'</span>&nbsp;&nbsp;';
-								}else{
-									$status = ($row['status']== 0) ? 'Active' : 'DeActive';
-									$class = ($row['status']== 0) ? 'success' : 'danger';
-									$status_val = ($row['status']== 0) ? '1' : '0';
-									$btn.= '<button class="edit btn btn-'.$class.' btn-sm changestaus" data-id='.$row["id"].' data-status='.$status_val.' data-msg='.$status.'>'.$status.'</button>&nbsp;&nbsp;';
-
-									$btn.= '<button class="removeProduct btn-primary" data-id='.$row["id"].'>Remove</button>';
+								$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm text-white"><i class="fe fe-edit"></i></a>&nbsp;&nbsp;';
+								if(getAuthGaurd() == 'admin'){
+									$btn.= '<a class="removeProduct btn btn-danger btn-sm text-white" data-id='.$row["id"].'><i class="fe fe-trash"></i></a>';
+									
 								}
-										
 									
 								
 								
 								return $btn;
 					 })
-					->rawColumns(['action', 'image'])
+					->addColumn('statusChange', function($row){
+						if(getAuthGaurd() == 'admin'){
+							$value = $row['id'];
+							$status = ($row['status']== 1) ? 'Active' : 'DeActive';
+									$checked = ($row['status']== 1) ? 'checked' : '';
+									$status_val = ($row['status']== 0) ? '1' : '0';
+									$btn='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
+						}else{
+							$status = ($row['status']== 0) ? 'DeActive' : 'Active';
+									$class = ($row['status']== 0) ? 'danger' : 'success';
+									$btn= '<span  class="edit btn btn-'.$class.' btn-sm">'.$status.'</span>&nbsp;&nbsp;';
+						}
+						return $btn;
+					})
+					->rawColumns(['action', 'image','statusChange'])
 					->make(true);
 			}
 			return view('product.index');

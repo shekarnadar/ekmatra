@@ -4,6 +4,69 @@
 @php
 $url = getAuthGaurd();
 @endphp
+<style>
+	.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  top:-12px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+</style>
 <x-app-layout>
 	<div class="row row-sm">
 		<div class="col-xl-12">
@@ -65,6 +128,41 @@ $('#product-list').on('click','.removeProduct',function(){
 		}
 	
 });
+$("#product-list").on('change',"input[type='checkbox']",function(e){
+	 var ischecked= $(this).is(':checked');
+	 var id = $(this).val();
+	 let status = '';
+	 let message = '';
+	 if(!ischecked){
+	 		status = 0;
+	 		message = "Deactive";
+	 }else{
+	 	status = 1;
+	 	message = "Active";
+	 }
+	 if (confirm("Are you sure you want to " + message +' ?')){
+				$.ajax({
+				
+        url: "{{url('admin/product/status-change')}}",
+        type: "Post",
+        data: {
+            "id": id,
+            "status" : status,
+            "_token": "{{ csrf_token() }}",
+        },
+
+        success: function(response) {
+	        if (response.success) {
+	        	notifyMsg(response.message,'success');
+	           table.ajax.reload(null, false);
+	        } else {
+	        	notifyMsg(response.message,'error');
+	        }
+        }
+      });
+		}
+	
+});
 $('#product-list').on('click', '.changestaus', function(){
 		let id = $(this).data("id") ;
 		let status = $(this).data('status');
@@ -99,6 +197,7 @@ $('#product-list').on('click', '.changestaus', function(){
 		table = $('#product-list').DataTable({
 		lengthChange: false,
 		processing: true,
+		responsive: true,
 		serverSide: true,
 		paging:true,
 		ordering: false,
@@ -148,7 +247,14 @@ $('#product-list').on('click', '.changestaus', function(){
             	orderable: false, 
             	searchable: false,
             	title:'action'
-            },
+            },{
+            	data:'statusChange',
+            	name:'statusChange',
+            	orderable: false, 
+            	searchable: false,
+            	title:'status'
+
+            }
      ]
 	});
 	}
