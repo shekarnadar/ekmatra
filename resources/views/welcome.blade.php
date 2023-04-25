@@ -216,7 +216,7 @@
 												@foreach($product as $product_value)
 											   <div class="swiper-slide product product-image-gap product-simple">
 							<figure class="product-media">
-								<a href="{{url('product-detail/'.$product_value['id'])}}">
+								<a href="{{url('product-detail/'.$product_value['slug'])}}">
 									<img src="{{url('product/'.$product_value['image'])}}" alt="Product" width="295"
 										height="335" />
 									<img src="{{url('product/'.$product_value['image'])}}" alt="Product" width="295"
@@ -224,13 +224,13 @@
 								</a>
 							   
 								<div class="product-action">
-									<a href="{{url('product-detail/'.$product_value['id'])}}" class="btn-product " title="Quick View">QuickView</a>
+									<a href="{{url('product-detail/'.$product_value['slug'])}}" class="btn-product " title="Quick View">QuickView</a>
 								</div>
 							</figure>
 							<div class="product-details">
 							  
 								<h4 class="product-name">
-									<a href="{{url('product-detail/'.$product_value['id'])}}">{{$product_value['name']}}</a>
+									<a href="{{url('product-detail/'.$product_value['slug'])}}">{{$product_value['name']}}</a>
 								</h4>
 								
 								<div class="product-pa-wrapper">
@@ -309,7 +309,7 @@
 																	 @foreach($latest_product as $vendor_product)
 																		<div class="vendor-product">
 																				<figure class="product-media">
-																						<a href="{{url('product-detail/'.$vendor_product['id'])}}">
+																						<a href="{{url('product-detail/'.$vendor_product['slug'])}}">
 																								<img src="{{url('product/'.$vendor_product['image'])}}"
 																										alt="Vendor Product" width="100" height="113" />
 																						</a>
@@ -560,7 +560,7 @@
 																						</a>
 																						
 																						<div class="product-action">
-																								<a href="{{url('product-detail/'.$product_deals['getProduct']['id'])}}" class="btn-product" title="Quick View">Quick
+																								<a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product" title="Quick View">Quick
 																										View</a>
 																						</div>
 																						
@@ -568,7 +568,7 @@
 																				<div class="product-details">
 
 																						<h4 class="product-name">
-																								<a href="{{url('product-detail/'.$product_deals['getProduct']['id'])}}">{{$product_deals['getProduct']['name']}}</a>
+																								<a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">{{$product_deals['getProduct']['name']}}</a>
 																						</h4>
 																						
 																					

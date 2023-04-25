@@ -95,7 +95,7 @@
 										<div class="col-12 mt-2">
 											<div class="form-group mg-b-0">
 												<label class="form-label">Description: <span class="tx-danger">*</span></label>
-												<textarea class="form-control mg-t-20" placeholder="Enter Description" required="" rows="3" name="description">{{@$product['description']}}</textarea>
+												<textarea class="form-control mg-t-20" placeholder="Enter Description" required="" rows="3" name="description" id="myeditorinstance">{{@$product['description']}}</textarea>
 												<span class="text-danger" id="description_error"></span>
 											</div>
 										</div>
@@ -177,6 +177,15 @@
 
 
 </x-app-layout>
+<script src="https://cdn.tiny.cloud/1/jt3z58u40lxaj1gi0twobfw8nvzfru0jajan8pdr61moyggc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+   tinymce.init({
+   	 height: 200,
+     selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
+     plugins: 'powerpaste advcode table lists checklist',
+     toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+   });
+</script>
 <script type="text/javascript">
 	$(document).ready(function() {
      window.ParsleyValidator
