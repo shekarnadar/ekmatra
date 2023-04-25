@@ -5,8 +5,9 @@
 				<div class="wd-md-50p login d-none d-md-block page-signin-style p-5 text-white" >
 					<div class="my-auto authentication-pages">
 						<div>
-							<img src="{{url('backend/img/brand/logo-white.png')}}" class=" m-0 mb-4" alt="logo">
-							<p class="mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+							<img src="{{url('logo.png')}}" class=" m-0 mb-4" alt="logo">
+							<p>India’s Leading platform for Unique and Innovative Corporate Gifts and Rewards. Trusted by 4000+ Organisations.</p>
+						</ul>
 						</div>
 					</div>
 				</div>
