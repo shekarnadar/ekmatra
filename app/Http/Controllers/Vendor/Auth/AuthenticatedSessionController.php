@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
     	  //$request->authenticate();
     	  $request->session()->regenerate();
         return response()->json(['success' => true,
-                'message' => 'You are Logged in as Admin'
+                'message' => 'You are Logged in as Vendor'
           ], 200);
     }else{
     	return response()->json(['success' => false,
