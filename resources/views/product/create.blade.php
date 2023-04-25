@@ -47,7 +47,7 @@
 										@if(isset($product['id']))
 										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
-												<label class="form-label">Image Url: <span class="tx-danger">*</span></label>
+												<label class="form-label">Image Url</label>
 												<div class="custom-file">
 													<input type="text" name="image_url" id="image_url" class="form-control">
 												</div>
