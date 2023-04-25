@@ -16,12 +16,27 @@
 	
 	<!--- Style css -->
 	<link href="{{url('backend/css/style.css')}}" rel="stylesheet">
-	<!--- Sidemenu css -->
+	<link href="{{url('backend/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 
+	<!--- Sidemenu css -->
+	<style type="text/css">
+		.error{
+			color:#a94442;
+		}
+	</style>
 </head>
 <body class="main-body">
 	 {{ $slot }}
 </body>
-<script src="{{url('backend/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{url('backend/plugins/notify/js/notifIt.js')}}"></script>
 
+<script src="{{url('backend/plugins/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript">
+	function notifyMsg(msg,type) {
+		notif({
+			msg: msg,
+			type: type
+		});
+	}
+</script>
 </html>
