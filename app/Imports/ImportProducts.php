@@ -40,16 +40,17 @@ class ImportProducts implements OnEachRow, WithValidation,WithHeadingRow, SkipsO
                 '*.subcategory' => ['required',new SubCategoryRule],
                 '*.brand' => ['required',new FeatureRule],
                 '*.image' => ['required',new ImageRule],
+                '*.warrenty' => 'required|numeric'
             ];
     }
      public function batchSize(): int
     {
-        return 50;
+        return 5;
     }
     
     public function chunkSize(): int
     {
-        return 50;
+        return 5;
     }
      public function model(array $row)
     {
