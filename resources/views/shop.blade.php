@@ -17,7 +17,7 @@
 				<div class="shop-content row gutter-lg">
 					<!-- Start of Sidebar, Shop Sidebar -->
 					 <input type="hidden" value="{{@$cat_id}}" id="cat_id">
-					@include('filter-view');
+					@include('filter-view')
 					<!-- End of Shop Sidebar -->
 
 					<!-- Start of Main Content -->

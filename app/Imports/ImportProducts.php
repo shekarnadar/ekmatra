@@ -19,10 +19,12 @@ use App\Rules\SubCategoryRule;
 use App\Rules\FeatureRule;
 use App\Rules\ImageRule;
 use App\Models\Category;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 
 
-class ImportProducts implements OnEachRow, WithValidation,WithHeadingRow, SkipsOnError, SkipsOnFailure
+class ImportProducts implements OnEachRow, WithValidation,WithHeadingRow, SkipsOnError, SkipsOnFailure, WithBatchInserts, WithChunkReading
 {
     use SkipsErrors, Importable, SkipsFailures;
     /**
@@ -39,6 +41,15 @@ class ImportProducts implements OnEachRow, WithValidation,WithHeadingRow, SkipsO
                 '*.brand' => ['required',new FeatureRule],
                 '*.image' => ['required',new ImageRule],
             ];
+    }
+     public function batchSize(): int
+    {
+        return 50;
+    }
+    
+    public function chunkSize(): int
+    {
+        return 50;
     }
      public function model(array $row)
     {

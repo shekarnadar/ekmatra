@@ -350,6 +350,14 @@ class ProductController extends Controller
 		try {
 			
 		  $product = Product::find($request->id);
+		  if($product['image']){
+		  	 $image_path = public_path("product/".$product['image']);  
+			  if(\File::exists($image_path)) {
+	    			\File::delete($image_path);
+			  }
+		  }
+		 
+				
 		  $product->delete();
 			return response()->json(['success' => true,
 				'message' => 'Product has been removed successfully.'
