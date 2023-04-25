@@ -4,19 +4,19 @@
 				<div class="product-wrap">
 					<div class="product product-image-gap product-simple">
 						<figure class="product-media">
-							<a href="{{url('product-detail/'.$prod_val['id'])}}">
+							<a href="{{url('product-detail/'.$prod_val['slug'])}}">
 								<img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 								 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 							</a>
 						   
 							<div class="product-action">
-								<a href="{{url('product-detail/'.$prod_val['id'])}}" class="btn-product" title="Quick View">Quick View</a>
+								<a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product" title="Quick View">Quick View</a>
 							</div>
 						</figure>
 						<div class="product-details">
 							
 							<h4 class="product-name">
-								<a href="{{url('product-detail/'.$prod_val['id'])}}">{{$prod_val['name']}}</a>
+								<a href="{{url('product-detail/'.$prod_val['slug'])}}">{{$prod_val['name']}}</a>
 							</h4>
 						   
 							<div class="product-pa-wrapper">

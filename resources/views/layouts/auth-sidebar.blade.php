@@ -64,7 +64,7 @@ $url = getAuthGaurd();
 					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/products',$url.'/product/add',$url.'/product/edit/*')? 'active' : '' }}" href='{{url("$url/products")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Product</span></a>
 					</li>
-					
+					<li class="side">&nbsp;</li>
 					
 				  
 				</ul>
