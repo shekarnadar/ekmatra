@@ -16,20 +16,22 @@
 						<h2>Welcome back!</h2>
 						<h4>Please sign in to continue</h4>
 						<x-auth-session-status class="mb-4" :status="session('status')" />
-						<form method="POST" action="{{ url('admin/login') }}">
+						<form  name="loginForm" method="POST" id="loginForm" autocomplete="off" action="">
 							@csrf
 							<div class="form-group">
 								<label>Email</label>
 								<x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+								<span class="error" id="email_error"></span>
 								<x-input-error :messages="$errors->get('email')" class="mt-2" />
 							</div>
 							<div class="form-group">
 								<label>Password</label> 
 								   <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" class="form-control"/>
-
+								   <span class="error" id="password_error"></span>
 									<x-input-error :messages="$errors->get('password')" class="mt-2" />
 							</div>
-							 <x-primary-button class="btn btn-main-primary btn-block">{{ __('Sign In') }}</x-primary-button>
+							
+							<button type="submit" class="btn btn-main-primary btn-block signinbtn"><span class="submit">{{ __('Sign In') }} </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
 						</form>
 					</div>
 					<div class="main-signin-footer mt-3 mg-t-5">
@@ -41,4 +43,48 @@
 			</div>
 	</div>
 </x-login-layout>
-		
+<script type="text/javascript">
+		$('#loginForm').on('submit', function(e) {
+			e.preventDefault();
+			 $('.error').text('');
+			let formValue = new FormData(this);
+				 $(".loading").show();
+				 $(".signinbtn").prop('disabled',true);
+				 $.ajax({
+            type: "post",
+            url: '{{ url("admin/login") }}',
+            data: formValue,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                if (response.success) {
+                		notifyMsg(response.message,'success');
+                    
+                    setTimeout(function(){
+                    	  $(".signinbtn").prop('disabled',false);
+                        window.location.href ='{{ url("admin/dashboard") }}';
+                    },2000);
+                } else {
+                	 $(".loading").hide();
+                	 $('.submit').show();
+                	 $(".signinbtn").prop('disabled',false);
+                    notifyMsg(response.message,'error');
+                }
+            },
+            error: function(response) {
+            		$('.loading').hide();
+            	  $('.submit').show();
+            	  $(".signinbtn").prop('disabled',false);
+                let error = response.responseJSON;
+                if(!error){
+                    error = JSON.parse(response.responseText);
+                }
+                $.each( error.errors, function( key, value ) {
+  								$("#"+key+"_error").text(value);
+								});
+
+            },
+        });
+	  });
+</script>

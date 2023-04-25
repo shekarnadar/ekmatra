@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
 	/**
 	 * Handle an incoming authentication request.
 	 */
-	public function store(VendorLoginRequest $request): RedirectResponse
+	public function store(VendorLoginRequest $request)
 	{
 
 		 if(Auth::guard('vendor')->attempt($request->only('email','password'),$request->filled('remember'))){
@@ -31,14 +31,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
     	  //$request->authenticate();
     	  $request->session()->regenerate();
-        return redirect()
-            ->intended(route('VendorDashboard'))
-            ->with('status','You are Logged in as Admin!');
+        return response()->json(['success' => true,
+                'message' => 'You are Logged in as Admin'
+          ], 200);
     }else{
-    	 return redirect()
-        		 ->back()
-        		 ->withInput()
-        		 ->with('error','Login failed, please try again!');       
+    	return response()->json(['success' => false,
+                		'message' => 'Login failed, please try again'
+          		], 200);   
     }
 	
 	}

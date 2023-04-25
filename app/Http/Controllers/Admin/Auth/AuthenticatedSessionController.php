@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
 		/**
 		 * Handle an incoming authentication request.
 		 */
-		public function store(AdminLoginRequest $request): RedirectResponse
+		public function store(AdminLoginRequest $request)
 		{
 			
         if(Auth::guard('admin')->attempt($request->only('email','password'),$request->filled('remember'))){
@@ -31,15 +31,14 @@ class AuthenticatedSessionController extends Controller
         	$request->session()->regenerateToken();
 	        $request->session()->regenerate();
 	        //Authentication passed...
-	        return redirect()
-	            ->intended(route('admin.dashboard'))
-	            ->with('status','You are Logged in as Admin!');
+	        return response()->json(['success' => true,
+                'message' => 'You are Logged in as Admin'
+          ], 200);
     	  }else{
-    	  	return redirect()
-        		 ->back()
-        		 ->withInput()
-        		 ->with('error','Login failed, please try again!');
-        }
+    	  		return response()->json(['success' => false,
+                		'message' => 'Login failed, please try again'
+          		], 200);
+        	}
 		}
 
 		/**
