@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
 class Product extends Model
 {
 	use HasFactory;
@@ -20,8 +22,15 @@ class Product extends Model
 		'sub_category_id',
 		'created_by',
 		'feature_attribute_id',
-		'status'
+		'status',
+		'slug'
 	];
+	 public function setNameAttribute($value){
+      $res = str_replace( array( '\'', '"',
+      ',' , ';', '<', '>','/'), '-', $value);
+      $this->attributes['name'] = $value;
+      $this->attributes['slug'] = Str::slug($res);
+    }
 
 	public static function saveProduct($post){
 		 if(isset($post['id'])){
