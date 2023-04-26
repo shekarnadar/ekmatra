@@ -33,6 +33,7 @@ class SubCategoryController extends Controller
 								$sub_cat = url('admin/category/sub-cat/show').'/'.$row->id;
 								$sub_cat_edit = url('admin/category/sub-cat/edit/').'/'.$row->id;
 								$btn = '<a href="'.$sub_cat_edit.'" class="edit btn btn-primary btn-sm">Edit</a>&nbsp;&nbsp;';
+								$btn.= '<a  href="javascript:void(0)" class="removesubcategory btn btn-danger btn-sm text-white" data-id="'.$row->id.'">Delete</a>&nbsp;&nbsp;';
 								return $btn;
 					 })
 					->rawColumns(['action', 'image'])
@@ -133,5 +134,18 @@ class SubCategoryController extends Controller
 	public function destroy($id)
 	{
 		//
+		try{
+		  $SubCategory = SubCategory::find($id);
+		 
+		  $SubCategory->delete();
+			return response()->json(['success' => true,
+				'message' => 'subcategory has been removed successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
 	}
+
 }

@@ -26,7 +26,6 @@ $url = getAuthGaurd();
 	</div>
 </x-app-layout>
 	@include('layouts.datatable-script');
-	<script type="text/javascript" src="{{url('backend/js/delete-data.js')}}"></script>
 
 <script type="text/javascript">
 	var table;
@@ -53,11 +52,27 @@ $url = getAuthGaurd();
             {data: 'action', name: 'action', orderable: false, searchable: false,title:'action'},
      ]
 	});
-	$('.delete').click(function(){
+	
+$('#subcategory-list').on('click','.removesubcategory',function(){
 		let id = $(this).data("id") ;
-		url = '{{url("admin/category")}}'+"/"+id;
-		let token = '{{ csrf_token() }}';
-		deleteData(id,url,token,table);
-	})
-
+		if (confirm("Are you sure you want to remove?")){
+				$.ajax({
+					url: "{{url('admin/subcategory')}}" +"/"+id,
+        	type: "DELETE",
+        	data: {
+            "id": id,
+            "_token": "{{ csrf_token() }}",
+        	},
+        	success: function(response) {
+		        if (response.success) {
+		        	notifyMsg(response.message,'success');
+		           table.ajax.reload(null, false);
+		        } else {
+		        	notifyMsg(response.message,'error');
+		        }
+		      }
+      });
+		}
+	
+});
 </script>
