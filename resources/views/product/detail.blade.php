@@ -266,6 +266,7 @@
 
 </x-guest-layout>
 <script type="text/javascript">
+	$('.product-short-desc ul').addClass('list-type-check list-style-none');
 	$('#inquirymsg').hide();
 	$('.btn-close').click(function(){
 		$('.alert-bg').text('');
