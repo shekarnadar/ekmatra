@@ -183,7 +183,7 @@
 											<div class="col-md-6 mb-5">
 												<h4 class="title tab-pane-title font-weight-bold mb-2">Detail</h4>
 											
-												<p class="mb-4">{!! $product['description'] !!}</p>
+												<p class="mb-4">{!!html_entity_decode($product['description'])!!}</p>
 												
 											</div>
 											

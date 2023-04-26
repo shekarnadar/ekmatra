@@ -27,7 +27,10 @@ class VendorController extends Controller
 						->addColumn('action', function($row){
 					 	$url = url('admin/vendor/edit')."/".$row['id'];
    						$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>';
-							return $btn;
+   						$value = $row['id'];
+						$checked = ($row['status']== 1) ? 'checked' : '';
+						$btn.='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
+						return $btn;
 					 })
 					->skipTotalRecords()
 					->rawColumns(['action', 'image'])

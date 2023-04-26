@@ -66,14 +66,12 @@ class ProductController extends Controller
 					->addColumn('statusChange', function($row){
 						if(getAuthGaurd() == 'admin'){
 							$value = $row['id'];
-							$status = ($row['status']== 1) ? 'Active' : 'DeActive';
-									$checked = ($row['status']== 1) ? 'checked' : '';
-									$status_val = ($row['status']== 0) ? '1' : '0';
-									$btn='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
+							$checked = ($row['status']== 1) ? 'checked' : '';
+							$btn='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
 						}else{
 							$status = ($row['status']== 0) ? 'DeActive' : 'Active';
-									$class = ($row['status']== 0) ? 'danger' : 'success';
-									$btn= '<span  class="edit btn btn-'.$class.' btn-sm">'.$status.'</span>&nbsp;&nbsp;';
+							$class = ($row['status']== 0) ? 'danger' : 'success';
+							$btn= '<span  class="edit btn btn-'.$class.' btn-sm">'.$status.'</span>&nbsp;&nbsp;';
 						}
 						return $btn;
 					})

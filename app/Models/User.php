@@ -29,7 +29,8 @@ class User extends Authenticatable
 		'phone',
 		'address',
 		'company_name',
-		'image'
+		'image',
+		'status'
 	];
 
 	/**
@@ -90,7 +91,8 @@ class User extends Authenticatable
             'address' => $request['address'],
             'company_name' => $request['company_name'],
             'role_id' => $role_id,
-            'image' => $request['image']
+            'image' => $request['image'],
+            'status' => 1,
         	]);
         	event(new Registered($user));   
 
