@@ -183,7 +183,7 @@
 											<div class="col-md-6 mb-5">
 												<h4 class="title tab-pane-title font-weight-bold mb-2">Detail</h4>
 											
-												<p class="mb-4">{!!html_entity_decode($product['description'])!!}</p>
+												<div class="mb-4 descriptProduct">{!!html_entity_decode($product['description'])!!}</div>
 												
 											</div>
 											
@@ -266,7 +266,10 @@
 
 </x-guest-layout>
 <script type="text/javascript">
-	$('.product-short-desc ul').addClass('list-type-check list-style-none');
+	$(function(){
+			$('.descriptProduct ul').addClass('list-type-check list-style-none');
+
+	});
 	$('#inquirymsg').hide();
 	$('.btn-close').click(function(){
 		$('.alert-bg').text('');
