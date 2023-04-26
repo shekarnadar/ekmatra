@@ -24,16 +24,21 @@ class VendorController extends Controller
 					 		$imageval = url('vendor/' . $row->image);
                     return '<img src="' . $imageval . '" height="30px" width="30px"/>';
 					 })
-						->addColumn('action', function($row){
+					->addColumn('action', function($row){
 					 	$url = url('admin/vendor/edit')."/".$row['id'];
    						$btn = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>';
+   						
+						
+						return $btn;
+					 })
+					->addColumn('statusaction', function($row){
    						$value = $row['id'];
 						$checked = ($row['status']== 1) ? 'checked' : '';
-						$btn.='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
+						$btn='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
 						return $btn;
 					 })
 					->skipTotalRecords()
-					->rawColumns(['action', 'image'])
+					->rawColumns(['action', 'image','statusaction'])
 					->make(true);
 				}
 	  
