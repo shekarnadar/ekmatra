@@ -45,6 +45,20 @@ class Product extends Model
         }
         $post['created_by'] = \Auth::guard(getAuthGaurd())->user()->id; 
         $matchThese = ['id'=>$id];
+
+        $ekplode = explode('key Features:-',$post['description']);
+        $bullexplode = explode('&bull;',$ekplode[1]);
+        $description_text = $ekplode[0].'</p><b>key Features:- </b>';
+        foreach($bullexplode as $val){
+        	$description_text.="<ul>";
+        	if(!empty($val)){
+        			$description_text.="<li>";
+        			$description_text.=$val;
+        			$description_text.="</li>";
+        	}
+        }
+        $description_text.="</ul>";
+       $post['description'] = $description_text;
         $product = Product::updateOrCreate($matchThese,$post);
        
        
