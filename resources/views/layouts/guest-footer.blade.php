@@ -110,7 +110,7 @@
 					
 						
 
-							<div class="category-box">
+							<div class="category-box mt-2">
 								@if(count($cat['subCategory']) > 0)
 									<h6 class="category-name">{{$cat['name']}}:</h6>
 								
