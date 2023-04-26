@@ -52,9 +52,9 @@
 					</div>
 					<div class="header-right ml-4">
 							@auth
-							<a class="mr-2 btn btn-dark btn-outline d-xs-show d-lg-flex" href="{{url('submitanenquiry')}}">Request for Quotations</a>
+							<a class="d-lg-show mr-2 btn btn-dark btn-outline" href="{{url('submitanenquiry')}}">Request for Quotations</a>
 							@else
-								<a class="mr-2 btn btn-dark btn-outline sign-in requestforquotation" href="{{url('login')}}">Request for Quotations</a>
+								<a class="d-lg-show mr-2 btn btn-dark btn-outline sign-in requestforquotation" href="{{url('login')}}">Request for Quotations</a>
 							@endauth
 							<div class="header-call d-xs-show d-lg-flex align-items-center">
 									<a href="tel:#" class="w-icon-call"></a>
