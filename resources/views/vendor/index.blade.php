@@ -91,7 +91,9 @@ input:checked + .slider:before {
 	@include('layouts.datatable-script');
 
 <script type="text/javascript">
-	$('#vendor-list').DataTable({
+	var table ="";
+
+	table=$('#vendor-list').DataTable({
 		lengthChange: false,
 		processing: true,
 		serverSide: true,
@@ -119,5 +121,65 @@ input:checked + .slider:before {
             {data: 'statusaction', name: 'statusaction', orderable: false, searchable: false,title:'Status'},
      ]
 	});
+
+$("#vendor-list").on('change',"input[type='checkbox']",function(e){
+	 var ischecked= $(this).is(':checked');
+	 var id = $(this).val();
+	 let status = '';
+	 let message = '';
+	 if(!ischecked){
+	 		status = 0;
+	 		message = "Deactive";
+	 }else{
+	 	status = 1;
+	 	message = "Active";
+	 }
+	 if (confirm("Are you sure you want to " + message +' ?')){
+				$.ajax({
+				
+        url: "{{url('admin/vendor/status-change')}}",
+        type: "Post",
+        data: {
+            "id": id,
+            "status" : status,
+            "_token": "{{ csrf_token() }}",
+        },
+
+        success: function(response) {
+	        if (response.success) {
+	        	notifyMsg(response.message,'success');
+	           table.ajax.reload(null, false);
+	        } else {
+	        	notifyMsg(response.message,'error');
+	        }
+        }
+      });
+		}
+	
+});
+	$("#vendor-list").on('click',".productactive",function(e){
+	 var id = $(this).val();
+	 if (confirm("Are you sure you want to change ?")){
+				$.ajax({
+				
+        url: "{{url('admin/vendor/product-status-change')}}",
+        type: "Post",
+        data: {
+            "id": id,
+            "_token": "{{ csrf_token() }}",
+        },
+
+        success: function(response) {
+	        if (response.success) {
+	        	notifyMsg(response.message,'success');
+	           table.ajax.reload(null, false);
+	        } else {
+	        	notifyMsg(response.message,'error');
+	        }
+        }
+      });
+		}
+	
+});
 
 </script>

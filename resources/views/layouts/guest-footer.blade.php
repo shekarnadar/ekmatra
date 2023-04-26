@@ -105,9 +105,10 @@
 					</div>
 				</div>
 				<div class="footer-middle">
+					@foreach($category as $cat)
 					<div class="widget widget-category">
 					
-						@foreach($category as $cat)
+						
 
 							<div class="category-box">
 								@if(count($cat['subCategory']) > 0)
@@ -121,9 +122,10 @@
 
 							</div>
 							
-						@endforeach
+						
 						
 					</div>
+					@endforeach
 					
 				</div>
 				<div class="footer-bottom">

@@ -32,6 +32,9 @@ Route::group(['prefix' => 'admin'], function(){
 
 		Route::post('vendor/store',[VendorController::class,'store'])->name('vendor.store');
 		Route::get('vendor/edit/{id}',[VendorController::class,'edit'])->name('vendor.edit');
+		Route::post('vendor/status-change',[VendorController::class,'statusChange'])->name('vendorstatus-change');
+		Route::post('vendor/product-status-change',[VendorController::class,'productStatusChange'])->name('vendor-product-status-change');
+
 
 		//feature
 		Route::get('features',[FeatureController::class,'index'])->name('feature.index');

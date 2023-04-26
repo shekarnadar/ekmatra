@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 use App\Http\Requests\admin\CreateVendorRequest;
 use DataTables;
 
@@ -35,8 +36,11 @@ class VendorController extends Controller
    						$value = $row['id'];
 						$checked = ($row['status']== 1) ? 'checked' : '';
 						$btn='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
+
+						$btn.= '<a href="javascript:void(0)" class="productactive btn btn-primary btn-sm">product Active</a>';
 						return $btn;
 					 })
+					
 					->skipTotalRecords()
 					->rawColumns(['action', 'image','statusaction'])
 					->make(true);
@@ -137,5 +141,34 @@ class VendorController extends Controller
 	public function destroy($id)
 	{
 		//
+	}
+	public function statusChange(Request $request){
+		try {
+			$status_msg = ($request->status == 0)? 'DeActive' : 'Active';
+			User::where('id',$request->id)->update(['status'=>$request->status]);
+			
+			return response()->json(['success' => true,
+				'message' => 'Vendor has been '.$status_msg  .' successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
+
+	}
+	public function productStatusChange(Request $request){
+		try {
+			$product = Product::where('created_by',$request['id'])->update(['status'=>1]);
+			
+			return response()->json(['success' => true,
+				'message' => 'product has been updated successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
+
 	}
 }
