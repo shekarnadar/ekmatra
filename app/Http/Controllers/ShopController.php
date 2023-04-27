@@ -29,7 +29,11 @@ class ShopController extends Controller
 		
 		$cat_id = $category['id'];
 		$cat_name = $category['name'];
-
+		if(@$category){
+				$select_cat_id = url('shop').'/'.@$category['slug'];	
+		}else{
+			$select_cat_id = '';
+		}
 		
 		$subCategory = $category['subCategory'];
 		//$brand = $category['brands'];
@@ -42,7 +46,7 @@ class ShopController extends Controller
 		$product=$product->orderBy('created_at','desc')->paginate(10);
 		
 		
-		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product','cat_slug'));
+		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product','cat_slug','select_cat_id'));
 	}
     
     public function filterResult(Request $request){
@@ -109,6 +113,11 @@ class ShopController extends Controller
 		$cat_name = $category['name'];
 		$sub_cat = SubCategory::where('slug',$subcategory_name)->first();
 		$subcategory_name = $sub_cat['name'];
+       if(@$category){
+				$select_cat_id = url('shop').'/'.@$category['slug'];	
+		}else{
+			$select_cat_id = '';
+		}
 
 		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
 		
@@ -120,19 +129,29 @@ class ShopController extends Controller
 		->where('category_id',$sub_cat['category_id'])->where('sub_category_id',$sub_cat['id'])->where('status',1)->groupBy('feature_attribute_id')->get();
 		
 
-		return view ('subCategoryshop',compact('sub_cat','product','cat_name','subcategory_name','brand','subCategory','cat_slug'));
+		return view ('subCategoryshop',compact('sub_cat','product','cat_name','subcategory_name','brand','subCategory','cat_slug','select_cat_id'));
 	
 	}
 
 	public function searchProduct(Request $request){
 		 
 		$search_txt = $request->input('q');
-		 
-		 $brand = Product::with('feature_attributes')
+		$category = Category::with(['subCategory'])->where('name',$search_txt)->first();
+		$subCategory = @$category['subCategory'];
+		$cat_name = @$category['name'];
+		$cat_slug = @$category['slug'];
+		if(@$category){
+				$select_cat_id = url('shop').'/'.@$category['slug'];	
+		}else{
+			$select_cat_id = '';
+		}
+		
+
+		$brand = Product::with('feature_attributes')
 		->where('products.name', 'LIKE','%'. $search_txt .'%')
 		->orWhere(function($q) use($search_txt) {
 			$q->whereHas('category', function ($query) use ($search_txt) {
-				 $query->where('name','like', '%'. $search_txt .'%');
+				$query->where('name','like', '%'. $search_txt .'%');
 			 })
 			->orWhereHas('feature_attributes',function($query) use( $search_txt){
 		 	     $query->where('name','like', '%'. $search_txt .'%');
@@ -160,9 +179,8 @@ class ShopController extends Controller
 		->where('status',1);
 		
 		
-
 		$product = $product->orderBy('created_at','desc')->paginate(10);
-		return view ('search',compact('brand','product','search_txt'));
+		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id'));
 
 		
 	}

@@ -36,7 +36,7 @@
 							<form method="get" action="{{url('search')}}"
 									class="input-wrapper header-search hs-expanded hs-round d-none d-md-flex">
 									<div class="select-box bg-white">
-											<select id="category"  onchange="location = this.value;">
+											<select id="category"  onchange="location = this.value;" id="select_cat_id">
 													<option value="">All Categories</option>
 													 @foreach($category as $value)
 														<option value="{{url('shop/'.$value['slug'])}}">{{$value['name']}}</option>

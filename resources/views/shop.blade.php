@@ -64,6 +64,10 @@
 
 </x-guest-layout>
 <script type="text/javascript">
+	var select_cat_id = '{{$select_cat_id}}';
+	if(select_cat_id != ''){
+			$("#category").val(select_cat_id);
+  }
   var brand_array = [];
   var page_count = 1;
   var warranty = '';
