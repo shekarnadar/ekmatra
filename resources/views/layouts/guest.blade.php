@@ -36,6 +36,11 @@
 					<i class="w-icon-cart"></i>
 					<p>Wishlist</p>
 				</a>
+				@else
+				<a href="{{url('login')}}" class="sticky-link login sign-in wishlistAuth">
+					<i class="w-icon-cart"></i>
+					<p>Wishlist</p>
+				</a>
 				@endauth
 			
 			<!-- End of Dropdown Box -->
