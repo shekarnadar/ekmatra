@@ -19,7 +19,7 @@
                     <!-- Start of Sidebar, Shop Sidebar -->
                     <input type="hidden" value="{{@$sub_cat['id']}}" id="subcat_id">
                     <input type="hidden" value="{{@$sub_cat['category_id']}}" id="cat_id">
-                    @include('filter-view');
+                    @include('filter-view')
                     <!-- End of Shop Sidebar -->
 
                     <!-- Start of Main Content -->

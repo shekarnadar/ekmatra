@@ -15,7 +15,7 @@
 				<div class="container">
 				<div class="shop-content row gutter-lg">
 					<!-- Start of Sidebar, Shop Sidebar -->
-					@include('filter-view');
+					@include('filter-view')
 					<!-- End of Shop Sidebar -->
 
 					<!-- Start of Main Content -->
