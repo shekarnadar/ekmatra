@@ -35,13 +35,7 @@
 												
 											
 												
-												<div class="swiper-slide">
-													<figure class="product-image">
-														<img src="assets/images/products/default/6-800x900.jpg"
-															data-zoom-image="assets/images/products/default/6-800x900.jpg"
-															alt="Electronics Black Wrist Watch" width="800" height="900">
-													</figure>
-												</div>
+												
 											</div>
 											
 											
