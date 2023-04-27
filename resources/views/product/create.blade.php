@@ -107,6 +107,7 @@
 												<label class="form-label">Warranty: <span class="tx-danger">*</span></label>
 												<select class="form-control" name="warrenty" id="warrenty">
 													<option>Select Warranty</option>
+													<option value="0">No Warranty</option>
 													<option value="1">1 Years</option>
 													<option value="2">2 Years</option>
 													<option value="3">3 Years</option>

@@ -90,6 +90,7 @@
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Warranty</label></h3>
 									<ul class="widget-body filter-items item-check warranty-item">
+										<li data-value="0"><a href="#">No Warranty</a></li>
 										<li data-value="1"><a href="#">1 year</a></li>
 										<li data-value="2"><a href="#">2 years</a></li>
 										<li data-value="3"><a href="#">3 years</a></li>
