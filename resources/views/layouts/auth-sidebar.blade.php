@@ -55,6 +55,9 @@ $url = getAuthGaurd();
 						<a class="side-menu__item {{ request()->is($url.'/deals',$url.'/deals/add',$url.'/deals/edit/*')? 'active' : '' }}" href='{{url("$url/deals")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Deals</span></a>
 					</li>
 					<li class="slide">
+						<a class="side-menu__item {{ request()->is($url.'/occasions',$url.'/occasions/add',$url.'/occasions/edit/*')? 'active' : '' }}" href='{{url("$url/occasions")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Occasions</span></a>
+					</li>
+					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/inquiry')? 'active' : '' }}" href='{{url("$url/inquiry")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Inquiry</span></a>
 					</li>
 					<li class="slide">
