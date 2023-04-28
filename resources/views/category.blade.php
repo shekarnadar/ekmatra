@@ -1,4 +1,4 @@
-<div class="category-wrapper row cols-12 pt-4">
+<div class="category-wrapper row cols-12 pt-4 mt-5">
     @if(count($category) > 0)
 	@foreach($category as $cat)
     
