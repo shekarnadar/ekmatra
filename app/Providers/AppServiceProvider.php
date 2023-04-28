@@ -35,7 +35,8 @@ class AppServiceProvider extends ServiceProvider
 
 		$category = Category::with('subCategory')->get();
 		$allFeature = FeatureAttribute::get();
-		$occasions = Occasions::get();
+	//	$occasions = Occasions::get();
+		$occasions = ['name'=>'birthday'];
 		\View::share('category', $category);
 		\View::share('allFeature', $allFeature);
 		\View::share('occasions', $occasions);
