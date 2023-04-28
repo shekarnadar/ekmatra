@@ -28,6 +28,7 @@ class DealController extends Controller
 					$deal_url = url('admin/product/deal/'.$row->id);
 					$btn = '<a href="'.$url.'" class="edit btn btn-danger btn-sm text-white">Edit</a>&nbsp;&nbsp;';
 					$btn.= '<a href="'.$deal_url.'" class="edit btn btn-primary btn-sm text-white">Assign Deal</a>&nbsp;&nbsp;';
+					$btn.= '<a  href="javascript:void(0)" class="removedeal btn btn-danger btn-sm text-white" data-id="'.$row->id.'">Delete</a>&nbsp;&nbsp;';
 					return $btn;
 				})
 				->rawColumns(['action'])
@@ -113,9 +114,21 @@ class DealController extends Controller
 	 * @param  \App\Models\Deal  $deal
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy(Deal $deal)
+	public function destroy($id)
 	{
-		//
+		try{
+		  $deal = Deal::find($id);
+		 
+		  $deal->delete();
+			return response()->json(['success' => true,
+				'message' => 'deal has been removed successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			echo $e->getMessage();
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
 	}
 	public function productDeals(Request $request,$id){
 		if ($request->ajax()) {

@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('deal/add',[DealController::class,'create'])->name('deal.create');
 		Route::post('deal/store',[DealController::class,'store'])->name('deal.store');
 		Route::get('deal/edit/{id}',[DealController::class,'edit'])->name('deal.edit');
+		Route::delete('deal/{id}', [DealController::class,'destroy'])->name('deal.delete');
 
 		Route::get('occasions',[OccasionsController::class,'index'])->name('occasions.index');
 		Route::get('occasion/add',[OccasionsController::class,'create'])->name('occasion.create');
