@@ -10,6 +10,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\InquiryController;
 
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,9 @@ Route::post('product/subcategory',[ProductController::class,'getSubCategoryById'
 Route::post('product/brand',[ProductController::class,'getBrand'])->name('product.brand');
 
 Route::get('product-detail/{id}',[ProductController::class,'getProductDetail'])->name('product.detail');
+
+Route::get('contact-us',[ContactUsController::class,'index'])->name('contactus');
+
 
 Route::get('userWishlist/{product_id}',[WishlistController::class,'getUserWishList'])->name('userwishlist');
 

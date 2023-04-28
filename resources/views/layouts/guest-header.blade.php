@@ -188,7 +188,7 @@
 							@else
 								<a class="d-lg-show mr-2 btn btn-dark btn-outline sign-in requestforquotation p15" style="padding:15px" href="{{url('login')}}">Request for Quotations</a>
 							@endauth
-							<a href="#" class="d-lg-show mr-2 btn btn-dark btn-outline p15" style="padding:15px" >Contact Us</a>
+							<a href="{{url('contact-us')}}" class="d-lg-show mr-2 btn btn-dark btn-outline p15" style="padding:15px" >Contact Us</a>
 						</div>
 					</div>
 				</div>
