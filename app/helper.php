@@ -48,3 +48,9 @@ function uploadImage($foldername,$image){
   $image->move($destination, $fileName);
   return $fileName;
 }
+
+//check token expireornot
+ function validToken($token){
+	 $updatePassword = \DB::table('password_resets')->where(['token' => $token])->first();
+	 return $updatePassword;
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\PasswordReset;
@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use DB; 
+use App\Models\User;
 
 class NewPasswordController extends Controller
 {
@@ -23,7 +25,7 @@ class NewPasswordController extends Controller
         if(!$valid){
            return view('auth.expiretoken');
         }
-        return view('auth.reset-password', ['request' => $request]);
+        return view('auth.admin.reset-password', ['request' => $request]);
     }
 
     /**
@@ -31,9 +33,9 @@ class NewPasswordController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
               'password' => 'required|string|min:6|confirmed',
               'password_confirmation' => 'required'
           ]);

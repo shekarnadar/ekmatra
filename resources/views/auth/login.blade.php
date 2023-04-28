@@ -25,8 +25,7 @@
 									</div>
 									<div class="form-checkbox d-flex align-items-center justify-content-between">
 											<input type="checkbox" class="custom-checkbox" id="remember" name="remember" required="">
-											<label for="remember">Remember me</label>
-											<a href="#">Last your password?</a>
+											<a href="javascript:void(0)" id="lastPassword">Last your password?</a>
 									</div>
 									<a href="#" class="btn btn-primary" onClick="signin()">Sign In</a>
 								</form>

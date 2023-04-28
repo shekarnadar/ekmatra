@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -13,6 +13,7 @@ use Hash;
 use Mail; 
 use DB; 
 use Carbon\Carbon; 
+
 class PasswordResetLinkController extends Controller
 {
     /**
@@ -23,10 +24,19 @@ class PasswordResetLinkController extends Controller
         return view('auth.forgot-password');
     }
 
-    
- public function store(Request $request){
+    public function adminforgetPassword(): View
+    {
+        return view('auth.admin.forgot-password');
+    }
+
+    /**
+     * Handle an incoming password reset link request.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request){
           
-          $role =getRole('customer');
+          $role =getRole('admin');
         
           $user = User::where('email',$request['email'])->first();
           
@@ -36,7 +46,7 @@ class PasswordResetLinkController extends Controller
             ], 200);
           }else{
              $token = Str::random(64);
-             //checck data avialbe
+  
              $updatePassword = DB::table('password_resets')->where([
                     'email' => $request->email
             ])->first();
@@ -50,9 +60,8 @@ class PasswordResetLinkController extends Controller
                 \DB::table('password_resets')->where(['email'=> $request->email])->update(['token' => $token]);
   
              }
-           
             $email = $request->email;
-             Mail::send('emails.customer-forgot-password', ['token' => $token], function($message) use($request){
+             Mail::send('emails.admin-forgot-password', ['token' => $token], function($message) use($request){
               $message->to($request->email);
               $message->subject('Reset Password');
           });

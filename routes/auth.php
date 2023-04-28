@@ -10,7 +10,11 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Auth\NewPasswordController as adminNewPaswword;
+use App\Http\Controllers\Admin\Auth\PasswordResetLinkController as adminReset;
 
+use App\Http\Controllers\Vendor\Auth\NewPasswordController as vendorNewPaswword;
+use App\Http\Controllers\Vendor\Auth\PasswordResetLinkController as vendorReset;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -35,6 +39,21 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
 });
+
+Route::get('admin/forgot-password', [adminReset::class, 'adminforgetPassword'])->name('adminpassword.request');
+Route::post('admin/forgot-password', [adminReset::class, 'store'])
+                ->name('adminpassword.email');
+Route::get('admin/reset-password/{token}', [adminNewPaswword::class, 'create'])
+                ->name('adminpassword.reset');
+Route::post('admin/reset-password', [adminNewPaswword::class, 'store'])
+                ->name('adminpassword.store');
+
+
+Route::get('vendor/forgot-password', [vendorReset::class, 'adminforgetPassword'])->name('vendorpassword.request');
+Route::post('vendor/forgot-password', [vendorReset::class, 'store'])
+                ->name('vendorpassword.email');
+Route::get('vendor/reset-password/{token}', [vendorNewPaswword::class, 'create'])
+                ->name('vendorpassword.reset');
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)

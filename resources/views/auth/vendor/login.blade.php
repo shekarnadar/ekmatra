@@ -35,7 +35,7 @@
 						</form>
 					</div>
 					<div class="main-signin-footer mt-3 mg-t-5">
-						<p><a href="#">Forgot password?</a></p>
+						<p><a href="{{url('vendor/forgot-password')}}">Forgot password?</a></p>
 					 
 					</div>
 				</div>

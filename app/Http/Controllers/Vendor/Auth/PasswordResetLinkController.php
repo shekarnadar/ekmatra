@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Vendor\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -13,30 +13,37 @@ use Hash;
 use Mail; 
 use DB; 
 use Carbon\Carbon; 
+
 class PasswordResetLinkController extends Controller
 {
-    /**
-     * Display the password reset link request view.
-     */
-    public function create(): View
-    {
-        return view('auth.forgot-password');
-    }
+	 /**
+	  * Display the password reset link request view.
+	  */
+	
 
-    
- public function store(Request $request){
-          
-          $role =getRole('customer');
-        
-          $user = User::where('email',$request['email'])->first();
-          
-          if($user['role_id'] != $role){
+	 public function adminforgetPassword(): View
+	 {
+		  return view('auth.vendor.forgot-password');
+	 }
+
+	 /**
+	  * Handle an incoming password reset link request.
+	  *
+	  * @throws \Illuminate\Validation\ValidationException
+	  */
+	 public function store(Request $request){
+			 
+			 $role =getRole('vendor');
+		  
+			 $user = User::where('email',$request['email'])->first();
+			 if($user){
+				 if($user['role_id'] != $role){
              return response()->json(['success' => false,
                 'message' => 'The email is not valid for this account.'
             ], 200);
           }else{
              $token = Str::random(64);
-             //checck data avialbe
+  
              $updatePassword = DB::table('password_resets')->where([
                     'email' => $request->email
             ])->first();
@@ -50,9 +57,8 @@ class PasswordResetLinkController extends Controller
                 \DB::table('password_resets')->where(['email'=> $request->email])->update(['token' => $token]);
   
              }
-           
             $email = $request->email;
-             Mail::send('emails.customer-forgot-password', ['token' => $token], function($message) use($request){
+             Mail::send('emails.vendor-forgot-password', ['token' => $token], function($message) use($request){
               $message->to($request->email);
               $message->subject('Reset Password');
           });
@@ -61,6 +67,12 @@ class PasswordResetLinkController extends Controller
                 'message' => 'We have emailed your password reset link!'
             ], 200);
           }
-        
-    }
+			 }else{
+			 	 return response()->json(['success' => false,
+                'message' => 'Invalid email!'
+            ], 200);
+			 }
+			
+		  
+	 }
 }

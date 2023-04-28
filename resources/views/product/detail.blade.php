@@ -78,22 +78,16 @@
 								
 
 										<div class="fix-bottom product-sticky-content sticky-content">
-											<div class="product-form container">
+											<div class="product-form container ">
 												@auth
 												<a href="javascript:void(0)"
-													class="addwishlist btn btn-dark btn-rounded" data-id="{{$product['id']}}">Add To Wishlist</a>
+													class="addwishlist btn btn-dark btn-rounded mb-2 mb-lg-0" data-id="{{$product['id']}}">Add To Wishlist&nbsp;&nbsp;</a>
 												@else
 														<a href="{{url('login')}}"
-													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Add To Wishlist</a>
+													class="btn btn-dark btn-rounded sign-in mb-2 mb-lg-0" data-id="{{$product['id']}}">Add To Wishlist&nbsp;&nbsp;</a>
 												@endauth
-											</div>
-										</div>
-
-										<div class="social-links-wrapper">
-											
-											<div class="product-link-wrapper d-flex">
 												@auth
-												 <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
+												 <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2 ml-lg-2">
                             <div class="cart-overlay"></div>
                             <button class="cart-toggle link btn btn-dark">Request a Quote</button>
                             <div class="dropdown-box">
@@ -152,6 +146,13 @@
 												<a href="{{url('login')}}"
 													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Request a Quote </a>
 												@endauth
+												
+											</div>
+										</div>
+
+										<div class="social-links-wrapper">
+											
+											<div class="product-link-wrapper d-flex">
 													
 											</div>
 											
