@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin'], function(){
 			return redirect('admin/dashboard');
 		})->name('admindashboard');
 
+		Route::get('customers',[VendorController::class,'customerList'])->name('customer.customerList');
+
 		Route::get('vendors',[VendorController::class,'index'])->name('vendor.index');
 
 		Route::get('vendor/add',[VendorController::class,'create'])->name('vendor.create');

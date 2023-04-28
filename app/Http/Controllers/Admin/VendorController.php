@@ -50,6 +50,21 @@ class VendorController extends Controller
 		return view('vendor.index');
 	}
 
+	public function customerList(Request $request)
+	{
+				if ($request->ajax()) {
+					$data = User::getCustomers($request);
+					return Datatables::of($data)
+					
+					
+					->skipTotalRecords()
+					->make(true);
+				}
+	  
+
+		return view('customer.index');
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

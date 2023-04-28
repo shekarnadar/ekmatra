@@ -138,18 +138,18 @@
 												<h4 class="menu-title">Occasions</h4>
 												<ul>
 													@foreach($occasions as $value)
-													<li><a href="shop-banner-sidebar.html">{{$value['name']}}</a></li>
+													<li><a href="{{url('shop/product')}}">{{$value['name']}}</a></li>
 													@endforeach
 											   </ul>
 											</li>
 											<li>
 												<h4 class="menu-title">Price</h4>
 												<ul>
-													<li><a href="shop-grid-3cols.html">Under 100</a></li>
-													<li><a href="shop-grid-4cols.html">100 t0 500</a></li>
-													<li><a href="shop-grid-5cols.html">500 to 1000</a></li>
-													<li><a href="shop-grid-6cols.html">1000 to 5000</a></li>
-													<li><a href="shop-grid-6cols.html">5000 above</a></li>
+													<li><a href="{{url('shop/product')}}">Under 100</a></li>
+													<li><a href="{{url('shop/product')}}">100 t0 500</a></li>
+													<li><a href="{{url('shop/product')}}">500 to 1000</a></li>
+													<li><a href="{{url('shop/product')}}">1000 to 5000</a></li>
+													<li><a href="{{url('shop/product')}}">5000 above</a></li>
 													
 												</ul>
 											</li>
@@ -157,7 +157,7 @@
 												<h4 class="menu-title">Brand</h4>
 												<ul>
 													@foreach($allFeature as $feature)
-													<li><a href="product-variable.html">{{$feature['name']}}</a></li>
+													<li><a href="{{url('shop/product')}}">{{$feature['name']}}</a></li>
 												  @endforeach 
 												</ul>
 											</li>

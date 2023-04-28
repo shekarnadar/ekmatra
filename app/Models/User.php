@@ -120,6 +120,14 @@ class User extends Authenticatable
     	return $vendor;
     }
 
+    //get customers
+    public static function getCustomers($request){
+
+    	$role_id = getRole('customer');
+    	$customer = User::where('role_id',$role_id)->orderBy('created_at','desc');
+    	return $customer;
+    }
+
     public static function getLatestVendor(){
     	$role_id = getRole('vendor');
     	$vendor = User::with(['getVendorTopProducts' => function($q){
