@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DealController;
+use App\Http\Controllers\OccasionsController;
+
 use App\Http\Controllers\InquiryController;
 
 
@@ -89,6 +91,11 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('deal/add',[DealController::class,'create'])->name('deal.create');
 		Route::post('deal/store',[DealController::class,'store'])->name('deal.store');
 		Route::get('deal/edit/{id}',[DealController::class,'edit'])->name('deal.edit');
+
+		Route::get('occasions',[OccasionsController::class,'index'])->name('occasions.index');
+		Route::get('occasion/add',[OccasionsController::class,'create'])->name('occasion.create');
+		Route::post('occasion/store',[OccasionsController::class,'store'])->name('occasion.store');
+		Route::get('occasion/edit/{id}',[OccasionsController::class,'edit'])->name('occasion.edit');
 
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquirylist');
 		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquiryview');

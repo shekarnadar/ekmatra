@@ -1,0 +1,57 @@
+@section('breadcumb','Occasions')
+@section('pageTitle','Occasions')
+@include('layouts.datatable-css')
+@php
+$url = getAuthGaurd();
+@endphp
+<x-app-layout>
+	<div class="row row-sm">
+		<div class="col-xl-12">
+						<div class="card mg-b-20">
+							<div class="card-header pb-0">
+								<div class="d-flex justify-content-between">
+									<h4 class="card-title mg-b-0 mt-2 mb-2">Deals</h4>
+									<i class="mdi mdi-dots-horizontal text-gray"></i>
+									<a href='{{url("$url/occasion/add")}}' class="btn btn-primary">Add Occasions</a>
+								</div>
+								
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="occasion-list" class="table key-buttons text-md-nowrap"></table>
+								</div>
+							</div>
+						</div>
+					</div>
+	</div>
+</x-app-layout>
+	@include('layouts.datatable-script');
+<script type="text/javascript" src="{{url('backend/js/delete-data.js')}}"></script>
+
+<script type="text/javascript">
+	var table;
+	table = $('#occasion-list').DataTable({
+		lengthChange: false,
+		processing: true,
+		serverSide: true,
+		paging:true,
+		ordering: false,
+		language: {
+			searchPlaceholder: 'Search...',
+			sSearch: '',
+			infoFiltered:'',
+		},
+	
+		ajax: {
+				url: '{{ url("$url/occasions") }}', // need to change here url
+				type: "GET",
+				async:false,
+		},
+		 columns: [
+            {data: 'name', name: 'name','title' : 'Name'},
+            {data: 'action', name: 'action', orderable: false, searchable: false,title:'action'},
+     ]
+	});
+
+	
+</script>

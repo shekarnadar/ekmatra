@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\Models\Category;
-
+use App\Models\FeatureAttribute;
+use App\Models\Occasions;
 class AppServiceProvider extends ServiceProvider
 {
 	/**
@@ -33,7 +34,11 @@ class AppServiceProvider extends ServiceProvider
 		  
 
 		$category = Category::with('subCategory')->get();
+		$allFeature = FeatureAttribute::get();
+		$occasions = Occasions::get();
 		\View::share('category', $category);
+		\View::share('allFeature', $allFeature);
+		\View::share('occasions', $occasions);
 
 		Validator::extend('email_valid', function ($attribute, $value, $parameters, $validator){
 			$role_id = getRole('customer');
