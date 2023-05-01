@@ -101,6 +101,8 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('occasion/store',[OccasionsController::class,'store'])->name('occasion.store');
 		Route::get('occasion/edit/{id}',[OccasionsController::class,'edit'])->name('occasion.edit');
 		Route::delete('occasion/{id}', [OccasionsController::class,'destroy'])->name('occasion.delete');
+		Route::get('product/occasion/{id}',[OccasionsController::class,'occasionDeals'])->name('product.occasion');
+		Route::post('product/occasion-save',[OccasionsController::class,'occasionSave'])->name('product.occasion.save');
 
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquirylist');
 		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquiryview');

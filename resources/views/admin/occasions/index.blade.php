@@ -10,7 +10,7 @@ $url = getAuthGaurd();
 						<div class="card mg-b-20">
 							<div class="card-header pb-0">
 								<div class="d-flex justify-content-between">
-									<h4 class="card-title mg-b-0 mt-2 mb-2">Deals</h4>
+									<h4 class="card-title mg-b-0 mt-2 mb-2">Occasions</h4>
 									<i class="mdi mdi-dots-horizontal text-gray"></i>
 									<a href='{{url("$url/occasion/add")}}' class="btn btn-primary">Add Occasions</a>
 								</div>
