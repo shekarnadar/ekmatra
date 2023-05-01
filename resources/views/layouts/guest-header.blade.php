@@ -172,10 +172,10 @@
 										<a href="{{url('/')}}">Our work</a>
 									</li>
 									 <li>
-										<a href="{{url('/')}}">About Us</a>
+										<a href="{{url('about-us')}}">About Us</a>
 									</li>
 									 <li>
-										<a href="{{url('/')}}">We are hiring</a>
+										<a href="{{url('we-are-hiring')}}">We are hiring</a>
 									</li>
 								   
 								   

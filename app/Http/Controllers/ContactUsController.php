@@ -10,4 +10,12 @@ class ContactUsController extends Controller
     public function index(){
        return view('contact-us');
     }
+
+    public function weAreHiring(){
+      return view('contact-us');
+    }
+
+    public function aboutUs(){
+      return view('contact-us');
+    }
 }

@@ -75,6 +75,9 @@ Route::post('product/brand',[ProductController::class,'getBrand'])->name('produc
 Route::get('product-detail/{id}',[ProductController::class,'getProductDetail'])->name('product.detail');
 
 Route::get('contact-us',[ContactUsController::class,'index'])->name('contactus');
+Route::get('we-are-hiring',[ContactUsController::class,'weAreHiring'])->name('weAreHiring');
+Route::get('about-us',[ContactUsController::class,'aboutUs'])->name('aboutUs');
+
 
 
 Route::get('userWishlist/{product_id}',[WishlistController::class,'getUserWishList'])->name('userwishlist');
