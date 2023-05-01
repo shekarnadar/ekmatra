@@ -100,6 +100,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('occasion/add',[OccasionsController::class,'create'])->name('occasion.create');
 		Route::post('occasion/store',[OccasionsController::class,'store'])->name('occasion.store');
 		Route::get('occasion/edit/{id}',[OccasionsController::class,'edit'])->name('occasion.edit');
+		Route::delete('occasion/{id}', [OccasionsController::class,'destroy'])->name('occasion.delete');
 
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquirylist');
 		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquiryview');

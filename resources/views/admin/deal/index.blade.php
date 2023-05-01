@@ -70,7 +70,7 @@ $url = getAuthGaurd();
 		        } else {
 		        	notifyMsg(response.message,'error');
 		        }
-		      }
+		     }
       });
 		}
 	

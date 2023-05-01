@@ -15,15 +15,17 @@ class OccasionsController extends Controller
     public function index(Request $request){
         if ($request->ajax()) {
             
-            $data = Occasions::get();
+            $data = Occasions::orderBy('created_at','desc');
             return Datatables::of($data)
                 ->addColumn('action', function($row){
                     $url = url('admin/occasion/edit/'.$row->id);
                     $deal_url = url('admin/product/deal/'.$row->id);
                     $btn = '<a href="'.$url.'" class="edit btn btn-danger btn-sm text-white">Edit</a>&nbsp;&nbsp;';
                     $btn.= '<a href="'.$deal_url.'" class="edit btn btn-primary btn-sm text-white">Assign Occasions</a>&nbsp;&nbsp;';
+                    $btn.= '<a  href="javascript:void(0)" class="removeOccasions btn btn-danger btn-sm text-white" data-id="'.$row->id.'">Delete</a>&nbsp;&nbsp;';
                     return $btn;
                 })
+                ->skipTotalRecords()
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -59,6 +61,23 @@ class OccasionsController extends Controller
         $occasion = Occasions::find($id);
         return view('admin.occasions.create',compact('occasion'));
 
+    }
+
+    public function destroy($id)
+    {
+        try{
+          $deal = Occasions::find($id);
+         
+          $deal->delete();
+            return response()->json(['success' => true,
+                'message' => 'Occasions has been removed successfully.'
+          ], 200);
+
+        } catch(\Exception $e){
+            echo $e->getMessage();
+            return response()->json(['success' => false,
+                'message' => 'something went wrong'], 200);
+        }  
     }
 
 }
