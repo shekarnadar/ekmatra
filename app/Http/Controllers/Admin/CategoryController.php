@@ -30,7 +30,16 @@ class CategoryController extends Controller
 								$btn.='<a href="'.$sub_cat.'" class="btn btn-primary btn-sm">Sub Category</a>';
 								return $btn;
 					 })
-					->rawColumns(['action', 'image'])
+					->addColumn('statusaction', function($row){
+   						$value = $row['id'];
+						$checked = ($row['status']== 1) ? 'checked' : '';
+						$btn='<label class="switch"><input  type="checkbox" '.$checked.' value='.$value.'><span class="slider round"></span></label>&nbsp;';
+
+						
+						return $btn;
+					 })
+					
+					->rawColumns(['action', 'image','statusaction'])
 					->make(true);
 			}
 			return view('admin.category.index');
@@ -139,5 +148,22 @@ class CategoryController extends Controller
             return response()->json(['success' => false,
                 'message' => 'something went wrong'], 200);
         }  
+	}
+
+	public function categoryStatusChange(Request $request){
+		try {
+			$status_msg = ($request->status == 0)? 'DeActive' : 'Active';
+			Category::where('id',$request->id)->update(['status'=>$request->status]);
+			
+			return response()->json(['success' => true,
+				'message' => 'Category has been '.$status_msg  .' successfully.'
+		  ], 200);
+
+		} catch(\Exception $e){
+			echo $e->getMessage();
+			return response()->json(['success' => false,
+				'message' => 'something went wrong'], 200);
+		}  
+
 	}
 }

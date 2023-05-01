@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
 		 */
 		  
 
-		$category = Category::with('subCategory')->get();
+		$category = Category::getCategoriesList();
 		$allFeature = FeatureAttribute::get();
 		$occasions = Occasions::get();
 		\View::share('category', $category);

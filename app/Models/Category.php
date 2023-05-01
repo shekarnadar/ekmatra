@@ -41,6 +41,10 @@ class Category extends Model
          return $category;
     }
 
+    public static function getCategoriesList(){
+         $category = Category::with('subCategory')->where('status',1)->orderBy('created_at','desc')->get();
+         return $category;
+    }
     //get subcategory
     public  function subCategory() {
         return $this->hasMany('App\Models\SubCategory');
