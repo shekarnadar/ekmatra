@@ -106,11 +106,13 @@ class GiftController extends Controller
        $page_limit = 10;
     }
     	
-    // if($request['sort_by']){
-    // 		$product->orderBy($request['sort_by'],$request['order_by']);
-    // }else{
-    // 		 $product->orderBy('created_at','desc');
-		// }
+    if($request['sort_by']){
+    	    $product->orderBy(Product::select($request['sort_by'])->whereColumn('products.id', 'product_occasions.product_id'),$request['order_by']);
+
+    		//$product->orderBy($request['sort_by'],$request['order_by']);
+    }else{
+    		 $product->orderBy('created_at','desc');
+		}
 
 		$product = $product->paginate($page_limit);
 		return view('presult', compact('product'));
