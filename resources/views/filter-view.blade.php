@@ -63,7 +63,7 @@
 
 
 								<!-- Start of Collapsible Widget -->
-								@if($brand)
+								@if(@$brand)
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Brand</label></h3>
 									<ul class="widget-body filter-items item-check mt-1 brand-item">

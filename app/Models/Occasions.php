@@ -33,4 +33,7 @@ class Occasions extends Model
         
         return $deal;
     }
+     public function productOccasions(){
+        return $this->hasMany('App\Models\ProductOccasion','occasion_id','id');
+    }
 }

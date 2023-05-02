@@ -11,6 +11,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\InquiryController;
 
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\GiftController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryL
 Route::post('filter-result',[ShopController::class, 'filterResult'])->name('filterResult');
 
 Route::get('search',[ShopController::class, 'searchProduct'])->name('searchProduct');
+Route::get('shop-by/{type}/{value}',[GiftController::class,'index'])->name('shopbyproduct');
+Route::post('shopByFilter',[GiftController::class,'shopByFilter'])->name('shopByFilter');
 Route::post('searchProductResult',[ShopController::class,'searchProductResult'])->name('searchProductResult');
 //Product page
 

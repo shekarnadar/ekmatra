@@ -138,7 +138,7 @@
 												<h4 class="menu-title">Occasions</h4>
 												<ul>
 													@foreach($occasions as $value)
-													<li><a href="{{url('shop/product')}}">{{$value['name']}}</a></li>
+													<li><a href="{{url('shop-by/occasions/'.$value['name'])}}">{{$value['name']}}</a></li>
 													@endforeach
 											   </ul>
 											</li>
@@ -157,7 +157,7 @@
 												<h4 class="menu-title">Brand</h4>
 												<ul>
 													@foreach($allFeature as $feature)
-													<li><a href="{{url('shop/product')}}">{{$feature['name']}}</a></li>
+													<li><a href="{{url('shop-by/brand/'.$feature['name'])}}">{{$feature['name']}}</a></li>
 												  @endforeach 
 												</ul>
 											</li>

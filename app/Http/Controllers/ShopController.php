@@ -237,7 +237,7 @@ class ShopController extends Controller
 		
 		
 
-		$product = $product->orderBy('created_at','desc')->paginate(10);
+		$product = $product->orderBy('created_at','desc')->paginate($page_limit);
 		return view('presult', compact('product'));
 		
 	}

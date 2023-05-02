@@ -4,32 +4,44 @@
 				<div class="product-wrap">
 					<div class="product product-image-gap product-simple">
 						<figure class="product-media">
+							@if(@$prod_val['image'])
 							<a href="{{url('product-detail/'.$prod_val['slug'])}}">
 								<img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 								 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 							</a>
-						   
+							@else
+							<a href="{{url('product-detail/'.$prod_val['getProduct']['slug'])}}">
+								<img src='{{url("product/".$prod_val['getProduct']['image'])}}' alt="Product" width="195" height="135" />
+								 <img src='{{url("product/".$prod_val['getProduct']['image'])}}' alt="Product" width="195" height="135" />
+							</a>
+							@endif
+						   @if(@$prod_val['slug'])
 							<div class="product-action">
 								<a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product" title="Quick View">Quick View</a>
 							</div>
+						@else
+						<div class="product-action">
+								<a href="{{url('product-detail/'.$prod_val['getProduct']['slug'])}}" class="btn-product" title="Quick View">Quick View</a>
+							</div>
+						@endif
 						</figure>
 						<div class="product-details">
 							
 							<h4 class="product-name">
-								<a href="{{url('product-detail/'.$prod_val['slug'])}}">{{$prod_val['name']}}</a>
+								<a href="{{url('product-detail/'.$prod_val['slug'])}}">{{$prod_val['name'] ? $prod_val['name'] : $prod_val['getProduct']['name']}}</a>
 							</h4>
 						   
 							<div class="product-pa-wrapper">
 								<div class="product-price">
-									<ins class="new-price">MRP : {{$prod_val['mrp']}}</ins>
+									<ins class="new-price">MRP : {{$prod_val['mrp'] ? $prod_val['mrp'] : $prod_val['getProduct']['mrp']}}</ins>
 								</div>
 								<div class="product-price">
-									<ins class="new-price">Min Qty : {{$prod_val['maq']}}</ins>
+									<ins class="new-price">Min Qty : {{$prod_val['maq'] ? $prod_val['maq'] :  $prod_val['getProduct']['maq']}}</ins>
 								</div>
 								<div class="product-action">
 									@auth
 									<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist
-									" data-id="{{$prod_val['id']}}" >Add To Wishlist</a>
+									" data-id="{{$prod_val['id'] ? $prod_val['id'] : $prod_val['getProduct']['id'] }}" >Add To Wishlist</a>
 									@else
 									 <a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
 									@endauth
