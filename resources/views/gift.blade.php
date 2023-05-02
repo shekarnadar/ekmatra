@@ -74,6 +74,8 @@
   var sort_by = 'created_at';
   var order_by = 'desc';
   var cat_id  = $("#cat_id").val();
+  var type = "{{$type}}";
+  var range = "{{$value}}";
 	$('.brand-item li').click(function(e){
 		event.preventDefault();
       
@@ -96,10 +98,18 @@
 			getData(page_count);
 	});
   $('.price-item li').click(function(e){
-  		
   		page_count = 1;
-  		min_price = $(this).attr('data-minprice');
-  		max_price = $(this).attr('data-maxprice');
+  	
+
+  		if(type == 'price'){
+  			let url="{{url('shop-by/price/')}}" + $(this).attr('data-minprice')+'-'+$(this).attr('data-maxprice');
+  			history.pushState('data', '',url);
+  			range = $(this).attr('data-minprice') +'-'+$(this).attr('data-maxprice')
+  		}else{
+  				min_price = $(this).attr('data-minprice');
+  				max_price = $(this).attr('data-maxprice');
+  		}
+
   		var getClass = this.className;
   		if(getClass == 'active'){
   			min_price = '';
@@ -210,8 +220,8 @@
 					"order_by" : order_by,
 					"occasion_id" : "{{$occasion_id}}",
 					"feature_attribute_id" : "{{$feature_attribute_id}}",
-					"range":"{{$value}}",
-					"type" : "{{$type}}"	
+					"range":range,
+					"type" : type	
 				},
 				datatype: "html"
 		}).done(function(data){

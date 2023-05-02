@@ -40,7 +40,7 @@ class GiftController extends Controller
 			 
 				
 		}
-		$product = $product->paginate(2);
+		$product = $product->paginate(10);
 		return view('gift', compact('product','occasion_id','feature_attribute_id','type','value'));
 	}
 
@@ -121,7 +121,7 @@ class GiftController extends Controller
 		if($request['page_limit']){
        $page_limit = $request['page_limit'];
     }else{
-       $page_limit = 2;
+       $page_limit = 10;
     }
     	
     if($request['sort_by']){
