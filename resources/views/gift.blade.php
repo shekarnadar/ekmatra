@@ -8,6 +8,7 @@
 				<div class="container">
 					<ul class="breadcrumb bb-no">
 						<li><a href="{{url('/')}}">Home</a></li>
+						<li><a>{{$value}}</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -76,6 +77,12 @@
   var cat_id  = $("#cat_id").val();
   var type = "{{$type}}";
   var range = "{{$value}}";
+  if(type == 'price'){
+  	var split = range.split('-');
+  	console.log(split);
+   $('[data-maxprice='+split[1]+']').addClass('active');
+
+  }
 	$('.brand-item li').click(function(e){
 		event.preventDefault();
       

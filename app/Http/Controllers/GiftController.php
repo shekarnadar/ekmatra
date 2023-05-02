@@ -66,7 +66,7 @@ class GiftController extends Controller
 	  }
 	 	 if($request['warranty']){
 	 	 	  if($request['type'] == 'occasions'){
-    			$warrentyquery->where('products.warrenty',$request['warranty']);
+    			$product->where('products.warrenty',$request['warranty']);
     		}else{
     			$product->where('warrenty',$request['warranty']);
     		}
