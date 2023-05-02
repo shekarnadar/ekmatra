@@ -30,6 +30,18 @@ class GiftController extends Controller
 			$occasion_id = '';
 			$feature_attribute_id = FeatureAttribute::where('name',$value)->pluck('id')->first();
 			$product = Product::where('feature_attribute_id',$feature_attribute_id)->where('status',1);
+		}else{
+			$occasion_id = '';
+			$feature_attribute_id = '';
+			$explode_value = explode('-',$value);
+			$product = Product::where('status',1);
+			if($explode_value[1] == 5000){
+        	$product->where('price','>=',$explode_value[1]);
+       }else{
+       	$product ->whereBetween('price', [$explode_value[0] , $explode_value[1] ]);
+       }
+			 
+				
 		}
 		$product = $product->paginate(10);
 		return view('gift', compact('product','occasion_id','feature_attribute_id','type'));
@@ -44,7 +56,10 @@ class GiftController extends Controller
 						$statusquery->where('status',1);
 					});
 
-		}else{
+		}else if($request['type'] == 'price'){
+			$product = Product::where('status',1);
+		}
+		else{
 				$product = Product::where('feature_attribute_id',$request['feature_attribute_id'])->where('status',1);
 
 	  }
