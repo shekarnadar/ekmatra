@@ -210,6 +210,7 @@
 					"order_by" : order_by,
 					"occasion_id" : "{{$occasion_id}}",
 					"feature_attribute_id" : "{{$feature_attribute_id}}",
+					"range":"{{$value}}",
 					"type" : "{{$type}}"	
 				},
 				datatype: "html"

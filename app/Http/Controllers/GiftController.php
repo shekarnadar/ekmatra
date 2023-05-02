@@ -16,14 +16,11 @@ class GiftController extends Controller
 		if($type == 'occasions'){
 			
 			$occasion_id = Occasions::where('name',$value)->pluck('id')->first();
-			
 			$feature_attribute_id = '';
-			
 			$product = ProductOccasion::with('getProduct')->where('occasion_id',$occasion_id);
 			$product->whereHas('getProduct',function ($statusquery) use ($request){
-						//I need to write query 
-						$statusquery->where('status',1);
-					});
+					$statusquery->where('status',1);
+			});
 
  		}
 		else if($type == 'brand'){
@@ -43,8 +40,8 @@ class GiftController extends Controller
 			 
 				
 		}
-		$product = $product->paginate(10);
-		return view('gift', compact('product','occasion_id','feature_attribute_id','type'));
+		$product = $product->paginate(2);
+		return view('gift', compact('product','occasion_id','feature_attribute_id','type','value'));
 	}
 
 	public function shopByFilter(Request $request){
@@ -57,7 +54,13 @@ class GiftController extends Controller
 					});
 
 		}else if($request['type'] == 'price'){
+			$explode_value = explode('-',$request['range']);
 			$product = Product::where('status',1);
+			if($explode_value[1] == 5000){
+        	$product->where('price','>=',$explode_value[1]);
+       }else{
+       	$product ->whereBetween('price', [$explode_value[0] , $explode_value[1] ]);
+       }
 		}
 		else{
 				$product = Product::where('feature_attribute_id',$request['feature_attribute_id'])->where('status',1);
@@ -118,7 +121,7 @@ class GiftController extends Controller
 		if($request['page_limit']){
        $page_limit = $request['page_limit'];
     }else{
-       $page_limit = 10;
+       $page_limit = 2;
     }
     	
     if($request['sort_by']){
