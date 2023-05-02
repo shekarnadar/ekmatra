@@ -102,7 +102,7 @@
   	
 
   		if(type == 'price'){
-  			let url="{{url('shop-by/price/')}}" + $(this).attr('data-minprice')+'-'+$(this).attr('data-maxprice');
+  			let url="{{url('shop-by/price/')}}" + "/"+$(this).attr('data-minprice')+'-'+$(this).attr('data-maxprice');
   			history.pushState('data', '',url);
   			range = $(this).attr('data-minprice') +'-'+$(this).attr('data-maxprice')
   		}else{
