@@ -107,9 +107,11 @@ class GiftController extends Controller
     }
     	
     if($request['sort_by']){
+    	if($request['type'] == 'occasions'){
     	    $product->orderBy(Product::select($request['sort_by'])->whereColumn('products.id', 'product_occasions.product_id'),$request['order_by']);
-
-    		//$product->orderBy($request['sort_by'],$request['order_by']);
+    	}else{
+    		$product->orderBy($request['sort_by'],$request['order_by']);
+    	}
     }else{
     		 $product->orderBy('created_at','desc');
 		}
