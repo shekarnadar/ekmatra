@@ -1,6 +1,10 @@
 @section('breadcumb','Sub-Category')
 @section('pageTitle','sub-category-create')
-	
+	@php
+$backurl = url('admin/category')."/".$subCat['category_id']."/"."sub-cat";
+@endphp
+@section('backlink',"$backurl")
+
 <x-app-layout>
 				<div class="row">
 					<div class="col-lg-12 col-md-12">
