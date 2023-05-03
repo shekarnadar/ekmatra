@@ -7,7 +7,7 @@
 	<nav class="breadcrumb-nav mb-10">
 		<div class="container">
 			<ul class="breadcrumb">
-					<li><a href="demo1.html">Home</a></li>
+					<li><a href="{{url('/')}}">Home</a></li>
 					<li>Wishlist</li>
 			</ul>
 		 </div>

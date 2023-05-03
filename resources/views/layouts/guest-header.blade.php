@@ -30,7 +30,7 @@
 					<div class="header-left mr-md-4">
 						<a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
 						</a>
-						<a href="demo1.html" class="logo ml-lg-0">
+						<a href="{{url('/')}}" class="logo ml-lg-0">
 							<img src="{{url('front//images/demos/demo12/logo.png')}}" alt="logo" width="120" height="45" />
 						</a>
 						<form method="get" action="{{url('search')}}"
@@ -130,7 +130,7 @@
 								<ul class="menu active-underline">
 									
 									<li>
-										<a href="shop-banner-sidebar.html">Shop By</a>
+										<a href="javascript:void(0)">Shop By</a>
 
 										<!-- Start of Megamenu -->
 										<ul class="megamenu">

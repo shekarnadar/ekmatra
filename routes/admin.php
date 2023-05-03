@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\OccasionsController;
+use App\Http\Controllers\BannerController;
 
 use App\Http\Controllers\InquiryController;
 
@@ -103,6 +104,12 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::delete('occasion/{id}', [OccasionsController::class,'destroy'])->name('occasion.delete');
 		Route::get('product/occasion/{id}',[OccasionsController::class,'occasionDeals'])->name('product.occasion');
 		Route::post('product/occasion-save',[OccasionsController::class,'occasionSave'])->name('product.occasion.save');
+
+		Route::get('banners',[BannerController::class,'index'])->name('banners.index');
+		Route::get('banner/add',[BannerController::class,'create'])->name('banner.create');
+		Route::post('banner/store',[BannerController::class,'store'])->name('banner.store');
+		Route::get('banner/edit/{id}',[BannerController::class,'edit'])->name('banner.edit');
+		Route::delete('banner/{id}', [BannerController::class,'destroy'])->name('banner.delete');
 
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquirylist');
 		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquiryview');
