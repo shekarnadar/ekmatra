@@ -114,6 +114,7 @@ input:checked + .slider:before {
 		 columns: [
             {data: 'name', name: 'name','title' : 'Name'},
             {data: 'slug', name: 'slug','title' : 'Slug'},
+            {data: 'sorting', name: 'sorting','title' : 'Sorting'},
             {data: 'image', name: 'image' ,'title' : 'image'},
             {data: 'action', name: 'action', orderable: false, searchable: false,title:'action'},
             {data: 'statusaction', name: 'action', orderable: false, searchable: false,title:'Status'},
