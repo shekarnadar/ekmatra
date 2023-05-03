@@ -1,5 +1,10 @@
 @section('breadcumb','Deal')
 @section('pageTitle','Deal-create')
+<?php
+	$backurl = url('/admin/deals');
+
+?>
+@section('backlink',"$backurl")
 
 <x-app-layout>
 				<div class="row">

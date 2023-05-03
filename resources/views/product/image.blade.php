@@ -6,9 +6,11 @@
 @php
 	
 	$url = getAuthGaurd();
-
+	$backurl = url($url."/"."products");
 
 @endphp
+@section('backlink',"$backurl")
+
 <x-app-layout>
 	<div class="row">
 		<div class="col-lg-12 col-md-12">

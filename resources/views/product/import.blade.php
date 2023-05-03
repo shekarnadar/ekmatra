@@ -2,7 +2,11 @@
 @section('pageTitle','Products')
 @php
 $url = getAuthGaurd();
+    $backurl = url($url."/"."products");
+
 @endphp
+@section('backlink',"$backurl")
+
 <x-app-layout>
 	<div class="row row-sm">
 		<div class="col-xl-12">

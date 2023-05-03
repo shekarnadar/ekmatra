@@ -1,5 +1,10 @@
 @section('breadcumb','occasion')
 @section('pageTitle','occasion-create')
+<?php
+	$backurl = url('/admin/occasions');
+
+?>
+@section('backlink',"$backurl")
 
 <x-app-layout>
 				<div class="row">

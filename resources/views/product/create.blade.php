@@ -7,7 +7,10 @@
 	if(!isset($product['image'])){
 		$required="required='required'";
 	}
+	$backurl = url($url."/"."products");
+
 @endphp
+@section('backlink',"$backurl")
 
 <x-app-layout>
 				<div class="row">

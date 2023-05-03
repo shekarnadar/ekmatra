@@ -3,7 +3,11 @@
 @include('layouts.datatable-css')
 @php
 $url = getAuthGaurd();
+$backurl = url('/admin/occasions');
+
 @endphp
+@section('backlink',"$backurl")
+
 <x-app-layout>
 	<div class="row row-sm">
 		<div class="col-xl-12">

@@ -3,7 +3,9 @@
 @include('layouts.datatable-css')
 @php
 $url = getAuthGaurd();
+
 @endphp
+
 <x-app-layout>
 	<div class="row row-sm">
 		<div class="col-xl-12">

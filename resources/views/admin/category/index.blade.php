@@ -4,6 +4,7 @@
 @php
 $url = getAuthGaurd();
 @endphp
+
 <style>
 	.switch {
   position: relative;

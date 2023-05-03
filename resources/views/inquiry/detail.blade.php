@@ -1,6 +1,13 @@
 @section('breadcumb','Enquiry')
 @section('pageTitle','Enquiry-Detail')
-
+<?php
+	if(@$inquiry['product']){
+			$backurl = url('/admin/inquiry');
+	}else{
+		$backurl = url('/admin/rfq');
+	}
+?>
+@section('backlink',"$backurl")
 
 <x-app-layout>
 				<div class="row">
