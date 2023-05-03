@@ -13,6 +13,7 @@ use App\Http\Controllers\OccasionsController;
 use App\Http\Controllers\BannerController;
 
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\ContactUsController;
 
 
 
@@ -114,6 +115,11 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('inquiry',[InquiryController::class,'inquirylist'])->name('inquirylist');
 		Route::get('inquiry/view/{id}',[InquiryController::class,'inquiryview'])->name('inquiryview');
 		Route::get('rfq',[InquiryController::class,'rfqlist'])->name('rfqlist');
+
+
+		Route::get('contact-us/add',[ContactUsController::class,'addContactUs'])->name('contactus.add');
+
+		Route::post('contact-us/store',[ContactUsController::class,'contactusSave'])->name('contactusSave');
 
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');
