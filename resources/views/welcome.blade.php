@@ -13,24 +13,12 @@
 																'slidesPerView': 1
 														}">
 																<div class="swiper-wrapper row gutter-no cols-1">
-																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide1 br-sm"
-																				style="background-image: url(front/images/demos/demo12/slides/intro-3.jpg); background-color: #3F3E3A;">
+																	  @foreach($banner as $banner_value)
+																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide{{$loop->index}} br-sm"
+																				style="background-image: url({{asset('banner/'.$banner_value['image'])}}); background-color: #3F3E3A;">
 																				<div class="banner-content y-50 text-right">
-																						<h3 class="banner-subtitle text-uppercase font-secondary font-weight-bolder slide-animate"
-																								data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '.5s', 'delay': '.2s'}">
-																								From Online Store
-																						</h3>
-																						<h2 class="banner-title font-secondary text-capitalize text-white slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.4s'}">
-																								Men's Lifestyle<br>
-																								Collection
-																						</h2>
-																						<h4 class="banner-price-info font-weight-normal text-white ls-25 slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.4s'}">
-																								Discount <span class="text-primary font-weight-bolder">50%
-																										OFF</span>This Week.
-																						</h4>
-																						<a href="#"
+																						
+																						<a href="{{$banner_value['shop_link']}}"
 																								class="btn btn-outline btn-white btn-rounded btn-icon-right slide-animate"
 																								data-animation-options="{'name': 'fadeInUpShorter', 'duration': '.5s', 'delay': '.6s'}">
 																								Shop Now
@@ -38,97 +26,31 @@
 																						</a>
 																				</div>
 																		</div>
-																		<!-- End of Intro Slide 1 -->
-																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide2 br-sm"
-																				style="background-image: url(front/images/demos/demo12/slides/intro-2.jpg); background-color: #E2E2E0;">
-																				<div class="banner-content y-50">
-																						<h3 class="banner-subtitle text-capitalize text-default font-secondary font-weight-bold slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.2s'}">
-																								Special Discount On Sale
-																						</h3>
-																						<h2 class="banner-title font-secondary text-dark ls-25 slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.4s'}">
-																								Lotion for Beauties
-																						</h2>
-																						<h4 class="banner-price-info font-weight-normal text-dark font-secondary ls-25 slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.4s'}">
-																								Up to
-																								<span class="text-primary font-weight-bolder">30% OFF</span>
-																						</h4>
-																						<a href="#"
-																								class="btn btn-outline btn-dark btn-rounded btn-icon-right slide-animate"
-																								data-animation-options="{'name': 'fadeInUpShorter', 'duration': '.5s', 'delay': '.6s'}">
-																								Shop Now
-																								<i class="w-icon-long-arrow-right"></i>
-																						</a>
-																				</div>
-																		</div>
-																		<!-- End of Intro Slide 2 -->
-																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide3 br-sm"
-																				style="background-image: url(front/images/demos/demo12/slides/intro-1.jpg); background-color: #EAEAEA;">
-																				<div class="banner-content y-50">
-																						<h3 class="banner-subtitle text-uppercase text-primary font-secondary font-weight-bold slide-animate"
-																								data-animation-options="{'name': 'fadeInDownShorter', 'duration': '.5s', 'delay': '.2s'}">
-																								From Online Store
-																						</h3>
-																						<h2 class="banner-title font-secondary text-dark slide-animate"
-																								data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '.5s', 'delay': '.4s'}">
-																								Women's Lifestyle<br>Collection
-																						</h2>
-																						<hr class="divider slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.5s'}">
-																						<h5 class=" text-dark text-uppercase font-secondary font-weight-bold mb-2 slide-animate"
-																								data-animation-options="{'name': 'fadeInRightShorter', 'duration': '.5s', 'delay': '.4s'}">
-																								For - Women
-																						</h5>
-																						<h5 class="product-identifier font-weight-normal text-dark text-uppercase slide-animate"
-																								data-animation-options="{'name': 'fadeInUpShorter', 'duration': '.5s', 'delay': '.6s'}">
-																								Product Identifier:
-																								<span class="font-weight-bolder text-primary">DD2030</span>
-																						</h5>
-																				</div>
-																		</div>
-																		<!-- End of Intro Slide 3 -->
+																		@endforeach
+																		
 																</div>
 																<div class="swiper-pagination"></div>
 														</div>
 												</div>
 												<div class="intro-banner-wrapper col-lg-3 mt-4">
+													  @foreach($sub_banner as $sub_value)
 														<div class="banner banner-fixed intro-banner br-sm mb-4">
 																<figure class="br-sm">
-																		<img src="{{url('front/images/demos/demo12/banner/banner-1.jpg')}}" alt="Category Banner"
+																		<img src="{{url('banner/'.$sub_value['image'])}}" alt="Category Banner"
 																				width="680" height="180" style="background-color: #565960;" />
 																</figure>
 																<div class="banner-content">
-																		<h5 class="banner-subtitle text-uppercase text-lighter font-weight-bold">New In</h5>
-																		<h3 class="banner-title text-white font-secondary font-weight-bolder ls-25">
-																				Cosmetical</h3>
-																		<a href="#"
+																		
+																		<a href="{{$sub_value['shop_link']}}"
 																				class="btn btn-white btn-link btn-slide-right btn-icon-right btn-infinite">
 																				Shop Now
 																				<i class="w-icon-long-arrow-right"></i>
 																		</a>
 																</div>
 														</div>
+														@endforeach
 														<!-- End of Intro Banner -->
-														<div class="banner banner-fixed intro-banner intro-banner2 br-sm mb-4">
-																<figure class="br-sm">
-																		<img src="{{url('front/images/demos/demo12/banner/banner-2.jpg')}}" alt="Category Banner"
-																				width="680" height="180" style="background-color: #565960;" />
-																</figure>
-																<div class="banner-content">
-																		<h5 class="banner-subtitle text-uppercase text-default font-weight-bold">On Sale
-																		</h5>
-																		<h3 class="banner-title text-dark font-secondary font-weight-bolder ls-25">Kids
-																				Store</h3>
-																		<a href="#"
-																				class="btn btn-dark btn-link btn-slide-right btn-icon-right btn-infinite">
-																				Shop Now
-																				<i class="w-icon-long-arrow-right"></i>
-																		</a>
-																</div>
-														</div>
-														<!-- End of Intro Banner -->
+														
 												</div>
 										</div>
 								</div>

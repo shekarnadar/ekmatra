@@ -16672,7 +16672,9 @@ body .product-popup {
 }
 
 .intro-slide2 .banner-content {
-    left: 8%;
+    /*left: 8%;*/
+    right: 8.7%;
+    margin-top: -0.3rem;
 }
 .intro-slide2 .banner-title {
     font-size: 4.2em;
