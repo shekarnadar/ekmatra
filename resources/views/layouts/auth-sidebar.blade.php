@@ -43,6 +43,9 @@ $url = getAuthGaurd();
 					</li>
 					@if($url == 'admin')
 					<li class="slide">
+						<a class="side-menu__item {{ request()->is($url.'/contact-us/add')? 'active' : '' }}" href='{{url("$url/contact-us/add")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">ContactUs</span></a>
+					</li>
+					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/banners',$url.'/banner/add',$url.'/banner/edit/*',$url.'/banners/*')? 'active' : '' }}" href='{{url("$url/banners")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Banners</span></a>
 					</li>
 					<li class="slide">

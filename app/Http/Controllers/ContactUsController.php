@@ -9,15 +9,20 @@ class ContactUsController extends Controller
 {
     //
     public function index(){
-       return view('contact-us');
+      $contact = ContactUs::first();
+      return view('contact-us',compact('contact'));
     }
 
     public function weAreHiring(){
-      return view('contact-us');
+      $contact = ContactUs::first();
+      return view('contact-us',compact('contact'));
+
     }
 
     public function aboutUs(){
-      return view('contact-us');
+     $contact = ContactUs::first();
+     return view('contact-us',compact('contact'));
+
     }
 
     public function addContactUs(){

@@ -42,7 +42,7 @@
 									</span>
 									<div class="icon-box-content">
 										<h4 class="icon-box-title">E-mail Address</h4>
-										<p><a href="https://portotheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddb0bcb4b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a></p>
+										<p><a href="https://portotheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddb0bcb4b19db8a5bcb0adb1b8f3beb2b0">{{$contact['email']}}</a></p>
 									</div>
 								</div>
 								<div class="swiper-slide icon-box text-center icon-box-primary">
@@ -51,7 +51,7 @@
 									</span>
 									<div class="icon-box-content">
 										<h4 class="icon-box-title">Phone Number</h4>
-										<p>(123) 456-7890 / (123) 456-9870</p>
+										<p>{{$contact['phone']}}</p>
 									</div>
 								</div>
 								<div class="swiper-slide icon-box text-center icon-box-primary">
@@ -60,18 +60,10 @@
 									</span>
 									<div class="icon-box-content">
 										<h4 class="icon-box-title">Address</h4>
-										<p>Lawrence, NY 11345, USA</p>
+										<p>{{$contact['address']}}</p>
 									</div>
 								</div>
-								<div class="swiper-slide icon-box text-center icon-box-primary">
-									<span class="icon-box-icon icon-fax">
-										<i class="w-icon-fax"></i>
-									</span>
-									<div class="icon-box-content">
-										<h4 class="icon-box-title">Fax</h4>
-										<p>1-800-570-7777</p>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</section>
