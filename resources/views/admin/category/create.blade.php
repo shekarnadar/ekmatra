@@ -4,7 +4,10 @@
 	if(!isset($category['image'])){
 		$required="required='required'";
 	}
+	$backurl = url('/admin/categories');
+
 @endphp
+@section('backlink',"$backurl")
 
 <x-app-layout>
 				<div class="row">

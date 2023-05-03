@@ -1,5 +1,11 @@
 @section('breadcumb','Feature')
 @section('pageTitle','Feature-create')
+<?php
+	$backurl = url('/admin/features');
+
+?>
+@section('backlink',"$backurl")
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
 	<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <style>

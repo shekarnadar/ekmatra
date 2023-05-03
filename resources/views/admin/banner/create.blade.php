@@ -4,7 +4,10 @@
 	if(!isset($banner['image'])){
 		$required="required='required'";
 	}
+	$url = url('/admin/banners');
 @endphp
+
+@section('backlink',"$url")
 
 <x-app-layout>
 				<div class="row">
