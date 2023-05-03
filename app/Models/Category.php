@@ -13,7 +13,8 @@ class Category extends Model
         'name',
         'image',
         'slug',
-        'status'
+        'status',
+        'sorting'
     ];
 
     public function setNameAttribute($value){
@@ -42,7 +43,7 @@ class Category extends Model
     }
 
     public static function getCategoriesList(){
-         $category = Category::with('subCategory')->where('status',1)->orderBy('created_at','desc')->get();
+         $category = Category::with('subCategory')->where('status',1)->orderBy('sorting','desc')->get();
          return $category;
     }
     //get subcategory

@@ -40,6 +40,13 @@
 												<span class="text-danger" id="name_error"></span>
 											</div>
 										</div>
+										<div class="col-6 mt-2">
+											<div class="form-group mg-b-0">
+												<label class="form-label">Sorting Number: <span class="tx-danger">*</span></label>
+												<input class="form-control" name="sorting" placeholder="Enter sorting" required="required" id="sorting" type="text" data-parsley-required-message="Please enter sorting" value="{{@$category['sorting']}}">
+												<span class="text-danger" id="sorting_error"></span>
+											</div>
+										</div>
 										<div class="col-12"><button type="submit" class="btn btn-main-primary pd-x-20 mg-t-10 addcategory"><span class="submit">Submit </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
 										</div>
 									</div>
