@@ -18402,7 +18402,6 @@ body .product-popup {
   font-size: 1.4rem;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
 }
 .contact-us .icon-box .icon-email {
   margin: 0.3rem 0 1.5rem;
