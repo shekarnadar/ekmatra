@@ -49,7 +49,18 @@ class BannerController extends Controller
 	public function store(Request $request)
 	{
 		try {
-			
+			$type = ['sub' => 2,'sale'=>2,'download'=>1,'special' =>1];
+			if($request['id'] == 0){
+				$total_banner = Banner::where('type',$request['type'])->count();
+				foreach ($type as $key => $value) {
+					if($key == $request['type']){
+						if($total_banner >= $value){
+							return response()->json(['success' => false,
+								'message' => 'Your limit reached out.'], 200);
+						}
+					}
+				}
+			}
 			if($request->file('image')){
 				if($request['id']){
 
@@ -61,6 +72,7 @@ class BannerController extends Controller
 				$image = uploadImage('banner',$request->image);
 			$request['image'] = $image;
 			}
+
 			
 			Banner::saveBanner($request->input());
 			return response()->json(['success' => true,

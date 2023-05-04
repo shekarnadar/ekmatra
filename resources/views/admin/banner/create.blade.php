@@ -127,6 +127,9 @@
                     },2000);
                 } else {
                     notifyMsg(response.message,'error');
+                      $('.loading').hide();
+            	  $('.submit').show();
+            	  $(".addbanner").prop('disabled',false);
                 }
             },
             error: function(response) {
