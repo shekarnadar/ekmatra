@@ -51,15 +51,21 @@
 											</div>
 										</div>
 										
-										<div class="col-6 mt-5">
+										<div class="col-6 mt-2">
 											<div class="form-group mg-b-0">
-												@if(@$banner['is_main_banner'] == 1)
-												<?php $checked = "checked" ?>
-												@else
-												<?php $checked = "" ?>
-												@endif
-												<label class="ckbox"><input type="checkbox" name="is_main_banner" id="is_main_banner" value="1" {{$checked}}><span>Is Banner</span></label>
-												<span class="text-danger" id="is_main_banner_error"></span>
+												<label class="form-label">Type <span class="tx-danger">*</span></label>
+												<select class="form-control"  name="type" data-parsley-required-message="Please select type" required>
+													<option value="">Select Type</option>
+													@foreach($type as $val)
+														@if(@$banner['type'] && $banner['type'] == $val)
+														<option value="{{$val}}" selected="selected">{{$val}}</option>
+														@else
+														<option value="{{$val}}">{{$val}}</option>
+														@endif
+													@endforeach
+												</select>
+												
+												<span class="text-danger" id="type_error"></span>
 											</div>
 										</div>
 
