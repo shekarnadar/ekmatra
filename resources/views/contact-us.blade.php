@@ -60,7 +60,7 @@
 									</span>
 									<div class="icon-box-content">
 										<h4 class="icon-box-title">Address</h4>
-										<p>{{$contact['address']}}</p>
+										<p>{!! nl2br($contact->address) !!}</p>
 									</div>
 								</div>
 								
