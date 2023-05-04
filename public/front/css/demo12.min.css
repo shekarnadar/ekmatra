@@ -4063,7 +4063,6 @@ blockquote {
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
     font-size: 1rem;
     overflow: hidden;
 }
