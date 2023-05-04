@@ -13,9 +13,7 @@
 						<h3 class="title title-center mb-3">Contact
 							Information
 						</h3>
-						<p class="text-center">Lorem ipsum dolor sit amet,
-							consectetur
-							adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+						<p class="text-center">{!! nl2br($contact->description) !!}</p>
 					</section>
 					<!-- End of Contact Title Section -->
 
