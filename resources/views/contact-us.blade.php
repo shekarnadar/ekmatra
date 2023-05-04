@@ -145,22 +145,23 @@
 							<div class="col-lg-6 mb-8">
 								<h4 class="title mb-3">Send Us a Message</h4>
 								<form class="form contact-us-form" action="#" method="post">
+									@csrf
 									<div class="form-group">
 										<label for="username">Your Name</label>
-										<input type="text" id="username" name="username"
-											class="form-control">
+										<input type="text" id="username" name="name"
+											class="form-control" required="required">
 									</div>
 									<div class="form-group">
 										<label for="email_1">Your Email</label>
-										<input type="email" id="email_1" name="email_1"
-											class="form-control">
+										<input type="email" id="email_1" name="email"
+											class="form-control" required="required">
 									</div>
 									<div class="form-group">
 										<label for="message">Your Message</label>
-										<textarea id="message" name="message" cols="30" rows="5"
-											class="form-control"></textarea>
+										<textarea id="message" name="description" cols="30" rows="5"
+											class="form-control" required="required"></textarea>
 									</div>
-									<button type="submit" class="btn btn-dark btn-rounded">Send Now</button>
+									<button type="submit" class="btn btn-dark btn-rounded sendNow">Send Now</button>
 								</form>
 							</div>
 						</div>
@@ -173,3 +174,37 @@
 				<!-- End Map Section -->
 			</div>
 </x-guest-layout>
+<script type="text/javascript">
+	$('.contact-us-form').on('submit', function(e) {
+		e.preventDefault()
+		let formValue = new FormData(this);
+		$.ajax({
+       		type: "Post",
+          url: '{{ url("contact-us/inquiry") }}',
+          data: formValue,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+          	if(response.success){
+          		
+          		notifyMsg(response.message,'success');
+          		window.location.reload();
+
+          	}else{
+          		notifyMsg(response.message,'error');
+          	}
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+            $.each( error.errors, function( key, value ) {
+            			$("#"+key+"_error").show();
+  								$("#"+key+"_error").text(value);
+						});
+				}
+	});
+	});
+</script>

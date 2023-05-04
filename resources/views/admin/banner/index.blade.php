@@ -56,7 +56,6 @@ $url = getAuthGaurd();
      ]
 	});
 	$('#category-list').on('click','.removeBanner',function(){
-		alert("s");
 		let id = $(this).data("id") ;
 		if (confirm("Are you sure you want to remove?")){
 				$.ajax({
