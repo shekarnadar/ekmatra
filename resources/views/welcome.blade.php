@@ -516,7 +516,7 @@
 										@endif
 								 @endforeach
 								<div class="banner link-banner-newsletter d-flex mb-8 align-items-center row gutter-no br-sm appear-animate"
-										style="background-image: url(front/images/demos/demo12/banner/banner-6.jpg);
+										style="background-image: url('banner/'.{{$download}});
 										background-color: #27393D;">
 										<div class="col-xl-5 col-lg-4 mr-auto">
 												<figure class="banner-media d-lg-show">

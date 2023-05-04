@@ -17,9 +17,10 @@ class WelcomeController extends Controller
 		
 		$deal = Deal::with('productDeals.getProduct')->get();
         $banner = Banner::orderBy('sorting','desc')->get();
+        $download = Banner::where('type','download')->pluck('image')->first();
         
 		$product = Product::getLatestProduct();
 		$vendor = User::getLatestVendor();
-		return view('welcome',compact('product','vendor','deal','banner'));
+		return view('welcome',compact('product','vendor','deal','banner','download'));
 	}
 }
