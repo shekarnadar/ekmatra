@@ -14,17 +14,9 @@
 														}">
 																<div class="swiper-wrapper row gutter-no cols-1">
 																	  @foreach($banner as $banner_value)
-																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide{{$loop->index}} br-sm"
+																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide{{$loop->index}} br-sm" data-url="{{$banner_value['shop_link']}}"
 																				style="background-image: url({{asset('banner/'.$banner_value['image'])}}); background-color: #3F3E3A;">
-																				<div class="banner-content y-50 text-right">
-																						
-																						<a href="{{$banner_value['shop_link']}}"
-																								class="btn btn-outline btn-white btn-rounded btn-icon-right slide-animate"
-																								data-animation-options="{'name': 'fadeInUpShorter', 'duration': '.5s', 'delay': '.6s'}">
-																								Shop Now
-																								<i class="w-icon-long-arrow-right"></i>
-																						</a>
-																				</div>
+																			
 																		</div>
 																		@endforeach
 																		
@@ -659,6 +651,12 @@
 </x-guest-layout>
 
 <script type="text/javascript">
+	$('.swiper-slide').click(function(e) {  
+    var url = $(this).attr('data-url');
+    window.location.href = url;
+
+});
+W
 	let login = "{{\Session::get('isLogin')}}";
 	if(login == 1){
 		Wolmart.popup(
