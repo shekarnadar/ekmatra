@@ -14,11 +14,7 @@ class BannerController extends Controller
 					$data = Banner::getBanners();
 					return Datatables::of($data)
 					->addColumn('Type', function($row){
-					   if($row['is_main_banner'] == 0){
-						return 'Sub Banner';
-					   }else{
-						return 'Main Banner';
-					   }
+					  return $row['type'];
 					 })
 					->addColumn('image', function($row){
 						$imageval = url('banner/' . $row->image);
@@ -40,7 +36,14 @@ class BannerController extends Controller
 	public function create()
 	{
 		//
-		return view('admin.banner.create');
+		$type = [
+			'main',
+			'sub',
+			'sale',
+			'download',
+			'special'
+		];
+		return view('admin.banner.create',compact('type'));
 
 	}
 	public function store(Request $request)
@@ -73,8 +76,15 @@ class BannerController extends Controller
 	public function edit($id)
 	{
 		//
+		$type = [
+			'main',
+			'sub',
+			'sale',
+			'download',
+			'special'
+		];
 		$banner = Banner::find($id);
-		return view('admin.banner.create',compact('banner'));
+		return view('admin.banner.create',compact('banner','type'));
 	}
 
 	public function destroy($id)

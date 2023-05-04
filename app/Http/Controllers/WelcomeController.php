@@ -16,11 +16,10 @@ class WelcomeController extends Controller
 	public function index(){
 		
 		$deal = Deal::with('productDeals.getProduct')->get();
-        $banner = Banner::where('is_main_banner',1)->orderBy('sorting','desc')->get();
-        $sub_banner = Banner::where('is_main_banner',0)->orderBy('sorting','asc')->get();
-
+        $banner = Banner::orderBy('sorting','desc')->get();
+        
 		$product = Product::getLatestProduct();
 		$vendor = User::getLatestVendor();
-		return view('welcome',compact('product','vendor','deal','banner','sub_banner'));
+		return view('welcome',compact('product','vendor','deal','banner'));
 	}
 }

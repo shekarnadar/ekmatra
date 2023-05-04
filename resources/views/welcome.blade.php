@@ -14,10 +14,12 @@
 														}">
 																<div class="swiper-wrapper row gutter-no cols-1">
 																	  @foreach($banner as $banner_value)
+																	   @if($banner_value['type'] == 'main')
 																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide{{$loop->index}} br-sm" data-url="{{$banner_value['shop_link']}}"
 																				style="background-image: url({{asset('banner/'.$banner_value['image'])}}); background-color: #3F3E3A;">
 																			
 																		</div>
+																		@endif
 																		@endforeach
 																		
 																</div>
@@ -25,7 +27,8 @@
 														</div>
 												</div>
 												<div class="intro-banner-wrapper col-lg-3 mt-4">
-													  @foreach($sub_banner as $sub_value)
+													  @foreach($banner as $sub_value)
+													  @if($sub_value['type'] == 'sub')
 														<div class="banner banner-fixed intro-banner br-sm mb-4">
 																<figure class="br-sm">
 																		<img src="{{url('banner/'.$sub_value['image'])}}" alt="Category Banner"
@@ -40,6 +43,7 @@
 																		</a>
 																</div>
 														</div>
+														@endif
 														@endforeach
 														<!-- End of Intro Banner -->
 														
@@ -242,9 +246,11 @@
 								<!-- End of Swiper -->
 
 								<div class="banner-wrapper appear-animate row cols-md-2 mb-7">
+									 @foreach($banner as $banner_value)
+										@if($banner_value['type'] == 'sale')
 										<div class="banner banner-fixed overlay-dark br-sm mt-4">
 												<figure class="br-sm">
-														<img src="{{url('front/images/demos/demo12/banner/banner-3.jpg')}}" alt="Category Banner" width="680"
+														<img src="{{url('banner/'.$banner_value['image'])}}" alt="Category Banner" width="680"
 																height="180" style="background-color: #565960;" />
 												</figure>
 												<div class="banner-content y-50">
@@ -262,26 +268,9 @@
 														</a>
 												</div>
 										</div>
-										<div class="banner banner-fixed overlay-dark br-sm mt-4">
-												<figure class="br-sm">
-														<img src="{{url('front/images/demos/demo12/banner/banner-4.jpg')}}" alt="Category Banner" width="680"
-																height="180" style="background-color: #E5E6E8;" />
-												</figure>
-												<div class="banner-content y-50">
-														<h4 class="banner-price-info text-default font-secondary font-weight-normal mb-0">
-																Get up to
-																<span class="text-primary font-weight-bolder">20% OFF</span>
-														</h4>
-														<h2 class="banner-title text-dark font-secondary">Sport Outfits</h2>
-														<h3 class="banner-subtitle text-default font-weight-normal">Only until the end of this Week
-														</h3>
-														<a href="#"
-																class="btn btn-sm btn-outline btn-dark btn-rounded btn-icon-right slide-animate">
-																Shop Now
-																<i class="w-icon-long-arrow-right"></i>
-														</a>
-												</div>
-										</div>
+									@endif
+									@endforeach
+										
 								</div>
 								<!-- End of Banner-wrapper -->
 
@@ -401,10 +390,14 @@
 								<!-- End of Swiper -->
 						</div>
 						<div class="banner banner-fixed purchase-banner appear-animate">
+							   @foreach($banner as $banner_value)
+										@if($banner_value['type'] == 'special')
 								<figure class="banner-img">
-										<img src="{{url('front/images/demos/demo12/banner/banner-5.jpg')}}" alt="Banner" width="680" height="180"
+										<img src="{{url('banner/'.$banner_value['image'])}}" alt="Banner" width="680" height="180"
 												style="background-color: #342E30;" />
 								</figure>
+								@endif
+								@endforeach
 								<div class="banner-content text-center x-50 y-50 slide-animate"
 										data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '15s', 'delay': '3s'}">
 										<h3 class="banner-subtitle text-primary text-uppercase font-secondary font-weight-bold">Today's
@@ -517,7 +510,11 @@
 										<!-- End of Tab Pane -->
 								</div>
 								<!-- End of Tab Content -->
-
+								  @foreach($banner as $banner_value)
+										@if($banner_value['type'] == 'download')
+										<?php $url = url('banner')."/".$banner_value['image'];?>
+										@endif
+								 @endforeach
 								<div class="banner link-banner-newsletter d-flex mb-8 align-items-center row gutter-no br-sm appear-animate"
 										style="background-image: url(front/images/demos/demo12/banner/banner-6.jpg);
 										background-color: #27393D;">

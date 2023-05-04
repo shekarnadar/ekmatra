@@ -11,7 +11,7 @@ class Banner extends Model
     protected $fillable = [
         'shop_link',
         'image',
-        'is_main_banner',
+        'type',
         'sorting'
     ];
 
@@ -29,11 +29,7 @@ class Banner extends Model
             $id = 0;
         }
         $matchThese = ['id'=>$id];
-        if(isset($request['is_main_banner'])){
-            $request['is_main_banner'] = 1;
-        }else{
-            $request['is_main_banner'] = 0;
-        }
+       
         $banner = Banner::updateOrCreate($matchThese,$request);
         return $banner;
     }
