@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ContactUs;
 use App\Models\contactUsInquiry;
+use App\Models\Faq;
+
 use Mail; 
 
 class ContactUsController extends Controller
@@ -12,18 +14,21 @@ class ContactUsController extends Controller
 		//
 		public function index(){
 			$contact = ContactUs::first();
-			return view('contact-us',compact('contact'));
+			$faq = Faq::orderBy('created_at','desc')->get();
+			return view('contact-us',compact('contact','faq'));
 		}
 
 		public function weAreHiring(){
 			$contact = ContactUs::first();
-			return view('contact-us',compact('contact'));
+			$faq = Faq::orderBy('created_at','desc')->get();
+			return view('contact-us',compact('contact','faq'));
 
 		}
 
 		public function aboutUs(){
 		 $contact = ContactUs::first();
-		 return view('contact-us',compact('contact'));
+		 $faq = Faq::orderBy('created_at','desc')->get();
+			return view('contact-us',compact('contact','faq'));
 
 		}
 

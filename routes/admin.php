@@ -14,7 +14,7 @@ use App\Http\Controllers\BannerController;
 
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\ContactUsController;
-
+use App\Http\Controllers\FaqController;
 
 
 Route::group(['prefix' => 'admin'], function(){
@@ -121,6 +121,11 @@ Route::group(['prefix' => 'admin'], function(){
 
 		Route::post('contact-us/store',[ContactUsController::class,'contactusSave'])->name('contactusSave');
 
+		Route::get('faqs',[FaqController::class,'index'])->name('faq.list');
+		Route::get('faq/add',[FaqController::class,'create'])->name('faq.add');
+		Route::post('faq/store',[FaqController::class,'store'])->name('faq.save');
+		Route::get('faq/edit/{id}',[FaqController::class,'edit'])->name('faq.edit');
+		Route::delete('faq/{id}', [FaqController::class,'destroy'])->name('faq.delete');
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');
 		});
