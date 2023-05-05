@@ -29,7 +29,7 @@ class ContactUsController extends Controller
 		public function aboutUs(){
 		 $contact = ContactUs::first();
 		 $faq = Faq::orderBy('created_at','desc')->get();
-			return view('contact-us',compact('contact','faq'));
+			return view('about-us',compact('contact','faq'));
 
 		}
 
