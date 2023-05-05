@@ -37,6 +37,24 @@ class ContactUsController extends Controller
 			$contact = ContactUs::first();
 			return view('admin.contact-us.create',compact('contact'));
 		}
+
+		public function contactusSave(Request $request){
+			try {
+			
+			   
+					ContactUs::saveContact($request->input());
+					
+					return response()->json(['success' => true,
+						'message' => 'successfully save'
+					], 200);
+
+			} catch(\Exception $e)		{
+				echo $e->getMessage();
+					return response()->json(['success' => false,
+						'message' => 'something went wrong'], 200);
+					}
+			}
+		
 		public function inquiry(CreateContactRequest $request){
 			try {
 			
