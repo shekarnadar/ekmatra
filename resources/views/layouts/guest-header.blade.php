@@ -138,7 +138,7 @@
 												<h4 class="menu-title">Occasions</h4>
 												<ul>
 													@foreach($occasions as $value)
-													<li><a href="{{url('shop-by/occasions/'.$value['name'])}}">{{$value['name']}}</a></li>
+													<li><a href="{{url('shop-by/occasions/'.$value['slug'])}}">{{$value['name']}}</a></li>
 													@endforeach
 											   </ul>
 											</li>

@@ -15,7 +15,7 @@ class GiftController extends Controller
 
 		if($type == 'occasions'){
 			
-			$occasion_id = Occasions::where('name',$value)->pluck('id')->first();
+			$occasion_id = Occasions::where('slug',$value)->pluck('id')->first();
 			$feature_attribute_id = '';
 			$product = ProductOccasion::join('products','products.id','=','product_occasions.product_id')
 			->where('occasion_id',$occasion_id)
