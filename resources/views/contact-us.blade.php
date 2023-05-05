@@ -13,13 +13,11 @@
 						<h3 class="title title-center mb-3">Contact
 							Information
 						</h3>
-						<p class="text-center">Lorem ipsum dolor sit amet,
-							consectetur
-							adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+						<p class="text-center">{!! nl2br($contact->description) !!}</p>
 					</section>
 					<!-- End of Contact Title Section -->
 
-					<section class="contact-information-section mb-10">
+					<section class="contact-information-section mb-10 text-center container">
 						<div class=" swiper-container swiper-theme " data-swiper-options="{
 							'spaceBetween': 20,
 							'slidesPerView': 1,
@@ -35,12 +33,16 @@
 								}
 							}
 						}">
+
 							<div class="swiper-wrapper row cols-xl-4 cols-md-3 cols-sm-2 cols-1">
-								<div class="swiper-slide icon-box text-center icon-box-primary">
+								<div class="col-md-2 ">
+								&nbsp;
+								</div>
+								<div class="swiper-slide icon-box text-center icon-box-primary ">
 									<span class="icon-box-icon icon-email">
 										<i class="w-icon-envelop-closed"></i>
 									</span>
-									<div class="icon-box-content">
+									<div class="icon-box-content ">
 										<h4 class="icon-box-title">E-mail Address</h4>
 										<p><a href="https://portotheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddb0bcb4b19db8a5bcb0adb1b8f3beb2b0">{{$contact['email']}}</a></p>
 									</div>
@@ -103,17 +105,20 @@
 									<div class="form-group">
 										<label for="username">Your Name</label>
 										<input type="text" id="username" name="name"
-											class="form-control" required="required">
+											class="form-control">
+											<span class="error" id="name_error"></span>
 									</div>
 									<div class="form-group">
 										<label for="email_1">Your Email</label>
 										<input type="email" id="email_1" name="email"
-											class="form-control" required="required">
+											class="form-control">
+											<span class="error" id="email_error"></span>
 									</div>
 									<div class="form-group">
 										<label for="message">Your Message</label>
 										<textarea id="message" name="description" cols="30" rows="5"
-											class="form-control" required="required"></textarea>
+											class="form-control"></textarea>
+											<span class="error" id="description_error"></span>
 									</div>
 									<button type="submit" class="btn btn-dark btn-rounded sendNow">Send Now</button>
 								</form>
@@ -132,6 +137,7 @@
 	$('.contact-us-form').on('submit', function(e) {
 		e.preventDefault()
 		let formValue = new FormData(this);
+		 $(".sendNow").prop('disabled',true);
 		$.ajax({
        		type: "Post",
           url: '{{ url("contact-us/inquiry") }}',
@@ -143,10 +149,14 @@
           	if(response.success){
           		
           		notifyMsg(response.message,'success');
-          		window.location.reload();
+          		 setTimeout(function(){
+          		 	window.location.reload();
+          		 },1000);
+          		
 
           	}else{
           		notifyMsg(response.message,'error');
+            	 $(".sendNow").prop('disabled',false);
           	}
           },
           error: function(response) {
@@ -154,6 +164,7 @@
             if(!error){
             		error = JSON.parse(response.responseText);
             }
+             $(".sendNow").prop('disabled',false);
             $.each( error.errors, function( key, value ) {
             			$("#"+key+"_error").show();
   								$("#"+key+"_error").text(value);
