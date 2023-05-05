@@ -77,7 +77,7 @@
 
 								
 
-										<div class="fix-bottom product-sticky-content sticky-content">
+										<div class="product-sticky-content sticky-content">
 											<div class="product-form container ">
 												@auth
 												<a href="javascript:void(0)"
@@ -144,7 +144,7 @@
                         </div>
 												@else
 												<a href="{{url('login')}}"
-													class="btn btn-dark btn-rounded sign-in" data-id="{{$product['id']}}">Request a Quote </a>
+													class="btn btn-dark btn-rounded sign-in mr-lg-2 ml-lg-2" data-id="{{$product['id']}}">Request a Quote </a>
 												@endauth
 												
 											</div>
@@ -231,23 +231,7 @@
 									</div>
 									<!-- End of Widget Icon Box -->
 
-									<div class="widget widget-banner mb-9">
-										<div class="banner banner-fixed br-sm">
-											<figure>
-												<img src="{{url('front/images/shop/banner3.jpg')}}" alt="Banner" width="266"
-													height="220" style="background-color: #1D2D44;" />
-											</figure>
-											<div class="banner-content">
-												<div class="banner-price-info font-weight-bolder text-white lh-1 ls-25">
-													40<sup class="font-weight-bold">%</sup><sub
-														class="font-weight-bold text-uppercase ls-25">Off</sub>
-												</div>
-												<h4
-													class="banner-subtitle text-white font-weight-bolder text-uppercase mb-0">
-													Ultimate Sale</h4>
-											</div>
-										</div>
-									</div>
+									
 									<!-- End of Widget Banner -->
 
 									
