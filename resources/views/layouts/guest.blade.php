@@ -101,12 +101,51 @@
 					<ul class="mobile-menu">
 						<li><a href="{{url('/')}}">Home</a></li>
 						<li>
+                            <a href="#">Shop By</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Occasions</a>
+                                    <ul>
+                                        @foreach($occasions as $value)
+																					<li><a href="{{url('shop-by/occasions/'.$value['name'])}}">{{$value['name']}}</a></li>
+																					@endforeach
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Price</a>
+                                    <ul>
+                                        <li><a href="{{url('shop-by/price/1-99')}}">Under 100</a></li>
+																				<li><a href="{{url('shop-by/price/100-499')}}">100 t0 500</a></li>
+																				<li><a href="{{url('shop-by/price/500-999')}}">500 to 1000</a></li>
+																				<li><a href="{{url('shop-by/price/1000-4999')}}">1000 to 5000</a></li>
+																				<li><a href="{{url('shop-by/price/0-5000')}}">5000 above</a></li>
+													
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Brand</a>
+                                    <ul>
+                                        @foreach($allFeature as $feature)
+																					<li><a href="{{url('shop-by/brand/'.$feature['name'])}}">{{$feature['name']}}</a></li>
+												 							 @endforeach 
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </li>
+						<li><a href="{{url('/')}}">What We Do</a></li>
+					    <li><a href="{{url('/')}}">Our Work</a></li>
+					    <li><a href="{{url('/')}}">About Us</a></li>
+					    <li><a href="{{url('/')}}">We are hiring</a></li>
+					    <li><a href="{{url('contact-us')}}">Conatct Us</a></li>
+						<li>
 							@auth
 							<a href="{{url('submitanenquiry')}}">Request for Quotations</a>
 							@else
 							<a href="{{url('login')}}" class="sign-in requestforquotation">Request for Quotations</a>
 							@endauth
 						</li>
+
 						
 						
 					</ul>
