@@ -1,13 +1,13 @@
 <x-guest-layout>
-	<nav class="breadcrumb-nav">
-				<div class="container">
-					<ul class="breadcrumb bb-no">
-						<li><a href="{{url('/')}}">Home</a></li>
-						<li><a href="javascript:void(0)">About Us</a></li>
-					</ul>
-				</div>
-			</nav>
-			 <div class="page-content">
+    <nav class="breadcrumb-nav">
+                <div class="container">
+                    <ul class="breadcrumb bb-no">
+                        <li><a href="{{url('/')}}">Home</a></li>
+                        <li><a href="javascript:void(0)">About Us</a></li>
+                    </ul>
+                </div>
+            </nav>
+             <div class="page-content">
                 <div class="container">
                     <section class="introduce mb-10 pb-10">
                         <h2 class="title title-center">
@@ -132,7 +132,7 @@
                                 </div>
                                   <div class="swiper-slide member-wrap">
                                     <figure class="br-lg">
-                                         <img src="{{url('aboutus/DSC_6470.jpg')}}" alt="Member" width="295" height="332" />
+                                         <img src="{{url('aboutus/DSC_6470.JPG')}}" alt="Member" width="295" height="332" />
                                        
                                     </figure>
                                   
@@ -140,7 +140,7 @@
 
                                  <div class="swiper-slide member-wrap">
                                     <figure class="br-lg">
-                                         <img src="{{url('aboutus/DSC_6480.jpg')}}" alt="Member" width="295" height="332" />
+                                         <img src="{{url('aboutus/DSC_6480.JPG')}}" alt="Member" width="295" height="332" />
                                        
                                     </figure>
                                   
@@ -148,7 +148,7 @@
 
                                  <div class="swiper-slide member-wrap">
                                     <figure class="br-lg">
-                                         <img src="{{url('aboutus/DSC_6481.jpg')}}" alt="Member" width="295" height="332" />
+                                         <img src="{{url('aboutus/DSC_6481.JPG')}}" alt="Member" width="295" height="332" />
                                        
                                     </figure>
                                   
@@ -179,42 +179,42 @@
             </div>
 </x-guest-layout>
 <script type="text/javascript">
-	$('.contact-us-form').on('submit', function(e) {
-		e.preventDefault()
-		let formValue = new FormData(this);
-		 $(".sendNow").prop('disabled',true);
-		$.ajax({
-       		type: "Post",
+    $('.contact-us-form').on('submit', function(e) {
+        e.preventDefault()
+        let formValue = new FormData(this);
+         $(".sendNow").prop('disabled',true);
+        $.ajax({
+            type: "Post",
           url: '{{ url("contact-us/inquiry") }}',
           data: formValue,
           cache: false,
           contentType: false,
           processData: false,
           success: function(response) {
-          	if(response.success){
-          		
-          		notifyMsg(response.message,'success');
-          		 setTimeout(function(){
-          		 	window.location.reload();
-          		 },1000);
-          		
+            if(response.success){
+                
+                notifyMsg(response.message,'success');
+                 setTimeout(function(){
+                    window.location.reload();
+                 },1000);
+                
 
-          	}else{
-          		notifyMsg(response.message,'error');
-            	 $(".sendNow").prop('disabled',false);
-          	}
+            }else{
+                notifyMsg(response.message,'error');
+                 $(".sendNow").prop('disabled',false);
+            }
           },
           error: function(response) {
-          	let error = response.responseJSON;
+            let error = response.responseJSON;
             if(!error){
-            		error = JSON.parse(response.responseText);
+                    error = JSON.parse(response.responseText);
             }
              $(".sendNow").prop('disabled',false);
             $.each( error.errors, function( key, value ) {
-            			$("#"+key+"_error").show();
-  								$("#"+key+"_error").text(value);
-						});
-				}
-	});
-	});
+                        $("#"+key+"_error").show();
+                                $("#"+key+"_error").text(value);
+                        });
+                }
+    });
+    });
 </script>

@@ -132,7 +132,7 @@
                                 </div>
                                   <div class="swiper-slide member-wrap">
                                     <figure class="br-lg">
-                                         <img src="{{url('aboutus/DSC_6470.jpg')}}" alt="Member" width="295" height="332" />
+                                         <img src="{{url('aboutus/DSC_6470.JPG')}}" alt="Member" width="295" height="332" />
                                        
                                     </figure>
                                   
@@ -140,7 +140,7 @@
 
                                  <div class="swiper-slide member-wrap">
                                     <figure class="br-lg">
-                                         <img src="{{url('aboutus/DSC_6480.jpg')}}" alt="Member" width="295" height="332" />
+                                         <img src="{{url('aboutus/DSC_6480.JPG')}}" alt="Member" width="295" height="332" />
                                        
                                     </figure>
                                   
@@ -148,7 +148,7 @@
 
                                  <div class="swiper-slide member-wrap">
                                     <figure class="br-lg">
-                                         <img src="{{url('aboutus/DSC_6481.jpg')}}" alt="Member" width="295" height="332" />
+                                         <img src="{{url('aboutus/DSC_6481.JPG')}}" alt="Member" width="295" height="332" />
                                        
                                     </figure>
                                   
