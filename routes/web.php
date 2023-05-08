@@ -82,6 +82,8 @@ Route::post('contact-us/inquiry',[ContactUsController::class,'inquiry'])->name('
 
 Route::get('we-are-hiring',[ContactUsController::class,'weAreHiring'])->name('weAreHiring');
 Route::get('about-us',[ContactUsController::class,'aboutUs'])->name('aboutUs');
+Route::get('what-we-do/{type}',[ContactUsController::class,'whatWeDo'])->name('whatWeDo.send');
+
 
 
 

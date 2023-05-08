@@ -26,6 +26,14 @@ class ContactUsController extends Controller
 
 		}
 
+		public function whatWeDo($type){
+			if($type == 'send'){
+				return view('pages.send');
+			}else{
+				return view('pages.brandstore');
+			}
+		}
+
 		public function aboutUs(){
 			return view('pages.about-us');
 

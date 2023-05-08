@@ -133,7 +133,13 @@
                                 
                             </ul>
                         </li>
-						<li><a href="{{url('/')}}">What We Do</a></li>
+						<li>
+							<a href="javascript:void(0)">What We Do</a>
+							<ul>
+								<li><a href="{{url('what-we-do/brandstore')}}">BrandStore</a></li>
+                <li><a href="{{url('what-we-do/send')}}">Send</a></li>
+							</ul>
+						</li>
 					    <li><a href="{{url('/')}}">Our Work</a></li>
 					    <li><a href="{{url('/')}}">About Us</a></li>
 					    <li><a href="{{url('/')}}">We are hiring</a></li>

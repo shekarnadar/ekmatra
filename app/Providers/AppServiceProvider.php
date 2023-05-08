@@ -8,6 +8,8 @@ use Auth;
 use App\Models\Category;
 use App\Models\FeatureAttribute;
 use App\Models\Occasions;
+use App\Models\ContactUs;
+
 class AppServiceProvider extends ServiceProvider
 {
 	/**
@@ -36,9 +38,11 @@ class AppServiceProvider extends ServiceProvider
 		$category = Category::getCategoriesList();
 		$allFeature = FeatureAttribute::get();
 		$occasions = Occasions::get();
+		$contact = ContactUs::pluck('phone')->first();
 		\View::share('category', $category);
 		\View::share('allFeature', $allFeature);
 		\View::share('occasions', $occasions);
+		\View::share('contact', $contact);
 
 		Validator::extend('email_valid', function ($attribute, $value, $parameters, $validator){
 			$role_id = getRole('customer');

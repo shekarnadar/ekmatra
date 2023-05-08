@@ -56,7 +56,7 @@
 							<div class="call-info d-lg-show">
 								<h4 class="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
 									<a href="https://portotheme.com/cdn-cgi/l/email-protection#daf9" class="text-capitalize">Live Chat</a> or :</h4>
-								<a href="tel:#" class="phone-number font-weight-bolder ls-50">0(800)123-456</a>
+								<a href="tel:#" class="phone-number font-weight-bolder ls-50">{{$contact}}</a>
 							</div>
 						</div>
 							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-1">
@@ -165,9 +165,15 @@
 										</ul>
 										<!-- End of Megamenu -->
 									</li>
-									<li>
-										<a href="{{url('/')}}">what we do</a>
-									</li>
+									<li class="active">
+                                        <a href="blog.html">What We Do</a>
+                                        <ul>
+                                            <li><a href="{{url('what-we-do/brandstore')}}">BrandStore</a></li>
+                                            <li><a href="{{url('what-we-do/send')}}">Send</a></li>
+                                            
+                                        </ul>
+                                    </li>
+								
 									<li>
 										<a href="{{url('/')}}">Our work</a>
 									</li>
