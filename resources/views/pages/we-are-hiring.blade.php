@@ -101,58 +101,22 @@
                             <div class="col-md-6 pr-lg-8 mb-8">
                                 <h2 class="title text-left">we are currently looking to hire for the following positions</h2>
                                 <div class="accordion accordion-simple accordion-plus">
-                                    <div class="card border-no">
+                                    @foreach($we_are_hiring as $value)
+                                     <div class="card border-no">
                                         <div class="card-header">
-                                            <a href="#collapse3-1" class="collapse">Business Development Manager and Senior Manager</a>
+                                            <a href="#collapse3-{{$loop->index}}" class="{{($loop->index == 0) ? 
+                                                'collapse' : 'expand'}}">{{$value['title']}}</a>
                                         </div>
-                                        <div class="card-body expanded" id="collapse3-1">
+                                        <div class="card-body {{($loop->index == 0) ? 
+                                                'expanded' : 'collapsed'}}" id="collapse3-{{$loop->index}}">
                                             <p class="mb-0">
-                                                In this role, you will be responsible for identifying new business opportunities, building relationships with potential clients, and managing a team of sales professionals. The ideal candidate will have a proven track record in sales and business development, as well as excellent communication and leadership skills.
+                                               {{$value['description']}}
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a href="#collapse3-2" class="expand">Graphics Designer</a>
-                                        </div>
-                                        <div class="card-body collapsed" id="collapse3-2">
-                                            <p class="mb-0">
-                                               We are looking for a talented graphics designer to join our creative team. In this role, you will be responsible for creating visually compelling designs for our website, marketing materials, and other digital assets. The ideal candidate will have experience in graphic design, strong attention to detail, and proficiency in design software like Adobe Photoshop and Illustrator.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a href="#collapse3-3" class="expand">Sourcing Manager</a>
-                                        </div>
-                                        <div class="card-body collapsed" id="collapse3-3">
-                                            <p class="mb-0">
-                                                As a Sourcing Manager, you will be responsible for sourcing and procuring raw materials, products, and services for our company. You will work closely with vendors and suppliers to ensure timely delivery of high-quality goods and services. The ideal candidate will have a strong understanding of supply chain management, negotiation skills, and experience in procurement.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a href="#collapse3-4" class="expand">SEO Specialist</a>
-                                        </div>
-                                        <div class="card-body collapsed" id="collapse3-4">
-                                            <p class="mb-0">
-                                                We are looking for an experienced SEO Specialist to help us improve our website's visibility on search engines. In this role, you will be responsible for developing and implementing SEO strategies, conducting keyword research, and analyzing website traffic and performance metrics. The ideal candidate will have a deep understanding of SEO best practices, as well as experience in website analytics and optimization tools.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a href="#collapse3-5" class="expand">QC Manager and QC Executive</a>
-                                        </div>
-                                        <div class="card-body collapsed" id="collapse3-5">
-                                            <p class="mb-0">
-                                               We are looking for a QC Manager and QC Executive to ensure that our products meet the highest quality standards. In this role, you will be responsible for overseeing the quality control process, developing and implementing quality control procedures, and training team members on quality control best practices. The ideal candidates will have experience in quality control, strong attention to detail, and excellent communication skills.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                   
+                                    
                                 </div>
                             </div>
                             <div class="col-md-6 mb-8">

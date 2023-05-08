@@ -7,6 +7,7 @@ use App\Models\ContactUs;
 use App\Models\contactUsInquiry;
 use App\Models\Faq;
 use App\Http\Requests\CreateContactRequest;
+use App\Models\WeAreHiring;
 
 use Mail; 
 
@@ -20,9 +21,8 @@ class ContactUsController extends Controller
 		}
 
 		public function weAreHiring(){
-			$contact = ContactUs::first();
-			$faq = Faq::orderBy('created_at','desc')->get();
-				return view('pages.we-are-hiring');
+			$we_are_hiring = WeAreHiring::get();
+			return view('pages.we-are-hiring',compact('we_are_hiring'));
 
 		}
 

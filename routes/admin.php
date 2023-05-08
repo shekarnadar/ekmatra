@@ -15,6 +15,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\WeAreHiringController;
+
 
 
 Route::group(['prefix' => 'admin'], function(){
@@ -126,6 +128,12 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('faq/store',[FaqController::class,'store'])->name('faq.save');
 		Route::get('faq/edit/{id}',[FaqController::class,'edit'])->name('faq.edit');
 		Route::delete('faq/{id}', [FaqController::class,'destroy'])->name('faq.delete');
+
+		Route::get('we-are-hirings',[WeAreHiringController::class,'index'])->name('weAreHiring.list');
+		Route::get('we-are-hiring/add',[WeAreHiringController::class,'create'])->name('weAreHiring.add');
+		Route::post('we-are-hiring/store',[WeAreHiringController::class,'store'])->name('weAreHiring.save');
+		Route::get('we-are-hiring/edit/{id}',[WeAreHiringController::class,'edit'])->name('weAreHiring.edit');
+		Route::delete('we-are-hiring/{id}', [WeAreHiringController::class,'destroy'])->name('weAreHiring.delete');
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');
 		});
