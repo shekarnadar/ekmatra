@@ -129,7 +129,7 @@
 							<nav class="main-nav">
 								<ul class="menu active-underline">
 									
-									<li>
+									<li class="shopby">
 										<a href="javascript:void(0)">Shop By</a>
 
 										<!-- Start of Megamenu -->
@@ -165,7 +165,7 @@
 										</ul>
 										<!-- End of Megamenu -->
 									</li>
-									<li class="active">
+									<li class="whatwedo">
                                         <a href="blog.html">What We Do</a>
                                         <ul>
                                             <li><a href="{{url('what-we-do/brandstore')}}">BrandStore</a></li>
@@ -174,13 +174,13 @@
                                         </ul>
                                     </li>
 								
-									<li>
+									<li class="ourwrk">
 										<a href="{{url('/')}}">Our work</a>
 									</li>
-									 <li>
+									 <li class="aboutus">
 										<a href="{{url('about-us')}}">About Us</a>
 									</li>
-									 <li>
+									 <li class="wearehiring">
 										<a href="{{url('we-are-hiring')}}">We are hiring</a>
 									</li>
 								   

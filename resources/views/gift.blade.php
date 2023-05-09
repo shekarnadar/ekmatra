@@ -39,6 +39,7 @@
 </x-guest-layout>
 
 <script type="text/javascript">
+	$('.shopby').addClass('active');
   var brand_array = [];
   var page_count = 1;
   var warranty = '';

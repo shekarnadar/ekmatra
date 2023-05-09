@@ -57,3 +57,6 @@
 			   
 			</div>
 </x-guest-layout>
+<script type="text/javascript">
+    $('.whatwedo').addClass('active');
+</script>

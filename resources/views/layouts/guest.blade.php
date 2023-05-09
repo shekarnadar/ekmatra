@@ -257,6 +257,7 @@
 	
 	</body>
 	<script type="text/javascript">
+		
 			var requestforquotation = '';
 			var redirectPage = '';
 		  $('.requestforquotation').click(function(){

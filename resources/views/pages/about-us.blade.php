@@ -43,6 +43,7 @@
             </div>
 </x-guest-layout>
 <script type="text/javascript">
+    $('.aboutus').addClass('active');
     $('.contact-us-form').on('submit', function(e) {
         e.preventDefault()
         let formValue = new FormData(this);
