@@ -9,13 +9,93 @@
 			</nav>
 			 <div class="page-content">
 				<div class="container">
-					<section class="introduce">
+					<section class="introduce mt-20 mb-10">
 						<h2 class="title title-center">
 							Welcome to Ek Matra Technologies Pvt Ltd!,
 						</h2>
 						<p class=" mx-auto text-center">We are a rapidly growing technology company based in Mumbai,</p>
 					</section>
-				  <section class="member-section mt-10 pt-9 mb-10 pb-4">
+				  
+					<section class="customer-service mb-7 mt-10">
+						<div class="row gutter-lg pb-3">
+							<div class="col-md-6 pr-lg-8 mb-8">
+								<h2 class="title text-left">we are currently looking to hire for the following positions</h2>
+								<div class="accordion accordion-simple accordion-plus">
+									@foreach($we_are_hiring as $value)
+											<div class="card border-no">
+												<div class="card-header">
+													<a href="#collapse3-{{$loop->index}}" class="{{($loop->index == 0) ? 
+												'collapse' : 'expand'}}">{{$value['title']}}</a>
+												</div>
+												<div class="card-body {{($loop->index == 0) ? 
+												'expanded' : 'collapsed'}}" id="collapse3-{{$loop->index}}">
+														<p class="mb-0">
+														   {{$value['description']}}
+														</p>
+												</div>
+										  </div>
+									@endforeach
+								</div>
+							</div>
+							<div class="col-md-6 pr-lg-8 mb-8">
+								<h2 class="title mb-3">Send Your Resume</h2>
+								<p>We are here to answer any question you may have</p>
+								 <form class="form contact-us-form" action="#" method="post" enctype="multipart/form-data">
+									@csrf
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+													<label for="username">Name*</label>
+													<input type="text" id="name" name="name"
+														class="form-control">
+														<span class="error mb-2" id="name_error"></span>
+											</div>
+										</div>
+
+										<div class="col-6">
+											<div class="form-group">
+													<label for="username">Email*</label>
+													<input type="email" id="email" name="email"
+														class="form-control">
+														<span class="error mb-2" id="email_error"></span>
+											</div>
+										</div>
+
+										<div class="col-6">
+											<div class="form-group">
+													<label for="username">Phone*</label>
+													<input type="text" id="number" name="number"
+														class="form-control">
+														<span class="error mb-2" id="number_error"></span>
+											</div>
+										</div>
+
+										<div class="col-6">
+											<div class="form-group">
+													<label for="username">Resume*</label>
+													<input type="file" id="image" name="image"
+														class="form-control">
+														<span class="error mb-2" id="image_error"></span>
+											</div>
+										</div>
+
+										<div class="col-12">
+											<div class="form-group">
+													<label for="username">Message*</label>
+													<textarea type="text" id="description" name="description"
+														class="form-control" cols="3" rows="3"></textarea>
+														<span class="error mb-2" id="description_error"></span>
+											</div>
+										</div>
+										<div class="col-3">
+										<button type="submit" class="btn btn-dark btn-rounded sendNow">Send Resume</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</section>
+					<section class="member-section mt-10 pt-9 mb-10 pb-4">
 						<div class="container">
 						<h4 class="title title-center mb-3">Meet Our Team</h4>
 						
@@ -93,85 +173,6 @@
 							</div>
 							<div class="swiper-pagination"></div>
 						</div>
-						</div>
-					</section>
-					<section class="customer-service mb-7">
-						<div class="row gutter-lg pb-3">
-							<div class="col-md-6 pr-lg-8 mb-8">
-								<h2 class="title text-left">we are currently looking to hire for the following positions</h2>
-								<div class="accordion accordion-simple accordion-plus">
-									@foreach($we_are_hiring as $value)
-											<div class="card border-no">
-												<div class="card-header">
-													<a href="#collapse3-{{$loop->index}}" class="{{($loop->index == 0) ? 
-												'collapse' : 'expand'}}">{{$value['title']}}</a>
-												</div>
-												<div class="card-body {{($loop->index == 0) ? 
-												'expanded' : 'collapsed'}}" id="collapse3-{{$loop->index}}">
-														<p class="mb-0">
-														   {{$value['description']}}
-														</p>
-												</div>
-										  </div>
-									@endforeach
-								</div>
-							</div>
-							<div class="col-md-6 pr-lg-8 mb-8">
-								<h2 class="title mb-3">Send Your Resume</h2>
-								<p>We are here to answer any question you may have</p>
-								 <form class="form contact-us-form" action="#" method="post" enctype="multipart/form-data">
-									@csrf
-									<div class="row">
-										<div class="col-6">
-											<div class="form-group">
-													<label for="username">Name*</label>
-													<input type="text" id="name" name="name"
-														class="form-control">
-														<span class="error mb-2" id="name_error"></span>
-											</div>
-										</div>
-
-										<div class="col-6">
-											<div class="form-group">
-													<label for="username">Email*</label>
-													<input type="email" id="email" name="email"
-														class="form-control">
-														<span class="error mb-2" id="email_error"></span>
-											</div>
-										</div>
-
-										<div class="col-6">
-											<div class="form-group">
-													<label for="username">Phone*</label>
-													<input type="text" id="number" name="number"
-														class="form-control">
-														<span class="error mb-2" id="number_error"></span>
-											</div>
-										</div>
-
-										<div class="col-6">
-											<div class="form-group">
-													<label for="username">Resume*</label>
-													<input type="file" id="image" name="image"
-														class="form-control">
-														<span class="error mb-2" id="image_error"></span>
-											</div>
-										</div>
-
-										<div class="col-12">
-											<div class="form-group">
-													<label for="username">Message*</label>
-													<textarea type="text" id="description" name="description"
-														class="form-control" cols="3" rows="3"></textarea>
-														<span class="error mb-2" id="description_error"></span>
-											</div>
-										</div>
-										<div class="col-3">
-										<button type="submit" class="btn btn-dark btn-rounded sendNow">Send Resume</button>
-										</div>
-									</div>
-								</form>
-							</div>
 						</div>
 					</section>
 				</div>

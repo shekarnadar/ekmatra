@@ -252,7 +252,7 @@
 										</ul>
 								</div>
 								<!-- End of Tab -->
-								<div class="tab-content product-wrapper appear-animate">
+								<div class="tab-content product-wrapper appear-animate mt-10">
 									  @foreach($deal as $key=>$deal_value)
 										<div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }}" id="tab1-{{ $loop->iteration }}">
 												<div class="swiper-container swiper-theme latest-product-wrapper shadow-swiper appear-animate mb-0"
