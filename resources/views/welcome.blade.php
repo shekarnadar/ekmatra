@@ -212,7 +212,7 @@
 								
 								<!-- End of Swiper -->
 						</div>
-						<div class="banner banner-fixed purchase-banner appear-animate">
+						<div class="banner banner-fixed purchase-banner appear-animate mb-10">
 							   @foreach($banner as $banner_value)
 										@if($banner_value['type'] == 'special')
 								<figure class="banner-img">
@@ -239,7 +239,7 @@
 								</div>
 						</div>
 						<!-- End of Banner -->
-						<div class="container">
+						<div class="container mt-10">
 								
 								<div class="tab tab-latest-product tab-nav-center tab-nav-underline tab-line-grow appear-animate">
 										<ul class="nav nav-tabs bb-no justify-content-center" role="tablist">
