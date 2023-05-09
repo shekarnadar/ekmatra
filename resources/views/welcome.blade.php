@@ -239,7 +239,7 @@
 								</div>
 						</div>
 						<!-- End of Banner -->
-						<div class="container mt-1">
+						<div class="container">
 								
 								<div class="tab tab-latest-product tab-nav-center tab-nav-underline tab-line-grow appear-animate">
 										<ul class="nav nav-tabs bb-no justify-content-center" role="tablist">
@@ -252,7 +252,7 @@
 										</ul>
 								</div>
 								<!-- End of Tab -->
-								<div class="tab-content product-wrapper appear-animate mt-10">
+								<div class="tab-content product-wrapper appear-animate">
 									  @foreach($deal as $key=>$deal_value)
 										<div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }}" id="tab1-{{ $loop->iteration }}">
 												<div class="swiper-container swiper-theme latest-product-wrapper shadow-swiper appear-animate mb-0"
