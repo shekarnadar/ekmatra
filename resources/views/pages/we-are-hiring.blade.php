@@ -95,7 +95,7 @@
 							</div>
 						</div>
 					</section>
-					<section class="member-section mt-10 pt-9 mb-10 pb-4">
+					<section class="member-section  pt-9 mb-10 pb-4">
 						<div class="container">
 						<h4 class="title title-center mb-3">Meet Our Team</h4>
 						
