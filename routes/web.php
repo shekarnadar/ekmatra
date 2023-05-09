@@ -12,6 +12,8 @@ use App\Http\Controllers\InquiryController;
 
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\GiftController;
+use App\Http\Controllers\VacencyRequirementsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -98,4 +100,4 @@ Route::post('removeProductWishlist',[WishlistController::class,'removeProductWis
 Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('savewishlist');
 Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
 Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->name('customerInquiry');
-
+Route::post('vacancy/store',[VacencyRequirementsController::class,'store'])->name('vacancy.store');
