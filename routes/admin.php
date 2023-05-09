@@ -17,6 +17,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\WeAreHiringController;
 
+use App\Http\Controllers\VacencyRequirementsController;
 
 
 Route::group(['prefix' => 'admin'], function(){
@@ -134,6 +135,9 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('we-are-hiring/store',[WeAreHiringController::class,'store'])->name('weAreHiring.save');
 		Route::get('we-are-hiring/edit/{id}',[WeAreHiringController::class,'edit'])->name('weAreHiring.edit');
 		Route::delete('we-are-hiring/{id}', [WeAreHiringController::class,'destroy'])->name('weAreHiring.delete');
+
+		Route::get('job-post',[VacencyRequirementsController::class,'index'])->name('jobpost.index');
+		Route::get('job-post/download/{id}',[VacencyRequirementsController::class,'jobDownload'])->name('jobpost.download');
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');
 		});

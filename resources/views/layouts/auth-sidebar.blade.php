@@ -49,6 +49,7 @@ $url = getAuthGaurd();
 							<li><a class="slide-item" href='{{url("$url/contact-us/add")}}'>Contact Us </a></li>
 							<li><a class="slide-item" href='{{url("$url/we-are-hirings")}}'>We Are Hiring </a></li>
 							
+							
 						</ul>
 					</li>
 				
