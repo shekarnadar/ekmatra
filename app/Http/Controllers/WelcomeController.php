@@ -20,7 +20,7 @@ class WelcomeController extends Controller
         $download = Banner::where('type','download')->pluck('image')->first();
         
 		$product = Product::getLatestProduct();
-		$vendor = User::getLatestVendor();
-		return view('welcome',compact('product','vendor','deal','banner','download'));
+		//$vendor = User::getLatestVendor();
+		return view('welcome',compact('product','deal','banner','download'));
 	}
 }

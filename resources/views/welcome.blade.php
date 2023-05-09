@@ -1,7 +1,6 @@
 <x-guest-layout>
 			 
 						<div class="container pb-2">
-								@include('category')
 								<!-- End Of Category Wrapper -->
 
 								<div class="intro-section mb-2">
@@ -173,76 +172,8 @@
 								</div>
 								<!-- End of Selected Products Wrapper -->
 
-								<div class="notification-wrapper bg-primary br-sm mb-10 appear-animate d-flex align-items-center justify-content-center"
-										style="animation-duration: 1.2s;">
-										<i class="w-icon-mobile text-white"></i>
-										<p class="font-secondary text-white">Download our new app today! Dont Miss our mobile-only offers
-												and shop with Android Play.</p>
-										<a href="#"
-												class="btn btn-white btn-sm btn-outline btn-rounded btn-icon-right font-weight-bold text-capitalize">
-												Download
-												<i class="w-icon-long-arrow-down"></i>
-										</a>
-								</div>
-								<!-- End of Notificateion Wrapper -->
 
-								<h2 class="title title-vendors font-secondary mb-4 appear-animate">Top Weekly Vendors</h2>
-								<div class="swiper-container swiper-theme mb-6 pb-2 appear-animate" data-swiper-options="{
-										'spaceBetween': 20,
-										'slidesPerView': 1,
-										'breakpoints': {
-												'576': {
-														'slidesPerView': 2
-												},
-												'768': {
-														'slidesPerView': 3
-												},
-												'1200': {
-														'slidesPerView': 4
-												}
-										}
-								}">
-										<div class="swiper-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1">
-												@foreach($vendor as $value)
-												<div class="swiper-slide vendor-widget mb-0">
-														<div class="vendor-widget-2">
-																<div class="vendor-details">
-																		<figure class="vendor-logo">
-																				<a href="#">
-																						<img src="{{url('vendor/'.$value['image'])}}" alt="Vendor Logo"
-																								width="70" height="70" />
-																				</a>
-																		</figure>
-																		<div class="vendor-personal">
-																				<h4 class="vendor-name">
-																						<a href="#">{{$value['name']}}</a>
-																				</h4>
-																				<span class="vendor-product-count">({{$value['products_count']}} Products)</span>
-																				
-																		</div>
-																</div>
-																<div class="vendor-products row cols-3 gutter-sm">
-																	<?php $latest_product = $value->getVendorTopProducts->take(3);?>
-
-																	 @foreach($latest_product as $vendor_product)
-																		<div class="vendor-product">
-																				<figure class="product-media">
-																						<a href="{{url('product-detail/'.$vendor_product['slug'])}}">
-																								<img src="{{url('product/'.$vendor_product['image'])}}"
-																										alt="Vendor Product" width="100" height="113" />
-																						</a>
-																				</figure>
-																		</div>
-																	 @endforeach
-																		
-																</div>
-														</div>
-												</div>
-												@endforeach
-											
-										</div>
-										<div class="swiper-pagination mt-4"></div>
-								</div>
+								
 								<!-- End of Swiper -->
 
 								<div class="banner-wrapper appear-animate row cols-md-2 mb-7">
@@ -274,116 +205,8 @@
 								</div>
 								<!-- End of Banner-wrapper -->
 
-								<div class="title-link-wrapper title-deals after-none appear-animate">
-										<h2 class="title font-secondary mb-1">Deals Hot Of The Day</h2>
-										<a href="#" class="font-weight-bold ls-25">
-												More Products
-												<i class="w-icon-long-arrow-right"></i>
-										</a>
-								</div>
-								<div class="swiper-container swiper-theme mb-4 pg-inner animation-slider" data-swiper-options="{
-										'spaceBetween': 20,
-										'slidesPerView': 1,
-										'breakpoints': {
-												'992': {
-														'slidesPerView': 2
-												}
-										}
-										}">
-										<div class="swiper-wrapper row cols-lg-2">
-												<div class="swiper-slide ">
-														<div class="product product-list br-sm mb-0">
-																<figure class="product-media">
-																		<a href="#">
-																				<img src="{{url('front/images/demos/demo12/products/1-1-1.jpg')}}" alt="Product"
-																						width="315" height="355">
-																				<img src="{{url('front/images/demos/demo12/products/1-1-2.jpg')}}" alt="Product"
-																						width="315" height="355">
-																		</a>
-																		<div class="product-action-vertical">
-																				<a href="#" class="btn-product-icon btn-quickview w-icon-search"
-																						title="Quick View"></a>
-																		</div>
-																		<div class="product-countdown-container mb-0">
-																				<div class="product-countdown countdown-compact" data-until="2021, 9, 9"
-																						data-format="DHMS" data-compact="false"
-																						data-labels-short="Days, Hours, Mins, Secs">
-																						00:00:00:00</div>
-																		</div>
-																</figure>
-																<div class="product-details">
-																		<h4 class="product-name">
-																				<a href="#">Automatic Watch</a>
-																		</h4>
-																		<div class="ratings-container mb-2">
-																				<div class="ratings-full">
-																						<span class="ratings" style="width: 100%;"></span>
-																						<span class="tooltiptext tooltip-top"></span>
-																				</div>
-																				<a href="#" class="rating-reviews">(1 Reviews)</a>
-																		</div>
-																		<div class="product-price text-primary">$20.72 - $79.20</div>
-																		<p class="text-default">Aliquam id diam maecenas ultricies me. Volutpat ac tincidunt
-																				vitae sempe. Ultrices eros in cursus turpis massa tine.</p>
-																		<div class="product-action">
-																				<a href="#" class="btn-dark btn-product"
-																						title="Select Options">
-																						<i class="w-icon-cart"></i>
-																						<span>Select Options</span>
-																				</a>
-																				
-																		</div>
-																</div>
-														</div>
-												</div>
-												<div class="swiper-slide ">
-														<div class="product product-list br-sm mb-0">
-																<figure class="product-media">
-																		<a href="#">
-																				<img src="{{url('front/images/demos/demo12/products/1-4-1.jpg')}}" alt="Product"
-																						width="315" height="355">
-																				<img src="{{url('front/images/demos/demo12/products/1-4-2.jpg')}}" alt="Product"
-																						width="315" height="355">
-																		</a>
-																		<div class="product-action-vertical">
-																				<a href="#" class="btn-product-icon btn-quickview w-icon-search"
-																						title="Quick View"></a>
-																		</div>
-																		<div class="product-countdown-container mb-0">
-																				<div class="product-countdown countdown-compact" data-until="2021, 9, 9"
-																						data-format="DHMS" data-compact="false"
-																						data-labels-short="Days, Hours, Mins, Secs">
-																						00:00:00:00</div>
-																		</div>
-																</figure>
-																<div class="product-details">
-																		<h4 class="product-name">
-																				<a href="#">Mini Wireless Earphone</a>
-																		</h4>
-																		<div class="ratings-container mb-2">
-																				<div class="ratings-full">
-																						<span class="ratings" style="width: 100%;"></span>
-																						<span class="tooltiptext tooltip-top"></span>
-																				</div>
-																				<a href="#" class="rating-reviews">(1 Reviews)</a>
-																		</div>
-																		<div class="product-price text-primary">$59.17 - $129.27</div>
-																		<p class="text-default">Aliquam id diam maecenas ultricies me. Volutpat ac tincidunt
-																				vitae sempe. Ultrices eros in cursus turpis massa tine.</p>
-																		<div class="product-action">
-																				<a href="#" class="btn-dark btn-product"
-																						title="Select Options">
-																						<i class="w-icon-cart"></i>
-																						<span>Select Options</span>
-																				</a>
-																				
-																		</div>
-																</div>
-														</div>
-												</div>
-												<!-- End of Product List -->
-										</div>
-								</div>
+							
+								
 								<!-- End of Swiper -->
 
 								
@@ -417,10 +240,7 @@
 						</div>
 						<!-- End of Banner -->
 						<div class="container">
-								<h2
-										class="title title-latest-product font-secondary font-weight-bolder justify-content-center ls-normal mt-10 mb-2 pt-1 appear-animate">
-										Latest Products
-								</h2>
+								
 								<div class="tab tab-latest-product tab-nav-center tab-nav-underline tab-line-grow appear-animate">
 										<ul class="nav nav-tabs bb-no justify-content-center" role="tablist">
 											  @foreach($deal as $key=>$deal_value)
@@ -550,85 +370,7 @@
 								</div>
 								<!-- End of Link Banner Newsletter -->
 
-								<h2 class="title title-brands text-left title-client font-secondary pt-3 pb-1 mt-3 mb-4 appear-animate">
-										Our Clients</h2>
-								<div class="swiper-container swiper-theme brands-wrapper br-sm mb-10 appear-animate"
-										data-swiper-options="{
-										'loop': true,
-										'spaceBetween': 0,
-										'slidesPerView': 2,
-										'autoplay': {
-												'delay': 4000,
-												'disableOnInteraction': false
-										},
-										'breakpoints': {
-												'576': {
-														'slidesPerView': 3
-												},
-												'768': {
-														'slidesPerView': 4
-												},
-												'992': {
-														'slidesPerView': 6
-												},
-												'1200': {
-														'slidesPerView': 8
-												}
-										}
-								}">
-										<div class="swiper-wrapper row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
-											  @foreach($vendor as $value)
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/1.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												@endforeach
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/2.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/3.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/4.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/5.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/6.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/7.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-												<div class="swiper-slide">
-														<figure>
-																<img src="{{url('front/images/demos/demo12/brands/8.png')}}" alt="Brand" width="290"
-																		height="100" />
-														</figure>
-												</div>
-										</div>
-								</div>
+								
 								<!-- End of Brands Wrapper -->
 
 								

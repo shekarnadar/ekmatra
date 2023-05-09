@@ -174,9 +174,7 @@
                                         </ul>
                                     </li>
 								
-									<li class="ourwrk">
-										<a href="{{url('/')}}">Our work</a>
-									</li>
+									
 									 <li class="aboutus">
 										<a href="{{url('about-us')}}">About Us</a>
 									</li>

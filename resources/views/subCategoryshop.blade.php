@@ -1,7 +1,6 @@
 <x-guest-layout>
        
             <div class="container pb-2">
-                @include('category')
                 <!-- End Of Category Wrapper -->
 
                 <nav class="breadcrumb-nav">

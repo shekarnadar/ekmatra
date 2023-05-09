@@ -89,7 +89,7 @@ class ProductController extends Controller
 	public function create()
 	{
 		//
-		$category =  Category::get();
+		$category =  Category::getCategoriesList();
 		$feature_attribute = FeatureAttribute::get();
 		return view('product.create',compact('category','feature_attribute'));
 	}

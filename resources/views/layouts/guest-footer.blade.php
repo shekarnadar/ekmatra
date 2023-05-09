@@ -39,16 +39,14 @@
 								<div class="widget-body">
 									<p class="widget-about-title">Got Question? Call us 24/7</p>
 									<a href="tel:18005707777" class="widget-about-call">{{$contact}}</a>
-									<p class="widget-about-desc">Register now to get updates on pronot get up icons
-										& coupons ster now toon.
-									</p>
+									
 
 									<div class="social-icons social-icons-colored">
-										<a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-										<a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-										<a href="#" class="social-icon social-instagram w-icon-instagram"></a>
-										<a href="#" class="social-icon social-youtube w-icon-youtube"></a>
-										<a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
+										<a href="https://www.facebook.com/ekmatra.store" class="social-icon social-facebook w-icon-facebook"></a>
+										<a href="https://twitter.com/ek_matra" class="social-icon social-twitter w-icon-twitter"></a>
+										<a href="https://www.instagram.com/ekmatra.store/" class="social-icon social-instagram w-icon-instagram"></a>
+										<a href="https://www.youtube.com/channel/UCG8zYHZfRHJaGsjmBJxM4VQ" class="social-icon social-youtube w-icon-youtube"></a>
+										
 									</div>
 								</div>
 							</div>
@@ -58,11 +56,8 @@
 								<h3 class="widget-title">Company</h3>
 								<ul class="widget-body">
 									<li><a href="{{url('about-us')}}">About Us</a></li>
-									<li><a href="#">Team Member</a></li>
-									<li><a href="#">Career</a></li>
+									<li><a href="{{url('we-are-hiring')}}">Career</a></li>
 									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
-									<li><a href="#">Affilate</a></li>
-									<li><a href="#">Order History</a></li>
 								</ul>
 							</div>
 						</div>
@@ -77,7 +72,7 @@
 											<a href="{{url('login')}}" class="ml-0 d-lg-show login sign-in">Sign In</a>
 										@endauth
 									</li>
-									<li><a href="#">Help</a></li>
+									<li><a href="{{url('contact-us')}}">Help</a></li>
 									@auth
 									<li>
 										
@@ -85,20 +80,16 @@
 										
 									</li>
 									@endauth
-									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="https://ekmatra.store/assets/pdf/ek-matra-privacy-policy.pdf">Privacy Policy</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-lg-3 col-sm-6">
 							<div class="widget">
-								<h4 class="widget-title">Customer Service</h4>
+								<h4 class="widget-title">Our Service</h4>
 								<ul class="widget-body">
-									<li><a href="#">Payment Methods</a></li>
-									<li><a href="#">Money-back guarantee!</a></li>
-									<li><a href="#">Product Returns</a></li>
-									<li><a href="#">Support Center</a></li>
-									<li><a href="#">Shipping</a></li>
-									<li><a href="#">Term and Conditions</a></li>
+									  <li><a href="{{url('what-we-do/brandstore')}}">Brand Store</a></li>
+                                      <li><a href="{{url('what-we-do/send')}}">Send</a></li>
 								</ul>
 							</div>
 						</div>
