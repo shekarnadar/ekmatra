@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
 
 		$category = Category::getCategoriesList();
 		$allFeature = FeatureAttribute::get();
-		$occasions = Occasions::get();
+		$occasions = Occasions::orderBy('created_at','desc')->get();
 		$contact = ContactUs::pluck('phone')->first();
 		\View::share('category', $category);
 		\View::share('allFeature', $allFeature);
