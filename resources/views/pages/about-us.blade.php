@@ -11,7 +11,7 @@
 				<div class="container">
 					<section class="introduce mb-2 pb-2">
 						<h2 class="title title-center">
-							Welcome to Ek Matra Technologies Pvt Ltd!,
+							Welcome to Ek Matra Technologies Pvt Ltd.
 						</h2>
 						<p class=" mx-auto text-center">Ek Matra Technologies Pvt Ltd is a leading technology company in India that specializes<br> in creating innovative gift and rewards platforms for businesses. </p>
 					   
