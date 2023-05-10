@@ -105,7 +105,7 @@
 												<i><img src="{{url('category/'.$cat['image'])}}" alt="Categroy" width="15" height="15" /></i>{{$cat['name']}}
 											</a>
 										@if(count($cat['subCategory']) > 0)
-											<ul class="megamenu">
+											<ul class="subcatmenu">
 												@foreach($cat['subCategory'] as $subcat)
 												<li>
 															<a href="{{url('shop/'.$value['slug'].'/'.$subcat['slug'])}}">{{$subcat['name']}}</a>
