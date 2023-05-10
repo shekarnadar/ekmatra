@@ -98,7 +98,7 @@
 								</a>
 
 								<div class="dropdown-box">
-									<ul class="menu category-menu">
+									<ul class="menu vertical-menu category-menu">
 										@foreach($category as $cat)
 										<li>
 											<a href="{{url('shop/'.$cat['slug'])}}">
