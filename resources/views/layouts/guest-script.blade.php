@@ -58,7 +58,7 @@
 	
 </head>
 <style type="text/css">
-	.menu > li:hover > .submenu, .menu > li:hover .megamenu, .menu > li.show > .submenu,  {
+	.menu > li:hover > .submenu, .menu > li:hover .megamenu, .menu > li.show > .submenu, .menu > li.show .megamenu {
     top: 0 !important;
 }
 	.error{
