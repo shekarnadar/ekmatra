@@ -9453,10 +9453,10 @@ body .product-popup {
 .product-media img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     -webkit-transition: opacity 0.4s;
     transition: opacity 0.4s;
-    object-fit: contain !important; 
+    object-fit: contain !important;
 }
 .product-media img:last-child {
     position: absolute;
@@ -9493,7 +9493,11 @@ body .product-popup {
     max-width: 11rem;
     z-index: 1;
 }
-
+.product-image-gap .product-media {
+    max-width: 295px;
+    max-height: 335px;
+    width: 100%;
+}
 .product-label {
     display: inline-block;
     text-align: center;
