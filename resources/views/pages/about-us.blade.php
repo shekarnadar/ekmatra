@@ -1,6 +1,7 @@
 <style type="text/css">
 	p {
     font-size: 1.6rem !important;
+    color:#212529 !important;
    }
 </style>
 <x-guest-layout>
@@ -15,7 +16,7 @@
 			 <div class="page-content">
 				<div class="container">
 					<section class="introduce mb-2 pb-2">
-						<h2 class="title title-center">
+						<h2 class="title title-center text-primary">
 							Welcome to Ek Matra Technologies Pvt Ltd.
 						</h2>
 						<p class=" mx-auto text-center">Ek Matra Technologies Pvt Ltd is a leading technology company in India that specializes<br> in creating innovative gift and rewards platforms for businesses. </p>
@@ -26,7 +27,7 @@
 									<div class="row align-items-center mb-5">
 										
 										<div class="col-md-6 ">
-											<h4 class="title text-left">Our mission is to provide businesses with the tools</h4>
+											<h4 class="title text-left text-primary">Our mission is to provide businesses with the tools</h4>
 											<p class="mb-6">they need to engage and incentivize their employees, customers, and partners.</p>
 											<p class="mb-6">Our gift and rewards platform is designed to be user-friendly and customizable, allowing businesses to create unique, personalized programs that reflect their brand and culture.</p>
 

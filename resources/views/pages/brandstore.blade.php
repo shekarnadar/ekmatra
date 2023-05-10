@@ -1,7 +1,8 @@
 <x-guest-layout>
 	<style type="text/css">
 		li,p{
-			font-size: 15px !important;
+			font-size: 1.6rem !important;
+            color:#212529 !important;
 		}
 	</style>
 	<nav class="breadcrumb-nav">
