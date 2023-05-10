@@ -8,22 +8,24 @@
     <p><center><img src="{{public_path().'/logo.png'}}" style="max-width:25%"></center></p><br/>
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
+            <th>#Serial No</th>
+           <th>Category</th>
+
             <th>Name</th>
+            <th>Mrp</th>
             <th>Image</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>SubCategory</th>
+
 
         </tr>
         @foreach($wishlists['ProductWishList'] as $wishlist)
         <tr>
-            <td>{{ $wishlist['getProduct']['id'] }}</td>
+            <td>{{ $loop->index}}</td>
+                        <td>{{$wishlist['getProduct']['category']['name']}}</td>
+
             <td>{{ $wishlist['getProduct']['name'] }}</td>
-            <td> <img src="{{public_path().'/product/'.$wishlist->getProduct->image }}" width="100" height="100"></td>
-            <td>{{ $wishlist->getProduct->price }}</td>
-            <td>{{$wishlist['getProduct']['category']['name']}}</td>
-            <td>{{$wishlist['getProduct']['subCategory']['name']}}</td>
+           
+            <td>{{ $wishlist->getProduct->mrp }}</td>
+             <td> <img src="{{public_path().'/product/'.$wishlist->getProduct->image }}" width="100" height="100"></td>
         </tr>
         @endforeach
     </table>
