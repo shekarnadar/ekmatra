@@ -98,14 +98,14 @@
 								</a>
 
 								<div class="dropdown-box">
-									<ul class="menu vertical-menu category-menu">
+									<ul class="menu active-underline category-menu">
 										@foreach($category as $cat)
 										<li>
 											<a href="{{url('shop/'.$cat['slug'])}}">
 												<i><img src="{{url('category/'.$cat['image'])}}" alt="Categroy" width="15" height="15" /></i>{{$cat['name']}}
 											</a>
 										@if(count($cat['subCategory']) > 0)
-											<ul class="subcatmenu">
+											<ul >
 												@foreach($cat['subCategory'] as $subcat)
 												<li>
 															<a href="{{url('shop/'.$value['slug'].'/'.$subcat['slug'])}}">{{$subcat['name']}}</a>
