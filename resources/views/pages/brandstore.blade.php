@@ -25,7 +25,7 @@
                             </figure>
                         </div>
                         <div class="col-md-6 order-md-first">
-                            <h3 class="text-primary font-weight-bold ls-25">Launch Your Company Brandstore Today,</h4>
+                            <h3 class="text-primary font-weight-bold ls-25">Launch Your Company Brandstore Today</h4>
                             
                             <p> We are your go-to platform for launching a customised Brand Store. Here are some of the benefits of launching a Brand Store with us:
                             </p>
@@ -45,7 +45,7 @@
                     <div class="container  mb-0 mb-lg-5">
                         <div class=" align-items-center">
                         	  <div class="row pl-lg-8">
-                                <h3 class="text-primary font-weight-bold ls-25">Launch a Brand Store for,</h4>
+                                <h3 class="text-primary font-weight-bold ls-25">Launch a Brand Store for</h4>
                             
                                 <ul>
                                 	<li>Employee rewards and recogincludenition programs</li>
