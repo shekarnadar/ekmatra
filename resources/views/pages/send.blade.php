@@ -21,7 +21,7 @@
 			 <div class="page-content become-a-vendor">
 				<div class="container create-store">
 					<div class="row align-items-center">
-						<div class="col-md-6  mb-md-0">
+						<div class="col-md-6  mb-md-0 pl-lg-8" >
 							<figure class="br-sm">
 								<img src="{{url('whatwedo/send.avif')}}" alt="Banner"
 									width="610"  style="background-color: #D9D8DD;" />

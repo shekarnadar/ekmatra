@@ -24,7 +24,7 @@
                                     width="610" height="435" style="background-color: #D9D8DD;" />
                             </figure>
                         </div>
-                        <div class="col-md-6 order-md-first">
+                        <div class="col-md-6 order-md-first pl-lg-8">
                             <h3 class="text-primary font-weight-bold ls-25">Launch Your Company Brandstore Today</h4>
                             
                             <p> We are your go-to platform for launching a customised Brand Store. Here are some of the benefits of launching a Brand Store with us:

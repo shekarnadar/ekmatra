@@ -1,3 +1,8 @@
+<style type="text/css">
+	p {
+    font-size: 1.6rem !important;
+   }
+</style>
 <x-guest-layout>
 	<nav class="breadcrumb-nav">
 				<div class="container">
@@ -30,7 +35,7 @@
 										<div class="col-md-6 mb-8 pl-lg-8 mb-8">
 											<figure class="br-lg">
 												<img src="{{url('aboutus/ExperienceCenter.jpg')}}" alt="Banner"
-													width="510"  style="background-color: #9E9DA2;" />
+													width="570"  style="background-color: #9E9DA2;" />
 											</figure>
 										</div>
 									</div>
@@ -45,7 +50,7 @@
 										<div class="col-md-6 mb-8">
 											<figure class="br-lg">
 												<img src="{{url('aboutus/IMG-20230505-WA0013.jpg')}}" alt="Banner"
-													width="510"  style="background-color: #9E9DA2;" />
+													width="570"  style="background-color: #9E9DA2;" />
 											</figure>
 										</div>
 										<div class="col-md-6 pl-lg-8 mb-8">
@@ -72,7 +77,7 @@
 										<div class="col-md-6 mb-8 pl-lg-8 mb-8">
 											<figure class="br-lg">
 												<img src="{{url('aboutus/Warehouse.jpg')}}" alt="Banner"
-													width="510"  style="background-color: #9E9DA2;" />
+													width="570"  style="background-color: #9E9DA2;" />
 											</figure>
 										</div>
 									</div>

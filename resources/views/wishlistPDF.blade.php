@@ -8,7 +8,7 @@
     <p><center><img src="{{public_path().'/logo.png'}}" style="max-width:25%"></center></p><br/>
     <table class="table table-bordered">
         <tr>
-            <th>#Serial No</th>
+            <th>S.No</th>
            <th>Category</th>
 
             <th>Name</th>
