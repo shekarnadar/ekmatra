@@ -3,6 +3,9 @@
 		li,p{
 			font-size: 15px !important;
 		}
+		.create-store p{
+			margin-bottom:20px !important;
+		}
 	</style>
 	<nav class="breadcrumb-nav">
 				<div class="container">
@@ -21,19 +24,18 @@
 						<div class="col-md-6  mb-md-0">
 							<figure class="br-sm">
 								<img src="{{url('whatwedo/send.avif')}}" alt="Banner"
-									width="610" height="435" style="background-color: #D9D8DD;" />
+									width="610"  style="background-color: #D9D8DD;" />
 							</figure>
 						</div>
 						<div class="col-md-6 order-md-first">
 							<h3 class="text-primary font-weight-bold ls-25">SEND is the ultimate platform </h3>
-							<h4 class=" text-left"> for enhancing your sending strategy <br>and driving demand and revenue growth.</h4>
+							<p> for enhancing your sending strategy and driving demand and revenue growth.</p>
 							
 							<p>Grow Your demand. Enhance Your revenue.</p>
-							<p>With SEND, you can leverage the power of corporate gifting to achieve steady pipeline growth and proven returns on marketing, while delivering fully measurable ROI. Our platform enables you to stand out from the competition with authentic engagement that builds true connections.</p>
-
+							<p>With SEND, you can leverage the power of corporate gifting to achieve steady pipeline growth and proven returns on marketing, while delivering fully measurable ROI.</p>
+							<p>Our platform enables you to stand out from the competition with authentic engagement that builds true connections.</p>
 							<p>One platform benefits many teams</p>
-							<p>SEND is a versatile platform that benefits many teams within your organization. Whether it's your sales team, customer success, marketing, or HR, our platform drives positive engagement throughout the customer lifecycle, resulting in greater employee engagement and a positive impact on your bottom line.</p>
-							
+							<p>SEND is a versatile platform that benefits many teams within your organization.</p>
 						</div>
 					</div>
 					<!-- End of Row -->
@@ -42,6 +44,11 @@
 				 <div class="container create-store">
 					<div class="row align-items-center">
 							  <div class="row">
+
+
+						
+							<p> Whether it's your sales team, customer success, marketing, or HR, our platform drives positive engagement throughout the customer lifecycle, resulting in greater employee engagement and a positive impact on your bottom line.</p>
+							
 									<p>Corporate gifting drives positive engagement throughout the customer lifecycle.</p>
 								   <p class="mb-2">
 									By using SEND, you can deliver personalized, high-quality gifts that make a lasting impression on your customers and employees, while also streamlining your sending process for maximum efficiency.</p>
