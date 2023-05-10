@@ -64,6 +64,9 @@
 	.main-nav .menu > .has-submenu ul.submenu {
     top: 100% !important;
 	}
+	li.shopby.has-submenu:hover ul.megamenu {
+    top: 100% !IMPORTANT;
+}
 
 	.error{
 		color:#a94442;
