@@ -51,60 +51,60 @@
 								</div>
 								<!-- End of Intro-wrapper -->
 
-								<div class="swiper-container swiper-theme icon-box-wrapper br-sm mt-0 mb-10 appear-animate"
-										data-swiper-options="{
-										'slidesPerView': 1,
-										'breakpoints': {
-												'576': {
-														'slidesPerView': 2
-												},
-												'992': {
-														'slidesPerView': 3
-												},
-												'1200': {
-														'slidesPerView': 4
-												}
-										}}">
-										<div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
-												<div class="swiper-slide icon-box icon-box-side text-dark">
-														<span class="icon-box-icon icon-shipping">
-																<i class="w-icon-truck"></i>
-														</span>
-														<div class="icon-box-content">
-																<h4 class="icon-box-title font-weight-bolder">Free Shipping &amp; Returns</h4>
-																<p class="text-default">For all orders over $99</p>
-														</div>
-												</div>
-												<div class="swiper-slide icon-box icon-box-side text-dark">
-														<span class="icon-box-icon icon-payment">
-																<i class="w-icon-bag"></i>
-														</span>
-														<div class="icon-box-content">
-																<h4 class="icon-box-title font-weight-bolder">Secure Payment</h4>
-																<p class="text-default">We ensure secure payment</p>
-														</div>
-												</div>
-												<div class="swiper-slide icon-box icon-box-side text-dark icon-box-money">
-														<span class="icon-box-icon icon-money">
-																<i class="w-icon-money"></i>
-														</span>
-														<div class="icon-box-content">
-																<h4 class="icon-box-title font-weight-bolder">Money Back Guarantee</h4>
-																<p class="text-default">Any back within 30 days</p>
-														</div>
-												</div>
-												<div class="swiper-slide icon-box icon-box-side text-dark icon-box-chat mt-0">
-														<span class="icon-box-icon icon-chat">
-																<i class="w-icon-chat"></i>
-														</span>
-														<div class="icon-box-content">
-																<h4 class="icon-box-title font-weight-bolder">Customer Support</h4>
-																<p class="text-default">Call or email us 24/7</p>
-														</div>
-												</div>
-										</div>
-								</div>
-								<!-- End of Iocn Box Wrapper -->
+							 <div class="swiper-container swiper-theme icon-box-wrapper br-sm mt-0 mb-10 appear-animate"
+                    data-swiper-options="{
+                    'slidesPerView': 1,
+                    'breakpoints': {
+                        '576': {
+                            'slidesPerView': 2
+                        },
+                        '992': {
+                            'slidesPerView': 3
+                        },
+                        '1200': {
+                            'slidesPerView': 4
+                        }
+                    }}">
+                    <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
+                        <div class="swiper-slide icon-box icon-box-side text-dark">
+                            <span class="icon-box-icon icon-shipping">
+                                <i class="w-icon-truck"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bolder">Free Shipping &amp; Returns</h4>
+                                <p class="text-default">For all orders over $99</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side text-dark">
+                            <span class="icon-box-icon icon-payment">
+                                <i class="w-icon-bag"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bolder">Secure Payment</h4>
+                                <p class="text-default">We ensure secure payment</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side text-dark icon-box-money">
+                            <span class="icon-box-icon icon-money">
+                                <i class="w-icon-money"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bolder">Money Back Guarantee</h4>
+                                <p class="text-default">Any back within 30 days</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side text-dark icon-box-chat mt-0">
+                            <span class="icon-box-icon icon-chat">
+                                <i class="w-icon-chat"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bolder">Customer Support</h4>
+                                <p class="text-default">Call or email us 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Iocn Box Wrapper -->
 
 								<div class="title-link-wrapper title-select after-none appear-animate">
 										<h2 class="title font-secondary font-weight-bolder">Latest Products</h2>
@@ -392,10 +392,13 @@
 <script type="text/javascript">
 	$('.swiper-slide').click(function(e) {  
     var url = $(this).attr('data-url');
-    window.location.href = url;
+    if(url){
+    	    window.location.href = url;
+
+    }
 
 });
-W
+
 	let login = "{{\Session::get('isLogin')}}";
 	if(login == 1){
 		Wolmart.popup(
