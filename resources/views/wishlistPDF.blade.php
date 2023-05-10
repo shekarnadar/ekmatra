@@ -17,7 +17,7 @@
 
 
         </tr>
-        @foreach($wishlists['ProductWishList'] as $key->$wishlist)
+        @foreach($wishlists['ProductWishList'] as $wishlist)
         <tr>
             <td>{{ $loop->iteration}}</td>
                         <td>{{$wishlist['getProduct']['category']['name']}}</td>
