@@ -19,7 +19,7 @@
         </tr>
         @foreach($wishlists['ProductWishList'] as $key->$wishlist)
         <tr>
-            <td>{{ $loop->index + 1}}</td>
+            <td>{{ $loop->iteration}}</td>
                         <td>{{$wishlist['getProduct']['category']['name']}}</td>
 
             <td>{{ $wishlist['getProduct']['name'] }}</td>
