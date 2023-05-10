@@ -168,7 +168,7 @@
 									<li class="whatwedo">
                                         <a href="blog.html">What We Do</a>
                                         <ul>
-                                            <li><a href="{{url('what-we-do/brandstore')}}">BrandStore</a></li>
+                                            <li><a href="{{url('what-we-do/brandstore')}}">Brand Store</a></li>
                                             <li><a href="{{url('what-we-do/send')}}">Send</a></li>
                                             
                                         </ul>
