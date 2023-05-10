@@ -9456,6 +9456,7 @@ body .product-popup {
     height: auto;
     -webkit-transition: opacity 0.4s;
     transition: opacity 0.4s;
+    object-fit: contain !important; 
 }
 .product-media img:last-child {
     position: absolute;
