@@ -48,7 +48,7 @@
 
 	<!-- Default CSS -->
      @if(request()->is('welcome') || request()->is('shop/*') || request()->is('search') ||  request()->is('shop-by/*'))
-     	 <link rel="stylesheet" type="text/css" href="{{url('front/css/demo1.min.css')}}"> 
+     	 <link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}"> 
      
      @else
      		    <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">
