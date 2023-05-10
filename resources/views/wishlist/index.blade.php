@@ -19,7 +19,7 @@
 										<table class="shop-table cart-table">
 												<thead>
 														<tr>
-																<th ><span>Product</span></th>
+																<th ><span>Wishlist</span></th>
 																<th class="product-price"><span>Count</span></th>
 																<th class="wishlist-action">Actions</th>
 														</tr>
