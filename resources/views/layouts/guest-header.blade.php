@@ -107,7 +107,7 @@
 											<ul class="subcatmenu">
 												@foreach($cat['subCategory'] as $subcat)
 												<li>
-															<a href="{{url('shop/'.$value['slug'].'/'.$subcat['slug'])}}">{{$subcat['name']}}</a>
+															<a href="{{url('shop/'.$cat['slug'].'/'.$subcat['slug'])}}">{{$subcat['name']}}</a>
 									
 												</li>
 												@endforeach
