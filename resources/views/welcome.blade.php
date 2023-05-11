@@ -277,7 +277,7 @@
                                         <h4 class="product-name"><a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">{{$product_deals['getProduct']['name']}}</a></h4>
                                        
                                         <div class="product-price">
-                                            <ins class="new-price">>MRP : {{$product_deals['getProduct']['name']}}</ins>
+                                            <ins class="new-price">>MRP : {{$product_deals['getProduct']['mrp']}}</ins>
                                         </div>
                                     </div>
                                 </div>
