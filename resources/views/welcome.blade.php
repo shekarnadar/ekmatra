@@ -113,63 +113,44 @@
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
 								</div>
-								<div class="swiper-container swiper-theme select-product-wrapper shadow-swiper appear-animate pb-2 mb-10"
-										data-swiper-options="{
-										'spaceBetween': 20,
-										'slidesPerView': 2,
-										'breakpoints': {
-												'768': {
-														'slidesPerView': 3
-												},
-												'992': {
-														'slidesPerView': 4
-												},
-												'1200': {
-														'slidesPerView': 5
-												}
-										}
-										}">
-										<div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-sm-3 cols-2">
-												@foreach($product as $product_value)
-											   <div class="swiper-slide product product-image-gap product-simple">
-							<figure class="product-media">
-								<a href="{{url('product-detail/'.$product_value['slug'])}}">
-									<img src="{{url('product/'.$product_value['image'])}}" alt="Product" width="295"
-										height="335" />
-									<img src="{{url('product/'.$product_value['image'])}}" alt="Product" width="295"
-										height="335" />
-								</a>
-							   
-								<div class="product-action">
-									<a href="{{url('product-detail/'.$product_value['slug'])}}" class="btn-product " title="Quick View">QuickView</a>
-								</div>
-							</figure>
-							<div class="product-details">
-							  
-								<h4 class="product-name">
-									<a href="{{url('product-detail/'.$product_value['slug'])}}">{{$product_value['name']}}</a>
-								</h4>
-								
-								<div class="product-pa-wrapper">
-									<div class="product-price">
-										<ins class="new-price">MRP : {{$product_value['mrp']}}</ins>
-									</div>
-									<div class="product-price">
-										Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
-									</div>
-									<div class="product-action">
-									   @auth
-																									<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist" data-id="{{$product_value['id']}}" >Add To Wishlist</a>
-																									@else
-																									<a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
-																									@endauth
-									</div>
-								</div>
-							</div>
-						</div>
-											  @endforeach
-										</div>
-								</div>
+								 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                        	 @foreach($product as $product_val)
+                            <div class="product-wrap mt-2">
+                                <div class="product text-center">
+                                    <figure class="product-media">
+                                        <a href="{{url('product-detail/'.$product_val['slug'])}}">
+                                            <img src="{{url('product/'.$product_val['image'])}}" alt="Product"
+                                                width="300" height="338" />
+                                        </a>
+                                        <div class="product-action-vertical">
+                                          
+                                            @auth
+								 																<a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_val['id']}}"
+                                                title="Add to wishlist"></a>
+                                					 @else
+                                						<a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
+                                					@endif
+                                  						<a href="{{url('product-detail/'.$product_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                                title="Quickview"></a>
+                                            <a href="{{url('product-detail/'.$product_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                                title="Quickview"></a>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <h4 class="product-name"><a href="{{url('product-detail/'.$product_val['slug'])}}">{{$product_val['name']}}</a></h4>
+                                       
+                                        <div class="product-price">
+                                            <ins class="new-price">MRP : {{$product_val['mrp']}}</ins>
+                                        </div>
+                                        <div class="product-price">
+                                            <ins class="new-price">Min Qty : {{$product_val['maq'] ? $product_val['maq'] :  $product_val['maq']}}</ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           @endforeach
+                            
+                        </div>
 								<!-- End of Selected Products Wrapper -->
 
 
@@ -267,16 +248,15 @@
                                         <div class="product-action-vertical">
                                           
                                             @auth
-								 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
+								 																<a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
                                                 title="Add to wishlist"></a>
-                                @else
-                                <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
-                                @endif
-                                  <a href="{{url('product-detail/'.$product_deals['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                					 @else
+                                						<a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
+                                					@endif
+                                  						<a href="{{url('product-detail/'.$product_deals['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
                                             <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
-                                            
                                         </div>
                                     </figure>
                                     <div class="product-details">
