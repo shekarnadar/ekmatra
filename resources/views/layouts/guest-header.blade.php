@@ -64,14 +64,14 @@
 									@auth
 
 									<a href="{{url('wishlist')}}">
-											<i class="w-icon-heart">
+											<i class="w-icon-cart">
 												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
 											</i>
 
 									</a>
 									@else
 									<a href="{{url('login')}}" class="  login sign-in wishlistAuth">
-											<i class="w-icon-heart"></i>
+											<i class="w-icon-cart"></i>
 									</a>
 									@endauth
 									

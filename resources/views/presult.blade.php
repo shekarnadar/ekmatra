@@ -1,5 +1,5 @@
 @if(count($product) > 0)
-	<div class="product-wrapper row cols-lg-3 cols-md-3 cols-2 dealProduct">
+	<div class="product-wrapper row cols-lg-3 cols-md-3 cols-2 product_page">
 			@foreach($product as $prod_val)
 				<div class="product-wrap">
 					<div class="product text-center">
