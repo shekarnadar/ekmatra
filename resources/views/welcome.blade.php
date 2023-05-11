@@ -253,8 +253,7 @@
                                 					@endif
                                   						<a href="{{url('product-detail/'.$product_deals['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
-                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
-                                                title="Quickview"></a>
+                                            
                                         </div>
                                     </figure>
                                     <div class="product-details">
