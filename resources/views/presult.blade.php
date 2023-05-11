@@ -13,7 +13,7 @@
 								 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$prod_val['id']}}"
                                                 title="Add to wishlist"></a>
                                 @else
-                                <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in">Add to Wishlist</a>
+                                <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
                                 @endif
                                   <a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
@@ -26,15 +26,13 @@
 								<a href="{{url('product-detail/'.$prod_val['slug'])}}">{{$prod_val['name'] ? $prod_val['name'] : $prod_val['getProduct']['name']}}</a>
 							</h4>
 						   
-							<div class="product-pa-wrapper">
 								<div class="product-price">
 									<ins class="new-price">MRP : {{$prod_val['mrp'] ? $prod_val['mrp'] : $prod_val['getProduct']['mrp']}}</ins>
 								</div>
-								<div class="product-price mt-2">
+								<div class="product-price ">
 									<ins class="new-price">Min Qty : {{$prod_val['maq'] ? $prod_val['maq'] :  $prod_val['getProduct']['maq']}}</ins>
 								</div>
 								
-							</div>
 						</div>
 					</div>
 				</div>

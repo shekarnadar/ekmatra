@@ -270,7 +270,7 @@
 								 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$prod_val['id']}}"
                                                 title="Add to wishlist"></a>
                                 @else
-                                <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in">Add to Wishlist</a>
+                                <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
                                 @endif
                                   <a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
