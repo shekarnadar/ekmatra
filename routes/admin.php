@@ -138,6 +138,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 		Route::get('job-post',[VacencyRequirementsController::class,'index'])->name('jobpost.index');
 		Route::get('subscription/list',[VacencyRequirementsController::class,'subscriptionList'])->name('subscription.list');
+		Route::get('leads',[ContactUsController::class,'leads'])->name('leads');
 		Route::get('job-post/download/{id}',[VacencyRequirementsController::class,'jobDownload'])->name('jobpost.download');
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');

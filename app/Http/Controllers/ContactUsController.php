@@ -8,12 +8,22 @@ use App\Models\contactUsInquiry;
 use App\Models\Faq;
 use App\Http\Requests\CreateContactRequest;
 use App\Models\WeAreHiring;
+use DataTables;
 
 use Mail; 
 
 class ContactUsController extends Controller
 {
 		//
+		public function leads(Request $request){
+       		if ($request->ajax()) {
+                    $data = contactUsInquiry::get();
+                    return Datatables::of($data)
+                    ->make(true);
+            }
+            return view('admin.contact-us.index');
+    	}
+    
 		public function index(){
 			$contact = ContactUs::first();
 			$faq = Faq::orderBy('created_at','desc')->get();

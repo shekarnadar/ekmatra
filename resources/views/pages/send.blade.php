@@ -55,7 +55,7 @@
 									By using SEND, you can deliver personalized, high-quality gifts that make a lasting impression on your customers and employees, while also streamlining your sending process for maximum efficiency.</p>
 								   <p>At SEND, we offer a user-friendly and customizable platform that is tailored to meet your unique needs. Our team of experienced professionals is dedicated to providing you with the support you need to ensure a smooth and effective sending strategy, so you can focus on growing your business.</p>
 								   <p>Let us help you take your gifting and rewards program to the next level, while enhancing your revenue and driving demand growth.</p>
-								   <p>Contact us for a <a href="https://send1.in/" target="_blank">quick Demo</a></p>
+								   <p> <a href="https://send1.in/" target="_blank">www.send1.in</a></p>
 								</div>
 						<!-- End of Row -->
 					</div>

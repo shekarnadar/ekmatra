@@ -37,7 +37,7 @@
 																		
 																		<a href="{{$sub_value['shop_link']}}"
 																				class="btn btn-white btn-link btn-slide-right btn-icon-right btn-infinite">
-																				Shop Now
+																				Explore Now
 																				<i class="w-icon-long-arrow-right"></i>
 																		</a>
 																</div>
@@ -164,16 +164,16 @@
 																height="180" style="background-color: #565960;" />
 												</figure>
 												<div class="banner-content y-50">
-														<h4 class="banner-price-info text-lighter font-secondary font-weight-normal mb-0">
+														<!-- <h4 class="banner-price-info text-lighter font-secondary font-weight-normal mb-0">
 																Flash Sale
 																<span class="text-primary font-weight-bolder">50% OFF</span>
-														</h4>
-														<h2 class="banner-title text-white font-secondary">Wireless HeadPhone</h2>
-														<h3 class="banner-subtitle text-lighter font-weight-normal">Only until the end of this Week
-														</h3>
+														</h4> -->
+														<!-- <h2 class="banner-title text-white font-secondary">Wireless HeadPhone</h2> -->
+													<!-- 	<h3 class="banner-subtitle text-lighter font-weight-normal">Only until the end of this Week
+														</h3> -->
 														<a href="#"
 																class="btn btn-sm btn-outline btn-white btn-rounded btn-icon-right slide-animate">
-																Shop Now
+																Explore Now
 																<i class="w-icon-long-arrow-right"></i>
 														</a>
 												</div>
@@ -278,39 +278,7 @@
 							
 
 							
-								<div class="banner link-banner-newsletter d-flex mb-8 align-items-center row gutter-no br-sm appear-animate"
-										style="background-image: url('banner/'.{{$download}});
-										background-color: #27393D;">
-										<div class="col-xl-5 col-lg-4 mr-auto">
-												<figure class="banner-media d-lg-show">
-														<img src="{{url('front//images/demos/demo12/banner/image-2.png')}}" alt="Banner-image">
-												</figure>
-										</div>
-										<div class="banner-content col-xl-5 col-lg-6 col-sm-8 mb-4">
-												<h2 class="banner-title text-white text-capitalize font-secondary font-weight-bolder">Download
-														Ekmatra App Now!</h2>
-												<p>
-														Shopping fastly and easily more with our app. Get a link to download the app on your phone.
-												</p>
-												<form action="#" method="get"
-														class="input-wrapper input-wrapper-inline flex-wrap input-wrapper-rounded text-dark">
-														<input class="form-control text-dark br-xs bg-white mr-2" type="email"
-																placeholder="Enter Your Email..." name="email" id="email_4" required>
-														<button class="btn btn-primary btn-rounded br-xs" type="submit">Send Link</button>
-												</form>
-										</div>
-										<div class="col-lg-2 col-sm-4 newsletter-button">
-												<a href="#">
-														<img src="{{url('front//images/demos/demo12/banner/button-1.jpg')}}" class="mb-4" alt="Button"
-																width="141" height="41" style="background-color: #121315" />
-												</a>
-												<a href="#">
-														<img src="{{url('front//images/demos/demo12/banner/button-2.jpg')}}" alt="Button" width="141"
-																height="41" style="background-color: #121315" />
-												</a>
-										</div>
-										<!-- End of Content Right -->
-								</div>
+							
 								<!-- End of Link Banner Newsletter -->
 
 								
