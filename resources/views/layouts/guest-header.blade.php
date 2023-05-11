@@ -55,24 +55,23 @@
 							<a href="tel:#" class="w-icon-call"></a>
 							<div class="call-info d-lg-show">
 								<h4 class="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
-									<a href="https://portotheme.com/cdn-cgi/l/email-protection#daf9" class="text-capitalize">Live Chat</a> or :</h4>
+									<a href="https://portotheme.com/cdn-cgi/l/email-protection#daf9" class="text-capitalize">Live Chat</a></h4>
 								<a href="tel:#" class="phone-number font-weight-bolder ls-50">{{$contact}}</a>
 							</div>
 						</div>
-							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-1">
+							<div class=" cart-dropdown cart-offcanvas mr-0 mr-lg-1">
 									<div class="cart-overlay"></div>
 									@auth
 
-									<a href="{{url('wishlist')}}" class="label-down link">
-											<i class="w-icon-cart">
+									<a href="{{url('wishlist')}}">
+											<i class="w-icon-heart">
 												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
 											</i>
 
 									</a>
 									@else
-									<a href="{{url('login')}}" class="label-down link login sign-in wishlistAuth">
-											<i class="w-icon-cart"></i>
-											<span class="cart-label">Wishlist</span>
+									<a href="{{url('login')}}" class="  login sign-in wishlistAuth">
+											<i class="w-icon-heart"></i>
 									</a>
 									@endauth
 									
