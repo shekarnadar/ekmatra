@@ -257,7 +257,7 @@
                     <div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }} pt-4 dealProduct" id="tab1-{{ $loop->iteration }}">
                         <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
                         	 @foreach($deal_value['productDeals'] as $product_deals)
-                            <div class="product-wrap">
+                            <div class="product-wrap mt-2">
                                 <div class="product text-center">
                                     <figure class="product-media">
                                         <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">
@@ -289,103 +289,9 @@
                     @endforeach
                 </div>
 								
-								<div class="tab tab-latest-product tab-nav-center tab-nav-underline tab-line-grow appear-animate">
-										<ul class="nav nav-tabs bb-no justify-content-center" role="tablist">
-											  @foreach($deal as $key=>$deal_value)
-												<li class="nav-item mb-2">
-														<a class="nav-link {{($loop->iteration == 1) ? 'active' :'' }} ls-normal" href="#tab1-{{ $loop->iteration }}">{{$deal_value['name']}}</a>
-												</li>
-												@endforeach
-												
-										</ul>
-								</div>
-								<!-- End of Tab -->
+							
 
-								<div class="tab-content product-wrapper appear-animate">
-
-									  @foreach($deal as $key=>$deal_value)
-
-										<div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }}" id="tab1-{{ $loop->iteration }}">
-												<div class="swiper-container swiper-theme latest-product-wrapper shadow-swiper appear-animate mb-0"
-														data-swiper-options="{
-														'spaceBetween': 20,
-														'slidesPerView': 2,
-														'breakpoints': {
-																'576': {
-																		'slidesPerView': 2
-																},
-																'768': {
-																		'slidesPerView': 3
-																},
-																'992': {
-																		'slidesPerView': 4
-																},
-																'1200': {
-																		'slidesPerView': 5
-																}
-														}
-														}">
-														<div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-sm-3 cols-2">
-															  @foreach($deal_value['productDeals'] as $product_deals)
-																<div class="swiper-slide">
-																		<div class="product product-image-gap product-simple">
-																				<figure class="product-media">
-																						<a href="">
-																								<img src="{{url('product/'.$product_deals['getProduct']['image'])}}" alt="Product"
-																										width="295" height="335" />
-																								<img src="{{url('product/'.$product_deals['getProduct']['image'])}}" alt="Product"
-																										width="295" height="335" />
-																						</a>
-																						
-																						<div class="product-action">
-																								<a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product" title="Quick View">Quick
-																										View</a>
-																						</div>
-																						
-																				</figure>
-																				<div class="product-details">
-
-																						<h4 class="product-name">
-																								<a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">{{$product_deals['getProduct']['name']}}</a>
-																						</h4>
-																						
-																					
-													<div class="product-pa-wrapper">
-														<div class="product-price">
-														<ins class="new-price">MRP : {{$product_value['mrp']}}</ins>
-
-														</div>
-														<div class="product-price">
-															Min Qty : <ins class="new-price">{{$product_value['maq']}}</ins>
-
-														</div>
-														<div class="product-action">
-															@auth
-																									<a href="javascript:void(0)" class="btn-cart btn-product btn btn-link btn-underline wishlist" data-id="{{$product_value['id']}}" >Add To Wishlist</a>
-																									@else
-																									<a href="{{url('login')}}" class="btn-cart btn-product btn btn-link btn-underline  sign-in">Add to Wishlist</a>
-																									@endauth
-														</div>
-													</div>
-																				</div>
-																		</div>
-																		
-																</div>
-																@endforeach
-																
-														</div>
-												</div>
-										</div>
-										@endforeach
-										
-										<!-- End of Tab Pane -->
-								</div>
-								<!-- End of Tab Content -->
-								  @foreach($banner as $banner_value)
-										@if($banner_value['type'] == 'download')
-										<?php $url = url('banner')."/".$banner_value['image'];?>
-										@endif
-								 @endforeach
+							
 								<div class="banner link-banner-newsletter d-flex mb-8 align-items-center row gutter-no br-sm appear-animate"
 										style="background-image: url('banner/'.{{$download}});
 										background-color: #27393D;">
