@@ -9241,6 +9241,8 @@ body .product-popup {
   height: auto;
   -webkit-transition: opacity 0.4s;
   transition: opacity 0.4s;
+   border:1px solid #ddd;
+  box-shadow: 0 3px 8px 0 #0f2c5730;
 }
 .product-media img:last-child {
   position: absolute;
@@ -9249,13 +9251,11 @@ body .product-popup {
   right: 0;
   bottom: 0;
   top: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .product-media img:first-child {
   position: relative;
   opacity: 1;
-  border:1px solid #ddd;
 }
 .product-media:hover img:last-child {
   opacity: 1;
