@@ -201,7 +201,7 @@
 								<div class="banner-content text-center x-50 y-50 slide-animate"
 										data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '15s', 'delay': '3s'}">
 										
-										=
+										
 										<a href="{{$sub_value['shop_link']}}"
 												class="btn btn-lg btn-outline btn-white btn-rounded btn-icon-right slide-animate">
 												Explore Now
