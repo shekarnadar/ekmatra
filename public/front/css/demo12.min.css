@@ -14644,21 +14644,21 @@ body .product-popup {
   letter-spacing: -0.025em;
 }
 .cart-dropdown .cart-count {
-  position: absolute;
-  width: 1.9rem;
-  height: 1.9rem;
-  border-radius: 50%;
-  font-style: normal;
-  z-index: 1;
-  right: -8px;
-  top: -5px;
-  font-family: Poppins, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1.8rem;
-  background: #9a2948;
-  color: #fff;
-  text-align: center;
+   position: absolute;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    font-style: normal;
+    z-index: 1;
+    right: -8px;
+    top: 2px;
+    font-family: Poppins, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    background: #9a2948;
+    color: #fff;
+    text-align: center;
 }
 .cart-dropdown .cart-header {
   display: -webkit-box;
