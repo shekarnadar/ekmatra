@@ -240,6 +240,61 @@
 						</div>
 						<!-- End of Banner -->
 						<div class="container">
+							<div class="tab tab-nav-boxed tab-nav-outline appear-animate">
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                    	 @foreach($deal as $key=>$deal_value)
+                        <li class="nav-item mr-2 mb-2">
+                          
+                            <a class="nav-link {{($loop->iteration == 1) ? 'active' :'' }}  br-sm font-size-md ls-normal" href="#tab1-{{ $loop->iteration }}">{{$deal_value['name']}}</a>
+                        </li>
+                       
+                        @endforeach
+                    </ul>
+                </div>
+                <!-- End of Tab -->
+                <div class="tab-content product-wrapper appear-animate">
+                	   @foreach($deal as $key=>$deal_value)
+                    <div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }} pt-4" id="tab1-{{ $loop->iteration }}">
+                        <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                        	 @foreach($deal_value['productDeals'] as $product_deals)
+                            <div class="product-wrap">
+                                <div class="product text-center">
+                                    <figure class="product-media">
+                                        <a href="product-default.html">
+                                            <img src="assets/images/demos/demo1/products/3-1-1.jpg" alt="Product"
+                                                width="300" height="338" />
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                                title="Add to cart"></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                title="Add to wishlist"></a>
+                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                                title="Quickview"></a>
+                                            
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <h4 class="product-name"><a href="product-default.html">Classic Hat</a></h4>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width: 60%;"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product-default.html" class="rating-reviews">(1 Reviews)</a>
+                                        </div>
+                                        <div class="product-price">
+                                            <ins class="new-price">$53.00</ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           @endforeach
+                            
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
 								
 								<div class="tab tab-latest-product tab-nav-center tab-nav-underline tab-line-grow appear-animate">
 										<ul class="nav nav-tabs bb-no justify-content-center" role="tablist">
@@ -252,8 +307,11 @@
 										</ul>
 								</div>
 								<!-- End of Tab -->
+
 								<div class="tab-content product-wrapper appear-animate">
+
 									  @foreach($deal as $key=>$deal_value)
+
 										<div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }}" id="tab1-{{ $loop->iteration }}">
 												<div class="swiper-container swiper-theme latest-product-wrapper shadow-swiper appear-animate mb-0"
 														data-swiper-options="{

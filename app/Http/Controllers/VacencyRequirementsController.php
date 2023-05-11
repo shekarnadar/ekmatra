@@ -68,7 +68,7 @@ class VacencyRequirementsController extends Controller
             zohoSaveContact($data);
             Subscription::saveSubscribe($request->input());
             return response()->json(['success' => true,
-                'message' => 'Subcribe  successfully.'
+                'message' => 'Subscribed  successfully.'
           ], 200);
 
         } catch(\Exception $e){

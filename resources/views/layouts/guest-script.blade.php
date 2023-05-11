@@ -58,6 +58,15 @@
 	
 </head>
 <style type="text/css">
+	.product-image-gap .product-media {
+    max-width: 295px;
+    max-height: 300px;
+    width: 100%;
+    height: 225px;
+	}
+.product-image-gap .product-media img {
+    object-fit: cover;
+}
 	.menu > li:hover > .submenu, .menu > li:hover .megamenu, .menu > li.show > .submenu, .menu > li.show .megamenu {
     top: 0 !important;
 	}

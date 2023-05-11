@@ -14,7 +14,7 @@ $url = getAuthGaurd();
 									<div style="float: right;">
 
 									<a href='{{url("$url/we-are-hiring/add")}}' class="btn btn-primary">Add</a>
-									<a href='{{url("$url/job-post")}}' class="btn btn-primary">Job Post</a>
+									<a href='{{url("$url/job-post")}}' class="btn btn-primary">Applied Candidate</a>
 								</div>
 								</div>
 								
