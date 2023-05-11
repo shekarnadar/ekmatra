@@ -55,7 +55,7 @@
 															</a>
 														   
 															<div class="product-action">
-																<a href="{{url('product-detail/'.$prod_val['getProduct']['id'])}}" class="btn-product" title="Quick View">Quick View</a>
+																<a href="{{url('product-detail/'.$prod_val['getProduct']['slug'])}}" class="btn-product" title="Quick View">Quick View</a>
 															</div>
 														</figure>
 														<div class="product-details">
