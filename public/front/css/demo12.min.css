@@ -9241,7 +9241,6 @@ body .product-popup {
   height: auto;
   -webkit-transition: opacity 0.4s;
   transition: opacity 0.4s;
-  box-shadow: 0 3px 8px 0 #0f2c5730;
 }
 .product-media img:last-child {
   position: absolute;
@@ -16880,5 +16879,4 @@ body .product-popup {
 }
 .dealProduct figure.product-media {
     border: 0.5px solid #ddd;
-    box-shadow: 0 3px 6px 0 #0f2c5730;
 }
