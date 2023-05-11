@@ -113,7 +113,7 @@
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
 								</div>
-								 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2 dealProduct">
+								 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2 latestProduct">
                         	 @foreach($product as $product_val)
                             <div class="product-wrap mt-2">
                                 <div class="product text-center">

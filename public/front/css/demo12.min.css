@@ -16885,3 +16885,18 @@ body .product-popup {
     font-size: 2rem;
     color: #9a2948 !IMPORTANT;
 }
+.latestProduct figure.product-media {
+    max-width: 295px;
+    max-height: 300px;
+    width: 100%;
+    height: 225px;
+    border: 0.5px solid #ddd;
+}
+
+.latestProduct figure.product-media img {
+    max-width: 295px;
+    max-height: 300px;
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+}
