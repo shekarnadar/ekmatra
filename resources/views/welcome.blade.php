@@ -158,7 +158,7 @@
 								<div class="banner-wrapper appear-animate row cols-md-2 mb-7">
 									 @foreach($banner as $banner_value)
 										@if($banner_value['type'] == 'sale')
-										<div class="banner banner-fixed overlay-dark br-sm mt-4">
+										<div class="banner banner-fixed overlay-dark br-sm mt-10">
 												<figure class="br-sm">
 														<img src="{{url('banner/'.$banner_value['image'])}}" alt="Category Banner" width="680"
 																height="180" style="background-color: #565960;" />
