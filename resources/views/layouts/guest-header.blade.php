@@ -63,7 +63,7 @@
 									<div class="cart-overlay"></div>
 									@auth
 
-									<a href="{{url('wishlist')}}">
+										<a href="{{url('wishlist')}}" class="label-down link">
 											<i class="w-icon-cart">
 												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
 											</i>
