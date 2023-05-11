@@ -259,8 +259,8 @@
                                     <div class="product-details">
                                         <h4 class="product-name"><a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">{{$product_deals['getProduct']['name']}}</a></h4>
                                          <div class="ratings-container">
-                        										<a href="{{url('product-detail/'.$prod_val['slug'])}}" class="rating-reviews">Min Qty : {{$product_deals['getProduct']['maq'] ? $product_deals['getProduct']['maq'] :  $product_deals['getProduct']['maq']}}</a>
-                												</div>
+                        <a href="{{url('product-detail/'.$prod_val['slug'])}}" class="rating-reviews">Min Qty : {{$prod_val['maq'] ? $prod_val['maq'] :  $prod_val['getProduct']['maq']}}</a>
+                </div>
                                         <div class="product-price">
                                             <ins class="new-price">MRP : {{$product_deals['getProduct']['mrp']}}</ins>
                                         </div>
