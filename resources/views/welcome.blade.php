@@ -198,24 +198,19 @@
 										<img src="{{url('banner/'.$banner_value['image'])}}" alt="Banner" width="680" height="180"
 												style="background-color: #342E30;" />
 								</figure>
-								@endif
-								@endforeach
 								<div class="banner-content text-center x-50 y-50 slide-animate"
 										data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '15s', 'delay': '3s'}">
-										<h3 class="banner-subtitle text-primary text-uppercase font-secondary font-weight-bold">Today's
-												Special</h3>
-										<h2 class="banner-title text-white text-uppercase font-secondary font-weight-bolder mb-2">Trending
-												Accessories Collection</h2>
-										<p class="text-lighter font-weight-normal">
-												Free shipping on clearance orders of <span class="text-primary font-weight-bolder"> $120
-												</span>or more
-										</p>
-										<a href="#"
+										
+										=
+										<a href="{{$sub_value['shop_link']}}"
 												class="btn btn-lg btn-outline btn-white btn-rounded btn-icon-right slide-animate">
-												Purchase Now
+												Explore Now
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
 								</div>
+								@endif
+								@endforeach
+								
 						</div>
 						<!-- End of Banner -->
 						<div class="container">
