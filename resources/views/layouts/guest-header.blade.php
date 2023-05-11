@@ -59,11 +59,11 @@
 								<a href="tel:#" class="phone-number font-weight-bolder ls-50">{{$contact}}</a>
 							</div>
 						</div>
-							<div class=" cart-dropdown cart-offcanvas mr-0 mr-lg-1">
+							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
 									<div class="cart-overlay"></div>
 									@auth
 
-										<a href="{{url('wishlist')}}" class="label-down link">
+										<a href="{{url('wishlist')}}" class=" label-down link">
 											<i class="w-icon-cart">
 												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
 											</i>
