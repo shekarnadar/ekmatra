@@ -261,30 +261,23 @@
                                 <div class="product text-center">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="assets/images/demos/demo1/products/3-1-1.jpg" alt="Product"
+                                            <img src="{{url('product/'.$product_deals['getProduct']['image'])}}" alt="Product"
                                                 width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                          
+                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
                                                 title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon btn-quickview w-icon-search"
                                                 title="Quickview"></a>
                                             
                                         </div>
                                     </figure>
                                     <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Classic Hat</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(1 Reviews)</a>
-                                        </div>
+                                        <h4 class="product-name"><a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">{{$product_deals['getProduct']['name']}}</a></h4>
+                                       
                                         <div class="product-price">
-                                            <ins class="new-price">$53.00</ins>
+                                            <ins class="new-price">>MRP : {{$product_deals['getProduct']['name']}}</ins>
                                         </div>
                                     </div>
                                 </div>
