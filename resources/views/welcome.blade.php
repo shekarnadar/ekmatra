@@ -251,7 +251,7 @@
                                 					 @else
                                 						<a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
                                 					@endif
-                                  						<a href="{{url('product-detail/'.$product_dealss['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                  						<a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
                                             
                                         </div>
