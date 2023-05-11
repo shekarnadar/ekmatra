@@ -9709,7 +9709,7 @@ body .product-popup {
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: capitalize;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #aaa;
 }
 .rating-reviews:hover {
