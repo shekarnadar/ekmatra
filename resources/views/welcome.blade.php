@@ -267,12 +267,12 @@
                                         <div class="product-action-vertical">
                                           
                                             @auth
-								 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$prod_val['id']}}"
+								 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
                                                 title="Add to wishlist"></a>
                                 @else
                                 <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
                                 @endif
-                                  <a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                  <a href="{{url('product-detail/'.$product_deals['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
                                             <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
