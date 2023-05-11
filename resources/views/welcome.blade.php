@@ -260,7 +260,7 @@
                             <div class="product-wrap">
                                 <div class="product text-center">
                                     <figure class="product-media">
-                                        <a href="product-default.html">
+                                        <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">
                                             <img src="{{url('product/'.$product_deals['getProduct']['image'])}}" alt="Product"
                                                 width="300" height="338" />
                                         </a>
@@ -268,7 +268,7 @@
                                           
                                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
                                                 title="Add to wishlist"></a>
-                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon btn-quickview w-icon-search mt-2"
+                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
                                             
                                         </div>
