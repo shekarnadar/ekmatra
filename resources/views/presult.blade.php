@@ -1,27 +1,31 @@
 @if(count($product) > 0)
-	<div class="product-wrapper row cols-lg-4 cols-md-3 cols-2">
+	<div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
 			@foreach($product as $prod_val)
 				<div class="product-wrap">
-					<div class="product product-image-gap product-simple">
+					<div class="product text-center">
 						<figure class="product-media">
 							@if(@$prod_val['image'])
 							<a href="{{url('product-detail/'.$prod_val['slug'])}}">
 								<img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
-								 <img src='{{url("product/".$prod_val['image'])}}' alt="Product" width="195" height="135" />
 							</a>
 							@else
 							<a href="{{url('product-detail/'.$prod_val['getProduct']['slug'])}}">
 								<img src='{{url("product/".$prod_val['getProduct']['image'])}}' alt="Product" width="195" height="135" />
-								 <img src='{{url("product/".$prod_val['getProduct']['image'])}}' alt="Product" width="195" height="135" />
 							</a>
 							@endif
 						   @if(@$prod_val['slug'])
-							<div class="product-action">
-								<a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product" title="Quick View">Quick View</a>
+							<div class="product-action-horizontal">
+								  <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
+                                                title="Add to wishlist"></a>
+                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                                title="Quickview"></a>
 							</div>
 						@else
-						<div class="product-action">
-								<a href="{{url('product-detail/'.$prod_val['getProduct']['slug'])}}" class="btn-product" title="Quick View">Quick View</a>
+						<div class="product-action-horizontal">
+								  <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
+                                                title="Add to wishlist"></a>
+                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
+                                                title="Quickview"></a>
 							</div>
 						@endif
 						</figure>
