@@ -113,7 +113,7 @@
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
 								</div>
-								 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+								 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2 dealProduct">
                         	 @foreach($product as $product_val)
                             <div class="product-wrap mt-2">
                                 <div class="product text-center">
@@ -131,8 +131,6 @@
                                 						<a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in"></a>
                                 					@endif
                                   						<a href="{{url('product-detail/'.$product_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
-                                                title="Quickview"></a>
-                                            <a href="{{url('product-detail/'.$product_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
                                         </div>
                                     </figure>
