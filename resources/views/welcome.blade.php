@@ -11,8 +11,11 @@
 																'spaceBetween': 0,
 																'slidesPerView': 1
 														}">
+
 																<div class="swiper-wrapper row gutter-no cols-1">
 																	  @foreach($banner as $banner_value)
+																	  {{$banner_value}}
+
 																	   @if($banner_value['type'] == 'main')
 																		<div class="swiper-slide banner banner-fixed intro-slide intro-slide{{$loop->index}} br-sm" data-url="{{$banner_value['shop_link']}}"
 																				style="background-image: url({{asset('banner/'.$banner_value['image'])}}); background-color: #3F3E3A;">
