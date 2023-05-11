@@ -16,10 +16,12 @@
 							</div>
 						</div>
 						<div class="col-xl-7 col-lg-6 col-md-9 mt-4 mt-lg-0 ">
-							<form action="#" method="get"
-								class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+							<form  action="#" method="post"
+								class="input-wrapper input-wrapper-inline input-wrapper-rounded subscription" name="subscription" id="subscription">
+								@csrf
 								<input type="email" class="form-control mr-2 bg-white" name="email" id="email"
 									placeholder="Your E-mail Address" />
+
 								<button class="btn btn-dark btn-rounded" type="submit">Subscribe<i
 										class="w-icon-long-arrow-right"></i></button>
 							</form>
@@ -132,4 +134,43 @@
 				</div>
 			</div>
 		</footer>
-		
+<script type="text/javascript">
+	$('.subscription').on('submit', function(e) {
+		e.preventDefault()
+		let formValue = new FormData(this);
+		 $(".sendNow").prop('disabled',true);
+		$.ajax({
+       		type: "Post",
+          url: '{{ url("subscription") }}',
+          data: formValue,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+          	if(response.success){
+          		
+          		notifyMsg(response.message,'success');
+          		 setTimeout(function(){
+          		 	window.location.reload();
+          		 },1000);
+          		
+
+          	}else{
+          		notifyMsg(response.message,'error');
+            	 $(".sendNow").prop('disabled',false);
+          	}
+          },
+          error: function(response) {
+          	let error = response.responseJSON;
+            if(!error){
+            		error = JSON.parse(response.responseText);
+            }
+             $(".sendNow").prop('disabled',false);
+            $.each( error.errors, function( key, value ) {
+            	notifyMsg(value,'error');
+            			
+						});
+				}
+	});
+	});
+</script>

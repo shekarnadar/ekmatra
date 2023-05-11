@@ -101,3 +101,5 @@ Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('sa
 Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
 Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->name('customerInquiry');
 Route::post('vacancy/store',[VacencyRequirementsController::class,'store'])->name('vacancy.store');
+
+Route::post('subscription',[VacencyRequirementsController::class,'subscription'])->name('subscription');

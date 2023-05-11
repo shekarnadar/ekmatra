@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ResumeUpload;
+use App\Http\Requests\SubscriptionRequest;
 use App\Models\VacencyRequirements;
+use App\Models\Subscription;
+
+
 use DataTables;
 
 class VacencyRequirementsController extends Controller
@@ -56,5 +60,21 @@ class VacencyRequirementsController extends Controller
 
     return \Response::download($file, $VacencyRequirements['image'], $headers);
 
+    }
+
+    public function subscription(SubscriptionRequest $request){
+        try {
+            $data['email'] = $request['email'];
+            zohoSaveContact($data);
+            Subscription::saveSubscribe($request->input());
+            return response()->json(['success' => true,
+                'message' => 'Subcribe  successfully.'
+          ], 200);
+
+        } catch(\Exception $e){
+            echo $e->getmessage();
+            return response()->json(['success' => false,
+                'message' => 'something went wrong'], 200);
+        }  
     }
 }
