@@ -9255,6 +9255,7 @@ body .product-popup {
 .product-media img:first-child {
   position: relative;
   opacity: 1;
+  border:1px solid #ddd;
 }
 .product-media:hover img:last-child {
   opacity: 1;
@@ -9605,9 +9606,10 @@ body .product-popup {
   margin-bottom: 0.7rem;
   font-size: 1.3rem;
   font-weight: 500;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 20px;
+  word-break: break-word;
 }
 .product-name a {
   color: inherit;

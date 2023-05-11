@@ -268,7 +268,7 @@
                                           
                                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$product_deals['getProduct']['id']}}"
                                                 title="Add to wishlist"></a>
-                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon btn-quickview w-icon-search"
+                                            <a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}" class="btn-product-icon btn-quickview w-icon-search mt-2"
                                                 title="Quickview"></a>
                                             
                                         </div>
@@ -277,7 +277,7 @@
                                         <h4 class="product-name"><a href="{{url('product-detail/'.$product_deals['getProduct']['slug'])}}">{{$product_deals['getProduct']['name']}}</a></h4>
                                        
                                         <div class="product-price">
-                                            <ins class="new-price">>MRP : {{$product_deals['getProduct']['mrp']}}</ins>
+                                            <ins class="new-price">MRP : {{$product_deals['getProduct']['mrp']}}</ins>
                                         </div>
                                     </div>
                                 </div>
