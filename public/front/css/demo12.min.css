@@ -9453,13 +9453,13 @@ body .product-popup {
 }
 
 .product-action-vertical {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  -webkit-transition: opacity 0.3s, visibility 0.3s;
-  transition: opacity 0.3s, visibility 0.3s;
-  opacity: 0;
-  visibility: hidden;
+   position: absolute;
+    top: 5px;
+    right: 0;
+    -webkit-transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .product-action-horizontal {
@@ -14391,16 +14391,16 @@ body .product-popup {
 
 .wishlist {
   display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-  margin-right: 2.3rem;
-  color: #333;
-  margin: 0.2rem 2.2rem 0 0.1rem;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    margin-right: 2.3rem;
+    color: #333;
+    margin: 0rem 0.5rem 0 0rem;
 }
 .wishlist span {
   margin-top: 0.3rem;
