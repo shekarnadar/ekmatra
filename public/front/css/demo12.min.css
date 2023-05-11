@@ -4649,7 +4649,7 @@ blockquote {
 .btn-white.btn-outline {
   color: #fff;
   border-color: #fff;
-  background-color: transparent;
+  background-color: #000;
 }
 .btn-white.btn-outline:hover, .btn-white.btn-outline:active, .btn-white.btn-outline:focus {
   background-color: #fff;
