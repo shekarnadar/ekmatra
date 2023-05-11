@@ -4048,7 +4048,6 @@ blockquote {
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
   font-size: 1rem;
   overflow: hidden;
 }
@@ -14084,6 +14083,8 @@ body .product-popup {
   background: #fff;
   font-size: 1.2rem;
   border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
 }
 .header-middle .header-left {
   -webkit-box-flex: 1;
@@ -14143,7 +14144,7 @@ body .product-popup {
           flex: 1;
   min-width: 40px;
   padding: 0.9rem;
-  border: 2px solid #fff;
+  border: 2px solid #9a2948;
   border-right: 0;
   font-size: 1.2rem;
   letter-spacing: 0;
@@ -14167,10 +14168,10 @@ body .product-popup {
 .header-search .btn-search {
   margin: 0;
   padding: 0;
-  min-width: 2.5rem;
+  min-width: 5.1rem;
   color: #333;
   border-left: 0;
-  border-color: #fff;
+  border-color: #9a2948;
   font-size: 1.5rem;
   font-weight: normal;
   letter-spacing: -0.025em;
@@ -14261,11 +14262,11 @@ body .product-popup {
           flex: 1;
   margin: 0 auto;
   min-width: auto;
-  max-width: 66.2rem;
+  max-width: 55.6rem;
 }
 .header-search.hs-expanded .select-box {
   width: 14.6rem;
-  border: 2px solid #fff;
+  border: 2px solid #9a2948;
   border-right: none;
   color: #666666;
 }
@@ -16223,24 +16224,6 @@ body .product-popup {
 
 .header-middle.fixed {
   padding: 1.6rem 0;
-}
-.header-middle .header-search {
-  padding-bottom: 0.2rem;
-  border-bottom: 1px solid #eee;
-}
-.header-middle .header-search.hs-expanded .select-box::after {
-  height: 27px;
-}
-.header-middle .header-search .select-box {
-  width: 12.8rem;
-}
-.header-middle .header-search .select-box select {
-  width: 109%;
-  padding-left: 1rem;
-  margin-left: -1rem;
-}
-.header-middle .header-search .form-control {
-  min-height: 3.5rem;
 }
 
 .header-call::after {
