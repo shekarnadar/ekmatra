@@ -14428,8 +14428,8 @@ body .product-popup {
   margin-top: 0.4rem;
 }
 .header-call .phone-number {
-  font-size: 1.6rem;
-  line-height: 1.7;
+   font-size: 1.3rem;
+    line-height: 1.7;
   letter-spacing: -0.8px;
 }
 .header-call .chat a {
@@ -16879,4 +16879,9 @@ body .product-popup {
 }
 .dealProduct figure.product-media {
     border: 0.5px solid #ddd;
+}
+.header-call .w-icon-call {
+    margin: 0px 5px 0 0;
+    font-size: 2rem;
+    color: #9a2948 !IMPORTANT;
 }
