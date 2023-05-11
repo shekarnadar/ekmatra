@@ -16878,3 +16878,7 @@ body .product-popup {
     max-width: 6rem;
   }
 }
+.dealProduct figure.product-media {
+    border: 0.5px solid #ddd;
+    box-shadow: 0 3px 6px 0 #0f2c5730;
+}

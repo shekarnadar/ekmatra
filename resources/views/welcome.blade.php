@@ -254,7 +254,7 @@
                 <!-- End of Tab -->
                 <div class="tab-content product-wrapper appear-animate">
                 	   @foreach($deal as $key=>$deal_value)
-                    <div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }} pt-4" id="tab1-{{ $loop->iteration }}">
+                    <div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }} pt-4 dealProduct" id="tab1-{{ $loop->iteration }}">
                         <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
                         	 @foreach($deal_value['productDeals'] as $product_deals)
                             <div class="product-wrap">
