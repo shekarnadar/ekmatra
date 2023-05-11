@@ -16907,3 +16907,6 @@ body .product-popup {
     border: 0.5px solid #ddd;
 
 }
+.cart-dropdown > a::after{
+Display:none;
+}
