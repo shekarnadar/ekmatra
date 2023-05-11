@@ -43,11 +43,13 @@ $url = getAuthGaurd();
 					</li>
 					@if($url == 'admin')
 					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Pages</span><span class="badge badge-warning side-badge">5</span></a>
+						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Pages</span></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{url("$url/faqs")}}">FAQ</a></li>
 							<li><a class="slide-item" href='{{url("$url/contact-us/add")}}'>Contact Us </a></li>
 							<li><a class="slide-item" href='{{url("$url/we-are-hirings")}}'>We Are Hiring </a></li>
+							<li><a class="slide-item" href='{{url("$url/subscription/list")}}'>Subscription </a></li>
+							
 							
 							
 						</ul>
@@ -57,7 +59,7 @@ $url = getAuthGaurd();
 						<a class="side-menu__item {{ request()->is($url.'/banners',$url.'/banner/add',$url.'/banner/edit/*',$url.'/banners/*')? 'active' : '' }}" href='{{url("$url/banners")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Banners</span></a>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Users</span><span class="badge badge-warning side-badge">5</span></a>
+						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Users</span></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{url("$url/vendors")}}">Vendors</a></li>
 							<li><a class="slide-item" href='{{url("$url/customers")}}'>Customers </a></li>

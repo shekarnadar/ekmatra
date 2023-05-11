@@ -137,6 +137,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::delete('we-are-hiring/{id}', [WeAreHiringController::class,'destroy'])->name('weAreHiring.delete');
 
 		Route::get('job-post',[VacencyRequirementsController::class,'index'])->name('jobpost.index');
+		Route::get('subscription/list',[VacencyRequirementsController::class,'subscriptionList'])->name('subscription.list');
 		Route::get('job-post/download/{id}',[VacencyRequirementsController::class,'jobDownload'])->name('jobpost.download');
 		Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 				->name('admin.logout');

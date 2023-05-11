@@ -14,6 +14,14 @@ use DataTables;
 class VacencyRequirementsController extends Controller
 {
     //
+    public function subscriptionList(Request $request){
+             if ($request->ajax()) {
+                    $data = Subscription::get();
+                    return Datatables::of($data)
+                    ->make(true);
+            }
+            return view('admin.subscription.index');
+    }
     public function index(Request $request){
         if ($request->ajax()) {
                     $data = VacencyRequirements::get();
@@ -27,7 +35,7 @@ class VacencyRequirementsController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
             }
-                return view('admin.we_are_hiring.job-post');
+            return view('admin.we_are_hiring.job-post');
     }
     public function store(ResumeUpload $request){
         try {
