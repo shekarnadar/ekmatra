@@ -9723,7 +9723,7 @@ body .product-popup {
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: -0.05em;
-  line-height: 1.6;
+  line-height: 1.2;
   -webkit-transition: visibility 0.4s, opacity 0.4s;
   transition: visibility 0.4s, opacity 0.4s;
 }
