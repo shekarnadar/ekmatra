@@ -18,7 +18,7 @@ class ShopController extends Controller
 
     $allcategory = 1;
 		$product = Product::where('status',1);
-		$product=$product->orderBy('created_at','desc')->paginate(10);
+		$product=$product->orderBy('created_at','desc')->paginate(12);
 		 return view ('allproduct',compact('brand','product','allcategory'));
 		
 	}
@@ -43,7 +43,7 @@ class ShopController extends Controller
 
     	
 		$product = Product::where('category_id',$cat_id)->where('status',1);
-		$product=$product->orderBy('created_at','desc')->paginate(10);
+		$product=$product->orderBy('created_at','desc')->paginate(12);
 		
 		
 		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product','cat_slug','select_cat_id'));
@@ -122,7 +122,7 @@ class ShopController extends Controller
 		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
 		
 
-		$product = $product->orderBy('created_at','desc')->paginate(10);
+		$product = $product->orderBy('created_at','desc')->paginate(12);
 		
 
 		$brand = Product::with('feature_attributes')
@@ -179,7 +179,7 @@ class ShopController extends Controller
 		->where('status',1);
 		
 		
-		$product = $product->orderBy('created_at','desc')->paginate(10);
+		$product = $product->orderBy('created_at','desc')->paginate(12);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id'));
 
 		

@@ -1,5 +1,5 @@
 @if(count($product) > 0)
-	<div class="product-wrapper row cols-lg-3 cols-md-3 cols-2">
+	<div class="product-wrapper row cols-lg-3 cols-md-3 cols-2 dealProduct">
 			@foreach($product as $prod_val)
 				<div class="product-wrap">
 					<div class="product text-center">
@@ -9,8 +9,12 @@
 							</a>
 							
 							<div class="product-action-vertical">
+								@auth
 								 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart wishlist" data-id="{{$prod_val['id']}}"
                                                 title="Add to wishlist"></a>
+                                @else
+                                <a href="{{url('login')}}" class="btn-product-icon btn-wishlist w-icon-heart  sign-in">Add to Wishlist</a>
+                                @endif
                                   <a href="{{url('product-detail/'.$prod_val['slug'])}}" class="btn-product-icon  w-icon-search mt-2"
                                                 title="Quickview"></a>
 							</div>
@@ -26,7 +30,7 @@
 								<div class="product-price">
 									<ins class="new-price">MRP : {{$prod_val['mrp'] ? $prod_val['mrp'] : $prod_val['getProduct']['mrp']}}</ins>
 								</div>
-								<div class="product-price">
+								<div class="product-price mt-2">
 									<ins class="new-price">Min Qty : {{$prod_val['maq'] ? $prod_val['maq'] :  $prod_val['getProduct']['maq']}}</ins>
 								</div>
 								
