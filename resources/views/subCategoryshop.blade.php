@@ -7,7 +7,7 @@
                 <div class="container">
                     <ul class="breadcrumb bb-no">
                         <li><a href="{{url('/')}}">Home</a></li>
-                        <li><a href="{{url('shop/'.$cat_name)}}">{{$cat_name}}</a></li>
+                        <li><a href="{{url('shop/'.$cat_slug)}}">{{$cat_name}}</a></li>
                         <li>{{$subcategory_name}}</li>
                     </ul>
                 </div>
