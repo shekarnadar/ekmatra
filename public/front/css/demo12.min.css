@@ -9455,7 +9455,7 @@ body .product-popup {
 .product-action-vertical {
    position: absolute;
     top: 5px;
-    right: 0;
+    right: 5px;
     -webkit-transition: opacity 0.3s, visibility 0.3s;
     transition: opacity 0.3s, visibility 0.3s;
     opacity: 0;
