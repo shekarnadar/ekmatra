@@ -66,6 +66,7 @@
 									 <p class="show" style="display:none">Nothing is here</p>
 								</div>
 						</div>
+						<br><br><br>
 </x-guest-layout>
 <script type="text/javascript">
 	
