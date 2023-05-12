@@ -16903,8 +16903,6 @@ body .product-popup {
     object-fit: contain;
 }
 .product_page .product-wrap figure.product-media img {
-    max-height: 350px;
-    height: 321px;
     width: 100%;
     border: 0.5px solid #ddd;
 
