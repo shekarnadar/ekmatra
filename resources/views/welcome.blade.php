@@ -203,7 +203,7 @@
 										
 										
 										<a href="{{$banner_value['shop_link']}}"
-												class="btn btn-lg btn-outline btn-white btn-rounded btn-icon-right slide-animate">
+												class="btn btn-lg btn-outline btn-white btn-rounded btn-icon-right slide-animate" target="_blank">
 												Explore Now
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
