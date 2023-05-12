@@ -34,4 +34,7 @@ class Deal extends Model
     public function productDeals(){
         return $this->hasMany('App\Models\ProductDeal');
     }
+     public function homeproductDeals(){
+        return $this->hasMany('App\Models\ProductDeal')->limit(8);
+    }
 }
