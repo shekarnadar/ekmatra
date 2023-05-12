@@ -17,7 +17,7 @@
 					<!-- End of Shop Sidebar -->
 
 					<!-- Start of Main Content -->
-					<div class="main-content">
+					
 
 						<div id="tag_container">
 							 <div class="product-wrapper row cols-lg-4 cols-md-3 cols-2 product_page">
@@ -59,7 +59,6 @@
                         </div>
 						</div>
 						
-					</div>
 				</div>
 			</div>
 
