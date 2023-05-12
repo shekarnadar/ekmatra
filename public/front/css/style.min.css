@@ -21470,3 +21470,7 @@ b.bold-wishlist-font {
 .cart-table .store-header {
     height: 110px;
 }
+.wishlistspan{
+  align-items: center;
+  display: flex;
+}
