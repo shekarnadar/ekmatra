@@ -92,7 +92,7 @@ class ShopController extends Controller
         if($request['page_limit']){
         	$page_limit = $request['page_limit'];
         }else{
-        	$page_limit = 10;
+        	$page_limit = 12;
         }
     	$product = $product->where('status',1);
     	
@@ -238,7 +238,7 @@ class ShopController extends Controller
         if($request['page_limit']){
         	$page_limit = $request['page_limit'];
         }else{
-        	$page_limit = 10;
+        	$page_limit = 12;
         }
 		
 		
