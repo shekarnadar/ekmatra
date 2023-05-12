@@ -14,7 +14,7 @@
 								<form  name="loginForm" method="POST" id="loginForm" autocomplete="off" action="">
 									@csrf
 									<div class="form-group">
-											<label>email address *</label>
+											<label>Email address *</label>
 											<input type="text" class="form-control" name="email" id="email" required  autocomplete="none">
 											<span class="error" id="email1_error"></span>
 									</div>
