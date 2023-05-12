@@ -73,7 +73,7 @@
 	$(".cart-table").on("click", ".removecart", function() {
    	var id = $(this).attr('data-id');
    	var whichtr = $(this).closest("div");
- 		var rowCount = $(".cart-table div").length;
+ 		var rowCount = $(".cart-table .store-wrap").length;
  		if (confirm('Are you sure want to remove?')) {
 			$.ajax({
 	    		type: "post",
@@ -83,7 +83,7 @@
 	            "_token": "{{ csrf_token() }}",
 	        },
 	        success: function(response) {
-	        	   	whichtr.remove();
+	        	   	$('.removetr'+id).remove();
 	        	   	if(rowCount == 1){
 	        	   		$(".show").show();
 	        	   		$(".cart-table").hide();
