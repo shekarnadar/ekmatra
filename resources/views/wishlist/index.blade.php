@@ -14,7 +14,7 @@
 										<div class="row cols-sm-3 cart-table">
                                
 																@foreach($wishlist as $value)
-                                <div class="store-wrap mb-4">
+                                <div class="store-wrap mb-4 removetr{{$value['id']}}">
                                     <div class="store store-grid store-wcfm">
                                         <div class="store-header">
                                             <figure class="store-banner">

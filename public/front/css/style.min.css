@@ -21455,3 +21455,18 @@ a.btn-visit.removecart:hover {
     border-color: #9a2948;
     color: #fff;
 }
+b.bold-wishlist-font {
+    width: 70px;
+    height: 100%;
+    background-color: #c40000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 10px;
+}
+.cart-table .store-header{
+    height:90px !importnat;
+}
