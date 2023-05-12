@@ -14,6 +14,46 @@
             </nav>
 
                 <div class="container">
+                    <div class="store store-banner mb-4">
+                                <figure class="store-media">
+                                    <img src="assets/images/vendor/dokan/1.jpg" alt="Vendor" width="930" height="446" style="background-color: #414960;">
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="assets/images/vendor/brand/1.jpg" alt="Brand" width="80" height="80">
+                                    </figure>
+                                    <h4 class="store-title">Vendor 1</h4>
+                                    <ul class="seller-info-list list-style-none mb-6">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            Steven Street, El Carjon
+                                            California, United States (US)
+                                        </li>
+                                        <li class="store-phone">
+                                            <a href="tel:1234567890">
+                                                <i class="w-icon-phone"></i>
+                                                1234567890
+                                            </a>
+                                        </li>
+                                        <li class="store-rating">
+                                            <i class="w-icon-star-full"></i>
+                                            4.33 rating from 3 reviews
+                                        </li>
+                                        <li class="store-open">
+                                            <i class="w-icon-cart"></i>
+                                            Store Open
+                                        </li>
+                                    </ul>
+                                    <div class="social-icons social-no-color border-thin">
+                                        <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                                        <a href="#" class="social-icon social-google w-icon-google"></a>
+                                        <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
+                                        <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
+                                        <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
+                                        <a href="#" class="social-icon social-instagram w-icon-instagram"></a>
+                                    </div>
+                                </div>
+                            </div>
                 <div class="shop-content row gutter-lg">
                     <!-- Start of Sidebar, Shop Sidebar -->
                     <input type="hidden" value="{{@$sub_cat['id']}}" id="subcat_id">
