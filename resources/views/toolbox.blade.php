@@ -8,8 +8,8 @@
                                     <select name="orderby" class="form-control" id="orderby">
                                         
                                         <option value="created_at" data-order="desc"  selected>Sort by latest</option>
-                                        <option value="mrp" data-order="asc">Sort by prise: low to high</option>
-                                        <option value="mrp" data-order="desc">Sort by prise: high to low</option>
+                                        <option value="mrp" data-order="asc">Sort by price: low to high</option>
+                                        <option value="mrp" data-order="desc">Sort by price: high to low</option>
                                     </select>
                                 </div>
                             </div>
