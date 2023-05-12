@@ -15,7 +15,8 @@ class WelcomeController extends Controller
 	//
 	public function index(){
 		
-		$deal = Deal::with('homeproductDeals.getProduct')->get();
+		$deals = Deal::with('productDeals.getProduct')->get();
+		$deal =$deals->productDeals->take(8);
         $banner = Banner::orderBy('sorting','desc')->get();
         $download = Banner::where('type','download')->pluck('image')->first();
         
