@@ -100,7 +100,7 @@ class Product extends Model
 
    //get Latest Product
    public static function getLatestProduct(){
-   	$product = Product::where('status',1)->latest()->take(5)->get();
+   	$product = Product::where('status',1)->latest()->take(10)->get();
    	return $product;
    }
 

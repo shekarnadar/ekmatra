@@ -227,7 +227,7 @@
                 </div>
                 <!-- End of Tab -->
                 <div class="tab-content product-wrapper appear-animate">
-                	<a href="{{url('deals/product')}}" class="font-weight-bold ls-25">
+                	<a href="{{url('deals/product')}}" class="font-weight-bold ls-25 text-right">
 												More Products
 												<i class="w-icon-long-arrow-right"></i>
 										</a>
