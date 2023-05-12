@@ -20,7 +20,7 @@
 					<div class="main-content">
 
 						<div id="tag_container">
-							 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+							 <div class="product-wrapper row cols-lg-4 cols-md-3 cols-2 product_page">
                         	 @foreach($product as $product_deals)
                             <div class="product-wrap mt-2">
                                 <div class="product text-center">
