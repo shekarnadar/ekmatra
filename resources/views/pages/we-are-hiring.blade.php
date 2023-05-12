@@ -188,19 +188,24 @@
 			</div>
 </x-guest-layout>
 <script type="text/javascript">
-	$('.product-image-full').click(function(){
-		let img = $(this).attr('data-zoom-image');
+	 $('.product-image-full').click(function(){
+	 // 	  $('div.gallery').magnificPopup({delegate: 'img' , type: 'image', gallery:{enabled:true},
+
+     // callbacks: {
+     //      elementParse: function() { this.item.src = this.item.el.attr('src'); }
+     // }
+	 	let img = $(this).attr('data-zoom-image');
 		 Wolmart.popup({
 						items:{
-							src:'<img src="'+img+'">'
+							src:img
 							},
-							type:'inline',
-							mainClass:'imgepopup',
+							type:'image',
+							mainClass:'image-popup',
+							elementParse:function(){
+								this.item.src = this.item.el.attr('src'); 
+							},
 							callbacks:{
-								beforeClose:function(){
-									;
-
-								}
+								
 							}
 					});
 					});

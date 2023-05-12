@@ -218,7 +218,10 @@
 	</div>
 
 	<!-- End of Newsletter popup -->
-	<div class="product product-single product-popup imgepopup login-popup">
+	<div class="newsletter-popup mfp-hide newsletterdiv image-popup">
+		<div class="image-popup-show">
+				<img src="">
+		</div>
 	</div>
 	<!-- Start of Quick View -->
 	<div class="product product-single product-popup login-popup">
