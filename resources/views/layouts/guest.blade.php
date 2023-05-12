@@ -218,7 +218,8 @@
 	</div>
 
 	<!-- End of Newsletter popup -->
-
+	<div class="product product-single product-popup imgepopup login-popup">
+	</div>
 	<!-- Start of Quick View -->
 	<div class="product product-single product-popup login-popup">
 		<h4>Forgot your password?</h4>

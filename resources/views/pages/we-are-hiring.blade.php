@@ -117,9 +117,11 @@
 							<div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-sm-2 cols-1">
 								<div class="swiper-slide member-wrap">
 									<figure class="br-lg">
-										<img src="{{url('aboutus/DSC_1057.jpg')}}" alt="Member" width="295" height="332" />
-										
+										<img src="{{url('aboutus/DSC_1057.jpg')}}" alt="Member" width="295" height="332"  data-zoom-image="{{url('aboutus/DSC_1057.jpg')}}"
+                                                            alt="Electronics Black Wrist Watch" width="800" height="900"/>
+									
 									</figure>
+									 <a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/DSC_1057.jpg')}}"><i class="w-icon-zoom"></i></a>
 								   
 								</div>
 								<div class="swiper-slide member-wrap">
@@ -127,6 +129,7 @@
 										 <img src="{{url('aboutus/DSC_5124.jpg')}}" alt="Member" width="295" height="332" />
 									   
 									</figure>
+									 <a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/DSC_5124.jpg')}}"><i class="w-icon-zoom"></i></a>
 								  
 								</div>
 								  <div class="swiper-slide member-wrap">
@@ -134,6 +137,7 @@
 										 <img src="{{url('aboutus/DSC_6470.JPG')}}" alt="Member" width="295" height="332" />
 									   
 									</figure>
+									 <a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/DSC_6470.JPG')}}"><i class="w-icon-zoom"></i></a>
 								  
 								</div>
 
@@ -142,6 +146,7 @@
 										 <img src="{{url('aboutus/DSC_6480.JPG')}}" alt="Member" width="295" height="332" />
 									   
 									</figure>
+									 <a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/DSC_6480.JPG')}}"><i class="w-icon-zoom"></i></a>
 								  
 								</div>
 
@@ -150,6 +155,7 @@
 										 <img src="{{url('aboutus/DSC_6481.JPG')}}" alt="Member" width="295" height="332" />
 									   
 									</figure>
+									 <a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/DSC_6481.JPG')}}"><i class="w-icon-zoom"></i></a>
 								  
 								</div>
 
@@ -158,6 +164,7 @@
 										 <img src="{{url('aboutus/DSC_8112.gif')}}" alt="Member" width="295" height="332" />
 									   
 									</figure>
+									 <a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/DSC_8112.gif')}}"><i class="w-icon-zoom"></i></a>
 								  
 								</div>
 
@@ -166,6 +173,8 @@
 										 <img src="{{url('aboutus/IMG-20230505-WA0013.jpg')}}" alt="Member" width="295" height="332" />
 									   
 									</figure>
+									<a href="#" class="product-gallery-btn product-image-full" data-zoom-image="{{url('aboutus/IMG-20230505-WA0013.jpg')}}"><i class="w-icon-zoom"></i></a>
+								  
 								  
 								</div>
 							   
@@ -179,6 +188,24 @@
 			</div>
 </x-guest-layout>
 <script type="text/javascript">
+	$('.product-image-full').click(function(){
+		let img = $(this).attr('data-zoom-image');
+		 Wolmart.popup({
+						items:{
+							src:'<img src="'+img+'">'
+							},
+							type:'inline',
+							mainClass:'imgepopup',
+							callbacks:{
+								beforeClose:function(){
+									;
+
+								}
+							}
+					});
+					});
+		
+	
 	$('.wearehiring').addClass('active');
 	$('.contact-us-form').on('submit', function(e) {
 		e.preventDefault()
