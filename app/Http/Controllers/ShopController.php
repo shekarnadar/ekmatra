@@ -25,7 +25,7 @@ class ShopController extends Controller
 	}
 	public function dealsProduct(Request $request){
 		$product = ProductDeal::with('getProduct')->get();
-		return view ('dealsproduct',compact('brand','product','allcategory'));
+		return view ('dealsproduct',compact('product'));
 
 	}
 	public function index($category,Request $request){
