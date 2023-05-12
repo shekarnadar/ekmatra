@@ -8,6 +8,7 @@ use App\Models\SubCategory;
 use App\Models\Wishlist;
 use App\Models\Product;
 use App\Models\SubCategoryFeature;
+use App\Models\ProductDeal;
 
 
 class ShopController extends Controller
@@ -21,6 +22,11 @@ class ShopController extends Controller
 		$product=$product->orderBy('created_at','desc')->paginate(12);
 		 return view ('allproduct',compact('brand','product','allcategory'));
 		
+	}
+	public function dealsProduct(Request $request){
+		$product = ProductDeal::with('getProduct')->get();
+		return view ('dealsproduct',compact('brand','product','allcategory'));
+
 	}
 	public function index($category,Request $request){
 		
