@@ -21474,3 +21474,6 @@ b.bold-wishlist-font {
   align-items: center;
   display: flex;
 }
+.cart-dropdown a.label-down.link:after {
+    display: none;
+}
