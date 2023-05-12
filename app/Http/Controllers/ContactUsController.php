@@ -82,10 +82,10 @@ class ContactUsController extends Controller
 				 ];
 					contactUsInquiry::saveInquiry($request->input());
 					 Mail::send('emails.contact-us', ['data' => $data], function($message) use($request, $to_email){
-              $message->to($to_email);
-              $message->from($request->email);
-              $message->subject('Contact Us inquiry');
-          });
+              			$message->to($to_email);
+              			$message->from($request->email);
+              			$message->subject('Contact Us inquiry');
+          			});
 					return response()->json(['success' => true,
 						'message' => 'your query has been submited successfully.'
 					], 200);

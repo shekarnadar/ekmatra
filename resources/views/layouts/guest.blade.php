@@ -218,7 +218,7 @@
 	</div>
 
 	<!-- End of Newsletter popup -->
-	<div class="newsletter-popup mfp-hide newsletterdiv image-popup">
+	<div class="mfp-hide  image-popup">
 		<div class="image-popup-show">
 				<img src="">
 		</div>
