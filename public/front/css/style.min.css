@@ -21399,6 +21399,7 @@ aside .sp-sidebar-banner span {
 }
 .image-popup img {
   width: 100%;
+    padding: 0;
 }
 
 
