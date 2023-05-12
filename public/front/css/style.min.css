@@ -9531,7 +9531,7 @@ body .product-popup {
   height: 100%;
   top: 0;
   left: calc(50% - 1px);
-  background-color: #fff;
+  background-color: #000;
 }
 .mfp-close::after {
   width: 100%;
@@ -9539,10 +9539,7 @@ body .product-popup {
   top: calc(50% - 1px);
   left: 0;
 }
-.mfp-close:hover {
-  -webkit-transform: rotateZ(135deg) scale(1.5);
-          transform: rotateZ(135deg) scale(1.5);
-}
+
 
 .mfp-ready.mfp-zoom-popup .mfp-content {
   -webkit-transform: scale(1);
@@ -21396,4 +21393,18 @@ aside .sp-sidebar-banner span {
         -ms-flex-pack: center;
             justify-content: center;
   }
+}
+.image-popup .mfp-content {
+  max-width: 100rem;
+}
+.image-popup img {
+  width: 100%;
+}
+
+
+.image-popup button.mfp-close {
+    width: 20px;
+    top: 10px;
+    right: 10px;
+    color: #000;
 }
