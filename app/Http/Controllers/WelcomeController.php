@@ -18,7 +18,7 @@ class WelcomeController extends Controller
 		$deal = Deal::with('productDeals.getProduct')
 		->get()
 		->map(function( $deals ){
-				$deals->productDeals = $deals->productDeals->take(8);
+				$deals->productDeals = $deals->productDeals->take(10);
 				return $deals;
 		});
 
