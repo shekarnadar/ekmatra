@@ -18,7 +18,7 @@
                                     <div class="store store-grid store-wcfm">
                                         <div class="store-header">
                                             <figure class="store-banner">
-                                                <img src="{{url('front/background.PNG')}}" alt="Vendor" width="200" height="100" style="background-color: #40475E">
+                                                <img src="{{url('front/background.png')}}" alt="Vendor" width="200" height="100" style="background-color: #40475E">
                                             </figure>
                                         </div>
                                         <!-- End of Store Header -->
@@ -51,7 +51,7 @@
 
                                             </figure></a>
                                             @endif
-                                            <a href="#" class="btn btn-inquiry btn-rounded btn-icon-left">View Vishlist</a>
+                                            <a href="{{url('wishlist/view/'.$value['id'])}}" class="btn btn-inquiry btn-rounded btn-icon-left">View Vishlist</a>
                                             <a href="#" class="btn btn-rounded btn-visit removecart" data-id="{{$value['id']}}">Remove</a>
                                         </div>
                                         <!-- End of Store Footer -->

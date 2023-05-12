@@ -21429,3 +21429,29 @@ aside .sp-sidebar-banner span {
     left: calc(50% - 1px);
     background-color: #000;
 }
+.icon-download {
+    margin-bottom: 0;
+}
+
+span.icon-box-icon.icon-download i.w-icon-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.cart-table figure.seller-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+a.btn.btn-inquiry:hover {
+    background-color: #9a2948;
+    border-color: #9a2948;
+    color: #fff;
+}
+a.btn-visit.removecart:hover {
+    background-color: #9a2948;
+    border-color: #9a2948;
+    color: #fff;
+}
