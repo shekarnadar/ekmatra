@@ -9608,6 +9608,7 @@ body .product-popup {
   text-overflow: ellipsis;
   line-height: 20px;
   word-break: break-word;
+  white-space:nowrap;
 }
 .product-name a {
   color: inherit;
@@ -16903,6 +16904,7 @@ body .product-popup {
     object-fit: contain;
 }
 .product_page .product-wrap figure.product-media img {
+    height: 200px;
     width: 100%;
     border: 0.5px solid #ddd;
 
