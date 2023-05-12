@@ -104,3 +104,5 @@ Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->nam
 Route::post('vacancy/store',[VacencyRequirementsController::class,'store'])->name('vacancy.store');
 
 Route::post('subscription',[VacencyRequirementsController::class,'subscription'])->name('subscription');
+
+Route::get('deals/product',[ShopController::class,'dealsProduct'])->name('deals.product');

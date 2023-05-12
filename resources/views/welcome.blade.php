@@ -227,6 +227,10 @@
                 </div>
                 <!-- End of Tab -->
                 <div class="tab-content product-wrapper appear-animate">
+                	<a href="{{url('deals/product')}}" class="font-weight-bold ls-25">
+												More Products
+												<i class="w-icon-long-arrow-right"></i>
+										</a>
                 	   @foreach($deal as $key=>$deal_value)
                     <div class="tab-pane {{($loop->iteration == 1) ? 'active' :'' }} pt-4 dealProduct" id="tab1-{{ $loop->iteration }}">
                         <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
