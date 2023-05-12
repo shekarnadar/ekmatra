@@ -32,7 +32,7 @@ class Deal extends Model
     }
 
     public function productDeals(){
-        return $this->hasMany('App\Models\ProductDeal');
+        return $this->hasMany('App\Models\ProductDeal')->orderBy('created_at', 'desc')->limit(8);
     }
    
 }
