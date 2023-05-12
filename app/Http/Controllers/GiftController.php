@@ -15,7 +15,9 @@ class GiftController extends Controller
 
 		if($type == 'occasions'){
 			
-			$occasion_id = Occasions::where('slug',$value)->pluck('id')->first();
+			$occasion = Occasions::where('slug',$value)->first();
+			$occasion_id =$occasion['name'];
+			$main_name = $occasion['name'];
 			$feature_attribute_id = '';
 			$product = ProductOccasion::join('products','products.id','=','product_occasions.product_id')
 			->where('occasion_id',$occasion_id)
@@ -26,11 +28,13 @@ class GiftController extends Controller
 		else if($type == 'brand'){
 			$occasion_id = '';
 			$feature_attribute_id = FeatureAttribute::where('name',$value)->pluck('id')->first();
+			$main_name = $value;
 			$product = Product::where('feature_attribute_id',$feature_attribute_id)->where('status',1);
 		}else{
 			$occasion_id = '';
 			$feature_attribute_id = '';
 			$explode_value = explode('-',$value);
+			$main_name = $value;
 			$product = Product::where('status',1);
 			if($explode_value[1] == 5000){
         	$product->where('price','>=',$explode_value[1]);
@@ -42,7 +46,7 @@ class GiftController extends Controller
 		}
 		 $product->orderBy('products.created_at','desc');
 		$product = $product->paginate(12);
-		return view('gift', compact('product','occasion_id','feature_attribute_id','type','value'));
+		return view('gift', compact('product','occasion_id','feature_attribute_id','type','value','main_name'));
 	}
 
 	public function shopByFilter(Request $request){

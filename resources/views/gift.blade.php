@@ -7,7 +7,7 @@
 				<div class="container">
 					<ul class="breadcrumb bb-no">
 						<li><a href="{{url('/')}}">Home</a></li>
-						<li><a>{{$value}}</a></li>
+						<li><a>{{$main_name}}</a></li>
 					</ul>
 				</div>
 			</nav>
