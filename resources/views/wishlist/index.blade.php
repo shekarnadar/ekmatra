@@ -31,7 +31,7 @@
                                                 <li class="store-email">
                                                     <a>
                                                        
-                                                        <span>Count :{{$value['product_wish_list_count']}} </span>
+                                                        <span>Count :<b class="bold-wishlist-font">{{$value['product_wish_list_count']}}</b> </span>
                                                     </a>
                                                 </li>
                                                 
