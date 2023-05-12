@@ -8,7 +8,7 @@
 			</ul>
 		 </div>
 	</nav>
-	<div class="page-content">
+	<div class="page-content mb-10">
 								<div class="container">
 										<h3 class="wishlist-title">My wishlist</h3>
 										<div class="row cols-sm-3 cart-table">
@@ -66,7 +66,6 @@
 									 <p class="show" style="display:none">Nothing is here</p>
 								</div>
 						</div>
-						<br><br><br>
 </x-guest-layout>
 <script type="text/javascript">
 	
