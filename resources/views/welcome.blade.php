@@ -171,7 +171,7 @@
 														<!-- <h2 class="banner-title text-white font-secondary">Wireless HeadPhone</h2> -->
 													<!-- 	<h3 class="banner-subtitle text-lighter font-weight-normal">Only until the end of this Week
 														</h3> -->
-														<a href="#"
+														<a href="{{$banner_value['shop_link']}}"
 																class="btn btn-sm btn-outline btn-white btn-rounded btn-icon-right slide-animate">
 																Explore Now
 																<i class="w-icon-long-arrow-right"></i>
