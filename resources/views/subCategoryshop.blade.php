@@ -14,13 +14,25 @@
             </nav>
 
                 <div class="container">
-                    <div class="store store-banner mb-4">
+
+                <div class="shop-content row gutter-lg">
+                    <!-- Start of Sidebar, Shop Sidebar -->
+                    <input type="hidden" value="{{@$sub_cat['id']}}" id="subcat_id">
+                    <input type="hidden" value="{{@$sub_cat['category_id']}}" id="cat_id">
+                    @include('filter-view')
+                    <!-- End of Shop Sidebar -->
+
+                    <!-- Start of Main Content -->
+                    <div class="main-content">
+                         <div class="store store-banner mb-4">
                                 <figure class="store-media">
-                                    <img src="assets/images/vendor/dokan/1.jpg" alt="Vendor" width="930" height="446" style="background-color: #414960;">
+                                    <img src="{{url('front/images/dokan/1.jpg')}}" alt="Vendor" width="930" height="446"
+                                        style="background-color: #414960;" />
                                 </figure>
                                 <div class="store-content">
                                     <figure class="seller-brand">
-                                        <img src="assets/images/vendor/brand/1.jpg" alt="Brand" width="80" height="80">
+                                        <img src="{{url('front/images/vendor/brand/1.jpg')}}" alt="Brand" width="80"
+                                            height="80" />
                                     </figure>
                                     <h4 class="store-title">Vendor 1</h4>
                                     <ul class="seller-info-list list-style-none mb-6">
@@ -54,15 +66,6 @@
                                     </div>
                                 </div>
                             </div>
-                <div class="shop-content row gutter-lg">
-                    <!-- Start of Sidebar, Shop Sidebar -->
-                    <input type="hidden" value="{{@$sub_cat['id']}}" id="subcat_id">
-                    <input type="hidden" value="{{@$sub_cat['category_id']}}" id="cat_id">
-                    @include('filter-view')
-                    <!-- End of Shop Sidebar -->
-
-                    <!-- Start of Main Content -->
-                    <div class="main-content">
                        @include('toolbox')
                         <div id="tag_container">
                             @include('presult')
