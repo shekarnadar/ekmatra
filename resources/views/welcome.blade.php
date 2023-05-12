@@ -202,7 +202,7 @@
 										data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '15s', 'delay': '3s'}">
 										
 										
-										<a href="{{$sub_value['shop_link']}}"
+										<a href="{{$banner_value['shop_link']}}"
 												class="btn btn-lg btn-outline btn-white btn-rounded btn-icon-right slide-animate">
 												Explore Now
 												<i class="w-icon-long-arrow-right"></i>
