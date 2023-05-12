@@ -27,9 +27,9 @@
                                                 <a href="vendor-dokan-store.html">{{$value['name']}}</a>
                                             </h4>
                                            
-                                            <ul class="seller-info-list list-style-none">
+                                            <ul class="seller-info-list list-style-none pl-0">
                                                 <li class="store-email">
-                                                    <a href="email:#">
+                                                    <a>
                                                        
                                                         <span>Count :{{$value['product_wish_list_count']}} </span>
                                                     </a>
@@ -51,7 +51,7 @@
 
                                             </figure></a>
                                             @endif
-                                            <a href="{{url('wishlist/view/'.$value['id'])}}" class="btn btn-inquiry btn-rounded btn-icon-left">View Vishlist</a>
+                                            <a href="{{url('wishlist/view/'.$value['id'])}}" class="btn btn-inquiry btn-rounded btn-icon-left">View Wishlist</a>
                                             <a href="#" class="btn btn-rounded btn-visit removecart" data-id="{{$value['id']}}">Remove</a>
                                         </div>
                                         <!-- End of Store Footer -->
