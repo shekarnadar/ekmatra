@@ -1,4 +1,4 @@
-@php
+F@php
 $url = getAuthGaurd();
 @endphp
 <aside class="main-sidebar app-sidebar sidebar-scroll">
@@ -44,12 +44,19 @@ $url = getAuthGaurd();
 					<li class="slide products">
 						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Products</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item product" href="{{url("$url/products")}}">Product</a></li>
+						
 							@if($url == 'admin')
+							<li><a class="slide-item category" href="{{url("$url/categories")}}">Category</a></li>
+
 							<li><a class="slide-item features" href="{{url("$url/features")}}">Features</a></li>
 
-								<li><a class="slide-item deals" href="{{url("$url/deals")}}">Deals</a></li>
+							<li><a class="slide-item deals" href="{{url("$url/deals")}}">Deals</a></li>
+
+							<li><a class="slide-item occasions" href="{{url("$url/occasions")}}">Occasions</a></li>
+
+							
 							@endif
+							<li><a class="slide-item product" href="{{url("$url/products")}}">Product</a></li>
 							
 							
 							
@@ -81,21 +88,21 @@ $url = getAuthGaurd();
 							
 						</ul>
 					</li>
-					
-					
-					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/categories',$url.'/category/add',$url.'/category/edit/*',$url.'/category/*')? 'active' : '' }}" href='{{url("$url/categories")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Category</span></a>
+
+					<li class="slide inquiries">
+						<a class="side-menu__item " data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Inquiries</span><i class="angle fe fe-chevron-down"></i></a>
+						<ul class="slide-menu">
+							<li><a class="slide-item inquiry" href="{{url("$url/inquiry")}}">Inquiry</a></li>
+							<li><a class="slide-item rfq" href='{{url("$url/rfq")}}'>RFQ </a></li>
+							
+						</ul>
 					</li>
 					
-					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/occasions',$url.'/occasions/add',$url.'/occasions/edit/*')? 'active' : '' }}" href='{{url("$url/occasions")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Occasions</span></a>
-					</li>
-					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/inquiry')? 'active' : '' }}" href='{{url("$url/inquiry")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Inquiry</span></a>
-					</li>
-					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/rfq')? 'active' : '' }}" href='{{url("$url/rfq")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">RFQ</span></a>
-					</li>
+					
+					
+					
+					
+				
 					@endif
 					
 					

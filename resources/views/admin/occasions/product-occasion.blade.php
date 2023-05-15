@@ -33,6 +33,8 @@ $backurl = url('/admin/occasions');
 <script type="text/javascript" src="{{url('backend/js/delete-data.js')}}"></script>
 
 <script type="text/javascript">
+	$('.products').addClass('is-expanded');
+		$('.occasions').addClass('active');
 	var table;
 	var uncheckedVal = [];
 	table = $('#product-occasion-list').DataTable({

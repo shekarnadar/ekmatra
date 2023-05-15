@@ -47,7 +47,10 @@
 
 </x-app-layout>
 <script type="text/javascript">
+	$('.products').addClass('is-expanded');
+		$('.occasions').addClass('active');
 	$('#occasionCreate').on('submit', function(e) {
+
 			e.preventDefault()
 			let formValue = new FormData(this);
 			if ( $(this).parsley().isValid() ) {

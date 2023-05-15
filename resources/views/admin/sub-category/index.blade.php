@@ -32,6 +32,8 @@ $backurl = url('/admin/categories');
 	@include('layouts.datatable-script');
 
 <script type="text/javascript">
+	$('.products').addClass('is-expanded');
+	$('.category').addClass('active');
 	var table;
 	table = $('#subcategory-list').DataTable({
 		lengthChange: false,

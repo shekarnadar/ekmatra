@@ -46,7 +46,8 @@ $backurl = url('admin/category')."/".$subCat['category_id']."/"."sub-cat";
 	
 $(document).ready(function() {
 	
-
+		$('.products').addClass('is-expanded');
+		$('.category').addClass('active');
 		$('#subCategoryCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);

@@ -65,6 +65,8 @@
 </x-app-layout>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('.products').addClass('is-expanded');
+		$('.category').addClass('active');
      window.ParsleyValidator
         .addValidator('fileextension', function (value, requirement) {
         		var tagslistarr = requirement.split(',');
