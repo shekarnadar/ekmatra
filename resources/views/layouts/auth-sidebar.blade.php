@@ -41,13 +41,27 @@ $url = getAuthGaurd();
 					<li class="slide">
 						<a class="side-menu__item" href='{{url("$url/dashboard")}}'><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
 					</li>
-					@if($url == 'admin')
-					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Pages</span></a>
+					<li class="slide products">
+						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Products</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{url("$url/faqs")}}">FAQ</a></li>
+							<li><a class="slide-item product" href="{{url("$url/products")}}">Product</a></li>
+							@if($url == 'admin')
+							<li><a class="slide-item features" href="{{url("$url/features")}}">Features</a></li>
+
+								<li><a class="slide-item deals" href="{{url("$url/deals")}}">Deals</a></li>
+							@endif
+							
+							
+							
+						</ul>
+					</li>
+					@if($url == 'admin')
+					<li class="slide pages">
+						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Pages</span><i class="angle fe fe-chevron-down"></i></a>
+						<ul class="slide-menu">
+							<li><a class="slide-item faq" href="{{url("$url/faqs")}}">FAQ</a></li>
 							<li><a class="slide-item" href='{{url("$url/contact-us/add")}}'>Contact Us </a></li>
-							<li><a class="slide-item" href='{{url("$url/we-are-hirings")}}'>We Are Hiring </a></li>
+							<li><a class="slide-item wearehiring" href='{{url("$url/we-are-hirings")}}'>We Are Hiring </a></li>
 							<li><a class="slide-item" href='{{url("$url/subscription/list")}}'>Subscription </a></li>
 							<li><a class="slide-item" href='{{url("$url/leads")}}'>Leads </a></li>
 							
@@ -59,24 +73,20 @@ $url = getAuthGaurd();
 					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/banners',$url.'/banner/add',$url.'/banner/edit/*',$url.'/banners/*')? 'active' : '' }}" href='{{url("$url/banners")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Banners</span></a>
 					</li>
-					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Users</span></a>
+					<li class="slide users">
+						<a class="side-menu__item " data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{url("$url/vendors")}}">Vendors</a></li>
+							<li><a class="slide-item vendors" href="{{url("$url/vendors")}}">Vendors</a></li>
 							<li><a class="slide-item" href='{{url("$url/customers")}}'>Customers </a></li>
 							
 						</ul>
 					</li>
 					
-					<li class="slide">
-						<a class="side-menu__item  {{ request()->is($url.'/features',$url.'/feature/add',$url.'/feature/edit/*')? 'active' : '' }}" href='{{url("$url/features")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Features</span></a>
-					</li>
+					
 					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/categories',$url.'/category/add',$url.'/category/edit/*',$url.'/category/*')? 'active' : '' }}" href='{{url("$url/categories")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Category</span></a>
 					</li>
-					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/deals',$url.'/deals/add',$url.'/deals/edit/*')? 'active' : '' }}" href='{{url("$url/deals")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Deals</span></a>
-					</li>
+					
 					<li class="slide">
 						<a class="side-menu__item {{ request()->is($url.'/occasions',$url.'/occasions/add',$url.'/occasions/edit/*')? 'active' : '' }}" href='{{url("$url/occasions")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Occasions</span></a>
 					</li>
@@ -87,10 +97,7 @@ $url = getAuthGaurd();
 						<a class="side-menu__item {{ request()->is($url.'/rfq')? 'active' : '' }}" href='{{url("$url/rfq")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">RFQ</span></a>
 					</li>
 					@endif
-					<li class="slide">
-						<a class="side-menu__item {{ request()->is($url.'/products',$url.'/product/add',$url.'/product/edit/*')? 'active' : '' }}" href='{{url("$url/products")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Product</span></a>
-					</li>
-					<li class="side">&nbsp;</li>
+					
 					
 				  
 				</ul>

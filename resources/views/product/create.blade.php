@@ -192,6 +192,8 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('.products').addClass('is-expanded');
+		$('.product').addClass('active');
      window.ParsleyValidator
         .addValidator('fileextension', function (value, requirement) {
         		var tagslistarr = requirement.split(',');

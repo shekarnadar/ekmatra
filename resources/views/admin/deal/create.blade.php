@@ -47,6 +47,8 @@
 
 </x-app-layout>
 <script type="text/javascript">
+	$('.products').addClass('is-expanded');
+	$('.deals').addClass('active');
 	$('#dealCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);

@@ -91,6 +91,8 @@
 </x-app-layout>
 <script type="text/javascript">
 	$(document).ready(function() {
+	$('.users').addClass('is-expanded');
+	$('.vendors').addClass('active');
      window.ParsleyValidator
         .addValidator('fileextension', function (value, requirement) {
         		var tagslistarr = requirement.split(',');

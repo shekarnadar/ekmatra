@@ -97,3 +97,6 @@
 			   
 			</div>
 </x-guest-layout>
+<script type="text/javascript">
+    $('.aboutus').addClass('active');
+</script>

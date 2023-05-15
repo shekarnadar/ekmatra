@@ -56,7 +56,8 @@
 </x-app-layout>
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		$('.pages').addClass('is-expanded');
+		$('.wearehiring').addClass('active');
 		$('#faqCreate').on('submit', function(e) {
 			e.preventDefault()
 			let formValue = new FormData(this);

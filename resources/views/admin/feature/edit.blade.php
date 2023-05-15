@@ -108,6 +108,8 @@
 
 </x-app-layout>
 <script type="text/javascript">
+	$('.products').addClass('is-expanded');
+	$('.features').addClass('active');
 	var removeIds = [];
 
 	var input = document.getElementById('feature_value');

@@ -37,6 +37,8 @@ $url = getAuthGaurd();
 	</div>
 </x-app-layout>
 	<script>
+        $('.products').addClass('is-expanded');
+        $('.product').addClass('active');
 		 $('#form').on('submit', function(e) {
         $('.error').text('');
         e.preventDefault()

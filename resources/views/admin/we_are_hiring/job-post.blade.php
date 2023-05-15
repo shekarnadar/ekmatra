@@ -28,6 +28,8 @@ $url = getAuthGaurd();
 <script type="text/javascript" src="{{url('backend/js/delete-data.js')}}"></script>
 
 <script type="text/javascript">
+	$('.pages').addClass('is-expanded');
+	$('.wearehiring').addClass('active');
 	var table;
 	table = $('#faq-list').DataTable({
 		lengthChange: false,

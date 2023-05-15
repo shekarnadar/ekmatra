@@ -90,6 +90,8 @@
 
 </x-app-layout>
 <script type="text/javascript">
+	$('.products').addClass('is-expanded');
+	$('.features').addClass('active');
 	var input = document.getElementById('feature_value');
 	
 	var tagify = new Tagify(input, {

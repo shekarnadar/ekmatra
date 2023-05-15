@@ -53,7 +53,8 @@
 
 <script type="text/javascript">
 
-
+	$('.products').addClass('is-expanded');
+	$('.product').addClass('active');
 
 	$(function() {
 	var token;
