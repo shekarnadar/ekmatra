@@ -33,6 +33,11 @@ class ProductController extends Controller
 					$data = Product::getProducts($request);
 
 					return Datatables::of($data)
+					->editColumn('select_product', static function ($row) {
+						return '<input type="checkbox" id="activeproduct" name="selectProducts[]" value="'.$row->id.'" class="selectProducts activeproduct" />';
+						
+            			
+        			})
 					->addColumn('category_name', function($row){
 						return $row->category->name;
 					 })
