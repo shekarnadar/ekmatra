@@ -75,7 +75,7 @@ input:checked + .slider:before {
 								<div class="d-flex justify-content-between">
 									<h4 class="card-title mg-b-0 mt-2 mb-2">Product</h4>
 									<div style="float: right;">
-									<a href="javascript:void(0)" class="activeinactive">Status Change</a>
+									<a href="javascript:void(0)" class="activeinactive btn btn-primary">Status Change</a>
 									<a href='{{url("$url/product-import")}}' class="btn btn-primary">Product Import</a>
 									<a href='{{url("$url/product/add")}}' class="btn btn-primary">Add Product</a>
 									<a href='{{url("$url/product/image")}}' class="btn btn-primary">Upload Image</a>
