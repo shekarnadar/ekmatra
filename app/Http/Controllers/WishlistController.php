@@ -132,11 +132,12 @@ class WishlistController extends Controller
 		$client_id = \Auth()->user()->id;
         
         $count = ProductWishList::where('client_id',$client_id)->count();
-        
+
         \Session::put('wishlistCount',$count);
 
 		return response()->json(['success' => true,
 				'message' => 'wishlist has been deleted sucessfully',
+				'count' => $count
 		  ], 200);
 	}
 }

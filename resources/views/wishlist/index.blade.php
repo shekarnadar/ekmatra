@@ -85,6 +85,7 @@
 	        success: function(response) {
 	        	   	$('.removetr'+id).remove();
 	        	   	if(rowCount == 1){
+	        	   		$('.cart-count ').text(response.count);
 	        	   		$(".show").show();
 	        	   		$(".cart-table").hide();
 	        	   	}  
