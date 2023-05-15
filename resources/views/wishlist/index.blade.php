@@ -298,10 +298,10 @@ h6.nothing {
 	<div class="container row">
 		
 		<div class="col-12 d-flex align-items-center justify-center">
-			<div class="whislist-empty">
-				<h4 class="animate-charcter mt-10"> Nothing is here </h4>
-				<h6 class="nothing mt-10">No items in your collections yet </h6>
-				<div class="grow"> 
+			<div class="whislist-empty text-center">
+				<h4 class="animate-charcter mt-5"> Nothing is here </h4>
+				<h6 class="nothing mt-5">No items in your collections yet </h6>
+				<div class="grow mt-5"> 
 					<svg data-v-4dd4f8ba="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 118" fill="none" width="128" height="118"><circle cx="49.6404" cy="68.6404" r="48.6404" fill="#9a2948"></circle>
 						<line x1="17.216" y1="37.877" x2="42.1935" y2="37.877" stroke="#cd8c9e" stroke-width="2.62921" stroke-linecap="round"></line>
 						<line x1="17.216" y1="26.0455" x2="51.3958" y2="26.0455" stroke="#cd8c9e" stroke-width="2.62921" stroke-linecap="round"></line>
