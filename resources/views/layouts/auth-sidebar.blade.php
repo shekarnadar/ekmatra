@@ -42,7 +42,7 @@ $url = getAuthGaurd();
 						<a class="side-menu__item" href='{{url("$url/dashboard")}}'><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
 					</li>
 					<li class="slide products">
-						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Products</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-gift menu-icons"></i><span class="side-menu__label">Products</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 						
 							@if($url == 'admin')
@@ -64,7 +64,7 @@ $url = getAuthGaurd();
 					</li>
 					@if($url == 'admin')
 					<li class="slide pages">
-						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Pages</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item" data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon side-menu__icon fe fe-compass"></i><span class="side-menu__label">Pages</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item faq" href="{{url("$url/faqs")}}">FAQ</a></li>
 							<li><a class="slide-item" href='{{url("$url/contact-us/add")}}'>Contact Us </a></li>
@@ -81,7 +81,7 @@ $url = getAuthGaurd();
 						<a class="side-menu__item {{ request()->is($url.'/banners',$url.'/banner/add',$url.'/banner/edit/*',$url.'/banners/*')? 'active' : '' }}" href='{{url("$url/banners")}}'><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Banners</span></a>
 					</li>
 					<li class="slide users">
-						<a class="side-menu__item " data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-mail menu-icons"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item " data-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon  fe fe-user menu-icons"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item vendors" href="{{url("$url/vendors")}}">Vendors</a></li>
 							<li><a class="slide-item" href='{{url("$url/customers")}}'>Customers </a></li>
