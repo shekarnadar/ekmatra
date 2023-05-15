@@ -83,9 +83,11 @@
 	            "_token": "{{ csrf_token() }}",
 	        },
 	        success: function(response) {
+	        	$('.cart-count ').text(response.count);
 	        	   	$('.removetr'+id).remove();
+
 	        	   	if(rowCount == 1){
-	        	   		$('.cart-count ').text(response.count);
+
 	        	   		$(".show").show();
 	        	   		$(".cart-table").hide();
 	        	   	}  
