@@ -226,6 +226,7 @@ $('#product-list').on('click', '.changestaus', function(){
 				
 		},
 		 columns: [
+		 			 {data:'select_product',name:'select_product'},
             {
             	data: 'name', 
             	name: 'name',
