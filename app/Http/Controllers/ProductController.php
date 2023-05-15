@@ -80,7 +80,8 @@ class ProductController extends Controller
 						}
 						return $btn;
 					})
-					->rawColumns(['action', 'image','statusChange'])
+					->rawColumns(['action', 'image','statusChange','
+						select_product'])
 					->make(true);
 			}
 			return view('product.index');
