@@ -129,7 +129,6 @@
 				</div>
 
 				<!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
-				<div class="google-map contact-google-map" id="googlemaps"></div>
 				<!-- End Map Section -->
 			</div>
 </x-guest-layout>
