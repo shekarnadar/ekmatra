@@ -16922,3 +16922,47 @@ Display:none;
     min-height: 100%;
     width: 100%;
 }
+@media screen and (max-width: 767px) {
+  .purchase-banner .btn {
+      padding: 1rem 1rem;
+      font-size: 1.1rem;
+  }
+  .purchase-banner .banner-content {
+    margin-top: 3.2rem;
+  }
+  .banner-wrapper img {
+    min-height: 12rem;
+    height: 100%;
+  }
+  .latestProduct figure.product-media img {
+    max-height: 205px;
+    height: 100%;
+  }
+  .swiper-slide.banner.banner-fixed.intro-slide {
+    min-height: 100%;
+    height: 224px;
+    background-color: transparent !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .purchase-banner .btn {
+      padding: 1rem 1rem;
+      font-size: 1.1rem;
+  }
+  .purchase-banner .banner-content {
+    margin-top: 3.2rem;
+  }
+  .banner-wrapper img {
+      min-height: 12rem;
+      height: 100%;
+  }
+  .latestProduct figure.product-media img {
+    max-height: 205px;
+      height: 100%;
+  }
+  .swiper-slide.banner.banner-fixed.intro-slide {
+    min-height: 100%;
+    height: 224px;
+    background-color: transparent !important;
+  }
+}
