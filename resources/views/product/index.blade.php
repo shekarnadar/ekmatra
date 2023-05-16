@@ -75,9 +75,11 @@ input:checked + .slider:before {
 								<div class="d-flex justify-content-between">
 									<h4 class="card-title mg-b-0 mt-2 mb-2">Product</h4>
 									<div style="float: right;">
-									<a class="activeinactive" style="display:none">
-										<label class="switch"><input  type="checkbox" class="activeinactivecheck"><span class="slider round"></span></label>
-									</a>
+									<span class="activeinactive" style="display:none">
+										<a href='javascript:void(0)' class="btn btn-success activebtn">Active</a>
+
+										<a href='javascript:void(0)' class="btn btn-danger inactivebtn">InActive</a>
+									</span>
 									<a href='{{url("$url/product-import")}}' class="btn btn-primary">Product Import</a>
 									<a href='{{url("$url/product/add")}}' class="btn btn-primary">Add Product</a>
 									<a href='{{url("$url/product/image")}}' class="btn btn-primary">Upload Image</a>
@@ -111,41 +113,40 @@ input:checked + .slider:before {
 		getTable();
 	});
 	
-		$(".activeinactive").on('change',".activeinactivecheck",function(e){
-		 var ischecked= $(this).is(':checked');
-		 let status = '';
-		 if(!ischecked){
-		 	status = 0;
-		 	message = "Deactive";
-		 }else{
-		 	status = 1;
-		 		message = "Active";
-		 }
- 		 if (confirm("Are you sure you want to " + message +' ?')){
-  		$.ajax({
-				
-	        url: "{{url('admin/product/changeStatus')}}",
-	        type: "Post",
-	        data: {
-	            "checkedVal" : checkedVal,
-	            "status" : status,
-	            "_token": "{{ csrf_token() }}",
-	        },
+		$(".activeinactive").on('click',".activebtn",function(e){
+			setActiveInactiveProduct(1,'Active');
+		});
 
-	        success: function(response) {
-		        if (response.success) {
-		        	notifyMsg(response.message,'success');
-		        	 $("#product-list .allCheckbox").attr("checked", false);
-		        	 alert("j");
-		            table.ajax.reload(null, false);
+		$(".activeinactive").on('click',".inactivebtn",function(e){
+			setActiveInactiveProduct(0,'InActive');
+		});
 
-		        } else {
-		        	notifyMsg(response.message,'error');
+		function setActiveInactiveProduct(status,message){
+			 if (confirm("Are you sure you want to " + message +' ?')){
+	  		$.ajax({
+					
+		        url: "{{url('admin/product/changeStatus')}}",
+		        type: "Post",
+		        data: {
+		            "checkedVal" : checkedVal,
+		            "status" : status,
+		            "_token": "{{ csrf_token() }}",
+		        },
+
+		        success: function(response) {
+			        if (response.success) {
+			        	notifyMsg(response.message,'success');
+			        	 $("#product-list .allCheckbox").attr("checked", false);
+			        	 alert("j");
+			            table.ajax.reload(null, false);
+
+			        } else {
+			        	notifyMsg(response.message,'error');
+			        }
 		        }
-	        }
-     });
-  	}
-	});
+	     });
+  	 }
+		}
 		$('#product-list').on('click','.removeProduct',function(){
 				let id = $(this).data("id") ;
 				if (confirm("Are you sure you want to remove?")){
@@ -167,8 +168,9 @@ input:checked + .slider:before {
 		      });
 				}
 			
-});
-$("#product-list").on('change',".activeproducts",function(e){
+		});
+		
+		$("#product-list").on('change',".activeproducts",function(e){
     	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
     			   	if(($('activeinactive')).length == 0){
