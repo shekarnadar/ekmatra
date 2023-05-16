@@ -136,8 +136,7 @@ input:checked + .slider:before {
 		        success: function(response) {
 			        if (response.success) {
 			        	notifyMsg(response.message,'success');
-			        	 $("#product-list .allCheckbox").attr("checked", false);
-			        	 alert("j");
+			        	 $(".activeinactive").hide();
 			            table.ajax.reload(null, false);
 
 			        } else {
@@ -169,7 +168,7 @@ input:checked + .slider:before {
 				}
 			
 		});
-		
+
 		$("#product-list").on('change',".activeproducts",function(e){
     	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
