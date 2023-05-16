@@ -108,6 +108,33 @@ input:checked + .slider:before {
 	$(function() {
 		getTable();
 	});
+	
+	$(".activeinactive").click(function(){
+		var checkedVal = [];
+ 		$('.activeproducts:checkbox:checked').each(function(){
+			checkedVal.push($(this).val());
+  	});
+  	$.ajax({
+				
+        url: "{{url('admin/product/changeStatus')}}",
+        type: "Post",
+        data: {
+            "checkedVal" : checkedVal,
+            "uncheckedVal" : uncheckedVal,
+            "_token": "{{ csrf_token() }}",
+        },
+
+        success: function(response) {
+	        if (response.success) {
+	        	notifyMsg(response.message,'success');
+	            table.ajax.reload(null, false);
+
+	        } else {
+	        	notifyMsg(response.message,'error');
+	        }
+        }
+      });
+	});
 $('#product-list').on('click','.removeProduct',function(){
 		let id = $(this).data("id") ;
 		if (confirm("Are you sure you want to remove?")){
@@ -130,14 +157,20 @@ $('#product-list').on('click','.removeProduct',function(){
 		}
 	
 });
-$("#product-deal-list").on('change',"input[class='activeproduct']",function(e){
+$("#product-list").on('change',".activeproducts",function(e){
     	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
     			  uncheckedVal.push( $(this).val());
-    		}
-    		alert("call");
+    		} 
+    		
 	});
-$("#product-list").on('change',"input[type='checkbox']",function(e){
+
+$("#product-list").on('change',".allCheckbox",function(e){
+	            $(".activeproducts").attr('checked', this.checked);
+
+});
+
+$("#product-list").on('change',".switch",function(e){
 	 var ischecked= $(this).is(':checked');
 	 var id = $(this).val();
 	 let status = '';
@@ -210,6 +243,7 @@ $('#product-list').on('click', '.changestaus', function(){
 		serverSide: true,
 		paging:true,
 		ordering: false,
+
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
@@ -225,9 +259,14 @@ $('#product-list').on('click', '.changestaus', function(){
                 },
 				
 		},
+
 		 columns: [
-		 			 {data:'select_product',name:'select_product'},
-            {
+ 						{
+ 							data:'select_product',
+ 							name:'select_product',
+ 							title:'<input type="checkbox" class="allCheckbox" name="allCheckbox">'
+ 						},
+             {
             	data: 'name', 
             	name: 'name',
             	'title' : 'Name'},

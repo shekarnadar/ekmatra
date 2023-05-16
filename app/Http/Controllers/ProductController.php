@@ -34,10 +34,14 @@ class ProductController extends Controller
 
 					return Datatables::of($data)
 					->editColumn('select_product', static function ($row) {
-						return '<input type="checkbox" id="activeproduct" name="selectProducts[]" value="'.$row->id.'" class="selectProducts activeproduct" />';
+						if($row['status'] == 1){
+								return '<input type="checkbox" name="selectProducts[]" value="'.$row->id.'" class="activeproducts" id="activeproducts" checked/>';
+						}else{
+							return '<input type="checkbox" name="selectProducts[]" value="'.$row->id.'" class="activeproducts" id="activeproducts" />';
+
+						}
 						
-            			
-        			})
+          })
 					->addColumn('category_name', function($row){
 						return $row->category->name;
 					 })
@@ -80,8 +84,7 @@ class ProductController extends Controller
 						}
 						return $btn;
 					})
-					->rawColumns(['action', 'image','statusChange','
-						select_product'])
+					->rawColumns(['select_product','action', 'image','statusChange'])
 					->make(true);
 			}
 			return view('product.index');
@@ -377,5 +380,25 @@ class ProductController extends Controller
 			return response()->json(['success' => false,
 				'message' => 'something went wrong'], 200);
 		}  
+	}
+
+	public function changeStatus(Request $request){
+		if(isset($request['checkedVal'])){
+			foreach($request['checkedVal'] as $val){
+        		Product::where('id',$val)->update([
+        			'status' => 1,
+        		]);
+        	}
+		}
+		if(isset($request['uncheckedVal'])){
+			foreach($request['uncheckedVal'] as $val){
+				Product::where('id',$val)->update([
+        			'status' => 0,
+        		]);
+			}
+		}
+		return response()->json(['success' => true,
+				'message' => 'Product status changed successfully.'
+		  ], 200);
 	}
 }

@@ -91,10 +91,12 @@ Route::group(['prefix' => 'admin'], function(){
 		//exportdata
 		Route::get('product-sample-download',[ProductController::class,'ProductSampleDownload'])->name('Productsamplesownload');
 		Route::get('product-import',[ProductController::class,'ProductImport'])->name('Productimport"');
+		Route::post('product/changeStatus',[ProductController::class,'changeStatus'])->name('product.changeStatus');
 
 		Route::get('deals',[DealController::class,'index'])->name('deal.index');
 		Route::get('product/deal/{id}',[DealController::class,'productDeals'])->name('product.deal');
 		Route::post('product/deal-save',[DealController::class,'dealSave'])->name('product.deal.save');
+
 
 		Route::get('deal/add',[DealController::class,'create'])->name('deal.create');
 		Route::post('deal/store',[DealController::class,'store'])->name('deal.store');
