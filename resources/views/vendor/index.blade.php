@@ -111,7 +111,12 @@ input:checked + .slider:before {
 				async:false,
 		},
 		 columns: [
-
+		 	{
+        			"title": "Serial",
+        			render: function (data, type, row, meta) {
+        				return meta.row + meta.settings._iDisplayStart + 1;
+        			}
+      },
 		 	{data: 'image', name: 'image' ,'title' : 'Image'},
 			{data: 'name', name: 'name','title' : 'Name'},
             {data: 'email', name: 'email' ,'title' : 'Email'},

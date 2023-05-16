@@ -267,6 +267,12 @@ $('#product-list').on('click', '.changestaus', function(){
 		},
 
 		 columns: [
+		 			{
+        			"title": "Serial",
+        			render: function (data, type, row, meta) {
+        				return meta.row + meta.settings._iDisplayStart + 1;
+        			}
+        		},
  						{
  							data:'select_product',
  							name:'select_product',

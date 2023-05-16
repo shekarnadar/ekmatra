@@ -47,6 +47,12 @@ $url = getAuthGaurd();
 				async:false,
 		},
 		 columns: [
+		 	{
+        			"title": "Serial",
+        			render: function (data, type, row, meta) {
+        				return meta.row + meta.settings._iDisplayStart + 1;
+        			}
+        	},
 		 	{data: 'email', name: 'name','title' : 'Name'},
 		 	{data: 'email', name: 'email','title' : 'Email'},
 		 	{data: 'description', name: 'description','title' : 'Message'},
