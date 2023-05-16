@@ -16943,6 +16943,18 @@ Display:none;
     height: 224px;
     background-color: transparent !important;
   }
+  .dir-up.hs-toggle .input-wrapper {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 2rem;
+    width: 100%;
+    right: 0;
+  }
+  .header-search {
+    position: unset;
+    width: 100%;
+    max-width: 38rem;
+  }
 }
 @media screen and (max-width: 768px) {
   .purchase-banner .btn {
@@ -16965,5 +16977,17 @@ Display:none;
     height: 224px;
     background-size: contain !important;
     background-color: transparent !important;
+  }
+  .dir-up.hs-toggle .input-wrapper {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 2rem;
+    width: 100%;
+    right: 0;
+  }
+  .header-search {
+    position: unset;
+    width: 100%;
+    max-width: 38rem;
   }
 }

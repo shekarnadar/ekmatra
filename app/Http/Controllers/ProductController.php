@@ -381,17 +381,11 @@ class ProductController extends Controller
 		if(isset($request['checkedVal'])){
 			foreach($request['checkedVal'] as $val){
         		Product::where('id',$val)->update([
-        			'status' => 1,
+        			'status' => $request['status'],
         		]);
         	}
 		}
-		if(isset($request['uncheckedVal'])){
-			foreach($request['uncheckedVal'] as $val){
-				Product::where('id',$val)->update([
-        			'status' => 0,
-        		]);
-			}
-		}
+		
 		return response()->json(['success' => true,
 				'message' => 'Product status changed successfully.'
 		  ], 200);
