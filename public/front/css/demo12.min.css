@@ -16963,6 +16963,7 @@ Display:none;
   .swiper-slide.banner.banner-fixed.intro-slide {
     min-height: 100%;
     height: 224px;
+    background-size: contain !important;
     background-color: transparent !important;
   }
 }

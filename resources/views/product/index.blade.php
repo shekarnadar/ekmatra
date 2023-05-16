@@ -161,7 +161,14 @@ $("#product-list").on('change',".activeproducts",function(e){
     	 var ischecked= $(this).is(':checked');
     		if(!ischecked){
     			  uncheckedVal.push( $(this).val());
-    		} 
+    			  if(!$('.activeinactive').hide()){
+    						$('.activeinactive').hide();
+    				}
+    		} else{
+    					if(!$('.activeinactive').show()){
+    						$('.activeinactive').show();
+    					}
+    		}
     		
 	});
 
@@ -178,6 +185,7 @@ $("#product-list").on('change',".allCheckbox",function(e){
 
 $("#product-list").on('change',".switch",function(e){
 	 var ischecked= $(this).is(':checked');
+	 alert(ischecked);
 	 var id = $(this).val();
 	 let status = '';
 	 let message = '';

@@ -34,14 +34,9 @@ class ProductController extends Controller
 
 					return Datatables::of($data)
 					->editColumn('select_product', static function ($row) {
-						if($row['status'] == 1){
-								return '<input type="checkbox" name="selectProducts[]" value="'.$row->id.'" class="activeproducts" id="activeproducts" checked/>';
-						}else{
+					
 							return '<input type="checkbox" name="selectProducts[]" value="'.$row->id.'" class="activeproducts" id="activeproducts" />';
-
-						}
-						
-          })
+					})
 					->addColumn('category_name', function($row){
 						return $row->category->name;
 					 })
