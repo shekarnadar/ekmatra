@@ -17014,10 +17014,10 @@ Display:none;
 }
 @media screen and (max-width: 992px) {
 	.swiper-slide.banner.banner-fixed.intro-slide {
-		min-height: 25rem;
-		height: 100%;
-		background-size: contain !important;
-		background-color: transparent !important;
-		width: 100% !important;
+		min-height: 45rem;
+    height: 100%;
+    background-size: cover!important;
+    background-color: transparent !important;
+    width: 100% !important;
 	}
 }
