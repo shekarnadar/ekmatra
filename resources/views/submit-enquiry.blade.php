@@ -76,7 +76,7 @@
                           Delivery Date"/>
                   </div> -->
                    <div class="form-group">
-                      <input type="text" id="delivery_date" name="delivery_date"
+                      <input type="date" id="delivery_date" name="delivery_date"
                           class="form-control" placeholder="Delivery Date">
                   </div>
                   <div class="form-group">

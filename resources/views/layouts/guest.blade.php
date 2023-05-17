@@ -50,10 +50,10 @@
 				<i class="w-icon-search"></i>
 				<p>Search</p>
 			</a>
-			<form action="{{url('search')}}" class="input-wrapper" methd="get">
-				<input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+			<form action="{{url('search')}}" id="searchMobileViewForm" class="input-wrapper" method="get">
+				<input type="text" class="form-control" name="q" autocomplete="off" placeholder="Search"
 					required />
-				<button class="btn btn-search bg-white" type="submit">
+				<button class="btn btn-search bg-white searchbtn" type="submit">
 					<i class="w-icon-search"></i>
 				</button>
 			</form>
@@ -261,7 +261,9 @@
 	
 	</body>
 	<script type="text/javascript">
-		
+		  $('.searchbtn').click(function(){
+		  	$('#searchMobileViewForm').submit();
+		  })
 			var requestforquotation = '';
 			var redirectPage = '';
 		  $('.requestforquotation').click(function(){
