@@ -16991,3 +16991,13 @@ Display:none;
     max-width: 38rem;
   }
 }
+@media only screen and (min-width: 769px) and (max-width: 991px){
+
+  .swiper-slide.banner.banner-fixed.intro-slide {
+    min-height: 50rem;
+    height: 100%;
+    background-size: contain !important;
+    background-color: transparent !important;
+    width: 100% !important;
+  }
+}
