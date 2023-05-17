@@ -17004,7 +17004,7 @@ Display:none;
 @media screen and (max-width: 1024px) {
 
 	.swiper-slide.banner.banner-fixed.intro-slide {
-		min-height: 50rem;
+		min-height: 25rem;
 		height: 100%;
 		background-size: contain !important;
 		background-color: transparent !important;
@@ -17014,7 +17014,7 @@ Display:none;
 }
 @media screen and (max-width: 992px) {
 	.swiper-slide.banner.banner-fixed.intro-slide {
-		min-height: 50rem;
+		min-height: 25rem;
 		height: 100%;
 		background-size: contain !important;
 		background-color: transparent !important;
