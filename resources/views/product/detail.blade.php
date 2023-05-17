@@ -87,7 +87,7 @@
 													class="btn btn-dark btn-rounded sign-in mb-2 mb-lg-0" data-id="{{$product['id']}}">Add To Wishlist&nbsp;&nbsp;</a>
 												@endauth
 												@auth
-												 <div class="dropdown cart-dropdown cart-offcanvas mr-3 mr-lg-2 ml-lg-2">
+												 <div class="dropdown cart-dropdown cart-offcanvas mr-10 mr-lg-2 ml-lg-2">
                             <div class="cart-overlay"></div>
                             <button class="cart-toggle link btn btn-dark">Request a Quote</button>
                             <div class="dropdown-box">
@@ -144,7 +144,7 @@
                         </div>
 												@else
 												<a href="{{url('login')}}"
-													class="btn btn-dark btn-rounded sign-in mr-lg-2 ml-lg-2 mr-3" data-id="{{$product['id']}}">Request a Quote </a>
+													class="btn btn-dark btn-rounded sign-in mr-lg-2 ml-lg-2 mr-10" data-id="{{$product['id']}}">Request a Quote </a>
 												@endauth
 												
 											</div>
