@@ -9,6 +9,9 @@ use Carbon\Carbon;
 use DataTables;
 use App\Http\Requests\CreateEnquiryRequest;
 use App\Http\Requests\CreateRfqRequest;
+use Mail; 
+use App\Models\ContactUs;
+
 
 class InquiryController extends Controller
 {
@@ -138,8 +141,9 @@ class InquiryController extends Controller
 	public function savesubmitanenquiry(CreateRfqRequest $request){
 		$post = $request->input();
 		$client_id = \Auth::user()->id;
+		$to_email = ContactUs::pluck('email')->first();
 
-		$inquiry = Inquiry::create([
+		$data = [
 			'quantity' => ($request['quantity'])? $request['quantity'] : 1,
 			'client_id' => $client_id,
 			'enquiry' => $request['enquiry'],
@@ -147,9 +151,18 @@ class InquiryController extends Controller
 			'prefered_brand' => $request['prefered_brand'],
 			'min' => $request['min'],
 			'max' => $request['max'],
-			'delivery_date' => $request['delivery_date'],
-			'type' => 'rfq'
-		 ]);
+			'delivery_date' => $request['delivery_date']
+		];
+		$inquiry = Inquiry::create($data);
+		$data['email'] = $request['email'];
+		$data['name'] = $request['name'];
+		$data['phone'] = $request['phone'];
+		 Mail::send('emails.rfq', ['data' => $data], function($message) use($request, $to_email){
+              			$message->to($to_email);
+              			$message->from($request->email);
+              			$message->subject('Request for Quotations');
+          			});
+		
 		return response()->json(['success' => true,
 				'message' => 'Inquiry has been send sucessfully',
 			], 200);

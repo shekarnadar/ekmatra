@@ -123,6 +123,9 @@
             $.each( error.errors, function( key, value ) {
   								$("."+key+"_error").text(value);
 						});
+             $('html, body').animate({
+                    scrollTop: $(".enquiry-form").offset().top - 100
+            }, 777);
 				}
 	});
 	});
