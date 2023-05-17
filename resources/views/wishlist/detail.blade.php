@@ -21,9 +21,13 @@
 							<button class=" removewishlist">
 								<img src="{{url('front/images/close-icon.png')}}" alt="remove"/>
 							</button>
-							<button class="edit">
+							<button class="edit editwishlist">
 								<img src="{{url('front/images/edit.png')}}" alt="close"/>
 							</button>
+							<a href="{{url('shop/product')}}"><button class="edit">
+								<img src="{{url('front/images/icons/add.png')}}" alt="add"/>
+							</button>
+						</a>
 						</div>
                          </div>
                   </div>
@@ -87,7 +91,7 @@
 <script type="text/javascript">
 	
 	$('.wislistEditDetail').hide();
-	$(document).on('click', ".edit", function() {
+	$(document).on('click', ".editwishlist", function() {
 		$('.wislistEditDetail').show();
 		$('.wislistDetail').hide();
 	});
