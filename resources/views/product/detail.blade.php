@@ -144,7 +144,7 @@
                         </div>
 												@else
 												<a href="{{url('login')}}"
-													class="btn btn-dark btn-rounded sign-in mr-lg-2 ml-lg-2" data-id="{{$product['id']}}">Request a Quote </a>
+													class="btn btn-dark btn-rounded sign-in mr-lg-2 ml-lg-2 mr-3" data-id="{{$product['id']}}">Request a Quote </a>
 												@endauth
 												
 											</div>
