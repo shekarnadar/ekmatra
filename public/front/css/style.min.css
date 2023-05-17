@@ -1796,6 +1796,11 @@ table {
   margin-right: 5rem !important;
 }
 
+
+.mr-13 {
+  margin-right: 13rem !important;
+}
+
 .pl-10 {
   padding-left: 5rem !important;
 }
@@ -2381,7 +2386,7 @@ table {
   }
 
   .ml-lg-2 {
-    margin-left: 1rem !important;
+    margin-left: 0.1rem !important;
   }
 
   .mr-lg-2 {
