@@ -72,7 +72,26 @@
 
 										<hr class="product-divider">
 
-									
+										@if($product['productFeatures'])
+											<div class="product-short-desc">
+                                            
+                                            <ul class="list-type-check list-style-none mb-5">
+											@foreach($product['productFeatures'] as $pro_value)
+												<li>
+													{{$pro_value['feature_name']['name']}} : 
+												
+													
+													 	 		@if($pro_value['feature_attribute_name'])
+													 	 			{{$pro_value['feature_attribute_name']['name']}}
+													 	 		@else
+													 	 			{{$pro_value['value']}}
+													 	 		@endif
+												
+												</li>
+											@endforeach
+										</ul>
+										</div>
+										@endif
 										
 
 								

@@ -10,6 +10,7 @@ class Feature extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'feature_type'
     ];
 
     //save feature
@@ -21,7 +22,8 @@ class Feature extends Model
             $id = 0;
         }
         $feature = Feature::create([
-            'name' => $request['name']
+            'name' => $request['name'],
+            'feature_type' => $request['feature_type']
         ]);
         if($request['feature_value']){
             foreach($request['feature_value'] as $key=>$value){
@@ -44,5 +46,9 @@ class Feature extends Model
 
          $feature = Feature::orderBy('created_at','desc')->get();
          return $feature;
+    }
+
+    public function FeatureAttributes(){
+          return $this->hasMany('App\Models\FeatureAttribute');
     }
 }

@@ -15,6 +15,7 @@ use App\Models\UploadImage;
 use Response;
 use App\Imports\ImportProducts;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\ProductFeture;
 
 
 use DataTables;
@@ -107,7 +108,6 @@ class ProductController extends Controller
 	public function store(Request $request)
 	{
 		try {
-			
 			if($request->file('image')){
 				if($request['id']){
 
@@ -211,6 +211,21 @@ class ProductController extends Controller
 		return response()->json($sub_cat);
 	}
 
+	public function subCategoryFeatures(Request $request){
+		if(@$request['product_id']){
+			$product_feature = ProductFeture::where('product_id',$request['product_id'])->where('value','=',null)->pluck('feature_attribute_id')->toArray();
+
+			$product_feature_text = ProductFeture::where('product_id',$request['product_id'])->where('value','!=',null)->select('features_id','value')->get()->toArray();
+		}else{
+			$product_feature = [];
+			$product_feature_text = [];
+		}
+		$features = SubCategory::with('features.featureName.FeatureAttributes')->where('id',$request['subcategory_id'])->get();
+
+
+		return view ('product.subcat-feature',compact('features','product_feature','product_feature_text'));
+	}
+
 	public function getBrand(Request $request){
 		$subcategory_id = $request->input('sub_category_id');
 		$brand = SubCategoryFeature::where('sub_category_id',$subcategory_id)->get();
@@ -234,10 +249,9 @@ class ProductController extends Controller
 	}
 	public function getProductDetail($id){
 
-    $user = \Auth()->user();
-		$product = Product::with('category','subCategory','getBrands')->where('slug',$id)->first();
+		$user = \Auth()->user();
+		$product = Product::with('category','subCategory','getBrands','productFeatures.feature_attribute_name','productFeatures.feature_name')->where('slug',$id)->first();
 		return view('product.detail',compact('product','user'));
-
 	}
 
 	public function productImage(Request $request){
