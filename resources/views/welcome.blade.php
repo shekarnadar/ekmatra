@@ -22,7 +22,7 @@
 																		@endforeach
 																		
 																</div>
-																<div class="swiper-pagination"></div>
+																<div class="swiper-pagination"> </div>
 														</div>
 												</div>
 												<div class="intro-banner-wrapper col-lg-3 mt-4">
