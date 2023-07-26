@@ -32,7 +32,7 @@
 							</h4>
 						    
 								<div class="product-price">
-									<ins class="new-price">Price : {{@$prod_val['price'] ? @$prod_val['price'] : @$prod_val['getProduct']['price']}}</ins>
+									<ins class="new-price">MRP : {{@$prod_val['mrp'] ? @$prod_val['mrp'] : @$prod_val['getProduct']['mrp']}}</ins>
 								</div>
 								
 								
