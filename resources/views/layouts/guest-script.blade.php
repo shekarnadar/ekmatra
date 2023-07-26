@@ -1,87 +1,87 @@
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-	<title>Ekmatra</title>
+    <title>Ekmatra</title>
 
-	<meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
-	<meta name="description" content="ekmatra">
-	<meta name="author" content="D-THEMES">
+    <meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
+    <meta name="description" content="ekmatra">
+    <meta name="author" content="D-THEMES">
 
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="{{url('front/images/icons/favicon.png')}}">
-	<link href="{{url('backend/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{url('front/images/icons/favicon.png')}}">
+    <link href="{{url('backend/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 
-	<script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url('front/vendor/jquery/jquery.min.js')}}"></script>
 
-	<!-- WebFont.js -->
-	<script>
-		WebFontConfig = {
-			google: { families: ['Poppins:400,500,600,700,800','Jost:400,500,600,700,800'] }
-		};
-		(function (d) {
-			var wf = d.createElement('script'), s = d.scripts[0];
-			wf.src = "{{url('front/js/webfont.js')}}";
-			wf.async = true;
-			s.parentNode.insertBefore(wf, s);
-		})(document);
-	
-			
-		
-	</script>
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700,800','Jost:400,500,600,700,800'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = "{{url('front/js/webfont.js')}}";
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    
+            
+        
+    </script>
 
-	 <link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
-		crossorigin="anonymous">
-	<link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-solid-900.woff2')}}" as="font" type="font/woff2"
-		crossorigin="anonymous">
-	<link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-brands-400.woff2')}}" as="font" type="font/woff2"
-			crossorigin="anonymous">
-	<link rel="preload" href="{{url('front/fonts/wolmart87d5.ttf?png09e')}}" as="font" type="font/ttf" crossorigin="anonymous">
+     <link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-solid-900.woff2')}}" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="{{url('front/vendor/fontawesome-free/webfonts/fa-brands-400.woff2')}}" as="font" type="font/woff2"
+            crossorigin="anonymous">
+    <link rel="preload" href="{{url('front/fonts/wolmart87d5.ttf?png09e')}}" as="font" type="font/ttf" crossorigin="anonymous">
 
-	<!-- Vendor CSS -->
-	<link rel="stylesheet" type="text/css" href="{{url('front/vendor/fontawesome-free/css/all.min.css')}}">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url('front/vendor/fontawesome-free/css/all.min.css')}}">
 
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="{{url('front/vendor/swiper/swiper-bundle.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url('front/vendor/animate/animate.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url('front/vendor/magnific-popup/magnific-popup.min.css')}}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url('front/vendor/swiper/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('front/vendor/animate/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('front/vendor/magnific-popup/magnific-popup.min.css')}}">
 
-	<!-- Default CSS -->
+    <!-- Default CSS -->
      @if(request()->is('/') || request()->is('shop/*') || request()->is('search') ||  request()->is('shop-by/*'))
-     	 <link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}"> 
+         <link rel="stylesheet" type="text/css" href="{{url('front/css/demo12.min.css')}}"> 
      
      @else
-     		    <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{url('front/css/style.min.css')}}">
 
      @endif
 
-	
+    
 </head>
 <style type="text/css">
-	.product-image-gap .product-media {
+    .product-image-gap .product-media {
     max-width: 295px;
     max-height: 300px;
     width: 100%;
     height: 225px;
-	}
+    }
 .product-image-gap .product-media img {
     object-fit: cover;
 }
-	.menu > li:hover > .submenu, .menu > li:hover .megamenu, .menu > li.show > .submenu, .menu > li.show .megamenu {
+    .menu > li:hover > .submenu, .menu > li:hover .megamenu, .menu > li.show > .submenu, .menu > li.show .megamenu {
     top: 0 !important;
-	}
-	.main-nav .menu > .has-submenu ul.submenu {
+    }
+    .main-nav .menu > .has-submenu ul.submenu {
     top: 100% !important;
-	}
-	li.shopby.has-submenu:hover ul.megamenu {
+    }
+    li.shopby.has-submenu:hover ul.megamenu {
     top: 100% !IMPORTANT;
 }
 
-	.error{
-		color:#a94442;
-	}
+    .error{
+        color:#a94442;
+    }
 
-	/* 12 April wishlist  */
+    /* 12 April wishlist  */
 .shop-table.cart-table th {
 text-align: left;
 }
@@ -91,27 +91,27 @@ text-align: left;
 }
 
 .wishlistbtns .removewishlist{
-	width: 40px;
+    width: 40px;
     height: 40px;
     border: none;
     background-color: transparent;
 }
 .wishlistbtns .edit{
-	width: 40px;
+    width: 40px;
     height: 40px;
     border: none;
     background-color: transparent;
 }
 
 .wishlistbtns .save {
-	width: 40px;
+    width: 40px;
     height: 40px;
     border: none;
     background-color: transparent;
 }
 
 .wishlistbtns .close {
-	width: 40px;
+    width: 40px;
     height: 40px;
     border: none;
     background-color: transparent;
@@ -173,7 +173,7 @@ padding:20px;
     font-weight: 600;
 }
 h4.product-name.wishlist-title{
-	margin-bottom: 0.7rem;
+    margin-bottom: 0.7rem;
     font-size: 1.3rem;
     font-weight: 500;
     overflow: hidden;
@@ -182,13 +182,13 @@ h4.product-name.wishlist-title{
 }
 
 @media screen and (max-width: 767px) {
-	.newsletterdiv{
-	padding:20px;
-	margin:0 auto;
-	min-height: auto;
-	}
+    .newsletterdiv{
+    padding:20px;
+    margin:0 auto;
+    min-height: auto;
+    }
 
-	.newsletterdiv .newsletter-content {
+    .newsletterdiv .newsletter-content {
     max-width: 100%;
     text-align: left;
 }

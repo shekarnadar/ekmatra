@@ -12,9 +12,20 @@
                                         <option value="mrp" data-order="desc">Sort by price: high to low</option>
                                     </select>
                                 </div>
+                                
                             </div>
                             <div class="toolbox-right">
-                                <div class="toolbox-item toolbox-show select-box mr-0">
+                                 <div class="toolbox-item toolbox-show select-box mr-0">
+                                        <a class="select-allhref"><input type="checkbox" name="selectmultipleproduct" class="selectmultipleproduct"><label>Select All</label></a>
+                                    @auth
+                                                <a href="javascript:void(0)"
+                                                    class="addmultipleProduct btn btn-dark btn-rounded mb-2 mb-lg-0  Catalogue-btn">Add To Catalogue &nbsp;&nbsp;</a>
+                                                @else
+                                                        <a href="{{url('login')}}"
+                                                    class="btn btn-dark btn-rounded sign-in mb-2 mb-lg-0  Catalogue-btn">Add To Catalogue &nbsp;&nbsp;</a>
+                                                @endauth
+                                </div>
+                                <div class="toolbox-item toolbox-show select-box   ml-2">
                                     <select name="limit_product" id="limit_product" class="form-control">
                                         <option value="10" selected="selected">Show 10</option>
                                         <option value="20">Show 20</option>
@@ -24,3 +35,4 @@
                                 
                             </div>
                         </nav>
+

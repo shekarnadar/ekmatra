@@ -21,7 +21,7 @@ class VendorSeeder extends Seeder
             'name' => 'Vendor',
             'email' => 'vendor@mailinator.com',
             'password' => bcrypt(123456),
-            'phone' => '+9189123456781',
+            'phone' => '+917045825266',
             'role_id' => $role_id
         ]);
     }

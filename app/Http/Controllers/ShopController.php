@@ -15,12 +15,12 @@ class ShopController extends Controller
 {
 	//
 	public function productList(Request $request){
-		 $brand = Product::with('feature_attributes')->where('status',1)->groupBy('feature_attribute_id')->get();
-
-    $allcategory = 1;
+		 $brand = Product::with('feature_attributes')->where('status',1)->get();
+		 $allcategory = 1;
 		$product = Product::where('status',1);
 		$product=$product->orderBy('created_at','desc')->paginate(12);
-		 return view ('allproduct',compact('brand','product','allcategory'));
+		$filter = false;
+		 return view ('allproduct',compact('brand','product','allcategory','filter'));
 		
 	}
 	public function dealsProduct(Request $request){
@@ -42,50 +42,38 @@ class ShopController extends Controller
 		}
 		
 		$subCategory = $category['subCategory'];
-		//$brand = $category['brands'];
 		
-		$brand = Product::with('feature_attributes')
-		->where('category_id',$cat_id)->where('status',1)->groupBy('feature_attribute_id')->get();
+		$features = SubCategoryFeature::with('featureName.FeatureAttributes')->where('category_id',$cat_id)->groupBy('feature_id')->get();
+		
 
-    	
+    	$filter = true;
 		$product = Product::where('category_id',$cat_id)->where('status',1);
 		$product=$product->orderBy('created_at','desc')->paginate(12);
 		
 		
-		return view ('shop',compact('cat_id','subCategory','brand','cat_name','product','cat_slug','select_cat_id'));
+		return view ('shop',compact('cat_id','subCategory','features','cat_name','product','cat_slug','select_cat_id','filter'));
 	}
     
     public function filterResult(Request $request){
 
-    	$product = Product::select('*')->with(['category','feature_attributes','subCategory']);
+    	$product = Product::select('*');
     	if($request['cat_id']){
     		$product->where('category_id',$request['cat_id']);
     	}
     	
-    	
-    	if($request['sub_cat_id']){
-    		$product->where('sub_category_id',$request['sub_cat_id']);
-    	}
 
     	if($request['brand_array']){
-    		$product->whereIn('feature_attribute_id',$request['brand_array']);
+    		$array = $request['brand_array'];
+    		 $product->whereHas('productFeatures', function ($q) use($array) {
+    			 $q->whereIn('feature_attribute_id', $array);
+			}, '=', count($array));
+    			
     	}
-
-    	if($request['warranty']){
-    		$product->where('warrenty',$request['warranty']);
-    	}
-
-    	if($request['min_price'] > 0 && $request['max_price']  > 0)
+		if($request['min_price'] > 0 && $request['max_price']  > 0)
         {
             $product->whereBetween('price', [$request['min_price'] , $request['max_price'] ]);
         }
-        if($request['min_qty'] > 0 && $request['max_qty']  > 0)
-        {
-            $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
-        }
-        if($request['max_qty'] == 150) {
-        	 $product->where('maq','>=',$request['max_qty']);
-        }
+       
         if($request['max_price'] == 5000){
         	$product->where('price','>=',$request['max_price']);
         }
@@ -101,15 +89,13 @@ class ShopController extends Controller
     	}else{
     		 $product->orderBy('created_at','desc');
 		}
-
     	$product= $product->paginate($page_limit);
-    
   
-
 		if ($request->ajax()) {
 			return view('presult', compact('product'));
 		}
     }
+
 	public function subCategoryList($category_name,$subcategory_name){
 		
 		$cat_slug = $category_name;
@@ -158,35 +144,35 @@ class ShopController extends Controller
 		->orWhere(function($q) use($search_txt) {
 			$q->whereHas('category', function ($query) use ($search_txt) {
 				$query->where('name','like', '%'. $search_txt .'%');
-			 })
-			->orWhereHas('feature_attributes',function($query) use( $search_txt){
-		 	     $query->where('name','like', '%'. $search_txt .'%');
-
-		 	 })->orWhereHas('subCategory',function($query) use( $search_txt){
-			    $query->where('name','like', '%'. $search_txt .'%');
 			 });
+			// ->orWhereHas('feature_attributes',function($query) use( $search_txt){
+		 	//      $query->where('name','like', '%'. $search_txt .'%');
+
+		 	//  })->orWhereHas('productFeatures',function($query) use( $search_txt){
+			//     $query->where('name','like', '%'. $search_txt .'%');
+			//  });
 		})
 		
-		 ->where('status',1)->groupBy('feature_attribute_id')->get();
+		 ->where('status',1)->get();
 
     	
 		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')
 		->orWhere(function($q) use($search_txt) {
 			$q->whereHas('category', function ($query) use ($search_txt) {
 				 $query->where('name','like', '%'. $search_txt .'%');
-			 })
-			->orWhereHas('feature_attributes',function($query) use( $search_txt){
-		 	     $query->where('name','like', '%'. $search_txt .'%');
-
-		 	 })->orWhereHas('subCategory',function($query) use( $search_txt){
-			    $query->where('name','like', '%'. $search_txt .'%');
 			 });
+			// ->orWhereHas('feature_attributes',function($query) use( $search_txt){
+		 	//      $query->where('name','like', '%'. $search_txt .'%');
+
+		 	//  })->orWhereHas('productFeatures',function($query) use( $search_txt){
+			//     $query->where('name','like', '%'. $search_txt .'%');
+			//  });
 		})
 		->where('status',1);
 		
-		
+		$filter = false;
 		$product = $product->orderBy('created_at','desc')->paginate(12);
-		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id'));
+		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 		
 	}
@@ -210,7 +196,7 @@ class ShopController extends Controller
 		->where('status',1);
 		
 		if($request['brand_array']){
-    		$product->whereIn('feature_attribute_id',$request['brand_array']);
+    		//$product->whereIn('feature_attribute_id',$request['brand_array']);
     	}
 
     	if($request['warranty']){

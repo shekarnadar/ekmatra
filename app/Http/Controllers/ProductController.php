@@ -324,10 +324,13 @@ class ProductController extends Controller
 	public function import(Request $request){
 	//	Excel::import(new ImportProducts, request()->file('file'));
      \DB::beginTransaction();
-		try{
-			$import = new ImportProducts;
-			$import->import($request->file);
 
+		try{
+
+			$import = new ImportProducts;
+			
+			 $import->import($request->file);
+			 	
 			if ($import->failures()->isNotEmpty()) {
 				\DB::rollBack();
 				return response()->json([

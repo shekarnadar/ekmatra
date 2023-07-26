@@ -122,14 +122,7 @@
 													
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="#">Brand</a>
-                                    <ul>
-                                        @foreach($allFeature as $feature)
-																					<li><a href="{{url('shop-by/brand/'.$feature['name'])}}">{{$feature['name']}}</a></li>
-												 							 @endforeach 
-                                    </ul>
-                                </li>
+                               
                                 
                             </ul>
                         </li>
@@ -165,17 +158,7 @@
 							<a href="{{url('shop/'.$value['slug'])}}">
 								<i><img src="{{url('category/'.$value['image'])}}" alt="Categroy" width="15" height="15" /></i>{{$value['name']}}
 							</a>
-							@if(count($value['subCategory']) > 0)
-							<ul>
-								@foreach($value['subCategory'] as $subcat)
-								<li>
-									<a href="{{url('shop/'.$value['slug'].'/'.$subcat['slug'])}}">{{$subcat['name']}}</a>
-									
-								</li>
-								@endforeach
-								
-							</ul>
-							@endif
+							
 						</li>
 						
 						@endforeach
@@ -188,6 +171,22 @@
 	<!-- End of Mobile Menu -->
 
 	<!-- Start of Newsletter popup -->
+	<div class="productPrice-popup mfp-hide product-single login-popup">
+		
+		
+				<p>Are you want to show price in catalogue?	</p>
+				<form method="post" action="{{url('wishlist-download')}}">
+					@csrf
+					<input type="hidden" value="" id="download_id" name="download_id">
+					<div class="row justify-content-center">
+					<button type="submit" class="btn btn-dark btn-block col-3 text-center productPriceClose" name="priceShow" value="1"><span class="submit" >Yes</span></button>
+					
+					<button type="submit" class="btn btn-dark btn-block col-3 ml-lg-3 productPriceClose"   name="priceShow" value="0"><span class="submit">No</span></button>
+				</div>
+						</form>
+	</div>
+		
+	</div>
 
 	<div class="newsletter-popup mfp-hide newsletterdiv">
 		<div class="newsletter-content">
@@ -206,6 +205,7 @@
 			
 
 			<input type="hidden" name="product_id" id="product_id">
+				<input type="hidden" name="product_price" id="product_price">
 			<p class="text-light ls-10"></p>
 			
 			<div class="form-checkbox d-flex align-items-center">
@@ -238,7 +238,7 @@
 									</div>
 									
 
-									<button type="submit" class="btn btn-main-primary btn-block forgotbtn" onClick="forgotPassword()"><span class="submit">{{ __('Sign In') }} </span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
+									<button type="submit" class="btn btn-main-primary btn-block forgotbtn" onClick="forgotPassword()"><span class="submit">Submit</span><span class="spinner-border spinner-border-sm loading" role="status" aria-hidden="true" style="display:none"></span></button>
 		</form>
 	</div>
 
@@ -261,6 +261,7 @@
 	
 	</body>
 	<script type="text/javascript">
+		var multipleProduct = [];
 		  $('.searchbtn').click(function(){
 		  	$('#searchMobileViewForm').submit();
 		  })
@@ -270,8 +271,10 @@
 		  	window.requestforquotation = 1;
 		  	window.redirectPage = "{{url('submitanenquiry')}}"
 		  });
+
+
 		   $('.wishlistAuth').click(function(){
-		   	window.redirectPage = "{{url('wishlist')}}"
+		   	window.redirectPage = "{{url('catalogue')}}"
 		  	window.requestforquotation = 1;
 		  });
 			function notifyMsg(msg,type) {
@@ -280,16 +283,18 @@
 					type: type
 				});
 			}
-				function wishList(id){
+				function wishList(id,price){
     			var id = id;
+    			var price = price;
     		
 	    		$.ajax({
 	       		type: "get",
-	          url: '{{ url("userWishlist/") }}'+'/'+id,
-	          
+	            url: '{{ url("userWishlist/") }}'+'/'+id,
+	           
 	          success: function(response) {
 	          		 $(".form-checkbox ul").html(response);
 	          		 $("#product_id").val(id);
+	          		 $("#product_price").val(price);
 	          },
 	          error: function(response) {
 	          	let error = response.responseJSON;
@@ -331,17 +336,36 @@
 			});
 			$(document).on('click', "a.addwishlist", function() {
     		var id = $(this).attr('data-id');
-    		wishList(id);
+    		var price = $(this).attr('data-price');
+    		wishList(id,price);
        });
 				
   
 			
 			$(document).on('click', "a.wishlist", function() {
     		var id = $(this).attr('data-id');
-    		wishList(id);
+    		var price = $(this).attr('data-price');
+    		wishList(id,price);
        });
 
-		
+		  $('.selectmultipleproduct').change(function(){
+		  	$(".multipleProduct").attr('checked',this.checked);
+		  });
+			
+			$(document).on('click',".addmultipleProduct",function(){
+				multipleProduct = [];
+		    $.each($(".multipleProduct:checked"), function(){
+		      multipleProduct.push({
+		      	'product_id' : $(this).val(),
+		      	'price' : $(this).attr('data-price')
+		      });
+		    });
+		    if(multipleProduct.length == 0){
+		    		notifyMsg('Please Select at least one product','error');
+		    		return false;
+		    }
+		    wishList(0,0);
+			})
 
 			$(document).on('click','span.addlist',function(){
 				$('.addListDiv').show();
@@ -350,12 +374,15 @@
 			$(document).on('click','.saveWishlist',function(){
 				var name  = $("#name").val();
 				var product_id = $("#product_id").val();
+				var product_price = $("#product_price").val();
 				 $.ajax({
        		type: "Post",
           url: '{{ url("wishlist/store") }}',
           data: {
             "name": name,
             "product_id" : product_id,
+            "product_price" : product_price,
+            "multipleProduct" : multipleProduct,
             "_token": "{{ csrf_token() }}",
         	},
           success: function(response) {
@@ -363,6 +390,11 @@
           	notifyMsg('Prodct has been sent in wishlist','success');
           	$('.cart-count').text(response.count);
           	$(".form-checkbox ul").append(response.html);
+          	multipleProduct = [];
+          	 $('.mfp-close').trigger('click');
+          	 $('.multipleProduct').prop('checked', false);
+
+
           },
           error: function(response) {
           	let error = response.responseJSON;
@@ -392,11 +424,18 @@
           data: {
             "wishlist_id": $(this).val(),
             "product_id" : $("#product_id").val(),
+            'product_price' : $("#product_price").val(),
+            "multipleProduct" : multipleProduct,
             "_token": "{{ csrf_token() }}",
         	},
           success: function(response) {
           	notifyMsg(msg,status);
           	$('.cart-count').text(response);
+          	multipleProduct = [];
+          	 $('.mfp-close').trigger('click');
+          	           	 $('.multipleProduct').prop('checked', false);
+
+
           },
           
        });
