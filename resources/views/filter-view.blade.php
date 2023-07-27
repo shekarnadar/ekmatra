@@ -57,6 +57,7 @@
 											<li data-maxprice="4999" data-minprice="1000"><a href="#">1000 to 5000</a></li>
 											<li data-maxprice="5000" data-minprice="0"><a href="#">5000 above</a></li>
 										</ul>
+
 									</div>
 								</div>
 								<!-- End of Collapsible Widget -->

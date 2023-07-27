@@ -17348,19 +17348,19 @@ body .product-popup {
     color:#fff !important;
 }
 .multipproductcheckbox {
-  border-radius:50%;display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    width: 3.6rem;
-    height: 3.6rem;
-    margin-bottom: 0.5rem;
-    background-color: #fff;
-    border: 1px solid #eee;
-    color: #999;
+  border-radius:50%;display: flex !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    width: 3.6rem !important;
+    height: 3.6rem !important;
+    margin-bottom: 0.5rem !important;
+    background-color: #fff !important;
+    border: 1px solid #eee !important;
+    color: #999 !important;
 }
 .more-product {
     justify-content: end;
