@@ -23,6 +23,21 @@ class ShopController extends Controller
 		 return view ('allproduct',compact('brand','product','allcategory','filter'));
 		
 	}
+
+	public function advanced(Request $request){
+		// print_r($request['advanced_array']);
+		// die();
+		$brand = Product::with('feature_attributes')->where('status',1)->get();
+		$allcategory = 1;
+	   $product = Product::where('status',1);
+	  
+
+	   $product=$product->orderBy('created_at','desc')->paginate(12);
+	   $filter = false;
+		return view ('allproductadvanced',compact('brand','product','allcategory','filter'));
+	   
+   }
+
 	public function dealsProduct(Request $request){
 		$product = ProductDeal::with('getProduct')->get();
 		return view ('dealsproduct',compact('product'));
@@ -70,6 +85,18 @@ class ShopController extends Controller
 			}, '=', count($array));
     			
     	}
+		if(!empty($request['advanced_array'])){
+			$product->whereIn('category_id', $request['advanced_array']);
+		   }
+
+		// if($request['advanced_array']){
+			
+    	// 	$array = $request['advanced_array'];
+    	// 	 $product->whereHas('category', function ($q) use($array) {
+    	// 		 $q->whereIn('category_id', $array);
+		// 	}, '=', count($array));
+    			
+    	// }
 		if($request['min_price'] > 0 && $request['max_price']  > 0)
         {
             $product->whereBetween('price', [$request['min_price'] , $request['max_price'] ]);

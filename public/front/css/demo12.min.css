@@ -10807,6 +10807,46 @@ body .product-popup {
   padding-top: 3px;
   font-weight: 600;
 }
+.filter-items.item-advanced a {
+  padding-left: 2.8rem !important;
+}
+.filter-items.item-advanced a::before {
+  content: "";
+  position: absolute;
+  border: 1px solid;
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 2px;
+  color: #999;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  text-align: center;
+  text-indent: 1px;
+  line-height: 1.3em;
+}
+@media (-webkit-min-device-pixel-ratio: 1.5),
+  (min--moz-device-pixel-ratio: 1.5),
+  (min-device-pixel-ratio: 1.5) {
+  .filter-items.item-advanced a::before {
+    text-indent: 0;
+  }
+}
+.filter-items.item-advanced .active > a::before {
+  content: "";
+  background-color: #9a2948;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  border-radius: 3px;
+  left: 1px;
+  padding-top: 3px;
+  font-weight: 600;
+}
 .filter-items.search-ul a::before {
   content: none;
 }
@@ -17363,36 +17403,36 @@ body .product-popup {
     color: #999 !important;
 }
 .more-product {
-    justify-content: end;
-    display: flex;
-    align-items: center;
+    justify-content: end !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .more-product i.w-icon-long-arrow-right {
-    padding-left: 5px;
+    padding-left: 5px !important;
 }
 .select-allhref {
-    display: flex;
-    align-items: center;
-    position: relative;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
     margin-bottom: 0 !important;
-    line-height: normal;
+    line-height: normal !important;
 }
 
 .select-allhref label {
-    color: #333;
-    margin-left: 5px;
-    margin-right: 5px;
-    line-height: 10px;
-    font-weight: 600;
+    color: #333 !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    line-height: 10px !important;
+    font-weight: 600 !important;
 }
 
 input.selectalllatestproduct {
-    width: 20px;
-    height: 20px;
-    color: #fff;
-    border-radius: 3px;
-    padding-top: 0;
-    font-weight: 600;
+    width: 20px !important;
+    height: 20px !important;
+    color: #fff !important;
+    border-radius: 3px !important;
+    padding-top: 0 !important;
+    font-weight: 600 !important;
 }
 

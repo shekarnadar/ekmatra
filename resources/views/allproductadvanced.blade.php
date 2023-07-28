@@ -14,7 +14,7 @@
 				<div class="container">
 				<div class="shop-content row gutter-lg">
 					<!-- Start of Sidebar, Shop Sidebar -->
-					@include('filter-view-shop');
+					@include('filter-view-advanced');
 					<!-- End of Shop Sidebar -->
 
 					<!-- Start of Main Content -->
@@ -74,6 +74,7 @@
 </x-guest-layout>
 <script type="text/javascript">
   var brand_array = [];
+  var advanced_array = [];
   var page_count = 1;
   var warranty = '';
   var max_price = '';
@@ -83,6 +84,20 @@
   var page_limit = '';
   var sort_by = 'created_at';
   var order_by = 'desc';
+  $('.advanced-item li').click(function(e){
+		event.preventDefault();
+      
+		var id = $(this).attr('data-id');
+		page_count = 1;
+	
+		var getClass = this.className;
+		if(getClass == 'active'){
+			removeadvanced(id);
+		}else{
+				advanced_array.push(id);		
+		}
+		getData(page_count);
+  });
 	$('.brand-item li').click(function(e){
 		event.preventDefault();
       
@@ -130,6 +145,10 @@
   	brand_array.splice($.inArray(id, brand_array), 1);
   	return brand_array;
   }
+  function removeadvanced(id){
+  	advanced_array.splice($.inArray(id, advanced_array), 1);
+  	return advanced_array;
+  }
   $('#go-button').click(function() {
     console.log('Go button clicked!');
     page_count = 1;
@@ -153,6 +172,7 @@
 });
 	$('.filter-clean').click(function(){
 		brand_array = [];
+        advanced_array = [];
   	page_count = 1;
    	warranty = '';
   	max_price = '';
@@ -230,6 +250,7 @@
 					'page' : page,
 					"_token": "{{ csrf_token() }}",
 					"brand_array" : brand_array,
+                    "advanced_array" : advanced_array,
 					"warranty" : warranty,
 					"max_price" : max_price,
 					"min_price" : min_price,

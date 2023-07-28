@@ -15,16 +15,18 @@
 								@if(isset($allcategory))
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>All Categories</label></h3>
-									<ul class="widget-body filter-items search-ul">
+									<ul class="widget-body filter-items item-check mt-1 advanced-item">
 										@foreach($category as $val)
 											
-											<li><a href="{{url('shop/'.$val['slug'])}}">{{$val['name']}}</a></li>
+										<li data-id="{{$val['id']}}"><a href="javascript:void(0)">{{$val['name']}}</a></li>
+											<!-- <li><a href="{{url('shop/'.$val['slug'])}}">{{$val['name']}}</a></li> -->
 											
 										@endforeach
 									</ul>
 								</div>
 								@endif
-								@if(@$subCategory)
+
+								<!-- @if(@$subCategory)
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>All Categories</label></h3>
 									<ul class="widget-body filter-items search-ul">
@@ -43,7 +45,7 @@
 										@endforeach
 									</ul>
 								</div>
-								@endif
+								@endif -->
 								<!-- End of Collapsible Widget -->
 
 								<!-- Start of Collapsible Widget -->
@@ -73,7 +75,7 @@
 
 
 								<!-- Start of Collapsible Widget -->
-								 @if(@$brand)
+								 <!-- @if(@$brand)
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Brand</label></h3>
 									<ul class="widget-body filter-items item-check mt-1 brand-item">
@@ -84,9 +86,9 @@
 										@endforeach
 									</ul>
 								</div>
-								@endif 
+								@endif  -->
 								<!-- End of Collapsible Widget -->
-								<div class="widget widget-collapsible">
+								<!-- <div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Minimum qty</label></h3>
 									<ul class="widget-body filter-items item-check qty-item">
 										<li data-minqty="1" data-maxqty="50"><a href="#">Under 50</a></li>
@@ -94,10 +96,10 @@
 										<li data-minqty="100" data-maxqty="150"><a href="#">100-150</a></li>
 										<li data-maxqty="150" data-minqty="0" data-maxqty="100"><a href="#">150 & up</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 								<!-- Start of Collapsible Widget -->
-								<div class="widget widget-collapsible">
+								<!-- <div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Warranty</label></h3>
 									<ul class="widget-body filter-items item-check warranty-item">
 										<li data-value="0"><a href="#">No Warranty</a></li>
@@ -107,7 +109,7 @@
 										<li data-value="4"><a href="#">4 years</a></li>
 										<li data-value="5"><a href="#">5 years</a></li>
 									</ul>
-								</div>
+								</div> -->
 								<!-- End of Collapsible Widget -->
 							</div>
 							<!-- End of Sidebar Content -->

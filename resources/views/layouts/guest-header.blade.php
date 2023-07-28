@@ -164,6 +164,11 @@
 										</ul>
 										<!-- End of Megamenu -->
 									</li>
+
+									<li class="advanced">
+										<a href="{{url('shop/advanced')}}">Advance</a>
+									</li>
+
 									<li class="whatwedo">
                                         <a href="blog.html">What We Do</a>
                                         <ul>

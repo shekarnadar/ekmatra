@@ -45,6 +45,8 @@ Route::get('/',[WelcomeController::class, 'index'])->name('index');
 //Shop page
 Route::get('shop/product',[ShopController::class, 'productList'])->name('productallshop');
 
+Route::get('shop/advanced',[ShopController::class, 'advanced'])->name('productallshopadvanced');
+
 Route::get('shop/{category}',[ShopController::class, 'index'])->name('shopindex');
 Route::get('shop/{category}/{subcategory}',[ShopController::class, 'subCategoryList'])->name('subcategory.list');
 Route::post('filter-result',[ShopController::class, 'filterResult'])->name('filterResult');
