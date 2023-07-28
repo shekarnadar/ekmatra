@@ -19,7 +19,7 @@
                     <!-- Start of Sidebar, Shop Sidebar -->
                     <input type="hidden" value="{{@$sub_cat['id']}}" id="subcat_id">
                     <input type="hidden" value="{{@$sub_cat['category_id']}}" id="cat_id">
-                    @include('filter-view')
+                    @include('filter-view-shop')
                     <!-- End of Shop Sidebar -->
 
                     <!-- Start of Main Content -->
@@ -99,6 +99,28 @@
         
             getData(page_count);
   });
+
+  $('#go-button').click(function() {
+    console.log('Go button clicked!');
+    page_count = 1;
+    sort_by = "price";
+    min_price = $('#inputMinPrice').val();
+    max_price = $('#inputMaxPrice').val();
+
+    // Uncheck all the checkboxes for price range
+    $('.price-item li').removeClass('active');
+
+    // Validate the min and max prices
+    if (min_price !== '' && max_price !== '') {
+        if (parseInt(max_price) < parseInt(min_price)) {
+            alert('Max value cannot be less than Min value.');
+            return;
+        }
+    }
+
+    // Call the function to filter products based on min and max price
+    getData(page_count);
+});
 
   function removeBrand(id){
     brand_array.splice($.inArray(id, brand_array), 1);

@@ -14,7 +14,7 @@
 				<div class="container">
 				<div class="shop-content row gutter-lg">
 					<!-- Start of Sidebar, Shop Sidebar -->
-					@include('filter-view');
+					@include('filter-view-shop');
 					<!-- End of Shop Sidebar -->
 
 					<!-- Start of Main Content -->
@@ -35,7 +35,19 @@
 								</div>
 							</div>
 							<div class="toolbox-right">
-								<div class="toolbox-item toolbox-show select-box mr-0">
+
+							<div class="toolbox-item toolbox-show select-box mr-0">
+                                        <a class="select-allhref"><input type="checkbox" name="selectmultipleproduct" class="selectmultipleproduct"><label>Select All</label></a>
+                                    @auth
+                                                <a href="javascript:void(0)"
+                                                    class="addmultipleProduct btn btn-dark btn-rounded mb-2 mb-lg-0  Catalogue-btn">Add To Wishlist &nbsp;&nbsp;</a>
+                                                @else
+                                                        <a href="{{url('login')}}"
+                                                    class="btn btn-dark btn-rounded sign-in mb-2 mb-lg-0  Catalogue-btn">Add To Catalogue &nbsp;&nbsp;</a>
+                                                @endauth
+                                </div>
+
+								    <div class="toolbox-item toolbox-show select-box   ml-2">
 									<select name="limit_product" id="limit_product" class="form-control">
 										<option value="10" selected="selected">Show 10</option>
 										<option value="20">Show 20</option>
@@ -113,11 +125,32 @@
 			getData(page_count);
   });
 
+
   function removeBrand(id){
   	brand_array.splice($.inArray(id, brand_array), 1);
   	return brand_array;
   }
-	
+  $('#go-button').click(function() {
+    console.log('Go button clicked!');
+    page_count = 1;
+    sort_by = "price";
+    min_price = $('#inputMinPrice').val();
+    max_price = $('#inputMaxPrice').val();
+
+    // Uncheck all the checkboxes for price range
+    $('.price-item li').removeClass('active');
+
+    // Validate the min and max prices
+    if (min_price !== '' && max_price !== '') {
+        if (parseInt(max_price) < parseInt(min_price)) {
+            alert('Max value cannot be less than Min value.');
+            return;
+        }
+    }
+
+    // Call the function to filter products based on min and max price
+    getData(page_count);
+});
 	$('.filter-clean').click(function(){
 		brand_array = [];
   	page_count = 1;

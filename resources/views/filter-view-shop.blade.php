@@ -54,8 +54,8 @@
 									  	<li data-maxprice="99" data-minprice="1"><a href="#">Below to 100</a>
 											<li data-maxprice="499" data-minprice="100"><a href="#">100 to 500</a></li>
 											<li data-maxprice="999" data-minprice="500"><a href="#">500 to 1000</a></li>
-											<li data-maxprice="4999" data-minprice="1000"><a href="#">1000 to 5000</a></li>
-											<li data-maxprice="5000" data-minprice="0"><a href="#">5000 above</a></li>
+											<li data-maxprice="5000" data-minprice="1000"><a href="#">1000 to 5000</a></li>
+											<li data-maxprice="5001" data-minprice="0"><a href="#">5000 above</a></li>
 										</ul>
 										<form class="price-range">
 											<input
@@ -73,7 +73,7 @@
 
 
 								<!-- Start of Collapsible Widget -->
-								@if(@$brand)
+								<!-- @if(@$brand)
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Brand</label></h3>
 									<ul class="widget-body filter-items item-check mt-1 brand-item">
@@ -84,7 +84,7 @@
 										@endforeach
 									</ul>
 								</div>
-								@endif
+								@endif -->
 								<!-- End of Collapsible Widget -->
 								<div class="widget widget-collapsible">
 									<h3 class="widget-title"><label>Minimum qty</label></h3>
@@ -114,57 +114,5 @@
 						</div>
 						<!-- End of Sidebar Content -->
 					</aside>
-					<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const goButton = document.getElementById("go-button");
-  const inputMinPrice = document.getElementById("inputMinPrice");
-  const inputMaxPrice = document.getElementById("inputMaxPrice");
-  const priceItems = document.querySelectorAll(".price-item li");
-
-  function updateInputValues(minPrice, maxPrice) {
-    inputMinPrice.value = minPrice;
-    inputMaxPrice.value = maxPrice;
-    priceItems.forEach(item => {
-      item.classList.remove("selected");
-    });
-  }
-
-  goButton.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    const minPrice = inputMinPrice.value;
-    const maxPrice = inputMaxPrice.value;
-
-    // Check if maxPrice is less than minPrice
-    if (parseInt(maxPrice) < parseInt(minPrice)) {
-      alert("Max price should be greater than or equal to Min price.");
-      return;
-    }
-
-    const url = `/shop-by/price/${minPrice}-${maxPrice}`;
-    window.location.href = url;
-  });
-
-  priceItems.forEach(item => {
-    item.addEventListener("click", function () {
-      const minPrice = this.dataset.minprice;
-      const maxPrice = this.dataset.maxprice;
-      updateInputValues(minPrice, maxPrice);
-      this.classList.add("selected");
-    });
-  });
-
-  // Preserve the input values after a form submission (page reload)
-  const params = new URLSearchParams(window.location.search);
-  const minParam = params.get("min_price");
-  const maxParam = params.get("max_price");
-  if (minParam !== null && maxParam !== null) {
-    inputMinPrice.value = minParam;
-    inputMaxPrice.value = maxParam;
-  }
-});
-</script>
-
-
-
+				
 

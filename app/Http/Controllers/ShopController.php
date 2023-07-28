@@ -59,9 +59,10 @@ class ShopController extends Controller
     	$product = Product::select('*');
     	if($request['cat_id']){
     		$product->where('category_id',$request['cat_id']);
-    	}
-    	
-
+    	}  	
+		if($request['sub_cat_id']){
+			$product->where('sub_category_id',$request['sub_cat_id']);
+		}
     	if($request['brand_array']){
     		$array = $request['brand_array'];
     		 $product->whereHas('productFeatures', function ($q) use($array) {
@@ -74,9 +75,20 @@ class ShopController extends Controller
             $product->whereBetween('price', [$request['min_price'] , $request['max_price'] ]);
         }
        
-        if($request['max_price'] == 5000){
-        	$product->where('price','>=',$request['max_price']);
+         if($request['max_price'] == 5001){
+         	$product->where('price','>=',$request['max_price']);
+         }
+		  if($request['min_qty'] > 0 && $request['max_qty']  > 0)
+        {
+            $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
         }
+        
+        if($request['max_qty'] == 150) {
+        	 $product->where('maq','>=',$request['max_qty']);
+        }
+        if($request['warranty']){
+    		$product->where('warrenty',$request['warranty']);
+    	}
         if($request['page_limit']){
         	$page_limit = $request['page_limit'];
         }else{
@@ -96,7 +108,7 @@ class ShopController extends Controller
 		}
     }
 
-	public function subCategoryList($category_name,$subcategory_name){
+	public function subCategoryList($category_name,$subcategory_name,Request $request){
 		
 		$cat_slug = $category_name;
 		
@@ -110,10 +122,11 @@ class ShopController extends Controller
 		}else{
 			$select_cat_id = '';
 		}
-
+		
+		
 		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
 		
-
+		
 		$product = $product->orderBy('created_at','desc')->paginate(12);
 		
 
@@ -156,8 +169,7 @@ class ShopController extends Controller
 		 ->where('status',1)->get();
 
     	
-		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')
-		->orWhere(function($q) use($search_txt) {
+		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')->orWhere(function($q) use($search_txt) {
 			$q->whereHas('category', function ($query) use ($search_txt) {
 				 $query->where('name','like', '%'. $search_txt .'%');
 			 });
@@ -181,20 +193,7 @@ class ShopController extends Controller
 
 		$search_txt = $request['search_txt'];
 
-		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')
-		->orWhere(function($q) use($search_txt) {
-			$q->whereHas('category', function ($query) use ($search_txt) {
-				 $query->where('name','like', '%'. $search_txt .'%');
-			 })
-			->orWhereHas('feature_attributes',function($query) use( $search_txt){
-		 	     $query->where('name','like', '%'. $search_txt .'%');
-
-		 	 })->orWhereHas('subCategory',function($query) use( $search_txt){
-			    $query->where('name','like', '%'. $search_txt .'%');
-			 });
-		})
-		->where('status',1);
-		
+		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%');
 		if($request['brand_array']){
     		//$product->whereIn('feature_attribute_id',$request['brand_array']);
     	}
@@ -217,7 +216,7 @@ class ShopController extends Controller
         	 $product->where('maq','>=',$request['max_qty']);
         }
         
-        if($request['max_price'] == 5000){
+        if($request['max_price'] == 5001){
         	$product->where('price','>=',$request['max_price']);
         }
         
@@ -226,11 +225,20 @@ class ShopController extends Controller
         }else{
         	$page_limit = 12;
         }
-		
-		
-
 		$product = $product->orderBy('created_at','desc')->paginate($page_limit);
 		return view('presult', compact('product'));
-		
+       
+        $product->orWhere(function($q) use($search_txt) {
+			$q->whereHas('category', function ($query) use ($search_txt) {
+				 $query->where('name','like', '%'. $search_txt .'%');
+			 })
+			->orWhereHas('feature_attributes',function($query) use( $search_txt){
+		 	     $query->where('name','like', '%'. $search_txt .'%');
+
+		 	 })->orWhereHas('subCategory',function($query) use( $search_txt){
+			    $query->where('name','like', '%'. $search_txt .'%');
+			 });
+		})
+		->where('status',1);		
 	}
 }

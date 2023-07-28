@@ -109,7 +109,11 @@ class GiftController extends Controller
         		$product->where('price','>=',$request['max_price']);
         	}
         }
-	
+
+		if($request['min_price'] > 0 && $request['max_price']  > 0)
+        {
+            $product->whereBetween('price', [$request['min_price'] , $request['max_price'] ]);
+        }
 		if($request['page_limit']){
        $page_limit = $request['page_limit'];
     }else{
