@@ -12,6 +12,7 @@
            <th>Category</th>
 
             <th>Name</th>
+            <th>Price</th>
             <th>Mrp</th>
             <th>Image</th>
 
@@ -20,10 +21,9 @@
         @foreach($wishlists['ProductWishList'] as $wishlist)
         <tr>
             <td>{{ $loop->iteration}}</td>
-                        <td>{{$wishlist['getProduct']['category']['name']}}</td>
-
+            <td>{{$wishlist['getProduct']['category']['name']}}</td>
             <td>{{ $wishlist['getProduct']['name'] }}</td>
-           
+            <td>{{ $wishlist->getProduct->price }}</td>
             <td>{{ $wishlist->getProduct->mrp }}</td>
              <td> <img src="{{public_path().'/product/'.$wishlist->getProduct->image }}" width="100" height="100"></td>
         </tr>
