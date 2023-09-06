@@ -37,8 +37,8 @@ class ContactUsController extends Controller
 		}
 
 		public function whatWeDo($type){
-			if($type == 'send'){
-				return view('pages.send');
+			if($type == 'DriveMojo'){
+				return view('pages.DriveMojo');
 			}else{
 				return view('pages.brandstore');
 			}

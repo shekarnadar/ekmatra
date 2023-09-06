@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\OccasionsController;
@@ -87,6 +88,11 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('import',[ProductController::class,'import'])->name('import');
 		Route::post('product/remove',[ProductController::class,'productRemove'])->name('productRemove');
 		Route::post('product/subCategoryFeatures',[ProductController::class,'subCategoryFeatures'])->name('product.subCategoryFeatures');
+
+		//Orders
+
+		Route::get('orders',[OrderController::class,'showOrders'])->name('orders');
+		Route::get('/admin/orders/{order}', [OrderController::class, 'showOrderDetails'])->name('admin.order.details');
 
 
 

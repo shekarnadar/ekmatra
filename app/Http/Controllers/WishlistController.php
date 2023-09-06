@@ -24,20 +24,60 @@ class WishlistController extends Controller
 				$price  = $value['price'] + $calculate_price;
 
 			}
-			ProductWishList::where('id',$value['id'])->update(['margin_price'=>$price]);
+			ProductWishList::where('id',$value['id'])->update(['margin_price'=>$price,
+			'margin_type' => $margin_type,
+			'margin_value' => $margin_price
+		]);
 		}
 		$Wishlist = Wishlist::where('id',$wishlist_id)->update([
 			'margin_type' => $margin_type,
 			'margin_value' => $margin_price
-		]);		
+		]);	
+		$wishlist = Wishlist::with('ProductWishList.getProduct')->where('id',$wishlist_id)->first();	
 		$result = ProductWishList::with('getProduct')->where('wishlist_id',$wishlist_id)->get();
 	
-		$html = view('wishlist.wishlist-margin')->with(compact('result','margin_price','margin_type'))->render();
+		$html = view('wishlist.wishlist-margin')->with(compact('result','margin_price','margin_type','wishlist'))->render();
 		return response()->json(['success' => true,
 				'html' => $html,
 		  ], 200);
 
 	}
+
+	public function singlesetMargin(Request $request){
+		$wishlist_id = $request->wishlist_id;
+		$margin_type = $request->margin_type;
+		$margin_price = $request->margin;
+		$wishlistid = $request->wishlistid;
+
+		$product = ProductWishList::where('id',$wishlist_id)->first();
+		
+			if($margin_type == 'rs'){
+				$price = $product['price'] + $margin_price;
+			}else{
+				$calculate_price = ($margin_price / 100) * $product['price'];
+				$price  = $product['price'] + $calculate_price;
+
+			}
+		
+			ProductWishList::where('id', $wishlist_id)->update([
+				'margin_price'=>$price,
+				'margin_type' => $margin_type,
+			    'margin_value' => $margin_price
+			]);
+		
+			$wishlist = Wishlist::with('ProductWishList.getProduct')->where('id',$wishlistid)->first();
+
+		 
+
+		$result = ProductWishList::with('getProduct')->where('wishlist_id',$wishlistid)->get();
+	
+		$html = view('wishlist.wishlist-margin')->with(compact('result','wishlist','margin_price','margin_type'))->render();
+		return response()->json(['success' => true,
+				'html' => $html,
+		  ], 200);
+
+	}
+
 	public function store(Request $request){
 		$client_id = \Auth::user()->id;
 		$product_price = $request['product_price'];
@@ -123,6 +163,8 @@ class WishlistController extends Controller
 				 	$productWishList = ProductWishList::where($matchThese)->first();
 				 	if(!$productWishList){
 				 			$matchThese['price'] = $value['price'];
+							  $matchThese['margin_type'] = $wishlist['margin_type'];
+							  $matchThese['margin_value'] = $wishlist['margin_value'];
 							if(@$wishlist['margin_type']){
 						if($wishlist['margin_type'] == 'percent'){
 							$calculate = ($value['price'] / 100) * $wishlist['margin_value'];
@@ -143,7 +185,8 @@ class WishlistController extends Controller
 				];
 
 				$productWishList = ProductWishList::where($matchThese)->first();
-				
+				//$wishlist = Wishlist::where('id',$wishlist_id)->first();
+
 				if($productWishList){
 					$productWishList->delete();
 				}else{
@@ -156,6 +199,8 @@ class WishlistController extends Controller
 							$matchThese['margin_price'] = $request['product_price'] + $wishlist['margin_value'];
 						}
 					}
+					$matchThese['margin_type'] = $wishlist['margin_type'];
+					$matchThese['margin_value'] = $wishlist['margin_value'];
 					ProductWishList::create($matchThese);
 				}
 		}
@@ -213,6 +258,71 @@ class WishlistController extends Controller
 				'message' => 'wishlist has been updated sucessfully',
 		  ], 200);
 	}
+
+	public function uploadlogo(Request $request)
+	{
+		if ($request->hasfile('logo')) 
+		{
+			$image = $request->file('logo');
+            $imageName = time() . rand(11111, 99999) . '.' . $image->getClientOriginalExtension();
+		    $destination = public_path() . '/'.'logo';
+
+			//check directory avilable
+			if (!is_dir($destination)) {
+					\File::makeDirectory($destination, $mode = 0777, true, true);
+			}
+		    $fileName = str_replace(" ", "-", $imageName);
+		    $image->move($destination, $fileName);
+		    $id = $request->id;
+		    Wishlist::where('id',$id)->update([
+			'logo' => $fileName
+		    ]);	
+			return response()->json([
+				'success' => true,
+				'message' => 'Wishlist logo has been updated successfully.',
+			], 200);
+			
+        }
+		else
+		{
+			return response()->json([
+				'error' => true,
+				'message' => 'Wishlist logo cannot be empty.',
+			], 400); // 400 Bad Request status code for errors
+        }
+
+	}
+
+	public function deletelogo(Request $request)
+{
+    $id = $request->id;
+    $wishlist = Wishlist::find($id);
+
+    if ($wishlist) {
+        if ($wishlist->logo) {
+            // Delete the logo file
+            $logoPath = public_path('logo') . '/' . $wishlist->logo;
+            if (file_exists($logoPath)) {
+                unlink($logoPath);
+            }
+
+            // Clear the logo column in the table
+            $wishlist->update(['logo' => null]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Logo has been deleted successfully.'
+            ], 200);
+        }
+    }
+
+    return response()->json([
+        'failed' => true,
+        'message' => 'Logo could not be deleted.'
+    ], 400);
+}
+
+
 
 	public function removewishlist(Request $request){
 		

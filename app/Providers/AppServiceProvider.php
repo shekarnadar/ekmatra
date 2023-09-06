@@ -46,7 +46,9 @@ class AppServiceProvider extends ServiceProvider
 
 		Validator::extend('email_valid', function ($attribute, $value, $parameters, $validator){
 			$role_id = getRole('customer');
+			$subadmin_role_id = getRole('subadmin');
 			$users = \DB::table('users')->where(['email' => $value, 'role_id' => $role_id])
+			->orWhere(['email' => $value, 'role_id' => $subadmin_role_id])
 					//->where('status', '!=', 'deleted')
 					->first(['id']);
 			if (!empty($users)) {
@@ -77,5 +79,6 @@ class AppServiceProvider extends ServiceProvider
 				return false;
 			}
 		}); 
+
 	}
 }

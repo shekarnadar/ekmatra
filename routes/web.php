@@ -13,7 +13,8 @@ use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\GiftController;
 use App\Http\Controllers\VacencyRequirementsController;
-
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,9 @@ Route::post('searchProductResult',[ShopController::class,'searchProductResult'])
 Route::get('product',[CustomerController::class, 'product'])->name('product');
 
 Route::get('/myaccount', [CustomerController::class,'dashboard'])->middleware(['auth', 'verified'])->name('customer.myaccount');
+Route::get('myorders', [CustomerController::class, 'myorders'])->name('myorders');
+Route::get('orderdetails/{orderId}', [CustomerController::class, 'OrderDetails'])->name('orderdetails');
+
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,6 +71,8 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 	Route::get('wishlist',[WishlistController::class,'wishlist'])->name('wishlist');
 	Route::get('wishlist/view/{id}',[WishlistController::class,'wishlistView'])->name('wishlistView');
+	Route::post('wishlist/margin',[WishlistController::class,'setMargin'])->name('setMargin');
+	Route::post('wishlist/singlemargin',[WishlistController::class,'singlesetMargin'])->name('singlesetMargin');
 
 	Route::get('inquiry',[InquiryController::class,'inquiryView'])->name('inquiry.view');
 	Route::get('submitanenquiry',[InquiryController::class,'submitanenquiry'])->name('submitanenquiry');
@@ -87,7 +93,7 @@ Route::post('contact-us/inquiry',[ContactUsController::class,'inquiry'])->name('
 
 Route::get('we-are-hiring',[ContactUsController::class,'weAreHiring'])->name('weAreHiring');
 Route::get('about-us',[ContactUsController::class,'aboutUs'])->name('aboutUs');
-Route::get('what-we-do/{type}',[ContactUsController::class,'whatWeDo'])->name('whatWeDo.send');
+Route::get('what-we-do/{type}',[ContactUsController::class,'whatWeDo'])->name('whatWeDo.DriveMojo');
 
 
 
@@ -101,6 +107,9 @@ Route::get('wishlist-download/{id}',[WishlistController::class,'wishlistDownload
 Route::post('removeProductWishlist',[WishlistController::class,'removeProductWishlist'])->name('removeProductWishlist');
 
 Route::post('savewishlist',[WishlistController::class,'savewishlist'])->name('savewishlist');
+Route::post('uploadlogo',[WishlistController::class,'uploadlogo'])->name('uploadlogo');
+Route::post('deletelogo',[WishlistController::class,'deletelogo'])->name('deletelogo');
+
 Route::post('removewishlist',[WishlistController::class,'removewishlist'])->name('removewishlist');
 Route::post('customerInquiry',[InquiryController::class,'customerInquiry'])->name('customerInquiry');
 Route::post('vacancy/store',[VacencyRequirementsController::class,'store'])->name('vacancy.store');
@@ -108,3 +117,19 @@ Route::post('vacancy/store',[VacencyRequirementsController::class,'store'])->nam
 Route::post('subscription',[VacencyRequirementsController::class,'subscription'])->name('subscription');
 
 Route::get('deals/product',[ShopController::class,'dealsProduct'])->name('deals.product');
+
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/check-entry',[CartController::class, 'checkEntry'])->name('cart.check_entry');
+Route::get('/cart/items',[CartController::class, 'getCartItems'])->name('getCartItems');
+Route::post('/cart/removefromcart', [CartController::class, 'removefromcart'])->name('cart.removefromcart');
+Route::get('cart-product',[CartController::class, 'CartProduct'])->name('cart-product');
+Route::post('cart-items/clear', [CartController::class, 'clearCartItems'])->name('cart.clear');
+Route::put('/cart/{cartId}', [CartController::class, 'update'])->name('cart.update');
+Route::get('/fetch_cart', [CartController::class, 'fetchCartQuantities'])->name('cart.fetch');
+Route::delete('/delete/{cartId}', [CartController::class, 'deleteFromCart'])->name('cart.deletefromcart');
+Route::post('/checkout',[OrderController::class, 'checkout'])->middleware('auth')->name('checkout');
+
+
+
+

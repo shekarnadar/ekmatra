@@ -1,4 +1,13 @@
- <header class="header header-border">
+<style>
+	#cart-products-container {
+    max-height: 100%; /* Adjust the height as per your requirement */
+    overflow-y: auto;
+}
+</style>
+@php
+$user_id=@auth()->user()->id;
+@endphp
+<header class="header header-border">
 			<div class="header-top">
 				<div class="container">
 					<div class="header-left">
@@ -59,23 +68,69 @@
 								<a href="tel:#" class="phone-number font-weight-bolder ls-50">{{$contact}}</a>
 							</div>
 						</div>
+
+
+                       
+						
+						
 							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
 									<div class="cart-overlay"></div>
+
 									@auth
 
-										<a href="{{url('wishlist')}}" class=" label-down link">
-											<i class="w-icon-cart">
-												<span class="cart-count text-white">{{\Session::get('wishlistCount')}}</span>
+				                        <a href="{{url('wishlist')}}" class=" label-down link">
+											<i class="w-icon-heart">
+												<span class="cart-count text-white count" id="wishlistcount">{{\Session::get('wishlistCount')}}</span>
 											</i>
+												<span class="wishlist-lable d-lg-show">Wishlist</span>
+											
 
-									</a>
-									@else
-									<a href="{{url('login')}}" class="  login sign-in wishlistAuth">
-											<i class="w-icon-cart"></i>
-									</a>
+										</a>
+										@else
+										<a href="{{url('login')}}" class="  login sign-in wishlistAuth">
+											<i class="w-icon-heart"></i>
+										</a>
 									@endauth
-									
 									<!-- End of Dropdown Box -->
+							</div>
+						
+
+							<div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
+							@auth
+							        <a href="#" class="cart-toggle label-down link">
+										<i class="w-icon-cart">
+											<span class="cart-count text-white" id="cart-counts">{{\Session::get('CartCount')}}</span>
+										</i>
+										<span class="cart-label">Cart</span>
+									</a>
+
+									@else
+										<a href="{{url('login')}}" class="  login sign-in cartAuth">
+											<i class="w-icon-cart"></i>
+										</a>
+							@endauth
+								<div class="dropdown-box">
+									<div class="cart-header">
+										<span>Shopping Cart</span>
+										<a href="#" class="btn-close">Close<i class="w-icon-long-arrow-right"></i></a>
+									</div>
+
+									<div class="products" id="cart-products-container">
+										<!-- Cart items will be dynamically added here -->
+									</div>
+									
+									<div class="cart-total">
+										<label>Total:</label>
+										<span class="price" id="cart-subtotal">Rs. 0.00</span>
+									</div>
+									<div class="cart-action">
+										<a href="{{url('cart-product')}}" class="btn btn-dark btn-outline btn-rounded">Proceed</a>
+										<a href="#" class="btn btn-primary btn-rounded clear" onclick="clearAllCartItems({{$user_id}})">Clear</a>
+
+									</div>
+									
+								</div>
+							
 							</div>
 					  
 					</div>
@@ -164,16 +219,17 @@
 										</ul>
 										<!-- End of Megamenu -->
 									</li>
-
+									@if(@auth()->user()->role_id=='4')
 									<li class="advanced">
 										<a href="{{url('shop/advanced')}}">Advance</a>
 									</li>
+									@endif
 
 									<li class="whatwedo">
                                         <a href="blog.html">What We Do</a>
                                         <ul>
                                             <li><a href="{{url('what-we-do/brandstore')}}">Brand Store</a></li>
-                                            <li><a href="{{url('what-we-do/send')}}">Send</a></li>
+                                            <li><a href="{{url('what-we-do/DriveMojo')}}">DriveMojo</a></li>
                                             
                                         </ul>
                                     </li>
@@ -202,3 +258,160 @@
 				</div>
 			</div>
 		</header>
+<script>
+function clearAllCartItems(clientId) {
+    $.ajax({
+        type: 'POST',
+        url: "{{ route('cart.clear') }}",
+        data: {
+            client_id: clientId,
+            _token: "{{ csrf_token() }}"
+        },
+        success: function (response) {
+            // Handle the response if needed
+            console.log('Client ID:', response.client_id);
+        console.log(response.message);
+            // Update the cart display if necessary
+            // ...
+			fetchCartItemsAndUpdateDropdown();
+			updateCartCount();
+			calculateSubtotal();
+            // Remove all cart items from the cart dropdown
+            $('.products .cart-product').remove();
+            // Hide the cart dropdown
+            $('.cart-dropdown').removeClass('show');
+        },
+        error: function (error) {
+            // Handle the error if needed
+            console.error('An error occurred during the AJAX request:', error);
+        }
+    });
+}
+
+// Call the function when the "Clear" button is clicked
+$('.clear').on('click', function (event) {
+    event.preventDefault();
+    const clientId = $(this).data('clientId');
+    console.log('Client ID:', clientId);
+    clearAllCartItems(clientId);
+});
+
+
+function calculateSubtotal(cartItems) {
+    let subtotal = 0;
+
+    // Loop through the cart items and add the price of each product multiplied by its quantity to the subtotal
+    cartItems.forEach(function (item) {
+        subtotal += item.product.price * item.quantity;
+    });
+
+    return subtotal;
+}
+	// Function to fetch cart items from the server and update the cart dropdown
+function fetchCartItemsAndUpdateDropdown() {
+    $.ajax({
+        type: 'GET',
+        url: "{{ route('getCartItems') }}", // Replace with the correct route to fetch cart items
+        success: function (response) {
+            const cartItems = response.cartItems;
+
+            // Clear the cart dropdown content
+            $('#cart-products-container').empty();
+
+            // Loop through the cart items and add them to the cart dropdown
+            cartItems.forEach(function (item) {
+                const cartItem = `
+                    <div class="product product-cart cart-product">
+                        <div class="product-detail">
+                            <a href="product-default.html" class="product-name">${item.product.name}</a>
+                            <div class="price-box">
+                                <span class="product-quantity">${item.quantity}</span>
+                                <span class="product-price">Rs.${item.product.price}</span>
+                            </div>
+                        </div>
+                        <figure class="product-media">
+							<a href="product-default.html">
+								<img src="${item.image}" alt="${item.product.name}" height="84" width="94">
+							</a>
+                        </figure>
+                        <button class="btn btn-link btn-closed" data-product-id="${item.product.id}" data-cart-id="${item.id}" data-client-id="${item.client_id}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                $('#cart-products-container').append(cartItem);
+            });
+
+            const subtotal = calculateSubtotal(cartItems);
+
+            // Update the subtotal display in the cart dropdown
+            $('#cart-subtotal').text('Rs. ' + subtotal.toFixed(2));
+        },
+        error: function (error) {
+            // Handle the error if needed
+        }
+    });
+}
+
+// Event handler for when the cart dropdown is opened
+$('.cart-toggle').on('click', function () {
+    fetchCartItemsAndUpdateDropdown();
+});
+
+$('#cart-products-container').on('click', '.btn-closed', function () {
+    const cartId = $(this).data('cart-id');
+    const clientId = $(this).data('client-id');
+	const productId = $(this).data('product-id');
+    removefromCart(cartId, clientId,productId);
+});
+function removefromCart(cartId, clientId,productId) {
+    $.ajax({
+        type: 'POST',
+        url: "{{ route('cart.removefromcart') }}",
+        data: {
+            cart_id: cartId,
+            client_id: clientId,
+			product_id: productId,
+            _token: "{{ csrf_token() }}"
+        },
+        success: function (response) {
+            console.log(response.message);
+            // Fetch updated cart items and update the cart dropdown
+            fetchCartItemsAndUpdateDropdown();
+			updateCartCount();
+            // After removing the product, find the corresponding cart item and update the icons
+            $(`.btn-cart[data-id="${productId}"][data-client_id="${clientId}"] .w-icon-check`).hide();
+            $(`.btn-cart[data-id="${productId}"][data-client_id="${clientId}"] .w-icon-plus`).show();
+        },
+        error: function (error) {
+            // Handle the error if needed
+        }
+    });
+}
+// Function to fetch cart items and update the cart count
+function updateCartCount() {
+    $.ajax({
+        type: 'GET',
+        url: "{{ route('getCartItems') }}",
+        success: function (response) {
+            const cartItems = response.cartItems;
+            const cartCount = cartItems.length;
+            $('#cart-counts').text(cartCount);
+        },
+        error: function (error) {
+            // Handle the error if needed
+        }
+    });
+}
+
+// Call the updateCartCount function when the cart dropdown is opened and on page load
+$(document).ready(function () {
+    updateCartCount();
+});
+
+$('.cart-toggle').on('click', function () {
+    updateCartCount();
+});
+
+</script>
+	

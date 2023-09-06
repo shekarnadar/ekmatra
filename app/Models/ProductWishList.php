@@ -11,9 +11,20 @@ class ProductWishList extends Model
     protected $fillable = [
         'product_id',
         'client_id',
-        'wishlist_id'
+        'wishlist_id',
+        'price',
+        'margin_price',
+        'margin_type',
+        'margin_value'
     ];
+    /* get product deatil */
      public function getProduct(){
          return $this->belongsTo('App\Models\Product', 'product_id','id');
+    }
+    /*
+        * get all features 
+    */
+     public function productFeatures() {
+        return $this->hasMany('App\Models\ProductFeture','product_id','product_id');
     }
 }

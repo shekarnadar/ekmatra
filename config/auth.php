@@ -52,7 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'customer',
         ],
-
+        'subadmin' => [
+            'driver' => 'session',
+            'provider' => 'subadmin',
+        ],
     ],
 
     /*

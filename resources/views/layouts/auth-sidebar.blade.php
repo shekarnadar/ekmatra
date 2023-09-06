@@ -99,7 +99,9 @@ $url = getAuthGaurd();
 					</li>
 					
 					
-					
+					<li class="slide">
+						<a class="side-menu__item" href='{{url("$url/orders")}}'><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Orders</span></a>
+					</li>
 					
 					
 				

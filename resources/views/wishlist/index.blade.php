@@ -266,22 +266,25 @@ h6.nothing {
 																								</li>
 																								
 																						</ul>
+																						
 																				</div>
 																				<!-- End of Store Content -->
 																			 
 																				<div class="store-footer">
 																					 @if($value['product_wish_list_count'] > 0)
-																						<a href="{{url('wishlist-download/'.$value['id'])}}"><figure class="seller-brand">
+																					 <a href="{{url('wishlist-download/'.$value['id'])}}" class="btn btn-rounded btn-visit" >Download <i class="w-icon-download"></i></a>
+																						<!-- <a href="{{url('wishlist-download/'.$value['id'])}}"><figure class="seller-brand">
 																								<div class="icon-box text-center">
 																								<span class="icon-box-icon icon-download">
-																										<i class="w-icon-download"></i>
+																										
 																								</span>
 																								
 																						</div>
 
-																						</figure></a>
+																						</figure></a> -->
 																						@endif
 																						<a href="{{url('wishlist/view/'.$value['id'])}}" class="btn btn-inquiry btn-rounded btn-icon-left">View Wishlist</a>
+																						
 																						<a href="#" class="btn btn-rounded btn-visit removecart" data-id="{{$value['id']}}">Remove</a>
 																				</div>
 																				<!-- End of Store Footer -->

@@ -9633,14 +9633,24 @@ body .product-popup {
 .btn-product-icon.btn-quickview {
   font-size: 1.6em;
 }
+
 .btn-product-icon.btn-compare {
   font-size: 2em;
 }
 .product-action-vertical .btn-product-icon {
   border-radius: 50%;
 }
+.product-action-verticals .btn-product-icon {
+  border-radius: 50%;
+}
 .btn-product-icon.btn-cart {
-  margin-bottom: 0.2rem;
+  margin-bottom: -0.8rem;
+}
+#btn-pro
+{
+  border-color: #9a2948;
+    color: #fff;
+    background-color: #9a2948;
 }
 .btn-product-icon.loading {
   background-color: rgba(255, 255, 255, 0.2);
@@ -9676,6 +9686,23 @@ body .product-popup {
   transition: opacity 0.3s, visibility 0.3s;
   opacity: 0;
   visibility: hidden;
+}
+.product-action-verticals {
+  position: absolute;
+  bottom: 27px;
+  right: 10px;
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
+  border-radius: 50%;
+}
+
+.product-action-verticalss {
+  position: absolute;
+  bottom: 2px;
+  right: -4px;
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
+  border-radius: 50%;
 }
 
 .product-action-horizontal {

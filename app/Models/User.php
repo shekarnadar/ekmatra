@@ -128,6 +128,14 @@ class User extends Authenticatable
     	return $customer;
     }
 
+	//get Subadmin
+    public static function getSubadmin($request){
+
+    	$role_id = getRole('subadmin');
+    	$subadmin = User::where('role_id',$role_id)->orderBy('created_at','desc');
+    	return $subadmin;
+    }
+
     public static function getLatestVendor(){
     	$role_id = getRole('vendor');
     	$vendor = User::with(['getVendorTopProducts' => function($q){

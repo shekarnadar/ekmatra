@@ -36,6 +36,8 @@
 					<i class="w-icon-cart"></i>
 					<p>Wishlist</p>
 				</a>
+
+				
 				@else
 				<a href="{{url('login')}}" class="sticky-link login sign-in wishlistAuth">
 					<i class="w-icon-cart"></i>
@@ -130,7 +132,7 @@
 							<a href="javascript:void(0)">What We Do</a>
 							<ul>
 								<li><a href="{{url('what-we-do/brandstore')}}">BrandStore</a></li>
-                <li><a href="{{url('what-we-do/send')}}">Send</a></li>
+                <li><a href="{{url('what-we-do/DriveMojo')}}">DriveMojo</a></li>
 							</ul>
 						</li>
 					    <li><a href="{{url('/')}}">Our Work</a></li>
@@ -195,7 +197,7 @@
 
 				<span data-v-80b17294="" class="cg-wishlist__cta__toggle quantity-plus w-icon-plus addlist"></span>
 
-				<span data-v-80b17294="" class="cg-wishlist__cta__title ml-2" style=""> Add new list </span>
+				<span data-v-80b17294="" class="cg-wishlist__cta__title ml-2" > Add new list </span>
 			</div>
 			<div class="d-flex pl-3 addListDiv" style="display:none !important;">
 				<input data-v-80b17294="" type="text" class="form-control" id="name">
@@ -274,9 +276,15 @@
 
 
 		   $('.wishlistAuth').click(function(){
-		   	window.redirectPage = "{{url('catalogue')}}"
+		   	window.redirectPage = "{{url('wishlist')}}"
 		  	window.requestforquotation = 1;
 		  });
+
+		  $('.cartAuth').click(function(){
+		   	window.redirectPage = "{{url('cart-product')}}"
+		  	window.requestforquotation = 1;
+		  });
+
 			function notifyMsg(msg,type) {
 				notif({
 					msg: msg,
@@ -367,6 +375,9 @@
 		    wishList(0,0);
 			})
 
+		
+		
+
 			$(document).on('click','span.addlist',function(){
 				$('.addListDiv').show();
 			})
@@ -430,11 +441,11 @@
         	},
           success: function(response) {
           	notifyMsg(msg,status);
-          	$('.cart-count').text(response);
+          	$('#wishlistcount').text(response);
           	multipleProduct = [];
           	 $('.mfp-close').trigger('click');
           	           	 $('.multipleProduct').prop('checked', false);
-
+			location.reload();
 
           },
           

@@ -31,6 +31,10 @@
 							<li class="nav-item">
 								<a href="javascript:void(0)" class="nav-link wishlistLink">Wishlist</a>
 							</li>
+
+							<li class="nav-item">
+								<a href="javascript:void(0)" class="nav-link myorders">My Orders</a>
+							</li>
 							
 						</ul>
 
@@ -146,5 +150,9 @@
 	
 	$('.wishlistLink').click(function(){
 		window.location.href = "{{url('wishlist')}}";
+	})
+
+	$('.myorders').click(function(){
+		window.location.href = "{{url('myorders')}}";
 	})
 </script>
