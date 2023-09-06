@@ -19,7 +19,7 @@
 					   
 						<div class="product-pa-wrapper">
 							<div class="product-price">
-								<ins class="new-price">Price : {{$prod_val['getProduct']['price']}}</ins>
+								<ins class="new-price">MRP : {{$prod_val['getProduct']['mrp']}}</ins>
 								<br/>
 								@if(@auth()->user()->role_id=='4')
 								<ins class="new-price" style="color:#c40000 !important;">Selling Price Rs. : {{$prod_val['margin_price']}}</ins>
