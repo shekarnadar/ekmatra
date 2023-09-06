@@ -280,7 +280,7 @@ $user_id=@auth()->user()->id;
             if (brandItems[5].style.display === "none") {
                 viewMoreLink.innerText = "+ View More";
             } else {
-               // viewMoreLink.innerText = "- View Less";
+                viewMoreLink.innerText = "- View Less";
             }
         });
     });
