@@ -20,14 +20,12 @@
             <th>Price</th>
             <th>Mrp</th>
             <th>Image</th>
-
-
         </tr>
         @foreach($wishlists['ProductWishList'] as $wishlist)
         <tr>
             <td>{{ $loop->iteration}}</td>
             <td>{{$wishlist['getProduct']['category']['name']}}</td>
-            <td><a href="http://127.0.0.1:8000/product-detail/{{ $wishlist['getProduct']['slug']}}" target="_blank">{{ $wishlist['getProduct']['name'] }}</a></td>
+            <td><a href="https://ekmatra.in/product-detail/{{ $wishlist['getProduct']['slug']}}" target="_blank">{{ $wishlist['getProduct']['name'] }}</a></td>
             <td>{{ round($wishlist->margin_price) }}</td>
             <td>{{ $wishlist->getProduct->mrp }}</td>
             
