@@ -78,11 +78,7 @@ class CartController extends Controller
 
     public function getCartItems(Request $request)
    {
-    \Log::info('=====================================================');
-    \Log::info(\Auth()->user());
-    \Log::info('=====================================================');
-    
-    $clientId = \Auth()->user()->id;
+    $clientId = auth()->user()->id;
     $cartItems = Cart::where('client_id', $clientId)->where('status','0')->with('product')->get();   
     return response()->json(['cartItems' => $cartItems]);
    }
