@@ -68,7 +68,6 @@ $user_id=@auth()->user()->id;
                 <div class="container">
                 	<div class="row mb-5 align-items-center wislistDetail">
                 		<div class="col-6 col-md-5 col-lg-3"><h4 class="product-name wishlist-title"><a href="javascript:void(0)">{{$wishlist['name']}}</a></h4></div>
-                        {{auth()->user()->role_id}}
                 		<div class="col-6 col-md-4 col-lg-4">
 												<div class="wishlistbtns">
 														<button class=" removewishlist">
