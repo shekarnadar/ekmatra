@@ -445,7 +445,7 @@
           	multipleProduct = [];
           	 $('.mfp-close').trigger('click');
           	           	 $('.multipleProduct').prop('checked', false);
-			location.reload();
+			//location.reload();
 
           },
           
