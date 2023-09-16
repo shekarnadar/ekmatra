@@ -33,6 +33,6 @@
         </tr>
         @endforeach
     </table>
-  
+  <p style="color:red; font-size:13px;"> Note : GST Charges, Branding Charges and Transport charges as applicable.</p>
 </body>
 </html>
