@@ -45,7 +45,7 @@ class GiftController extends Controller
 				
 		}
 		 $product->orderBy('products.created_at','desc');
-		$product = $product->paginate(30);
+		$product = $product->paginate(52);
 		return view('gift', compact('product','occasion_id','feature_attribute_id','type','value','main_name'));
 	}
 
@@ -94,7 +94,7 @@ class GiftController extends Controller
         	   }
            
         }
-        if($request['max_qty'] == 150) {
+        if($request['max_qty'] == 500) {
         	 if($request['type'] == 'occasions'){
         	 			$product->where('products.maq','>=',$request['max_qty']);
         	 }else{
@@ -117,7 +117,7 @@ class GiftController extends Controller
 		if($request['page_limit']){
        $page_limit = $request['page_limit'];
     }else{
-       $page_limit = 30;
+       $page_limit = 52;
     }
     	
     if($request['sort_by']){

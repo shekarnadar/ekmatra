@@ -49,9 +49,9 @@
 
 								    <div class="toolbox-item toolbox-show select-box   ml-2">
 									<select name="limit_product" id="limit_product" class="form-control">
-										<option value="10" selected="selected">Show 10</option>
-										<option value="20">Show 20</option>
-										<option value="30">Show 30</option>
+										<option value="10" selected="selected">Show 50</option>
+										<option value="20">Show 100</option>
+										<option value="30">Show 200</option>
 									</select>
 								</div>
 								

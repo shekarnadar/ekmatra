@@ -32,7 +32,7 @@ class ShopController extends Controller
 	   $product = Product::where('status',1);
 	  
 
-	   $product=$product->orderBy('created_at','desc')->paginate(12);
+	   $product=$product->orderBy('created_at','desc')->paginate(52);
 	   $filter = false;
 		return view ('allproductadvanced',compact('brand','product','allcategory','filter'));
 	   
@@ -63,7 +63,7 @@ class ShopController extends Controller
 
     	$filter = true;
 		$product = Product::where('category_id',$cat_id)->where('status',1);
-		$product=$product->orderBy('created_at','desc')->paginate(12);
+		$product=$product->orderBy('created_at','desc')->paginate(52);
 		
 		
 		return view ('shop',compact('cat_id','subCategory','features','cat_name','product','cat_slug','select_cat_id','filter'));
@@ -110,7 +110,7 @@ class ShopController extends Controller
             $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
         }
         
-        if($request['max_qty'] == 150) {
+        if($request['max_qty'] == 500) {
         	 $product->where('maq','>=',$request['max_qty']);
         }
         if($request['warranty']){
@@ -119,7 +119,7 @@ class ShopController extends Controller
         if($request['page_limit']){
         	$page_limit = $request['page_limit'];
         }else{
-        	$page_limit = 12;
+        	$page_limit = 52;
         }
     	$product = $product->where('status',1);
     	
@@ -154,7 +154,7 @@ class ShopController extends Controller
 		$product = Product::where('sub_category_id',$sub_cat['id'])->where('category_id',$sub_cat['category_id'])->where('status',1); 
 		
 		
-		$product = $product->orderBy('created_at','desc')->paginate(12);
+		$product = $product->orderBy('created_at','desc')->paginate(52);
 		
 
 		$brand = Product::with('feature_attributes')
@@ -239,7 +239,7 @@ class ShopController extends Controller
             $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
         }
         
-        if($request['max_qty'] == 150) {
+        if($request['max_qty'] == 500) {
         	 $product->where('maq','>=',$request['max_qty']);
         }
         
@@ -250,7 +250,7 @@ class ShopController extends Controller
         if($request['page_limit']){
         	$page_limit = $request['page_limit'];
         }else{
-        	$page_limit = 12;
+        	$page_limit = 52;
         }
 		$product = $product->orderBy('created_at','desc')->paginate($page_limit);
 		return view('presult', compact('product'));

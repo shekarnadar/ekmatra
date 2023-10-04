@@ -91,8 +91,8 @@
 									<ul class="widget-body filter-items item-check qty-item">
 										<li data-minqty="1" data-maxqty="50"><a href="#">Under 50</a></li>
 										<li data-minqty="50" data-maxqty="100"><a href="#">50-100</a></li>
-										<li data-minqty="100" data-maxqty="150"><a href="#">100-150</a></li>
-										<li data-maxqty="150" data-minqty="0" data-maxqty="100"><a href="#">150 & up</a></li>
+										<li data-minqty="100" data-maxqty="500"><a href="#">100-500</a></li>
+										<li data-minqty="500" data-maxqty="10000"><a href="#">500 +</a></li>
 									</ul>
 								</div>
 
