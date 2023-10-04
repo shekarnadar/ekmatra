@@ -148,7 +148,7 @@ class Product extends Model
    }
 
    public static function getProducts($request){
-   	$query = Product::with(['createdBy','category','subCategory'])->select(['id','name','image','price','category_id','sub_category_id','created_by','status']);
+   	$query = Product::with(['createdBy','category','subCategory'])->select(['id','name','image','price','mrp','category_id','sub_category_id','created_by','status']);
    	if(getAuthGaurd() != 'admin'){
    		$query->where('created_by',\Auth::guard(getAuthGaurd())->user()->id);
    	}

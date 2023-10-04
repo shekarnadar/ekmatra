@@ -302,6 +302,14 @@ $('#product-list').on('click', '.changestaus', function(){
             	data: 'name', 
             	name: 'name',
             	'title' : 'Name'},
+            	{
+            	data: 'price', 
+            	name: 'price',
+            	'title' : 'Price'},
+            	{
+            	data: 'mrp', 
+            	name: 'mrp',
+            	'title' : 'MRP'},
             {
             	data:'category_name' ,
             	name:'category_name',
