@@ -1,6 +1,6 @@
 <style>
 	#cart-products-container {
-    max-height: 100%; /* Adjust the height as per your requirement */
+    max-height: 600px; /* Adjust the height as per your requirement */
     overflow-y: auto;
 }
 </style>
