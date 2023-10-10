@@ -246,21 +246,21 @@ class WishlistController extends Controller
         return $pdf->download($wishlist['name'].'.pdf');
 	}
 
-	// public function wishlistView($id){
-	// 	$wishlist = Wishlist::with('ProductWishList.getProduct')->where('id',$id)->first();
+	public function wishlistView($id){
+		$wishlist = Wishlist::with('ProductWishList.getProduct')->where('id',$id)->first();
 
 		 
- //        return view('wishlist.detail',compact('wishlist'));
-	// }
+        return view('wishlist.detail',compact('wishlist'));
+	}
 
 
-	public function wishlistView($id){
-    $wishlist = Wishlist::with(['ProductWishList' => function ($query) {
-        $query->orderBy('margin_price', 'asc');
-    }])->where('id', $id)->first();
+	// public function wishlistView($id){
+ //    $wishlist = Wishlist::with(['ProductWishList' => function ($query) {
+ //        $query->orderBy('margin_price', 'asc');
+ //    }])->where('id', $id)->first();
 
-    return view('wishlist.detail', compact('wishlist'));
-    }
+ //    return view('wishlist.detail', compact('wishlist'));
+ //    }
 
 
 	public function removeProductWishlist(Request $request){
