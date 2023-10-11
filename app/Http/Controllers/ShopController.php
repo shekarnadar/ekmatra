@@ -217,9 +217,13 @@ class ShopController extends Controller
     	}else{
      		 $product->orderBy('created_at','desc');
 		 }
-
+		 if($request['page_limit']){
+        	$page_limit = $request['page_limit'];
+        }else{
+        	$page_limit = 52;
+        }
 		$filter = false;
-		$product = $product->paginate(52);
+		$product = $product->paginate($page_limit);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 		
