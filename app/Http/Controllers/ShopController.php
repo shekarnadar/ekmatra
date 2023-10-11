@@ -105,14 +105,14 @@ class ShopController extends Controller
          if($request['max_price'] == 5001){
          	$product->where('price','>=',$request['max_price']);
          }
-		  if($request['min_qty'] > 0 || $request['max_qty']  > 0)
+		  if($request['min_qty'] > 0 && $request['max_qty']  > 0)
         {
             $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
         }
         
-        if($request['max_qty'] == 500) {
-        	 $product->where('maq','>=',$request['max_qty']);
-        }
+        // if($request['max_qty'] == 500) {
+        // 	 $product->where('maq','>=',$request['max_qty']);
+        // }
         if($request['warranty']){
     		$product->where('warrenty',$request['warranty']);
     	}
@@ -247,9 +247,9 @@ class ShopController extends Controller
             $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
         }
         
-        if($request['max_qty'] == 500) {
-        	 $product->where('maq','>=',$request['max_qty']);
-        }
+        // if($request['max_qty'] == 500) {
+        // 	 $product->where('maq','>=',$request['max_qty']);
+        // }
         
         if($request['max_price'] == 5001){
         	$product->where('price','>=',$request['max_price']);
