@@ -51,7 +51,7 @@
 								</div>
 								<!-- End of Intro-wrapper -->
 
-							 <div class="swiper-container swiper-theme icon-box-wrapper br-sm mt-0 mb-10 appear-animate"
+							 <!-- <div class="swiper-container swiper-theme icon-box-wrapper br-sm mt-0 mb-10 appear-animate"
                     data-swiper-options="{
                     'slidesPerView': 1,
                     'breakpoints': {
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- End of Iocn Box Wrapper -->
 
 								<div class="title-link-wrapper title-select after-none appear-animate">

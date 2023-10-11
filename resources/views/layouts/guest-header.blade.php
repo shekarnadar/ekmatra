@@ -3,6 +3,7 @@
     max-height: 600px; /* Adjust the height as per your requirement */
     overflow-y: auto;
 }
+
 </style>
 @php
 $user_id=@auth()->user()->id;
@@ -207,7 +208,7 @@ $user_id=@auth()->user()->id;
 													
 												</ul>
 											</li>
-											<li>
+											<li >
 											    <h4 class="menu-title">Brand</h4>
 											    <ul id="brand-list">
 											        @php $count = 0 @endphp 
@@ -265,6 +266,7 @@ $user_id=@auth()->user()->id;
 			</div>
 		</header>
 		<script>
+
     document.addEventListener("DOMContentLoaded", function () {
         var brandList = document.getElementById("brand-list");
         var brandItems = brandList.getElementsByClassName("brand-item");

@@ -213,7 +213,7 @@
 							
 						</div>
 						<!-- End of Main Content -->
-						<aside class="sidebar product-sidebar sidebar-fixed right-sidebar sticky-sidebar-wrapper">
+						<!-- <aside class="sidebar product-sidebar sidebar-fixed right-sidebar sticky-sidebar-wrapper">
 							<div class="sidebar-overlay"></div>
 							<a class="sidebar-close" href="#"><i class="close-icon"></i></a>
 							<a href="#" class="sidebar-toggle d-flex d-lg-none"><i class="fas fa-chevron-left"></i></a>
@@ -248,15 +248,12 @@
 											</div>
 										</div>
 									</div>
-									<!-- End of Widget Icon Box -->
-
 									
-									<!-- End of Widget Banner -->
 
 									
 								</div>
 							</div>
-						</aside>
+						</aside> -->
 						<!-- End of Sidebar -->
 					</div>
 				</div>
