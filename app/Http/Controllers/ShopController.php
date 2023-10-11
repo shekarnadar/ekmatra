@@ -105,7 +105,7 @@ class ShopController extends Controller
          if($request['max_price'] == 5001){
          	$product->where('price','>=',$request['max_price']);
          }
-		  if($request['min_qty'] > 0 && $request['max_qty']  > 0)
+		  if($request['min_qty'] > 0 || $request['max_qty']  > 0)
         {
             $product->whereBetween('maq', [$request['min_qty'] , $request['max_qty'] ]);
         }
@@ -196,6 +196,8 @@ class ShopController extends Controller
 		 ->where('status',1)->get();
 
     	
+    	
+
 		$product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')->orWhere(function($q) use($search_txt) {
 			$q->whereHas('category', function ($query) use ($search_txt) {
 				 $query->where('name','like', '%'. $search_txt .'%');
@@ -209,6 +211,12 @@ class ShopController extends Controller
 		})
 		->where('status',1);
 		
+		// if($request['sort_by']){
+  //   		$product->orderBy($request['sort_by'],$request['order_by']);
+  //   	}else{
+  //   		 $product->orderBy('created_at','desc');
+		// }
+
 		$filter = false;
 		$product = $product->orderBy('created_at','desc')->paginate(52);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
