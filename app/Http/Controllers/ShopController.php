@@ -211,11 +211,12 @@ class ShopController extends Controller
 		})
 		->where('status',1);
 		
-		// if($request['sort_by']){
-  //   		$product->orderBy($request['sort_by'],$request['order_by']);
-  //   	}else{
-  //   		 $product->orderBy('created_at','desc');
-		// }
+
+		 if($request['sort_by']){
+     		$product->orderBy($request['sort_by'],$request['order_by']);
+    	}else{
+     		 $product->orderBy('created_at','desc');
+		 }
 
 		$filter = false;
 		$product = $product->orderBy('created_at','desc')->paginate(52);
