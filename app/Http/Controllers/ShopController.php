@@ -219,7 +219,7 @@ class ShopController extends Controller
 		 }
 
 		$filter = false;
-		$product = $product->orderBy('created_at','desc')->paginate(52);
+		$product = paginate(52);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 		
