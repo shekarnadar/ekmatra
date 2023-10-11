@@ -193,7 +193,7 @@ class ShopController extends Controller
 			//  });
 		})
 		
-		 ->where('status',1)->get();
+		 ->where('status',1);
 
     	
     	
@@ -215,15 +215,11 @@ class ShopController extends Controller
 		 if($request['sort_by']){
      		$product->orderBy($request['sort_by'],$request['order_by']);
     	}else{
-     		 $product->orderBy('created_at','desc')->paginate(52);
+     		 $product->orderBy('created_at','desc');
 		 }
-		 if($request['page_limit']){
-        	$page_limit = $request['page_limit'];
-        }else{
-        	$page_limit = 52;
-        }
+
 		$filter = false;
-		$product = $product->paginate($page_limit);
+		$product = $product->orderBy('created_at','desc')->paginate(52);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 		
