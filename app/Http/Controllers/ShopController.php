@@ -215,7 +215,7 @@ class ShopController extends Controller
 		 if($request['sort_by']){
      		$product->orderBy($request['sort_by'],$request['order_by']);
     	}else{
-     		 $product->orderBy('created_at','desc');
+     		 $product->orderBy('created_at','desc')->paginate(52);
 		 }
 		 if($request['page_limit']){
         	$page_limit = $request['page_limit'];
