@@ -193,7 +193,7 @@ class ShopController extends Controller
 			//  });
 		})
 		
-		 ->where('status',1);
+		 ->where('status',1)->get();
 
     	
     	
@@ -211,15 +211,15 @@ class ShopController extends Controller
 		})
 		->where('status',1);
 		
-
-		 if($request['sort_by']){
-     		$product->orderBy($request['sort_by'],$request['order_by']);
-    	}else{
-     		 $product->orderBy('created_at','desc');
-		 }
+		
+		// if($request['sort_by']){
+  //   		$product->orderBy($request['sort_by'],$request['order_by']);
+  //   	}else{
+  //   		 $product->orderBy('created_at','desc');
+		// }
 
 		$filter = false;
-		$product = $product->paginate(52);
+		$product = $product->orderBy('created_at','desc')->paginate(52);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 		
