@@ -210,7 +210,7 @@ class ShopController extends Controller
 		->where('status',1);
 		
 		$filter = false;
-		$product = $product->orderBy('created_at','desc')->paginate(12);
+		$product = $product->orderBy('created_at','desc')->paginate(52);
 		return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 		
