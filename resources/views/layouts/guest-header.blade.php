@@ -57,7 +57,7 @@ $user_id=@auth()->user()->id;
 									<button class="btn btn-search" type="submit">
 											<i class="w-icon-search"></i>
 									</button>
-									
+
 							</form>
 					</div>
 					<div class="header-right ml-4">
@@ -203,7 +203,7 @@ $user_id=@auth()->user()->id;
 												<h4 class="menu-title">Price</h4>
 												<ul>
 													<li><a href="{{url('shop-by/price/1-99')}}">Under 100</a></li>
-													<li><a href="{{url('shop-by/price/100-499')}}">100 t0 500</a></li>
+													<li><a href="{{url('shop-by/price/100-499')}}">100 to 500</a></li>
 													<li><a href="{{url('shop-by/price/500-999')}}">500 to 1000</a></li>
 													<li><a href="{{url('shop-by/price/1000-4999')}}">1000 to 5000</a></li>
 													<li><a href="{{url('shop-by/price/0-5000')}}">5000 above</a></li>
