@@ -117,7 +117,7 @@
                                     <a href="#">Price</a>
                                     <ul>
                                         <li><a href="{{url('shop-by/price/1-99')}}">Under 100</a></li>
-																				<li><a href="{{url('shop-by/price/100-499')}}">100 t0 500</a></li>
+																				<li><a href="{{url('shop-by/price/100-499')}}">100 to 500</a></li>
 																				<li><a href="{{url('shop-by/price/500-999')}}">500 to 1000</a></li>
 																				<li><a href="{{url('shop-by/price/1000-4999')}}">1000 to 5000</a></li>
 																				<li><a href="{{url('shop-by/price/0-5000')}}">5000 above</a></li>
