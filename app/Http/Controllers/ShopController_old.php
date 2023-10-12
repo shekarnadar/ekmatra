@@ -177,14 +177,44 @@ class ShopController extends Controller
                 }else{
                         $select_cat_id = '';
                 }
+
+
+                $brand = Product::with('feature_attributes')
+                ->where('products.name', 'LIKE','%'. $search_txt .'%')
+                ->orWhere(function($q) use($search_txt) {
+                        $q->whereHas('category', function ($query) use ($search_txt) {
+                                $query->where('name','like', '%'. $search_txt .'%');
+                         });
+                        // ->orWhereHas('feature_attributes',function($query) use( $search_txt){
+                        //      $query->where('name','like', '%'. $search_txt .'%');
+
+                        //  })->orWhereHas('productFeatures',function($query) use( $search_txt){
+                        //     $query->where('name','like', '%'. $search_txt .'%');
+                        //  });
+                })
+
+                 ->where('status',1)->get();
+
+    
     
 
-                $product = Product::where('products.name', 'LIKE','%'. $search_txt .'%');
+                $product = Product::where('products.name', 'LIKE','%'. $search_txt .'%')->orWhere(function($q) use($search_txt) {
+                        $q->whereHas('category', function ($query) use ($search_txt) {
+                                 $query->where('name','like', '%'. $search_txt .'%');
+                         });
+                        // ->orWhereHas('feature_attributes',function($query) use( $search_txt){
+                        //      $query->where('name','like', '%'. $search_txt .'%');
+
+                        //  })->orWhereHas('productFeatures',function($query) use( $search_txt){
+                        //     $query->where('name','like', '%'. $search_txt .'%');
+                        //  });
+                })
+                ->where('status',1);
 
                 $filter = false;
 
                 $product = $product->orderBy('created_at','desc')->paginate(52);
-                return view ('search',compact('product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
+                return view ('search',compact('brand','product','search_txt','subCategory','cat_name','cat_slug','select_cat_id','filter'));
 
 
         }
