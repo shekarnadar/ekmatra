@@ -3,7 +3,6 @@
     max-height: 600px; /* Adjust the height as per your requirement */
     overflow-y: auto;
 }
-
 </style>
 @php
 $user_id=@auth()->user()->id;
@@ -189,6 +188,8 @@ $user_id=@auth()->user()->id;
 
 										<!-- Start of Megamenu -->
 										<ul class="megamenu">
+
+
 											<li>
 												<h4 class="menu-title">Occasions</h4>
 												<ul>
@@ -208,21 +209,30 @@ $user_id=@auth()->user()->id;
 													
 												</ul>
 											</li>
-											<li >
-											    <h4 class="menu-title">Brand</h4>
-											    <ul id="brand-list">
-											        @php $count = 0 @endphp 
-											        @foreach($allFeature as $feature)
-											            <li class="brand-item @if($count >= 5) hidden-brand @endif"><a href="{{url('shop-by/brand/'.$feature['name'])}}">{{$feature['name']}}</a></li>
-											            @php $count++ @endphp
-											        @endforeach
-											        @if(count($allFeature) > 5)
-											        <li><a href="#" id="view-more-link"> + View More</a></li>
-											    @endif
-											    </ul>
-											    
-											</li>
-										   
+											<li>
+    <h4 class="menu-title">Brand</h4>
+    <ul id="brand-list">
+        @php
+        $totalBrands = count($allFeature);
+        $midpoint = ceil($totalBrands / 2);
+        $count = 0;
+        @endphp
+
+        @foreach($allFeature as $feature)
+            <li class="brand-item">
+                <a href="{{url('shop-by/brand/'.$feature['name'])}}">{{$feature['name']}}</a>
+            </li>
+            @php $count++ @endphp
+            @if ($count == $midpoint && $count != $totalBrands)
+            </ul>
+            </li>
+            <li>
+            <ul id="brand-list">
+            @endif
+        @endforeach
+    </ul>
+</li>
+
 										</ul>
 										<!-- End of Megamenu -->
 									</li>
@@ -265,28 +275,7 @@ $user_id=@auth()->user()->id;
 				</div>
 			</div>
 		</header>
-		<script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var brandList = document.getElementById("brand-list");
-        var brandItems = brandList.getElementsByClassName("brand-item");
-        var viewMoreLink = document.getElementById("view-more-link"); 
-        for (var i = 5; i < brandItems.length; i++) {
-            brandItems[i].style.display = "none";
-        } 
-        viewMoreLink.addEventListener("click", function (event) {
-            event.preventDefault();         
-            for (var i = 5; i < brandItems.length; i++) {
-                brandItems[i].style.display = brandItems[i].style.display === "none" ? "list-item" : "none";
-            }          
-            if (brandItems[5].style.display === "none") {
-                viewMoreLink.innerText = "+ View More";
-            } else {
-                viewMoreLink.innerText = "- View Less";
-            }
-        });
-    });
-</script>
+		
 <script>
 function clearAllCartItems(clientId) {
     $.ajax({
