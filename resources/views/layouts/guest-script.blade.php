@@ -4,9 +4,9 @@
 
     <title>Ekmatra</title>
 
-    <meta name="keywords" content="Marketplace ecommerce responsive HTML5 Template" />
+    <meta name="keywords" content="Ekmatra.in, ekmatra website, b2b business, corporate gifting, powerbanks for gifting" />
     <meta name="description" content="ekmatra">
-    <meta name="author" content="D-THEMES">
+    <meta name="author" content="ekmatra">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{url('front/images/icons/favicon.png')}}">
@@ -55,7 +55,25 @@
 
      @endif
 
-    
+    <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11344475611"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'AW-11344475611');
+	</script>
+
+	<!-- Event snippet for Page view conversion page -->
+	<script>
+		gtag('event', 'conversion', {
+			'send_to': 'AW-11344475611/YxynCIm2lqcZENvru6Eq'
+		});
+	</script>
 </head>
 <style type="text/css">
     .product-image-gap .product-media {
