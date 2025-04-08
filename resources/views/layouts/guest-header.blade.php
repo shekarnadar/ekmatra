@@ -20,7 +20,7 @@ $user_id=@auth()->user()->id;
 
 
 				<span class="divider d-lg-show"></span>
-				<a href="{{url('vendor/login')}}" class="d-lg-show">Sell on Ekmatra</a>
+				<a href="{{url('vendor/login')}}" class="d-lg-show">Sells on Ekmatra</a>
 				@auth
 				<a href="{{url('myaccount')}}" class="d-lg-show">My Account</a>
 
