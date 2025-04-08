@@ -127,7 +127,6 @@ $user_id=@auth()->user()->id;
 									<div class="cart-action">
 										<a href="{{url('cart-product')}}" class="btn btn-dark btn-outline btn-rounded">Proceed</a>
 										<a href="#" class="btn btn-primary btn-rounded clear" onclick="clearAllCartItems({{$user_id}})">Clear</a>
-
 									</div>
 									
 								</div>
